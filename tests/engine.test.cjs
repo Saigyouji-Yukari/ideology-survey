@@ -144,3 +144,32 @@ test('exports round-trip Unicode and preserve disclosure history; version attack
   assert.throws(() => E.decodeSession('OMNI1.%%%%'));
   assert.throws(() => E.analyze(session({ Q001: 7 }, { presented: [] })));
 });
+
+
+test('legacy supplement has audited sources, unique IDs, and valid optional group references', () => {
+  const bank=D.legacySupplement, ids=new Set(D.core.items.concat(...D.modules.map(m=>m.items)).map(q=>q.id));
+  assert.equal(bank.groups.length,6);assert.equal(bank.items.length,57);assert.equal(D.limits.minutes,null);
+  assert.equal(D.limits.maxResponses,250+bank.items.length);
+  for(const group of bank.groups){assert.equal(group.scored,false);assert(bank.items.some(q=>q.group===group.id));}
+  for(const q of bank.items){assert(!ids.has(q.id));ids.add(q.id);assert(/^L\d{3}$/.test(q.id));assert(bank.groups.some(g=>g.id===q.group));assert(Number.isInteger(q.sourceQuestion)&&q.sourceQuestion>=1&&q.sourceQuestion<=267);assert(['value','prediction','historical'].includes(q.kind));assert(q.originalText&&q.revisionNote);}
+});
+
+test('supplement reports distinguish support, unknown, refusal, missing, and unpresented without altering original scores',()=>{
+  const group=D.legacySupplement.groups[0], rows=D.legacySupplement.items.filter(q=>q.group===group.id);
+  assert(rows.length>=6);
+  const answers=ownAnswers([7,1,7,1,7,1]);
+  [7,1,4,'U','X'].forEach((v,i)=>answers[rows[i].id]=v);
+  const original=E.facet('OWN',answers);
+  const s=session(answers,{selectedSupplements:[group.id],presented:[...Object.keys(answers),rows[5].id]});
+  const r=E.analyze(s), g=r.supplements.find(g=>g.id===group.id);
+  assert.deepEqual(r.facets[0],original);assert.equal(g.counts.support,1);assert.equal(g.counts.oppose,1);assert.equal(g.counts.neutral,1);assert.equal(g.counts.unknown,1);assert.equal(g.counts.refused,1);assert.equal(g.counts.missing,1);assert.equal(g.counts.unpresented,rows.length-6);
+  assert.equal(g.valid,3);assert.equal(g.value,undefined);assert.equal(r.coverage.supplements.valid,3);assert.equal(r.quality.presented,12);assert.equal(r.coverage.testedCardCount,0);
+});
+
+test('supplements never change core values, candidate routing, or card claims and cannot import unselected responses',()=>{
+  const before=cardAnswers([6,6,6]);const after={...before,...Object.fromEntries(D.legacySupplement.items.map(q=>[q.id,7]))};
+  assert.deepEqual(E.card('T001',before),E.card('T001',after));
+  assert.deepEqual(E.recommendCards(before,['S']),E.recommendCards(after,['S']));
+  assert.deepEqual(E.facet('OWN',before),E.facet('OWN',after));
+  const bad=session({[D.legacySupplement.items[0].id]:7});assert.throws(()=>E.analyze(bad));
+});

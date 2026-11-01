@@ -10,6 +10,9 @@ const D = {version:'OMNI-TEST', core:{
   modules:['S','M','A','L','C','P','G','R','D'].map(id=>({id,anchors:[1,3,8,12].map(i=>id+String(i).padStart(2,'0')),items:Array.from({length:24},(_,i)=>({id:id+String(i+1).padStart(2,'0')}))})),
   cards:Array.from({length:5},(_,i)=>({id:'T'+String(i+1).padStart(3,'0'),a:'a',b:'b',contrast:'c'}))};
 const START = 100000;
+const EXTENDED = {...D,version:'OMNI-TEST-R2',compatibleVersions:[D.version],limits:{maxResponses:253},legacySupplement:{
+  groups:[{id:'economy',name:'经济补充'},{id:'institutions',name:'制度补充'},{id:'culture',name:'文化补充'}],
+  items:[{id:'L001',group:'economy'},{id:'L002',group:'institutions'},{id:'L003',group:'culture'}]}};
 function fresh(stage='base'){const s=S.fresh(D,START);s.stage=stage;return s;}
 function minute(n){return START+n*60000;}
 function cardSession(){const s=fresh('cardSelect');S.selectCards(D,s,['T001','T002']);return s;}
@@ -37,29 +40,34 @@ test('end of each stage transitions without repeating anchors',()=>{
   S.selectModules(D,s,['S']);s.pos=19;S.advance(D,s);assert.equal(s.stage,'cardSelect');
   S.selectCards(D,s,['T001']);s.pos=5;S.advance(D,s);assert.equal(s.stage,'review');
 });
-test('75 minute deadline stops base/module stages, retaining missing answers',()=>{
-  for(const stage of ['instructions','base','moduleSelect','modules']){
-    const s=fresh(stage);if(stage==='modules')s.selectedModules=['S'];
-    assert.equal(S.enforce(D,s,minute(74.999)),false);assert.equal(S.enforce(D,s,minute(75)),true);assert.equal(s.stage,'cardSelect');assert.deepEqual(s.answers,{});
+test('elapsed time never skips, reviews, or finishes any stage, even after days away',()=>{
+  assert.equal(S.LIMIT,null);
+  for(const stage of ['instructions','base','moduleSelect','modules','supplementSelect','supplements','cardSelect','cards','review','result']){
+    const s=S.fresh(EXTENDED,START);s.stage=stage;
+    if(stage==='modules')s.selectedModules=['S'];
+    if(stage==='supplements')s.selectedSupplements=['economy'];
+    if(stage==='cards')s.selectedCards=['T001'];
+    if(stage==='result')s.finished=true;
+    const before=JSON.stringify(s);
+    for(const minutes of [75,85,91,95,96,24*60,7*24*60]){
+      assert.equal(S.enforce(EXTENDED,s,minute(minutes)),false);
+      assert.equal(JSON.stringify(s),before);
+    }
   }
 });
-test('85 minute deadline prevents new cards but allows finishing an open card',()=>{
-  const s=cardSession();S.enforce(D,s,minute(85));assert.equal(s.stage,'review');
-  const open=cardSession();S.present(open,S.plan(D,open)[0]);S.enforce(D,open,minute(85));assert.equal(open.stage,'cards');
-  open.pos=1;S.enforce(D,open,minute(86));assert.equal(open.stage,'cards');
-  open.pos=6;S.enforce(D,open,minute(86));assert.equal(open.stage,'review');
-  const select=fresh('cardSelect');S.enforce(D,select,minute(85));assert.equal(select.stage,'review');
+test('new and previously open cards remain answerable after the old time limit',()=>{
+  const s=cardSession();assert.equal(S.enforce(D,s,minute(96)),false);
+  S.answer(s,S.plan(D,s)[0],7);S.advance(D,s);assert.equal(s.stage,'cards');assert.equal(s.pos,1);
+  s.pos=6;assert.equal(S.enforce(D,s,minute(7*24*60)),false);
+  S.answer(s,S.plan(D,s)[6],6);assert.equal(s.answers['T002.a'],6);
 });
-test('91 minute deadline moves unfinished stages to review',()=>{
-  for(const stage of ['instructions','base','moduleSelect','modules','cardSelect','cards']){
-    const s=fresh(stage);if(stage==='modules')s.selectedModules=['S'];if(stage==='cards')s.selectedCards=['T001'];
-    S.enforce(D,s,minute(91));assert.equal(s.stage,'review');assert.equal(s.finished,false);
-  }
-});
-test('95 minute hard deadline finishes even a reloaded or backgrounded session',()=>{
-  for(const stage of ['instructions','base','moduleSelect','modules','cardSelect','cards','review']){
-    const s=fresh(stage);S.enforce(D,s,minute(96));assert.equal(s.finished,true);assert.equal(s.stage,'result');assert.equal(s.elapsedMs,S.LIMIT);
-  }
+test('long-duration progress validates after reload and stores its full duration at completion',()=>{
+  const s=fresh();s.elapsedMs=7*24*60*60000;
+  const restored=S.validate(D,JSON.parse(JSON.stringify(s)));
+  assert.equal(restored.elapsedMs,s.elapsedMs);assert.equal(restored.stage,'base');
+  S.answer(restored,{id:'Q001'},6);S.finish(restored,'自行结束',minute(8*24*60));
+  assert.equal(restored.elapsedMs,8*24*60*60000);assert.equal(S.elapsed(restored,minute(9*24*60)),8*24*60*60000);
+  assert.doesNotThrow(()=>S.validate(D,restored));
 });
 test('wall clock elapsed cannot go backwards and completed reports stop the clock',()=>{
   const s=fresh();s.elapsedMs=600000;assert.equal(S.elapsed(s,START+300000),600000);assert.equal(S.elapsed(s,minute(20)),1200000);
@@ -81,15 +89,46 @@ test('valid saved progress roundtrips without mutating caller arrays or answer m
 });
 test('validation rejects incompatible answers, IDs, times, branch counts, and stage state',()=>{
   const cases=[
-    s=>s.version='old',s=>s.elapsedMs=-1,s=>s.elapsedMs=S.LIMIT+1,s=>s.startedAt=-1,s=>s.startedAt=Date.now()+3600000,
+    s=>s.version='old',s=>s.elapsedMs=-1,s=>s.elapsedMs=Infinity,s=>s.elapsedMs=NaN,s=>s.startedAt=-1,s=>s.startedAt=Infinity,s=>s.startedAt=Date.now()+3600000,
     s=>s.pos=186,s=>s.pos=-1,s=>s.stage='unknown',s=>s.stage='result',s=>s.finished=true,
     s=>s.selectedModules=['S','M','A'],s=>s.selectedModules=['S','S'],s=>s.selectedCards=['T001','T002','T003','T004','T005'],s=>s.selectedCards=['unknown'],
+    s=>s.selectedSupplements=['unknown'],s=>s.selectedSupplements='economy',s=>s.sourceVersion='unsupported',
     s=>s.presented=['Q001','Q001'],s=>s.presented=['Q999'],s=>s.answers={Q001:7},
     s=>{s.presented=['Q001'];s.answers={Q001:0};},s=>{s.presented=['Q001'];s.answers={Q001:'7'};},
     s=>{s.presented=['Z02'];s.answers={Z02:3};},s=>{s.presented=['Z04'];s.answers={Z04:4};},
     s=>s.cardRevealed=['unknown'],s=>s.unblindedEdits=['Q001'],s=>s.originalBlindAnswers={'Q001':7},
     s=>{s.stage='modules';s.selectedModules=[];}
   ];for(const mutate of cases){const s=fresh();mutate(s);assert.throws(()=>S.validate(D,s));}
+});
+test('optional legacy groups fit between selected modules and cards without a group cap',()=>{
+  const s=S.fresh(EXTENDED,START);s.stage='moduleSelect';
+  S.selectModules(EXTENDED,s,[]);assert.equal(s.stage,'supplementSelect');
+  S.selectSupplements(EXTENDED,s,['unknown','economy','economy','institutions','culture']);
+  assert.deepEqual(s.selectedSupplements,['economy','institutions','culture']);
+  assert.equal(s.stage,'supplements');assert.deepEqual(S.plan(EXTENDED,s).map(q=>q.id),['L001','L002','L003']);
+  S.answer(s,S.plan(EXTENDED,s)[0],7);S.advance(EXTENDED,s);assert.equal(s.pos,1);
+  S.advance(EXTENDED,s,-1);assert.equal(s.pos,0);
+  s.reviewReturn={stage:'supplements',pos:2};assert.doesNotThrow(()=>S.validate(EXTENDED,s));
+  s.pos=2;S.advance(EXTENDED,s);assert.equal(s.stage,'cardSelect');assert.equal(s.pos,0);
+  const skipped=S.fresh(EXTENDED,START);S.selectSupplements(EXTENDED,skipped,[]);assert.equal(skipped.stage,'cardSelect');
+  const modules=S.fresh(EXTENDED,START);S.selectModules(EXTENDED,modules,['S']);modules.pos=19;S.advance(EXTENDED,modules);assert.equal(modules.stage,'supplementSelect');
+});
+test('supplement validation restricts answers to selected groups and honors the data response cap',()=>{
+  const s=S.fresh(EXTENDED,START);S.selectModules(EXTENDED,s,['S','M']);S.selectSupplements(EXTENDED,s,['economy','institutions','culture']);S.selectCards(EXTENDED,s,['T001','T002','T003','T004']);
+  for(const stage of ['base','modules','supplements','cards'])for(const q of S.plan(EXTENDED,s,stage))S.present(s,q);
+  assert.equal(s.presented.length,253);assert.doesNotThrow(()=>S.validate(EXTENDED,s));
+  const capped={...EXTENDED,limits:{maxResponses:252}};assert.throws(()=>S.validate(capped,s));
+  const derived={...EXTENDED};delete derived.limits;assert.doesNotThrow(()=>S.validate(derived,s));
+  const unknown=JSON.parse(JSON.stringify(s));unknown.selectedSupplements=['economy'];assert.throws(()=>S.validate(EXTENDED,unknown));
+  const duplicate=JSON.parse(JSON.stringify(s));duplicate.selectedSupplements=['economy','economy'];assert.throws(()=>S.validate(EXTENDED,duplicate));
+  const finished=JSON.parse(JSON.stringify(s));S.finish(finished,'完成',minute(200));const before=JSON.stringify(finished);S.selectSupplements(EXTENDED,finished,[]);assert.equal(JSON.stringify(finished),before);
+});
+test('compatible older progress upgrades without inventing supplement answers or erasing its history',()=>{
+  const old=fresh();S.answer(old,{id:'Q001'},6);delete old.selectedSupplements;
+  const upgraded=S.validate(EXTENDED,old);assert.equal(upgraded.version,EXTENDED.version);assert.equal(upgraded.sourceVersion,D.version);assert.deepEqual(upgraded.selectedSupplements,[]);assert.equal(upgraded.answers.Q001,6);
+  assert.equal(old.version,D.version);assert.equal(old.selectedSupplements,undefined);assert.deepEqual(S.validate(EXTENDED,upgraded),upgraded);
+  S.finish(old,'95分钟截止',minute(95));const oldResult=S.validate(EXTENDED,old);assert.equal(oldResult.finished,true);assert.equal(oldResult.stage,'result');assert.equal(oldResult.stopReason,'95分钟截止');assert.equal(oldResult.elapsedMs,95*60000);
+  const unrelated={...old,version:'unrelated'};assert.throws(()=>S.validate(EXTENDED,unrelated));
 });
 test('validation accepts completed partial sessions and rejects forged claim originals',()=>{
   const s=fresh();S.answer(s,{id:'Q001'},'U');S.finish(s,'部分完成',minute(2));assert.equal(S.validate(D,s).stage,'result');

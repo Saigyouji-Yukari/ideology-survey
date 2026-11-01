@@ -6,11 +6,11 @@
 })(typeof globalThis !== 'undefined' ? globalThis : this, function (D, Session) {
   'use strict';
   if (!D) throw new Error('请先载入 OMNI 问卷题库。');
-  const byId = Object.fromEntries(D.core.items.concat(D.core.scenarios, D.core.context, ...D.modules.map(m => m.items)).map(q => [q.id, q]));
+  const byId = Object.fromEntries(D.core.items.concat(D.core.scenarios, D.core.context, ...D.modules.map(m => m.items), D.legacySupplement.items).map(q => [q.id, q]));
   const cardsById = Object.fromEntries(D.cards.map(c => [c.id, c]));
   const axesById = Object.fromEntries(D.core.axes.map(a => [a.id, a]));
   const modulesById = Object.fromEntries(D.modules.map(m => [m.id, m]));
-  const ratings = new Set(D.core.items.concat(D.core.scenarios, ...D.modules.map(m => m.items)).map(q => q.id));
+  const ratings = new Set(D.core.items.concat(D.core.scenarios, ...D.modules.map(m => m.items), D.legacySupplement.items).map(q => q.id));
   for (const c of D.cards) for (const key of ['a', 'b', 'c']) ratings.add(c.id + '.' + key);
   const allIds = new Set(Object.keys(byId));
   for (const c of D.cards) for (const key of ['a', 'b', 'c', 'K', 'I', 'explanation']) allIds.add(c.id + '.' + key);
@@ -114,9 +114,19 @@
     for (let i = 0; i < result.length; i++) { result[i].recommended = i < 2 && (result[i]._self > 0 || result[i]._clear > 0); delete result[i]._self; delete result[i]._clear; delete result[i]._index; }
     return result;
   }
+  function supplements(answers = {}, presentedIds = [], selectedGroups = []) {
+    const shown = new Set(presentedIds);
+    return D.legacySupplement.groups.map(group => {
+      const items = D.legacySupplement.items.filter(q => q.group === group.id).map(q => ({...q, presented:shown.has(q.id), answer:shown.has(q.id) && own(answers,q.id) ? answers[q.id] : null, stance:shown.has(q.id) ? classifyAnswer(answers[q.id]) : 'unpresented'}));
+      const counts = {support:0, oppose:0, neutral:0, unknown:0, refused:0, missing:0, unpresented:0};
+      for (const q of items) counts[q.stance]++;
+      return {...group, items, counts, total:items.length, valid:counts.support+counts.oppose+counts.neutral, presented:items.filter(q=>q.presented).length, selected:selectedGroups.includes(group.id)};
+    });
+  }
   function analyze(session) {
     const s = validateSession(session), answers = s.answers, presented = new Set(s.presented);
     const facets = D.core.axes.map(a => facet(a, answers));
+    const supplemental = supplements(answers, s.presented, s.selectedSupplements);
     const cards = s.selectedCards.map(c => card(c, answers, s.presented));
     const evaluated = Object.fromEntries(cards.map(c => [c.id, c]));
     for (const c of cards) {
@@ -138,14 +148,15 @@
     const counts = ids => ({ valid: ids.filter(id => validRating(answers[id])).length, total: ids.length, presented: ids.filter(id => presented.has(id)).length });
     const modules = D.modules.map(m => ({ id: m.id, title: m.title, selected: s.selectedModules.includes(m.id), ...counts(m.items.map(q => q.id)), screeningValid: counts(m.anchors).valid, screeningTotal: m.anchors.length }));
     const tested = new Set(cards.filter(c => c.statusCode !== 'untested').map(c => c.id));
-    const coverage = { core: counts(D.core.items.map(q => q.id)), screening: counts(anchors), modules, selectedModules: s.selectedModules, selectedCards: s.selectedCards, untestedModules: modules.filter(m => !m.selected), untestedCards: D.cards.filter(c => !tested.has(c.id)).map(c => ({ id: c.id, name: c.name, module: c.module, kind: c.kind })), testedCardCount: tested.size, totalCards: D.cards.length };
+    const coverage = { supplements:counts(D.legacySupplement.items.map(q=>q.id)), selectedSupplements:s.selectedSupplements, core: counts(D.core.items.map(q => q.id)), screening: counts(anchors), modules, selectedModules: s.selectedModules, selectedCards: s.selectedCards, untestedModules: modules.filter(m => !m.selected), untestedCards: D.cards.filter(c => !tested.has(c.id)).map(c => ({ id: c.id, name: c.name, module: c.module, kind: c.kind })), testedCardCount: tested.size, totalCards: D.cards.length };
     const summary = { supportedCards: cards.filter(c => c.statusCode === 'supported'), partialCards: cards.filter(c => c.statusCode === 'partial'), insufficientCards: cards.filter(c => c.statusCode === 'insufficient'), untestedCards: cards.filter(c => c.statusCode === 'untested'), descriptiveText: [] };
     const reportable = facets.filter(f => f.value !== null);
     summary.descriptiveText.push('本次可报告 ' + reportable.length + ' 个分面的平均倾向，共核验 ' + tested.size + ' 张思想卡。');
     if (summary.supportedCards.length) summary.descriptiveText.push('在实际核验的主张中，' + summary.supportedCards.map(c => c.name).join('、') + '的三项均得到支持；这不等于完整身份归属。');
     if (summary.partialCards.length) summary.descriptiveText.push('对' + summary.partialCards.map(c => c.name).join('、') + '保留了中立或不同意见，见逐项依据。');
+    if (supplemental.some(g=>g.presented)) summary.descriptiveText.push('另记录旧版补充题 ' + supplemental.reduce((n,g)=>n+g.valid,0) + ' 项有效回答；逐题呈现主张，不并入共同分面或思想卡判定。');
     summary.descriptiveText.push('未检验的思想不作排除；不同专题、不同时间的报告须结合各自覆盖范围比较。');
-    return { version: D.version, id: s.id, facets, cards, scenarios: scenario(answers), quality, coverage, summary, context: D.core.context.map(q => ({ ...q, answer: own(answers, q.id) ? answers[q.id] : null })), stopReason: s.stopReason, finished: s.finished };
+    return { version: D.version, id: s.id, sourceVersion:s.sourceVersion || null, facets, supplements:supplemental, cards, scenarios: scenario(answers), quality, coverage, summary, context: D.core.context.map(q => ({ ...q, answer: own(answers, q.id) ? answers[q.id] : null })), stopReason: s.stopReason, finished: s.finished };
   }
   function validateSession(input) {
     if (!Session || typeof Session.validate !== 'function') throw new Error('请先载入 OMNI 作答流程。');
@@ -171,5 +182,5 @@
       return validateSession(JSON.parse(json));
     } catch (error) { throw new Error('无法读取答卷：' + (error && error.message ? error.message : '格式不正确。')); }
   }
-  return Object.freeze({ facet, card, scenario, analyze, recommendCards, recommendModules, validRating, classifyAnswer, validateSession, encodeSession, decodeSession });
+  return Object.freeze({ facet, card, scenario, supplements, analyze, recommendCards, recommendModules, validRating, classifyAnswer, validateSession, encodeSession, decodeSession });
 });

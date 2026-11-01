@@ -108,12 +108,12 @@
   }
 
   function csv(surveySessions) {
-    const header = ['答卷编号','版本','是否提交','时长分钟','共同题有效','筛查有效','所选专题','已核验卡数','未检验卡数','U数','拒答数','已呈现漏答数'];
+    const header = ['答卷编号','版本','是否提交','经过时间分钟_含离开','共同题有效','筛查有效','所选专题','所选补充组','补充题有效','补充题已呈现','已核验卡数','未检验卡数','U数','拒答数','已呈现漏答数'];
     D.core.axes.forEach(axis => header.push(axis.name + '_T',axis.name + '_有效',axis.name + '_缺答下界',axis.name + '_缺答上界'));
     header.push('核验状态与自我认同','原有自我认同','未盲核验记录','结束原因');
     const rows = surveySessions.map(session => {
       const result = E.analyze(session);
-      const row = [session.id,D.version,session.finished ? '已提交' : '阶段报告',Math.round(session.elapsedMs / 6000) / 10,result.coverage.core.valid,result.coverage.screening.valid,session.selectedModules.join('；'),result.coverage.testedCardCount,result.coverage.untestedCards.length,result.quality.unknown,result.quality.refused,result.quality.missing];
+      const row = [session.id,D.version,session.finished ? '已提交' : '阶段报告',Math.round(session.elapsedMs / 6000) / 10,result.coverage.core.valid,result.coverage.screening.valid,session.selectedModules.join('；'),session.selectedSupplements.join('；'),result.coverage.supplements.valid,result.coverage.supplements.presented,result.coverage.testedCardCount,result.coverage.untestedCards.length,result.quality.unknown,result.quality.refused,result.quality.missing];
       result.facets.forEach(facet => row.push(facet.value,facet.valid,facet.bounds[0],facet.bounds[1]));
       row.push(result.cards.map(card => card.id + ' ' + card.name + '：' + card.status + '；I=' + (card.identity == null ? '未答' : card.identity) + '；K=' + (card.familiarity == null ? '未答' : card.familiarity)).join(' | '), session.answers.Z04 || '',session.catalogSeen ? '浏览过名称目录' : (session.unblindedEdits || []).join('；'),session.stopReason || '');
       return row;

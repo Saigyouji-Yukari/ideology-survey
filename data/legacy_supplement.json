@@ -1,0 +1,910 @@
+{
+  "version": "OMNI-2026-11-01-R2",
+  "title": "旧版补充议题",
+  "source": {
+    "file": "assets/data.js",
+    "sourceBank": "旧版267题网页版",
+    "originalScale": "旧版网页版采用1～7；更早文档版本可能使用其他量尺，历史答案不自动转换。"
+  },
+  "instructions": "本部分可按兴趣选择若干组，也可全部跳过。仍用1～7、U和×作答；历史题中的“我认为”是在询问你对特定事件的解释与评价，不是知识考试。各题分开报告；未作答不视为反对。",
+  "groups": [
+    {
+      "id": "POLICY",
+      "name": "具体经济与对外政策",
+      "description": "补充住房、公共服务、政治捐款、贸易、制裁与未来经济安排；逐题描述，不把不同政策合成一个方向。",
+      "scored": false,
+      "positive": null,
+      "negative": null,
+      "minimumValid": null
+    },
+    {
+      "id": "PARTY",
+      "name": "政党治理与组织自主",
+      "description": "补充干部标准、党内竞争、领导产生与罢免、军队和群众组织的制度安排；这些安排不能相互替代。",
+      "scored": false,
+      "positive": null,
+      "negative": null,
+      "minimumValid": null
+    },
+    {
+      "id": "CULTURE",
+      "name": "文化、教育与传播",
+      "description": "补充文艺、媒介所有权、学校教育及历史反思；各项支持度分别报告。",
+      "scored": false,
+      "positive": null,
+      "negative": null,
+      "minimumValid": null
+    },
+    {
+      "id": "TECH_POLICY",
+      "name": "具体技术与生态政策",
+      "description": "补充核能、基因编辑、动物福利、交通减排、转基因与人工智能；对具体技术的看法不等于一般生态立场或风险偏好。",
+      "scored": false,
+      "positive": null,
+      "negative": null,
+      "minimumValid": null
+    },
+    {
+      "id": "PRINCIPLE",
+      "name": "制度原则与历史判断方法",
+      "description": "补充制度能否被后人改变，以及如何评价理论和历史；价值原则与经验解释分开记录。",
+      "scored": false,
+      "positive": null,
+      "negative": null,
+      "minimumValid": null
+    },
+    {
+      "id": "HISTORY",
+      "name": "历史经验评价",
+      "description": "补充具体历史经验的解释与评价；允许不了解，不把同意某个解释当作历史知识正确率、身份或组织归属。",
+      "scored": false,
+      "positive": null,
+      "negative": null,
+      "minimumValid": null
+    }
+  ],
+  "items": [
+    {
+      "id": "L001",
+      "group": "POLICY",
+      "text": "对于提供基本公共服务但长期亏损的企业，政府应当继续补贴其运营。",
+      "sourceQuestion": 10,
+      "sourceCode": "E2",
+      "kind": "value",
+      "sign": "+",
+      "originalText": "关系国计民生但长期亏损的企业，应当由公共财政继续维持，而不是任其破产。",
+      "revisionNote": "把“关系国计民生”限定为基本公共服务；不同时询问破产处理。",
+      "relatedCurrentItems": [
+        "P20"
+      ]
+    },
+    {
+      "id": "L002",
+      "group": "POLICY",
+      "text": "为了保持产业竞争力，可以暂时降低法律规定的劳动保护标准。",
+      "sourceQuestion": 11,
+      "sourceCode": "E23",
+      "kind": "value",
+      "sign": "+",
+      "originalText": "为了保持产业竞争力，短期内降低劳动保护标准是可以接受的代价。",
+      "revisionNote": "把“劳动保护”限定为法定标准，保留竞争力与保护的取舍。",
+      "relatedCurrentItems": [
+        "Q019",
+        "Q024"
+      ]
+    },
+    {
+      "id": "L003",
+      "group": "POLICY",
+      "text": "应当优先通过反垄断执法和市场竞争来约束大企业的垄断。",
+      "sourceQuestion": 24,
+      "sourceCode": "EANTI",
+      "kind": "value",
+      "sign": "+",
+      "originalText": "对付大企业的垄断，应当依靠反垄断执法和市场竞争，而不是国有化。",
+      "revisionNote": "单独询问政策优先次序，不把反垄断与一切国有化设为互斥。",
+      "relatedCurrentItems": [
+        "L11"
+      ]
+    },
+    {
+      "id": "L004",
+      "group": "POLICY",
+      "text": "大型互联网平台的核心基础设施应当部分或全部转为公共所有。",
+      "sourceQuestion": 28,
+      "sourceCode": "E9",
+      "kind": "value",
+      "sign": "+",
+      "originalText": "大型互联网平台的核心基础设施应当部分或全部转为公有。",
+      "revisionNote": "沿用具体产业所有权主张；不直接加进一般所有权六题。",
+      "relatedCurrentItems": [
+        "Q001",
+        "P20"
+      ]
+    },
+    {
+      "id": "L005",
+      "group": "POLICY",
+      "text": "允许私立医院与公立医院竞争，通常能够改善医疗服务质量。",
+      "sourceQuestion": 29,
+      "sourceCode": "EPRIV",
+      "kind": "prediction",
+      "sign": "+",
+      "originalText": "公立医院和学校引入私营竞争，通常能提高服务质量。",
+      "revisionNote": "把医院、学校拆开，只保留医疗服务的经验预测。",
+      "relatedCurrentItems": [
+        "L10"
+      ]
+    },
+    {
+      "id": "L006",
+      "group": "POLICY",
+      "text": "城市住房应当主要通过市场买卖和租赁来分配。",
+      "sourceQuestion": 30,
+      "sourceCode": "E24c",
+      "kind": "value",
+      "sign": "+",
+      "originalText": "城市住房应当主要通过市场买卖和租赁来分配。",
+      "revisionNote": "沿用单一政策对象。",
+      "relatedCurrentItems": [
+        "Q013",
+        "L10"
+      ]
+    },
+    {
+      "id": "L007",
+      "group": "POLICY",
+      "text": "进城务工人员应当与本地户籍居民享有同等的基本公共服务。",
+      "sourceQuestion": 83,
+      "sourceCode": "E67",
+      "kind": "value",
+      "sign": "+",
+      "originalText": "进城务工人员应当与本地户籍居民享有同等的公共服务。",
+      "revisionNote": "明确比较的是基本公共服务，避免把所有服务均视为无限供给。",
+      "relatedCurrentItems": [
+        "Q097"
+      ]
+    },
+    {
+      "id": "L008",
+      "group": "POLICY",
+      "text": "教育招生应当为弱势家庭的孩子提供额外机会，即使这会减少只按考试成绩录取的名额。",
+      "sourceQuestion": 87,
+      "sourceCode": "E11",
+      "kind": "value",
+      "sign": "+",
+      "originalText": "优质教育资源应当向弱势家庭的孩子倾斜，即使这会减少按成绩录取的名额。",
+      "revisionNote": "把“优质教育资源倾斜”具体化为招生机会，保留实际取舍。",
+      "relatedCurrentItems": [
+        "Q015",
+        "L02"
+      ]
+    },
+    {
+      "id": "L009",
+      "group": "POLICY",
+      "text": "只要捐款账目公开透明，就应允许企业向政党捐款。",
+      "sourceQuestion": 101,
+      "sourceCode": "E36",
+      "kind": "value",
+      "sign": "+",
+      "originalText": "政党可以接受企业捐款，只要账目公开透明。",
+      "revisionNote": "只询问企业捐款，不与富人个人捐款捆绑。",
+      "relatedCurrentItems": [
+        "P23"
+      ]
+    },
+    {
+      "id": "L010",
+      "group": "POLICY",
+      "text": "当进口使本国工人的就业受到明显冲击时，政府应当设置贸易壁垒。",
+      "sourceQuestion": 144,
+      "sourceCode": "E141",
+      "kind": "value",
+      "sign": "+",
+      "originalText": "如果本国工人的就业受到进口冲击，政府应当设置贸易壁垒。",
+      "revisionNote": "沿用有条件的保护政策；不把它当作一般反市场得分。",
+      "relatedCurrentItems": [
+        "P09"
+      ]
+    },
+    {
+      "id": "L011",
+      "group": "POLICY",
+      "text": "关系基本公共服务的关键企业，不应被外国资本取得控制权，即使外资能使其扭亏为盈。",
+      "sourceQuestion": 151,
+      "sourceCode": "N17",
+      "kind": "value",
+      "sign": "+",
+      "originalText": "关系国计民生的企业不应被外国资本收购，即使外资能让它扭亏为盈。",
+      "revisionNote": "把含混的“关系国计民生”与“收购”限定为服务领域和控制权。",
+      "relatedCurrentItems": [
+        "P20",
+        "Q104"
+      ]
+    },
+    {
+      "id": "L012",
+      "group": "POLICY",
+      "text": "国际社会可以对一国实施经济制裁，以迫使其政府改善人权状况。",
+      "sourceQuestion": 169,
+      "sourceCode": "I4",
+      "kind": "value",
+      "sign": "+",
+      "originalText": "国际社会对一国实施经济制裁，以迫使其改善人权状况，是正当的手段。",
+      "revisionNote": "把施压对象明确为政府；经济制裁不并入军事用武分面。",
+      "relatedCurrentItems": [
+        "Q109",
+        "Q112"
+      ]
+    },
+    {
+      "id": "L013",
+      "group": "POLICY",
+      "text": "如果自动化导致大规模失业，政府应当向所有成年人发放不附带就业条件的基本收入。",
+      "sourceQuestion": 183,
+      "sourceCode": "E17",
+      "kind": "value",
+      "sign": "+",
+      "originalText": "如果自动化导致大规模失业，国家应当向所有人发放基本收入。",
+      "revisionNote": "明确基本收入的无就业条件和适用人群；保留自动化情境。",
+      "relatedCurrentItems": [
+        "G22",
+        "S23"
+      ]
+    },
+    {
+      "id": "L014",
+      "group": "POLICY",
+      "text": "即使生产技术高度发达，市场交换仍然是协调经济所必需的。",
+      "sourceQuestion": 186,
+      "sourceCode": "E39",
+      "kind": "prediction",
+      "sign": "+",
+      "originalText": "即使技术高度发达，市场、货币和竞争仍然是组织经济的必要工具。",
+      "revisionNote": "把市场、货币、竞争三个判断拆开，只保留市场交换的必要性预测。",
+      "relatedCurrentItems": [
+        "S05",
+        "A09"
+      ]
+    },
+    {
+      "id": "L015",
+      "group": "POLICY",
+      "text": "未来社会应当以按需分配取代货币和商品交换。",
+      "sourceQuestion": 192,
+      "sourceCode": "E19",
+      "kind": "value",
+      "sign": "+",
+      "originalText": "未来社会应当废除货币和商品交换，实行按需分配。",
+      "revisionNote": "沿用长期制度目标；它不等同于对当前福利政策的支持。",
+      "relatedCurrentItems": [
+        "A05",
+        "S22"
+      ]
+    },
+    {
+      "id": "L016",
+      "group": "PARTY",
+      "text": "干部选拔时，政治忠诚应当比专业能力拥有更高的权重。",
+      "sourceQuestion": 98,
+      "sourceCode": "V3",
+      "kind": "value",
+      "sign": "+",
+      "originalText": "干部选拔应当主要看政治忠诚，而不是专业能力。",
+      "revisionNote": "保留两项任用标准的权衡，不混作一般集权得分。",
+      "relatedCurrentItems": [
+        "D06"
+      ]
+    },
+    {
+      "id": "L017",
+      "group": "PARTY",
+      "text": "一个政党内部应当允许不同路线和派别公开竞争。",
+      "sourceQuestion": 102,
+      "sourceCode": "V13",
+      "kind": "value",
+      "sign": "+",
+      "originalText": "党内应当允许不同路线和派别公开竞争。",
+      "revisionNote": "明确范围为党内规则。",
+      "relatedCurrentItems": [
+        "Q038",
+        "Q040"
+      ]
+    },
+    {
+      "id": "L018",
+      "group": "PARTY",
+      "text": "军队应当效忠宪法和依法产生的政府，而不是某个政党或领袖。",
+      "sourceQuestion": 104,
+      "sourceCode": "V11",
+      "kind": "value",
+      "sign": "+",
+      "originalText": "无论在哪种国家，军队都应当效忠宪法和依法产生的政府，而不是某个政党或领袖。",
+      "revisionNote": "沿用明确的制度安排；不把它等同于反对一切组织纪律。",
+      "relatedCurrentItems": [
+        "Q027",
+        "Q041"
+      ]
+    },
+    {
+      "id": "L019",
+      "group": "PARTY",
+      "text": "在执政党领导下的群众组织，其主要职能应当是传达执政党的方针，而不是独立代表成员利益。",
+      "sourceQuestion": 106,
+      "sourceCode": "V7",
+      "kind": "value",
+      "sign": "+",
+      "originalText": "工会、妇联、共青团等群众组织的主要职能，应当是传达执政党的方针、联系群众，而不是独立代表成员的利益。",
+      "revisionNote": "不同时罗列工会、妇联和共青团，明确是在比较两类组织职能。",
+      "relatedCurrentItems": [
+        "Q021",
+        "Q040"
+      ]
+    },
+    {
+      "id": "L020",
+      "group": "PARTY",
+      "text": "一个政党的主要领导人应当由全体党员直接选举产生。",
+      "sourceQuestion": 107,
+      "sourceCode": "V21",
+      "kind": "value",
+      "sign": "+",
+      "originalText": "党的领导人应当由全体党员直接选举产生。",
+      "revisionNote": "沿用党内领导产生方式。",
+      "relatedCurrentItems": [
+        "Q042"
+      ]
+    },
+    {
+      "id": "L021",
+      "group": "PARTY",
+      "text": "工会等群众组织应当有独立于政党的章程和财政。",
+      "sourceQuestion": 115,
+      "sourceCode": "V17",
+      "kind": "value",
+      "sign": "+",
+      "originalText": "工会、妇联、共青团等群众组织应当有独立的章程和财政。",
+      "revisionNote": "把组织类型简化为例示，保留制度自主条件。",
+      "relatedCurrentItems": [
+        "Q021",
+        "Q040"
+      ]
+    },
+    {
+      "id": "L022",
+      "group": "PARTY",
+      "text": "执政党内部的重大争论应当公开，让党外公众也能了解和参与讨论。",
+      "sourceQuestion": 122,
+      "sourceCode": "V20",
+      "kind": "value",
+      "sign": "+",
+      "originalText": "执政党内部的重大争论应当公开，让党外群众也能了解和参与讨论。",
+      "revisionNote": "沿用公开争论的范围；不与党内投票合并计分。",
+      "relatedCurrentItems": [
+        "Q025",
+        "Q035"
+      ]
+    },
+    {
+      "id": "L023",
+      "group": "PARTY",
+      "text": "一个政党的主要领导人应当可以由党员投票罢免。",
+      "sourceQuestion": 123,
+      "sourceCode": "V14",
+      "kind": "value",
+      "sign": "+",
+      "originalText": "政党领袖应当可以由党员投票罢免。",
+      "revisionNote": "沿用党内罢免安排。",
+      "relatedCurrentItems": [
+        "Q042"
+      ]
+    },
+    {
+      "id": "L024",
+      "group": "CULTURE",
+      "text": "文艺创作应当以服务社会进步和公共利益为主要目标。",
+      "sourceQuestion": 124,
+      "sourceCode": "L22",
+      "kind": "value",
+      "sign": "+",
+      "originalText": "艺术应当服务于社会进步和公共利益，而不是艺术家的个人趣味。",
+      "revisionNote": "只询问目标优先性，不同时否定艺术家的个人探索。",
+      "relatedCurrentItems": [
+        "L06",
+        "P24"
+      ]
+    },
+    {
+      "id": "L025",
+      "group": "CULTURE",
+      "text": "新闻媒体应当由私人、公共和非营利机构共同构成，任何一种所有制都不应垄断。",
+      "sourceQuestion": 126,
+      "sourceCode": "L13",
+      "kind": "value",
+      "sign": "+",
+      "originalText": "媒体应当由私人、公共和非营利机构共同构成，任何一方都不能垄断。",
+      "revisionNote": "保留媒介所有权多元的具体安排。",
+      "relatedCurrentItems": [
+        "Q025",
+        "L11"
+      ]
+    },
+    {
+      "id": "L026",
+      "group": "CULTURE",
+      "text": "学校应当向学生传授一套统一的公共价值观，以增强社会凝聚力。",
+      "sourceQuestion": 128,
+      "sourceCode": "L23",
+      "kind": "value",
+      "sign": "+",
+      "originalText": "学校应当向学生传授一套统一的价值观，以增强社会凝聚力。",
+      "revisionNote": "把“价值观”限定为公共价值，仍保留统一教育取向。",
+      "relatedCurrentItems": [
+        "Q074",
+        "P03"
+      ]
+    },
+    {
+      "id": "L027",
+      "group": "CULTURE",
+      "text": "宗教团体应当享有与其他社会组织同等的结社和表达自由。",
+      "sourceQuestion": 129,
+      "sourceCode": "L119",
+      "kind": "value",
+      "sign": "+",
+      "originalText": "宗教团体应当享有与其他社会组织同等的结社和表达自由。",
+      "revisionNote": "补充宗教组织的权利，不把宗教身份当作宗教政治立场。",
+      "relatedCurrentItems": [
+        "Q035",
+        "R02"
+      ]
+    },
+    {
+      "id": "L028",
+      "group": "CULTURE",
+      "text": "国家应当优先资助体现主流价值观的文艺作品。",
+      "sourceQuestion": 131,
+      "sourceCode": "L24",
+      "kind": "value",
+      "sign": "+",
+      "originalText": "国家应当大力扶持体现主流价值观的文艺作品。",
+      "revisionNote": "明确是资助优先次序，不暗示其他作品必须被禁止。",
+      "relatedCurrentItems": [
+        "L06",
+        "P24"
+      ]
+    },
+    {
+      "id": "L029",
+      "group": "CULTURE",
+      "text": "学校应当鼓励学生质疑权威和主流观点。",
+      "sourceQuestion": 133,
+      "sourceCode": "L14",
+      "kind": "value",
+      "sign": "+",
+      "originalText": "学校应当鼓励学生质疑权威和主流观点。",
+      "revisionNote": "沿用教育方法主张；不是对学生知识正确性的测试。",
+      "relatedCurrentItems": [
+        "Q075",
+        "L07"
+      ]
+    },
+    {
+      "id": "L030",
+      "group": "CULTURE",
+      "text": "历史教育应当包括对本民族历史错误的反思。",
+      "sourceQuestion": 142,
+      "sourceCode": "N1",
+      "kind": "value",
+      "sign": "+",
+      "originalText": "历史教育应当包括对本民族历史错误的反思。",
+      "revisionNote": "沿用历史教育内容主张，不把它等同于缺少国家认同。",
+      "relatedCurrentItems": [
+        "Q094",
+        "C14"
+      ]
+    },
+    {
+      "id": "L031",
+      "group": "TECH_POLICY",
+      "text": "核能是有效应对气候变化不可缺少的能源选项。",
+      "sourceQuestion": 182,
+      "sourceCode": "G7",
+      "kind": "prediction",
+      "sign": "+",
+      "originalText": "核能是应对气候变化不可缺少的低碳能源。",
+      "revisionNote": "保留“不可缺少”这一技术必要性预测；不把不同意解释为主张淘汰核电。",
+      "relatedCurrentItems": [
+        "G13"
+      ]
+    },
+    {
+      "id": "L032",
+      "group": "TECH_POLICY",
+      "text": "对人类基因编辑应当实行严格限制，即使这会延缓医学进步。",
+      "sourceQuestion": 184,
+      "sourceCode": "G1",
+      "kind": "value",
+      "sign": "+",
+      "originalText": "对人类基因编辑应当严格限制，即使这会延缓医学进步。",
+      "revisionNote": "沿用具体风险治理主张；不与一般技术六题混合。",
+      "relatedCurrentItems": [
+        "Q121",
+        "G17"
+      ]
+    },
+    {
+      "id": "L033",
+      "group": "TECH_POLICY",
+      "text": "应当通过法律限制工厂化养殖，以减少动物的痛苦。",
+      "sourceQuestion": 187,
+      "sourceCode": "G5",
+      "kind": "value",
+      "sign": "+",
+      "originalText": "应当立法限制工厂化养殖，以减少动物的痛苦。",
+      "revisionNote": "沿用动物福利政策，不把环境保护与动物福利视为同一概念。",
+      "relatedCurrentItems": [
+        "G09"
+      ]
+    },
+    {
+      "id": "L034",
+      "group": "TECH_POLICY",
+      "text": "为了减少碳排放，政府可以直接限制个人乘坐飞机的频次。",
+      "sourceQuestion": 190,
+      "sourceCode": "G2",
+      "kind": "value",
+      "sign": "+",
+      "originalText": "为了减少碳排放，政府可以直接限制私人汽车和航空旅行。",
+      "revisionNote": "从汽车、航空两个对象中只保留航空，避免一题多问。",
+      "relatedCurrentItems": [
+        "Q119",
+        "G10"
+      ]
+    },
+    {
+      "id": "L035",
+      "group": "TECH_POLICY",
+      "text": "应当大规模推广转基因作物。",
+      "sourceQuestion": 191,
+      "sourceCode": "G11",
+      "kind": "value",
+      "sign": "+",
+      "originalText": "转基因作物应当大规模推广。",
+      "revisionNote": "沿用具体技术采用主张；不了解其条件时允许选U。",
+      "relatedCurrentItems": [
+        "Q122",
+        "G13"
+      ]
+    },
+    {
+      "id": "L036",
+      "group": "TECH_POLICY",
+      "text": "应当逐步淘汰核电。",
+      "sourceQuestion": 193,
+      "sourceCode": "G4",
+      "kind": "value",
+      "sign": "+",
+      "originalText": "应当逐步淘汰核电。",
+      "revisionNote": "保留政策目标，与核能技术必要性分开报告；两题不作互斥校验。",
+      "relatedCurrentItems": [
+        "G13"
+      ]
+    },
+    {
+      "id": "L037",
+      "group": "TECH_POLICY",
+      "text": "在人工智能的重大风险得到充分评估之前，应当放慢其发展速度。",
+      "sourceQuestion": 197,
+      "sourceCode": "G13",
+      "kind": "value",
+      "sign": "+",
+      "originalText": "人工智能的发展应当放慢，直到它的风险得到充分评估。",
+      "revisionNote": "明确时间条件；不把该态度推断为反对一切科技进步。",
+      "relatedCurrentItems": [
+        "Q125",
+        "G21"
+      ]
+    },
+    {
+      "id": "L038",
+      "group": "PRINCIPLE",
+      "text": "评价一种政治理论时，它是否符合被认为存在的历史规律，应当比它能否得到当代人的同意更重要。",
+      "sourceQuestion": 199,
+      "sourceCode": "H1",
+      "kind": "value",
+      "sign": "+",
+      "originalText": "评价一种政治理论，主要看它是否符合历史规律，而不是看它能否得到当代人的同意。",
+      "revisionNote": "保留评价标准的权衡，表述为被认为存在的规律，避免预设规律已经证实。",
+      "relatedCurrentItems": [
+        "S16",
+        "S17"
+      ]
+    },
+    {
+      "id": "L039",
+      "group": "PRINCIPLE",
+      "text": "一个自称进步的制度，也应当允许后人通过合法程序改变前人确立的根本安排。",
+      "sourceQuestion": 200,
+      "sourceCode": "H14",
+      "kind": "value",
+      "sign": "+",
+      "originalText": "一个真正进步的制度，应当允许后人推翻前人的决定。",
+      "revisionNote": "把“推翻前人决定”限定为合法的制度改变，避免与暴力推翻混同。",
+      "relatedCurrentItems": [
+        "Q033",
+        "Q052"
+      ]
+    },
+    {
+      "id": "L040",
+      "group": "PRINCIPLE",
+      "text": "社会主义根本制度一旦建立，就不应允许任何多数通过任何程序将其废除。",
+      "sourceQuestion": 201,
+      "sourceCode": "H2",
+      "kind": "value",
+      "sign": "+",
+      "originalText": "社会主义根本制度一旦建立，就不应允许任何多数通过任何程序将其废除。",
+      "revisionNote": "沿用带制度前提的不可逆主张；不凭此一题判定社会主义认同。",
+      "relatedCurrentItems": [
+        "S03",
+        "M07"
+      ]
+    },
+    {
+      "id": "L041",
+      "group": "PRINCIPLE",
+      "text": "历史研究应当重视具体行动者的选择和意外后果，而不是先假定历史必然朝一个方向发展。",
+      "sourceQuestion": 203,
+      "sourceCode": "H12",
+      "kind": "value",
+      "sign": "+",
+      "originalText": "历史研究应当关注具体行动者的选择和意外后果，而不是假定一个必然的方向。",
+      "revisionNote": "保持研究方法取向；不把它作为历史学知识对错。",
+      "relatedCurrentItems": [
+        "M02",
+        "M17"
+      ]
+    },
+    {
+      "id": "L042",
+      "group": "PRINCIPLE",
+      "text": "人民应当有权通过制宪程序，改变包括经济制度在内的任何根本制度。",
+      "sourceQuestion": 209,
+      "sourceCode": "H11",
+      "kind": "value",
+      "sign": "+",
+      "originalText": "人民可以通过制宪程序，改变包括经济制度在内的任何根本制度。",
+      "revisionNote": "补充制宪权及其制度范围。",
+      "relatedCurrentItems": [
+        "Q031",
+        "Q033"
+      ]
+    },
+    {
+      "id": "L043",
+      "group": "PRINCIPLE",
+      "text": "评价一个历史时期时，生产力的发展应当比个人权利和人的尊严拥有更高的权重。",
+      "sourceQuestion": 216,
+      "sourceCode": "H4",
+      "kind": "value",
+      "sign": "+",
+      "originalText": "评价一个历史时期，主要看它是否推动了生产力发展，而不是看它是否符合某种道德标准。",
+      "revisionNote": "把“是否符合某种道德”具体化为权利与尊严，询问评价权重而非历史事实。",
+      "relatedCurrentItems": [
+        "M02",
+        "P01"
+      ]
+    },
+    {
+      "id": "L044",
+      "group": "HISTORY",
+      "text": "我认为，智利1973年政变的主要教训之一，是左翼需要建立更广泛的政治联盟。",
+      "sourceQuestion": 241,
+      "sourceCode": "X1b",
+      "kind": "historical",
+      "sign": "+",
+      "originalText": "从智利1973年政变的教训看，左翼最需要的是建立广泛的政治联盟。",
+      "revisionNote": "把“最需要”改为“主要教训之一”，不强迫只能接受一种教训。",
+      "relatedCurrentItems": []
+    },
+    {
+      "id": "L045",
+      "group": "HISTORY",
+      "text": "我认为，智利1973年政变的教训表明，社会主义政府不能只依靠选举，还需要掌握武装力量。",
+      "sourceQuestion": 242,
+      "sourceCode": "X1c",
+      "kind": "historical",
+      "sign": "+",
+      "originalText": "从智利1973年政变的教训看，社会主义政府不能只依靠选举，还必须掌握武装力量。",
+      "revisionNote": "保留对具体事件的政治教训解释；不把它计入一般暴力赞同。",
+      "relatedCurrentItems": []
+    },
+    {
+      "id": "L046",
+      "group": "HISTORY",
+      "text": "我认为，缺乏真正的政治自由，是苏联公有制未能长期维持的重要原因。",
+      "sourceQuestion": 243,
+      "sourceCode": "X2a",
+      "kind": "historical",
+      "sign": "+",
+      "originalText": "苏联解体说明，没有真正的政治自由，公有制无法长期维持。",
+      "revisionNote": "把必然因果改为重要原因的解释，避免声称一次事件证明普遍规律。",
+      "relatedCurrentItems": []
+    },
+    {
+      "id": "L047",
+      "group": "HISTORY",
+      "text": "我认为，劳动者不能实际控制生产，是苏联公有制未能长期维持的重要原因。",
+      "sourceQuestion": 244,
+      "sourceCode": "X2b",
+      "kind": "historical",
+      "sign": "+",
+      "originalText": "苏联解体说明，劳动者如果不能实际控制生产，公有制无法长期维持。",
+      "revisionNote": "把必然因果改为重要原因，允许与其他解释同时成立。",
+      "relatedCurrentItems": []
+    },
+    {
+      "id": "L048",
+      "group": "HISTORY",
+      "text": "我认为，苏联解体的主要原因是苏共放弃了对国家和社会的领导。",
+      "sourceQuestion": 245,
+      "sourceCode": "X2c",
+      "kind": "historical",
+      "sign": "+",
+      "originalText": "苏联解体的主要原因，是苏共放弃了对国家和社会的领导。",
+      "revisionNote": "保留主要原因的历史解释；无标准正确答案。",
+      "relatedCurrentItems": []
+    },
+    {
+      "id": "L049",
+      "group": "HISTORY",
+      "text": "我认为，苏联1930年代的大清洗主要是为了应对当时真实存在的敌对威胁。",
+      "sourceQuestion": 246,
+      "sourceCode": "X2d",
+      "kind": "historical",
+      "sign": "+",
+      "originalText": "苏联1930年代的大清洗，主要是为了应对当时真实存在的敌对威胁。",
+      "revisionNote": "明确为作答者的原因解释；不把同意此解释等同于赞成清洗手段。",
+      "relatedCurrentItems": []
+    },
+    {
+      "id": "L050",
+      "group": "HISTORY",
+      "text": "我认为，20世纪社会主义国家的政治压制和官僚化，主要源于制度设计，而不只是个别领导人的错误。",
+      "sourceQuestion": 249,
+      "sourceCode": "X3a",
+      "kind": "historical",
+      "sign": "+",
+      "originalText": "20世纪社会主义国家的政治压制和官僚化，主要是制度设计造成的，而不只是领导人的错误。",
+      "revisionNote": "保留制度与个人解释的权重；两类现象原本相关但不由此生成量表。",
+      "relatedCurrentItems": []
+    },
+    {
+      "id": "L051",
+      "group": "HISTORY",
+      "text": "评价20世纪社会主义国家时，它们取得的工业化成就不应因为后来的制度失败而被否定。",
+      "sourceQuestion": 250,
+      "sourceCode": "X3b",
+      "kind": "historical",
+      "sign": "+",
+      "originalText": "20世纪社会主义国家的工业化成就，不能因为它们后来的失败而被否定。",
+      "revisionNote": "明确是历史评价原则，不因此认可其所有政策。",
+      "relatedCurrentItems": []
+    },
+    {
+      "id": "L052",
+      "group": "HISTORY",
+      "text": "我认为，1989年前后东欧社会主义政权的垮台，主要是这些国家多数民众自主选择的结果。",
+      "sourceQuestion": 251,
+      "sourceCode": "X3c",
+      "kind": "historical",
+      "sign": "+",
+      "originalText": "1989年前后东欧社会主义政权的垮台，主要是这些国家多数民众自主选择的结果。",
+      "revisionNote": "保留明确的历史因果判断；不了解各国情况时可选U。",
+      "relatedCurrentItems": []
+    },
+    {
+      "id": "L053",
+      "group": "HISTORY",
+      "text": "我认为，南斯拉夫的工人自治经验表明，由劳动者管理企业具有现实可行性。",
+      "sourceQuestion": 252,
+      "sourceCode": "X3d",
+      "kind": "historical",
+      "sign": "+",
+      "originalText": "南斯拉夫的工人自治实践说明，企业可以由劳动者自己管理。",
+      "revisionNote": "把“证明企业可以”改为经验支持的可行性判断，避免把个案当完整制度验证。",
+      "relatedCurrentItems": []
+    },
+    {
+      "id": "L054",
+      "group": "HISTORY",
+      "text": "我认为，北欧社会民主主义的经验表明，渐进改革可以持续改善劳动者的生活。",
+      "sourceQuestion": 253,
+      "sourceCode": "X6a",
+      "kind": "historical",
+      "sign": "+",
+      "originalText": "北欧社会民主主义的经验证明，改良道路可以长期改善劳动者的生活。",
+      "revisionNote": "把“经验证明”改为“经验表明”，保留具体经验判断。",
+      "relatedCurrentItems": []
+    },
+    {
+      "id": "L055",
+      "group": "HISTORY",
+      "text": "我认为，文化大革命总体上给国家和人民带来了严重灾难。",
+      "sourceQuestion": 254,
+      "sourceCode": "X5a",
+      "kind": "historical",
+      "sign": "+",
+      "originalText": "文化大革命是一场给国家和人民带来严重灾难的内乱。",
+      "revisionNote": "去掉将分类术语“内乱”与后果评价捆绑，只询问总体后果。",
+      "relatedCurrentItems": []
+    },
+    {
+      "id": "L056",
+      "group": "HISTORY",
+      "text": "我认为，即使文化大革命存在严重错误，它对官僚主义的批判仍有值得讨论的价值。",
+      "sourceQuestion": 255,
+      "sourceCode": "X5b",
+      "kind": "historical",
+      "sign": "+",
+      "originalText": "文化大革命虽有错误，但它对官僚主义的批判仍有价值。",
+      "revisionNote": "区分总体后果与某项批判的价值，两项观点可以同时成立。",
+      "relatedCurrentItems": []
+    },
+    {
+      "id": "L057",
+      "group": "HISTORY",
+      "text": "我认为，中国改革开放的经验表明，市场机制可以与社会主义制度相结合。",
+      "sourceQuestion": 256,
+      "sourceCode": "X5c",
+      "kind": "historical",
+      "sign": "+",
+      "originalText": "中国的改革开放证明，市场机制可以与社会主义制度结合。",
+      "revisionNote": "把“证明”改为经验支持的判断，不据此确认任何历史路线身份。",
+      "relatedCurrentItems": []
+    }
+  ],
+  "scoring": {
+    "mode": "item-descriptive-only",
+    "validAnswers": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "oppose": [
+      1,
+      2,
+      3
+    ],
+    "neutral": [
+      4
+    ],
+    "support": [
+      5,
+      6,
+      7
+    ],
+    "unknown": "U",
+    "refuse": "X",
+    "missingIsNeutral": false,
+    "changeCoreAxes": false,
+    "changeCardVerdicts": false,
+    "notice": "六组是便于选择的议题分组，不是已验证分量表；不计算组均值、总分或思想归属分数。单题支持度不产生身份结论。"
+  },
+  "auditSummary": {
+    "sourceQuestions": 267,
+    "integrated": 57,
+    "groups": 6,
+    "dispositions": {
+      "已有覆盖/保留现行形式": 192,
+      "并入补充": 57,
+      "不并入": 18
+    }
+  }
+}

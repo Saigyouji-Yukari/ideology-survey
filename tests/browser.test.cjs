@@ -30,7 +30,10 @@ const server = http.createServer((req,res)=>{
   try {
     await page.goto(origin);await page.getByRole('heading',{name:'让观点先于标签'}).waitFor();
     await page.screenshot({path:path.join(output,'homepage-desktop.png'),fullPage:true});
-    assert.match(await page.locator('#app').innerText(),/358/);
+    const homepageText=await page.locator('#app').innerText();
+    assert.match(homepageText,/358/);assert(!homepageText.includes('全景版'));
+    assert(!(await page.title()).includes('全景版'));
+    assert.equal(await page.locator('.instr-list > li').count(),10);assert(!/95\s*分钟(?:自动结束|截止|停止)|倒计时/.test(homepageText));
     await page.locator('[data-action=start]').click();await page.locator('[data-action=begin]').click();
     assert.equal(await page.locator('[data-question]').getAttribute('data-question'),'Q001');
     await choose(7);await choose('U');
@@ -55,7 +58,18 @@ const server = http.createServer((req,res)=>{
     assert.equal(await page.locator('[data-module=C]').isChecked(),false);
     await page.locator('[data-action=modules-confirm]').click();
     let count=0;while(await page.locator('[data-question]').count()){await choose(6);count++;}
-    assert.equal(count,40);assert.equal((await state()).stage,'cardSelect');
+    assert.equal(count,40);assert.equal((await state()).stage,'supplementSelect');
+    const supplementalOptions=page.locator('[data-supplement]');
+    const supplementalGroups=await supplementalOptions.count();assert(supplementalGroups>0);
+    for(let i=0;i<await supplementalOptions.count();i++)await supplementalOptions.nth(i).check();
+    await page.locator('[data-action=supplements-confirm]').click();
+    let supplementalCount=0;
+    while(await page.locator('[data-question]').count()){
+      const q=await page.locator('[data-question]').getAttribute('data-question');
+      assert.match(q,/^L/);await choose(supplementalCount===0?'U':supplementalCount===1?'X':6);supplementalCount++;
+      if(supplementalCount===2){await page.reload();await page.locator('[data-action=resume]').click();assert.equal((await state()).stage,'supplements');}
+    }
+    assert.equal(supplementalCount,D.legacySupplement.items.length);assert.equal((await state()).stage,'cardSelect');
     await page.locator('[data-action=toggle-names]').click();
     await page.locator('#card-search').fill('社会民主');
     assert((await page.locator('#card-options').innerText()).includes('社会民主'));
@@ -72,7 +86,7 @@ const server = http.createServer((req,res)=>{
       if(q.endsWith('.explanation')){await page.locator('#free-answer').fill('支持所列安排；对邻近思想保留意见。');await page.locator('[data-action=text-next]').click();await page.waitForFunction(q=>document.querySelector('[data-question]')?.dataset.question!==q,q);}
       else await choose(q.endsWith('.K')||q.endsWith('.I')?0:6);
     }
-    assert.equal((await state()).presented.length,250);
+    assert.equal((await state()).presented.length,250+supplementalCount);
     await page.locator('[data-jump="T001.a"]').click();await choose(5);
     assert.equal((await state()).stage,'review');assert.equal((await state()).originalBlindAnswers['T001.a'],6);
     assert((await state()).unblindedEdits.includes('T001.a'));
@@ -80,9 +94,16 @@ const server = http.createServer((req,res)=>{
     await page.locator('[data-action=finish]').click();await page.locator('.omni-report').waitFor();
     assert.equal(await page.locator('.report-axis').count(),22);
     let full=await state();assert.equal(full.finished,true);assert.equal(E.analyze(full).coverage.testedCardCount,4);
+    const report=page.locator('.omni-report'),reportText=await report.textContent();
+    assert(reportText.includes('旧版题目补充画像'));assert.equal(await page.locator('.report-supplement').count(),supplementalGroups);
+    assert.match(reportText,/旧版第\s*\d+\s*题/);
+    for(const item of D.legacySupplement.items){assert(reportText.includes(item.id));assert(reportText.includes(item.text));}
+    const supplementDetails=page.locator('.report-supplement details').first();
+    await supplementDetails.locator('summary').click();assert.equal(await supplementDetails.evaluate(el=>el.open),true);
+    assert.match(await supplementDetails.innerText(),/旧版第\s*\d+\s*题/);
     await page.screenshot({path:path.join(output,'report-desktop.png'),fullPage:true});
     const download=page.waitForEvent('download');await page.locator('[data-action=export]').click();const file=await download;const json=JSON.parse(fs.readFileSync(await file.path(),'utf8'));assert.deepEqual(json.answers,full.answers);
-    console.log('PASS full 250-response flow, 2-module/4-card caps, report and JSON export');
+    console.log('PASS full '+(250+supplementalCount)+'-response flow, supplemental groups, 2-module/4-card caps, report and JSON export');
     await page.goto(origin+'/omni-admin.html');await page.locator('#import-text').fill(E.encodeSession(full));await page.locator('#import-run').click();await page.locator('#admin-report .omni-report').waitFor();
     assert.match(await page.locator('#import-status').innerText(),/1 份/);
     await page.locator('#import-text').fill(E.encodeSession(full)+'\ninvalid');await page.locator('#import-run').click();assert.match(await page.locator('#import-status').innerText(),/1 份.*1 项/);
@@ -90,9 +111,19 @@ const server = http.createServer((req,res)=>{
     console.log('PASS shared admin import and partial batch errors');
     await page.goto(origin);let s=M.fresh(D);s.stage='base';s.pos=1;s.answers.Q001=7;s.presented=['Q001'];await seed(s);
     page.once('dialog',dialog=>dialog.accept());await page.locator('[data-action=finish-early]').click();await page.locator('.omni-report').waitFor();assert.equal(E.analyze(await state()).coverage.testedCardCount,0);
-    s=M.fresh(D,Date.now()-96*60000);s.stage='base';await seed(s);await page.locator('.omni-report').waitFor();assert.equal((await state()).stopReason,'95分钟截止');
-    s=M.fresh(D,Date.now()-86*60000);s.stage='cards';s.selectedCards=['T001'];await seed(s);assert.equal((await state()).stage,'review');assert.equal((await state()).presented.length,0);
-    console.log('PASS partial finish and hard time limits without fabricated answers');
+    for(const age of [96*60000,48*60*60000]){
+      s=M.fresh(D,Date.now()-age);s.stage='base';await seed(s);
+      assert.equal((await state()).stage,'base');assert.equal((await state()).finished,false);
+      assert.equal(await page.locator('[data-question]').getAttribute('data-question'),'Q001');await choose(7);
+      assert.equal((await state()).answers.Q001,7);
+    }
+    s=M.fresh(D,Date.now()-86*60000);s.stage='cards';s.selectedCards=['T001'];await seed(s);
+    assert.equal((await state()).stage,'cards');assert.equal((await state()).finished,false);await choose(6);assert.equal((await state()).answers['T001.a'],6);
+    s=M.fresh(D,Date.now()-96*60000);s.version='OMNI-2026-11-01';delete s.selectedSupplements;s.stage='base';s.pos=1;s.answers.Q001=7;s.presented=['Q001'];await seed(s);
+    const migrated=await state();assert.equal(migrated.version,D.version);assert.equal(migrated.sourceVersion,'OMNI-2026-11-01');assert.deepEqual(migrated.selectedSupplements,[]);assert.equal(migrated.answers.Q001,7);
+    assert.equal(await page.locator('[data-question]').getAttribute('data-question'),'Q002');await choose(4);
+    s=M.fresh(D);s.stage='supplementSelect';await seed(s);await page.locator('[data-action=skip-supplements]').click();assert.equal((await state()).stage,'cardSelect');
+    console.log('PASS partial finish, optional supplement skip, legacy migration and unrestricted 96-minute/48-hour resume');
     await page.evaluate(key=>{localStorage.removeItem(key);window.addEventListener('pagehide',()=>localStorage.removeItem(key),{once:true});},KEY);await page.reload();await page.setViewportSize({width:390,height:844});
     await page.screenshot({path:path.join(output,'homepage-mobile.png'),fullPage:true});
     assert(await page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth));

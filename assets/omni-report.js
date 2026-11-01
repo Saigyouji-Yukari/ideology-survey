@@ -118,7 +118,7 @@
       Z02:['未看过','看过部分','看过较多或全部'],
       Z03:['尚未形成','部分确定','比较确定','很确定']
     };
-    return '<section class="report-section"><h2>作答条件与完整性</h2><p>实际用时 ' + Math.floor(quality.elapsedMs / 60000) + ' 分 ' + Math.floor(quality.elapsedMs % 60000 / 1000) + ' 秒。结束记录：' + esc(result.stopReason || (result.finished ? '已完成提交' : '尚未完成')) + '。</p><div class="report-table-wrap"><table class="report-table"><thead><tr><th>记录</th><th>数量</th><th>占已呈现立场题</th></tr></thead><tbody>' + counts.map(row => '<tr><td>' + row[0] + '</td><td>' + row[1] + '</td><td>' + percentage(row[1], quality.presented) + '</td></tr>').join('') + '</tbody></table></div><p class="muted">分母为已呈现的 ' + quality.presented + ' 个立场响应项；未呈现分支不记为漏答。K／I 和背景信息单独记录，不进入立场均分。拒答、不了解、速度与重复选项都不自动判为无效。</p>' + (quality.notes.length ? '<ul>' + quality.notes.map(note => '<li>' + esc(note) + '</li>').join('') + '</ul>' : '') + '<details class="report-details"><summary>背景、原有自我认同与补充</summary>' + result.context.map(item => {
+    return '<section class="report-section"><h2>作答条件与完整性</h2><p>本轮经过时间（含休息与离开页面） ' + Math.floor(quality.elapsedMs / 60000) + ' 分 ' + Math.floor(quality.elapsedMs % 60000 / 1000) + ' 秒。结束记录：' + esc(result.stopReason || (result.finished ? '已完成提交' : '尚未完成')) + '。</p><div class="report-table-wrap"><table class="report-table"><thead><tr><th>记录</th><th>数量</th><th>占已呈现立场题</th></tr></thead><tbody>' + counts.map(row => '<tr><td>' + row[0] + '</td><td>' + row[1] + '</td><td>' + percentage(row[1], quality.presented) + '</td></tr>').join('') + '</tbody></table></div><p class="muted">分母为已呈现的 ' + quality.presented + ' 个立场响应项；未呈现分支不记为漏答。K／I 和背景信息单独记录，不进入立场均分。拒答、不了解、速度与重复选项都不自动判为无效。</p>' + (quality.notes.length ? '<ul>' + quality.notes.map(note => '<li>' + esc(note) + '</li>').join('') + '</ul>' : '') + '<details class="report-details"><summary>背景、原有自我认同与补充</summary>' + result.context.map(item => {
       let value = item.answer;
       if (contextLabels[item.id] && Number.isInteger(value) && contextLabels[item.id][value]) value = value + ' · ' + contextLabels[item.id][value];
       else if (value === 'U') value = '不了解或无法判断';
@@ -136,6 +136,15 @@
     return sections ? '<section class="report-section"><h2>专题逐题记录</h2><p>这些题的政治方向不同，不合成为专题总分。</p>' + sections + '</section>' : '';
   }
 
+  function renderSupplements(result, presented) {
+    const kinds = {value:'价值主张',prediction:'事实或预测判断',historical:'历史经验评价'};
+    return '<section class="report-section"><h2>旧版题目补充画像</h2><p>以下题目由旧版筛选并按七点选项重编。每项分别描述，不计算跨题政治总分，不改变 22 个共同分面或思想卡状态。价值主张、预测与历史评价按题型分别理解；未作答不表示反对。</p>' + result.supplements.map(g => {
+      const count = g.counts;
+      const heading = '<h3>' + esc(g.name) + '</h3><p>' + esc(g.description) + '</p><p>本次' + (g.selected ? '选择本组' : '未选择本组') + '；已呈现 ' + g.presented + '/' + g.total + ' 题。支持 ' + count.support + '，反对 ' + count.oppose + '，中立 ' + count.neutral + '，不了解 ' + count.unknown + '，拒答 ' + count.refused + '，已呈现漏答 ' + count.missing + '，未呈现 ' + count.unpresented + '。</p>';
+      const rows = g.items.map(q => '<tr><td><span class="report-id">' + esc(q.id) + '</span> ' + esc(q.text) + '<small class="muted">' + esc(kinds[q.kind] || q.kind) + ' · 旧版第 ' + esc(q.sourceQuestion) + ' 题</small></td><td>' + esc(answer(q.answer,q.presented)) + '</td></tr>').join('');
+      return '<section class="report-supplement">' + heading + '<details class="report-details"><summary>补充题原答与来源（' + g.total + ' 题）</summary><div class="report-table-wrap"><table class="report-table"><thead><tr><th>主张、题型与来源</th><th>原始作答</th></tr></thead><tbody>' + rows + '</tbody></table></div></details></section>';
+    }).join('') + '</section>';
+  }
   function render(session) {
     const data = root.OMNI_DATA;
     const result = root.OMNI_ENGINE.analyze(session);
@@ -147,7 +156,7 @@
     const directional = scoredFacets.filter(facet => facet.value !== 0).sort((a,b) => Math.abs(b.value) - Math.abs(a.value)).slice(0,4);
     const intro = directional.length ? '在有效作答较完整的分面中，本次表达得较突出的方向包括：' + directional.map(facet => facet.name + '偏向“' + (facet.value > 0 ? facet.positive : facet.negative) + '”').join('；') + '。' : scoredFacets.length ? '已可描述的分面均分位于中间位置，具体含义需结合单题中立与交叉立场理解。' : '目前完整作答不足以形成分面点值，报告保留已表达的主张和缺答范围。';
     const cardSummary = supported.length ? '在实际核验的卡片中，' + supported.map(card => card.name).join('、') + '的三项主张均获支持。' : '本次没有达到“三项主张均支持”的完整卡片；这不排除未检验的思想。';
-    return '<article class="omni-report"><header class="report-summary"><p class="eyebrow">个人立场报告 · ' + esc(result.version) + '</p><h1>你的政治立场与思想倾向</h1><p class="muted">答卷编号 ' + esc(result.id || '未命名') + ' · ' + (result.finished ? '已提交答卷' : '当前进度的阶段报告') + '</p><p>' + esc(intro) + '</p><p>' + esc(cardSummary) + (partial.length ? '另有 ' + partial.length + ' 张卡出现部分支持或分歧。' : '') + (insufficient.length ? '有 ' + insufficient.length + ' 张卡信息不足。' : '') + '</p><p>以下结论描述本次作答；名称认同、原有理解、具体保留意见和未检验范围分别列出。</p></header>' + renderCoverage(result, session) + renderFacets(result, presented) + renderCards(result, session, data, presented) + renderScenarios(result, presented) + renderQuality(result, session) + renderRawModules(result, session, data, presented) + '</article>';
+    return '<article class="omni-report"><header class="report-summary"><p class="eyebrow">个人立场报告 · ' + esc(result.version) + '</p><h1>你的政治立场与思想倾向</h1><p class="muted">答卷编号 ' + esc(result.id || '未命名') + ' · ' + (result.finished ? '已提交答卷' : '当前进度的阶段报告') + '</p><p>' + esc(intro) + '</p><p>' + esc(cardSummary) + (partial.length ? '另有 ' + partial.length + ' 张卡出现部分支持或分歧。' : '') + (insufficient.length ? '有 ' + insufficient.length + ' 张卡信息不足。' : '') + '</p><p>以下结论描述本次作答；名称认同、原有理解、具体保留意见和未检验范围分别列出。</p></header>' + (result.sourceVersion ? '<p class="notice">本答卷来自 ' + esc(result.sourceVersion) + '，共同题与卡片保留原记录；新增补充题未自动填答，原有提交状态和历史结束原因保持记录。</p>' : '') + renderCoverage(result, session) + renderFacets(result, presented) + renderCards(result, session, data, presented) + renderSupplements(result, presented) + renderScenarios(result, presented) + renderQuality(result, session) + renderRawModules(result, session, data, presented) + '</article>';
   }
 
   root.OMNI_REPORT = Object.freeze({render, escape:esc, answer});
