@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'none'; form-action 'none'; base-uri 'none'; object-src 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="robots" content="noindex">
+<title>新版答卷分析 · 意识形态测试调查</title>
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/omni.css">
+</head>
+<body>
+<header class="site-head"><div class="wrap head-row"><a class="brand" href="index.html">意识形态测试调查</a><a class="linkbtn" href="admin.html">旧版计分器</a></div></header>
+<main class="wrap">
+  <section class="section no-print" aria-labelledby="admin-title">
+    <p class="kicker">OMNI · 施测者工具</p>
+    <h1 id="admin-title">导入答卷，查看完整报告</h1>
+    <p>读取新版测评导出的 JSON 文件或 OMNI1 答卷代码。可一次导入一份或多份答卷；逐份结果与作答者看到的报告使用相同规则。</p>
+    <p class="notice">答案只在本页内处理，不会上传，也不会在这个导入页面自动保存。导出的文件包含政治立场及本人补充，请按与作答者约定的方式保管。</p>
+    <label for="import-text"><strong>粘贴答卷</strong></label>
+    <textarea class="input" id="import-text" rows="8" spellcheck="false" placeholder="单份：粘贴 OMNI1. 开头的答卷代码，或 JSON 内容。&#10;批量：每行一份答卷代码，或粘贴 JSON 答卷数组。"></textarea>
+    <div class="actions">
+      <button class="btn primary" id="import-run" type="button">读取并分析</button>
+      <label class="btn" for="import-files">选择答卷文件</label>
+      <input type="file" id="import-files" accept=".json,.txt,application/json,text/plain" multiple>
+      <button class="btn" id="import-clear" type="button">清空本页答卷</button>
+    </div>
+    <p id="import-status" role="status" aria-live="polite" class="muted"></p>
+    <div id="import-errors" class="notice warning" hidden></div>
+    <details>
+      <summary>支持的格式与批量处理说明</summary>
+      <p>支持本版单个答卷对象、由答卷对象组成的 JSON 数组，以及每行一个 OMNI1 答卷代码或 JSON 对象。一次最多 200 份、总文本不超过 10 MB。每份答卷必须包含自己的版本、已呈现题目及分支记录；不把遗漏或未呈现的答案填成中立。</p>
+      <p>导入会替换本页此前的答卷列表，格式有误的条目单独列出；有效条目仍可查看。旧版题号与计分规则不同，请使用<a href="admin.html">旧版计分器</a>，不能直接换算成新版。</p>
+      <p>“导出汇总 CSV”包含编号、完成范围、22 个分面值与缺答范围、核验卡状态和自我认同。完整逐题作答请使用“导出当前 JSON”。</p>
+    </details>
+  </section>
+  <section id="admin-controls" class="section no-print" hidden aria-labelledby="results-title">
+    <h2 id="results-title">已导入答卷</h2>
+    <div class="actions">
+      <label for="session-select">查看答卷</label>
+      <select class="input" id="session-select" aria-label="选择要查看的答卷"></select>
+      <button class="btn" id="export-csv" type="button">导出汇总 CSV</button>
+      <button class="btn" id="export-json" type="button">导出当前 JSON</button>
+      <button class="btn" id="print-report" type="button">打印当前报告</button>
+    </div>
+    <p id="batch-summary" class="muted"></p>
+  </section>
+  <div id="admin-report" aria-live="polite"></div>
+</main>
+<footer class="site-foot wrap"><p>OMNI-2026-11-01 · 带证据、带范围的个人立场描述</p><p><a href="index.html">返回测评首页</a> · <a href="admin.html">旧版计分器</a></p></footer>
+<script src="assets/omni-data.js"></script>
+<script src="assets/omni-session.js"></script>
+<script src="assets/omni-engine.js"></script>
+<script src="assets/omni-report.js"></script>
+<script src="assets/omni-admin.js"></script>
+</body>
+</html>
