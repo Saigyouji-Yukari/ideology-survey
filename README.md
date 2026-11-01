@@ -53,3 +53,5 @@
 ## 参考
 
 页面形式参考了几个开源政治倾向测试：[政治主义倾向测试](https://github.com/LuoYue-cn/political-tendencies-test)、[8values](https://github.com/8values/8values.github.io)、[SapplyValues](https://github.com/SapplyValues/SapplyValues.github.io)、[LeftValues](https://github.com/Douper2/leftvalues.github.io)、[PolitiScales](https://github.com/Conobi/politiscales)（一题一屏、可返回上一题、作答结束自动出结果、按接近程度排序、以坐标条展示维度）。本项目的题目、计分规则和代码均为独立编写，没有复制这些项目的代码。
+
+本项目由Claude-Opus-5.5协助开发
