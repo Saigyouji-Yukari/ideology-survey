@@ -43,7 +43,7 @@
 | `omni-admin.html`、`assets/omni-admin.js` | 新版答卷导入与批量汇总 |
 | `legacy.html`、`admin.html`、原有 `assets/*.js` | 独立保留的旧版及计分器 |
 
-网站为静态页面，运行不依赖第三方库，也不需要构建。可在仓库目录执行 `python -m http.server 8000`，打开 `http://localhost:8000/`。GitHub Pages 沿用 `main` 分支根目录。
+网站为静态页面，运行不依赖第三方库，也不需要构建。可在仓库目录执行 `python -m http.server 8000`，打开 `http://localhost:8000/`。GitHub Pages 从 `gh-pages` 分支根目录发布；`main` 用于维护。发布时将已核验的 `main` 提交同步到 `gh-pages`，仅更新 `main` 不会更新线上网站。
 
 更新题库后执行 `python scripts/build-data.py`，同时更新计分规则与版本。不得用新版规则直接读取旧版本答卷。网页导入会核验版本、题型、呈现记录和分支范围。
 
