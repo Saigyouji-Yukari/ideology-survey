@@ -39,15 +39,36 @@
     return text;
   }
 
+  function facetCard(facet, presented, charts) {
+    const value = facet.value, h = charts ? 'h4' : 'h3';
+    let special = '';
+    if (facet.id === 'EVID') special = '<p class="notice">这里只描述自报的经验判断可修正性，不评判道德、智力或作答质量。</p>';
+    if (facet.id === 'FORCE') special = '<p class="notice">人道干预、利益用武与威慑属于不同目的，请分别看 Q109、Q111、Q113；不能用这个均分直接认定军国主义或和平主义。</p>';
+    const sensitive = facet.sensitive ? '<p class="muted">这项描述对单题向中立移动一档的变化敏感；这不是误差概率。</p>' : '';
+    // With charts loaded, a diverging bar (value plus missing-answer range) replaces the plain meter.
+    const gauge = charts ? '<div aria-hidden="true">' + charts.track(facet, true) + '</div>' : (value == null ? '' : '<meter class="report-meter" min="-100" max="100" value="' + value + '" aria-label="' + esc(facet.name) + '：' + signed(value) + '">' + signed(value) + '</meter>');
+    return '<section class="report-axis"><div class="report-axis-heading"><' + h + '>' + esc(facet.name) + '</' + h + '><span class="report-score">' + (value == null ? '信息不足' : esc(signed(value))) + '</span></div><p class="report-poles"><span>−100 ' + esc(facet.negative) + '</span><span>+100 ' + esc(facet.positive) + '</span></p>' + gauge + '<p>' + esc(facetMeaning(facet)) + '</p><p class="muted">有效 ' + facet.valid + '/6 · 已答均分 ' + (facet.mean == null ? '—' : Number(facet.mean).toFixed(1)) + ' · 缺答范围 [' + facet.bounds.map(signed).join(', ') + ']</p>' + special + sensitive + '<details class="report-details"><summary>查看这 6 题的原始作答</summary>' + evidenceTable(facet.items, presented) + '</details></section>';
+  }
+
   function renderFacets(result, presented) {
-    return '<section class="report-section" aria-labelledby="report-facets"><h2 id="report-facets">22 个议题分面</h2><p>正负值对应各分面标出的两端，不能跨分面相加为“经济左右”或“威权”总分。缺答范围是假设缺答可以取任意 1～7 得到的边界，<strong>不是统计置信区间</strong>。</p><div class="report-grid">' + result.facets.map(facet => {
-      const value = facet.value;
-      let special = '';
-      if (facet.id === 'EVID') special = '<p class="notice">这里只描述自报的经验判断可修正性，不评判道德、智力或作答质量。</p>';
-      if (facet.id === 'FORCE') special = '<p class="notice">人道干预、利益用武与威慑属于不同目的，请分别看 Q109、Q111、Q113；不能用这个均分直接认定军国主义或和平主义。</p>';
-      const sensitive = facet.sensitive ? '<p class="muted">这项描述对单题向中立移动一档的变化敏感；这不是误差概率。</p>' : '';
-      return '<section class="report-axis"><div class="report-axis-heading"><h3>' + esc(facet.name) + '</h3><span class="report-score">' + (value == null ? '信息不足' : esc(signed(value))) + '</span></div><p class="report-poles"><span>−100 ' + esc(facet.negative) + '</span><span>+100 ' + esc(facet.positive) + '</span></p>' + (value == null ? '' : '<meter class="report-meter" min="-100" max="100" value="' + value + '" aria-label="' + esc(facet.name) + '：' + signed(value) + '">' + signed(value) + '</meter>') + '<p>' + esc(facetMeaning(facet)) + '</p><p class="muted">有效 ' + facet.valid + '/6 · 已答均分 ' + (facet.mean == null ? '—' : Number(facet.mean).toFixed(1)) + ' · 缺答范围 [' + facet.bounds.map(signed).join(', ') + ']</p>' + special + sensitive + '<details class="report-details"><summary>查看这 6 题的原始作答</summary>' + evidenceTable(facet.items, presented) + '</details></section>';
-    }).join('') + '</div></section>';
+    const charts = root.OMNI_CHARTS;
+    const head = '<section class="report-section" aria-labelledby="report-facets"><h2 id="report-facets">22 个议题分面</h2><p>正负值对应各分面标出的两端，不能跨分面相加为“经济左右”或“威权”总分。缺答范围是假设缺答可以取任意 1～7 得到的边界，<strong>不是统计置信区间</strong>。</p>';
+    if (!charts) return head + '<div class="report-grid">' + result.facets.map(facet => facetCard(facet, presented)).join('') + '</div></section>';
+    return head + charts.fullRadar(result) + charts.themes(result.facets).map(theme => '<div class="vz-theme-block"><h3>' + esc(theme.name) + '</h3>' + charts.themeBlock(theme) + '<div class="report-grid">' + theme.facets.map(facet => facetCard(facet, presented, charts)).join('') + '</div></div>').join('') + '</section>';
+  }
+
+  function renderAtlas(result) {
+    const charts = root.OMNI_CHARTS;
+    if (!charts) return '';
+    return '<section class="report-section vz-atlas" aria-labelledby="report-atlas"><h2 id="report-atlas">立场图谱</h2><p>以下图表把本报告的分值画成图，不另行计分。三维罗盘取三个分面作坐标；发散条形图按主题列出全部 22 个分面的方向与缺答范围。“+”“' + '−' + '”只是题目设定的两端，不代表更好、更极端或某种身份。</p>' + charts.compass(result) + charts.overview(result) + '</section>';
+  }
+
+  function renderClosing(result, session) {
+    const charts = root.OMNI_CHARTS;
+    if (!charts) return '';
+    const started = new Date(session.startedAt);
+    const date = Number.isFinite(started.getTime()) ? started.getFullYear() + '-' + String(started.getMonth() + 1).padStart(2, '0') + '-' + String(started.getDate()).padStart(2, '0') : '';
+    return '<section class="report-section vz-closing" aria-labelledby="report-closing"><h2 id="report-closing">总结：作答倾向图</h2><p>把 22 个分面的作答汇成一张图：每行左右两端是该分面的两种立场，图标着色表示你的作答在这一端领先。它只反映本次实际的选择，不给出“某某主义者”之类的结论；思想卡的核验结果和保留意见见上文。</p>' + charts.summary(result, { id: result.id, date }) + '</section>';
   }
 
   function renderCard(card, session, data, presented) {
@@ -75,7 +96,7 @@
     if ((card.crossQuestionConflicts || []).length) {
       conflictText = '<div class="notice"><strong>跨题分歧待澄清</strong><ul>' + card.crossQuestionConflicts.map(item => '<li>' + esc(typeof item === 'string' ? item : [item.id, item.text, item.reason, item.note].filter(Boolean).join(' · ')) + (item && typeof item === 'object' && item.answer !== undefined ? '；原答 ' + esc(answer(item.answer)) : '') + '</li>').join('') + '</ul><p>请补充适用条件。这些参考题可能与主张题重复，不作为额外独立证据，也不机械否决本卡。</p></div>';
     }
-    return '<section class="report-card" id="report-' + esc(card.id) + '"><div class="report-card-heading"><div><span class="report-id">' + esc(card.id) + '</span><h3>' + esc(card.name) + '</h3></div><span class="pill">' + esc(card.status) + '</span></div><p class="muted">' + esc(card.kind) + ' · ' + esc(card.parent) + '</p><p>' + esc(card.summary) + '</p><p><strong>' + esc(parts) + '。</strong>' + (card.strongSupport ? '两项核心主张支持较明确。' : '') + (card.statusCode === 'supported' ? '这表示与本卡所选的三项主张相符，不等于完整或唯一的思想归属。' : card.statusCode === 'insufficient' ? '缺少的主张不能按中立或半个赞同补入；已答反对项仍然保留。' : '应保留具体分歧，不能用平均分抵消反对。') + '</p>' + evidenceTable(card.claims, presented) + conflictText + '<div class="report-identity"><h4>名称认同与原有理解</h4><p>此前熟悉度：' + esc(familiarityText) + '。<br>获知名称后的自我认同：' + esc(identityText) + '。</p>' + explanation + '<p class="muted">' + esc(card.identityNote || '熟悉度属于自评；解释尚待人工核对，自动报告不据此认证流派身份。') + '</p>' + (card.kind === '历史路线' || card.kind === '理论学派' ? '<p class="muted">历史路线与理论学派还需要核对概念理解及近邻区别，三道立场题不能代替专门访谈。</p>' : '') + '</div>' + (card.unblinded || session.catalogSeen ? '<p class="muted">本卡有名称已知或目录已浏览的记录，按未盲核验理解。</p>' : '') + (originalClaimRows ? '<details class="report-details"><summary>名称揭示后的更正记录</summary><ul>' + originalClaimRows + '</ul><p class="muted">当前描述采用更正后的作答，保留原答以供复核。</p></details>' : '') + '<p>' + esc(nearText) + '</p>' + (nearUntested.length ? '<p class="muted">尚未核验的近邻：' + esc(nearUntested.map(near => near.id + ' ' + near.name).join('、')) + '。</p>' : '') + '<p class="muted">本卡范围：' + esc(card.note || '只核对本卡列出的主张。') + '</p>' + (card.sensitive ? '<p class="muted">本卡状态对单题向中立移动一档的变化敏感；这不是误判概率。</p>' : '') + '<details class="report-details"><summary>参考题与编制来源</summary><p>参考题仅用于选择核验方向；不计算思想相似度或概率。来源帮助理解思想背景，不代表这些三条主张已获得量表效度验证。</p>' + (referenceRows.length ? evidenceTable(referenceRows, presented) : '<p class="muted">参考题尚未实际呈现。</p>') + '<ul class="report-sources">' + sourceLinks + '</ul></details></section>';
+    return '<section class="report-card" id="report-' + esc(card.id) + '"><div class="report-card-heading"><div><span class="report-id">' + esc(card.id) + '</span><h3>' + esc(card.name) + '</h3></div><span class="pill">' + esc(card.status) + '</span></div><p class="muted">' + esc(card.kind) + ' · ' + esc(card.parent) + '</p><p>' + esc(card.summary) + '</p><p><strong>' + esc(parts) + '。</strong>' + (card.strongSupport ? '两项核心主张支持较明确。' : '') + (card.statusCode === 'supported' ? '这表示与本卡所选的三项主张相符，不等于完整或唯一的思想归属。' : card.statusCode === 'insufficient' ? '缺少的主张不能按中立或半个赞同补入；已答反对项仍然保留。' : '应保留具体分歧，不能用平均分抵消反对。') + '</p>' + (root.OMNI_CHARTS ? root.OMNI_CHARTS.claimRows(card) : '') + evidenceTable(card.claims, presented) + conflictText + '<div class="report-identity"><h4>名称认同与原有理解</h4><p>此前熟悉度：' + esc(familiarityText) + '。<br>获知名称后的自我认同：' + esc(identityText) + '。</p>' + explanation + '<p class="muted">' + esc(card.identityNote || '熟悉度属于自评；解释尚待人工核对，自动报告不据此认证流派身份。') + '</p>' + (card.kind === '历史路线' || card.kind === '理论学派' ? '<p class="muted">历史路线与理论学派还需要核对概念理解及近邻区别，三道立场题不能代替专门访谈。</p>' : '') + '</div>' + (card.unblinded || session.catalogSeen ? '<p class="muted">本卡有名称已知或目录已浏览的记录，按未盲核验理解。</p>' : '') + (originalClaimRows ? '<details class="report-details"><summary>名称揭示后的更正记录</summary><ul>' + originalClaimRows + '</ul><p class="muted">当前描述采用更正后的作答，保留原答以供复核。</p></details>' : '') + '<p>' + esc(nearText) + '</p>' + (nearUntested.length ? '<p class="muted">尚未核验的近邻：' + esc(nearUntested.map(near => near.id + ' ' + near.name).join('、')) + '。</p>' : '') + '<p class="muted">本卡范围：' + esc(card.note || '只核对本卡列出的主张。') + '</p>' + (card.sensitive ? '<p class="muted">本卡状态对单题向中立移动一档的变化敏感；这不是误判概率。</p>' : '') + '<details class="report-details"><summary>参考题与编制来源</summary><p>参考题仅用于选择核验方向；不计算思想相似度或概率。来源帮助理解思想背景，不代表这些三条主张已获得量表效度验证。</p>' + (referenceRows.length ? evidenceTable(referenceRows, presented) : '<p class="muted">参考题尚未实际呈现。</p>') + '<ul class="report-sources">' + sourceLinks + '</ul></details></section>';
   }
 
   function renderComparisons(cards, data) {
@@ -102,7 +123,7 @@
 
   function renderScenarios(result, presented) {
     const scenarios = result.scenarios;
-    return '<section class="report-section"><h2>制度条件情境</h2><p>完整配对 ' + scenarios.complete + '/6。差值为甲国答案减乙国答案；正值表示在甲国设定下更支持相应安排。</p>' + (scenarios.complete >= 4 ? '<p>平均差值 <strong>' + signed(scenarios.meanDifference) + '</strong>；平均绝对差值 <strong>' + scenarios.meanAbsoluteDifference + '</strong>。正负差异可能抵消，须同时看逐项结果。</p>' : '<p>完整配对不足 4 对，只描述逐对结果。</p>') + '<div class="report-table-wrap"><table class="report-table"><thead><tr><th>安排</th><th>甲国</th><th>乙国</th><th>差值</th></tr></thead><tbody>' + scenarios.pairs.map(pair => '<tr><td>' + esc(pair.id) + ' ' + esc(pair.policy) + '</td><td>' + esc(answer(pair.a, presented.has(pair.id + 'A'))) + '</td><td>' + esc(answer(pair.b, presented.has(pair.id + 'B'))) + '</td><td>' + esc(signed(pair.difference)) + '</td></tr>').join('') + '</tbody></table></div><p class="muted">' + esc(scenarios.note || '情境同时改变所有制与执政目标，且未随机化顺序，不能分别识别因果作用。它用于追问条件差异，不评价人格。') + '若不能接受题设，应将这组情境标为未成立。</p></section>';
+    return '<section class="report-section"><h2>制度条件情境</h2><p>完整配对 ' + scenarios.complete + '/6。差值为甲国答案减乙国答案；正值表示在甲国设定下更支持相应安排。</p>' + (scenarios.complete >= 4 ? '<p>平均差值 <strong>' + signed(scenarios.meanDifference) + '</strong>；平均绝对差值 <strong>' + scenarios.meanAbsoluteDifference + '</strong>。正负差异可能抵消，须同时看逐项结果。</p>' : '<p>完整配对不足 4 对，只描述逐对结果。</p>') + (root.OMNI_CHARTS ? root.OMNI_CHARTS.scenarioChart(scenarios) : '') + '<div class="report-table-wrap"><table class="report-table"><thead><tr><th>安排</th><th>甲国</th><th>乙国</th><th>差值</th></tr></thead><tbody>' + scenarios.pairs.map(pair => '<tr><td>' + esc(pair.id) + ' ' + esc(pair.policy) + '</td><td>' + esc(answer(pair.a, presented.has(pair.id + 'A'))) + '</td><td>' + esc(answer(pair.b, presented.has(pair.id + 'B'))) + '</td><td>' + esc(signed(pair.difference)) + '</td></tr>').join('') + '</tbody></table></div><p class="muted">' + esc(scenarios.note || '情境同时改变所有制与执政目标，且未随机化顺序，不能分别识别因果作用。它用于追问条件差异，不评价人格。') + '若不能接受题设，应将这组情境标为未成立。</p></section>';
   }
 
   function renderCoverage(result, session) {
@@ -118,7 +139,7 @@
       Z02:['未看过','看过部分','看过较多或全部'],
       Z03:['尚未形成','部分确定','比较确定','很确定']
     };
-    return '<section class="report-section"><h2>作答条件与完整性</h2><p>本轮经过时间（含休息与离开页面） ' + Math.floor(quality.elapsedMs / 60000) + ' 分 ' + Math.floor(quality.elapsedMs % 60000 / 1000) + ' 秒。结束记录：' + esc(result.stopReason || (result.finished ? '已完成提交' : '尚未完成')) + '。</p><div class="report-table-wrap"><table class="report-table"><thead><tr><th>记录</th><th>数量</th><th>占已呈现立场题</th></tr></thead><tbody>' + counts.map(row => '<tr><td>' + row[0] + '</td><td>' + row[1] + '</td><td>' + percentage(row[1], quality.presented) + '</td></tr>').join('') + '</tbody></table></div><p class="muted">分母为已呈现的 ' + quality.presented + ' 个立场响应项；未呈现分支不记为漏答。K／I 和背景信息单独记录，不进入立场均分。拒答、不了解、速度与重复选项都不自动判为无效。</p>' + (quality.notes.length ? '<ul>' + quality.notes.map(note => '<li>' + esc(note) + '</li>').join('') + '</ul>' : '') + '<details class="report-details"><summary>背景、原有自我认同与补充</summary>' + result.context.map(item => {
+    return '<section class="report-section"><h2>作答条件与完整性</h2><p>本轮经过时间（含休息与离开页面） ' + Math.floor(quality.elapsedMs / 60000) + ' 分 ' + Math.floor(quality.elapsedMs % 60000 / 1000) + ' 秒。结束记录：' + esc(result.stopReason || (result.finished ? '已完成提交' : '尚未完成')) + '。</p>' + (root.OMNI_CHARTS ? root.OMNI_CHARTS.qualityChart(result, session, root.OMNI_DATA) : '') + '<div class="report-table-wrap"><table class="report-table"><thead><tr><th>记录</th><th>数量</th><th>占已呈现立场题</th></tr></thead><tbody>' + counts.map(row => '<tr><td>' + row[0] + '</td><td>' + row[1] + '</td><td>' + percentage(row[1], quality.presented) + '</td></tr>').join('') + '</tbody></table></div><p class="muted">分母为已呈现的 ' + quality.presented + ' 个立场响应项；未呈现分支不记为漏答。K／I 和背景信息单独记录，不进入立场均分。拒答、不了解、速度与重复选项都不自动判为无效。</p>' + (quality.notes.length ? '<ul>' + quality.notes.map(note => '<li>' + esc(note) + '</li>').join('') + '</ul>' : '') + '<details class="report-details"><summary>背景、原有自我认同与补充</summary>' + result.context.map(item => {
       let value = item.answer;
       if (contextLabels[item.id] && Number.isInteger(value) && contextLabels[item.id][value]) value = value + ' · ' + contextLabels[item.id][value];
       else if (value === 'U') value = '不了解或无法判断';
@@ -131,14 +152,14 @@
   function renderRawModules(result, session, data, presented) {
     const sections = data.modules.map(module => {
       const rows = module.items.filter(item => presented.has(item.id)).map(item => ({...item, answer:session.answers[item.id]}));
-      return rows.length ? '<details class="report-details"><summary>' + esc(module.title) + ' · 已呈现 ' + rows.length + ' 题</summary>' + evidenceTable(rows, presented) + '</details>' : '';
+      return rows.length ? (root.OMNI_CHARTS ? root.OMNI_CHARTS.moduleChart(module, rows) : '') + '<details class="report-details"><summary>' + esc(module.title) + ' · 已呈现 ' + rows.length + ' 题</summary>' + evidenceTable(rows, presented) + '</details>' : '';
     }).join('');
     return sections ? '<section class="report-section"><h2>专题逐题记录</h2><p>这些题的政治方向不同，不合成为专题总分。</p>' + sections + '</section>' : '';
   }
 
   function renderSupplements(result, presented) {
     const kinds = {value:'价值主张',prediction:'事实或预测判断',historical:'历史经验评价'};
-    return '<section class="report-section"><h2>补充议题画像</h2><p>以下补充题涵盖具体政策、治理与历史经验，使用七点选项作答。每项分别描述，不计算跨题政治总分，不改变 22 个共同分面或思想卡状态。价值主张、预测与历史评价按题型分别理解；未作答不表示反对。</p>' + result.supplements.map(g => {
+    return '<section class="report-section"><h2>补充议题画像</h2><p>以下补充题涵盖具体政策、治理与历史经验，使用七点选项作答。每项分别描述，不计算跨题政治总分，不改变 22 个共同分面或思想卡状态。价值主张、预测与历史评价按题型分别理解；未作答不表示反对。</p>' + (root.OMNI_CHARTS && result.supplements.some(g => g.presented) ? root.OMNI_CHARTS.supplementChart(result.supplements) : '') + result.supplements.map(g => {
       const count = g.counts;
       const heading = '<h3>' + esc(g.name) + '</h3><p>' + esc(g.description) + '</p><p>本次' + (g.selected ? '选择本组' : '未选择本组') + '；已呈现 ' + g.presented + '/' + g.total + ' 题。支持 ' + count.support + '，反对 ' + count.oppose + '，中立 ' + count.neutral + '，不了解 ' + count.unknown + '，拒答 ' + count.refused + '，已呈现漏答 ' + count.missing + '，未呈现 ' + count.unpresented + '。</p>';
       const rows = g.items.map(q => '<tr><td><span class="report-id">' + esc(q.id) + '</span> ' + esc(q.text) + '<small class="muted">' + esc(kinds[q.kind] || q.kind) + '</small></td><td>' + esc(answer(q.answer,q.presented)) + '</td></tr>').join('');
@@ -156,7 +177,7 @@
     const directional = scoredFacets.filter(facet => facet.value !== 0).sort((a,b) => Math.abs(b.value) - Math.abs(a.value)).slice(0,4);
     const intro = directional.length ? '在有效作答较完整的分面中，本次表达得较突出的方向包括：' + directional.map(facet => facet.name + '偏向“' + (facet.value > 0 ? facet.positive : facet.negative) + '”').join('；') + '。' : scoredFacets.length ? '已可描述的分面均分位于中间位置，具体含义需结合单题中立与交叉立场理解。' : '目前完整作答不足以形成分面点值，报告保留已表达的主张和缺答范围。';
     const cardSummary = supported.length ? '在实际核验的卡片中，' + supported.map(card => card.name).join('、') + '的三项主张均获支持。' : '本次没有达到“三项主张均支持”的完整卡片；这不排除未检验的思想。';
-    return '<article class="omni-report"><header class="report-summary"><p class="eyebrow">个人立场报告 · ' + esc(result.version) + '</p><h1>你的政治立场与思想倾向</h1><p class="muted">答卷编号 ' + esc(result.id || '未命名') + ' · ' + (result.finished ? '已提交答卷' : '当前进度的阶段报告') + '</p><p>' + esc(intro) + '</p><p>' + esc(cardSummary) + (partial.length ? '另有 ' + partial.length + ' 张卡出现部分支持或分歧。' : '') + (insufficient.length ? '有 ' + insufficient.length + ' 张卡信息不足。' : '') + '</p><p>以下结论描述本次作答；名称认同、原有理解、具体保留意见和未检验范围分别列出。</p></header>' + (result.sourceVersion ? '<p class="notice">本答卷记录格式为 ' + esc(result.sourceVersion) + '，已答内容与提交状态予以保留；当前题库中尚未作答的题目不会自动填答。</p>' : '') + renderCoverage(result, session) + renderFacets(result, presented) + renderCards(result, session, data, presented) + renderSupplements(result, presented) + renderScenarios(result, presented) + renderQuality(result, session) + renderRawModules(result, session, data, presented) + '</article>';
+    return '<article class="omni-report"><header class="report-summary"><p class="eyebrow">个人立场报告 · ' + esc(result.version) + '</p><h1>你的政治立场与思想倾向</h1><p class="muted">答卷编号 ' + esc(result.id || '未命名') + ' · ' + (result.finished ? '已提交答卷' : '当前进度的阶段报告') + '</p><p>' + esc(intro) + '</p><p>' + esc(cardSummary) + (partial.length ? '另有 ' + partial.length + ' 张卡出现部分支持或分歧。' : '') + (insufficient.length ? '有 ' + insufficient.length + ' 张卡信息不足。' : '') + '</p><p>以下结论描述本次作答；名称认同、原有理解、具体保留意见和未检验范围分别列出。</p></header>' + (result.sourceVersion ? '<p class="notice">本答卷记录格式为 ' + esc(result.sourceVersion) + '，已答内容与提交状态予以保留；当前题库中尚未作答的题目不会自动填答。</p>' : '') + renderAtlas(result) + renderCoverage(result, session) + renderFacets(result, presented) + renderCards(result, session, data, presented) + renderSupplements(result, presented) + renderScenarios(result, presented) + renderClosing(result, session) + renderQuality(result, session) + renderRawModules(result, session, data, presented) + '</article>';
   }
 
   root.OMNI_REPORT = Object.freeze({render, escape:esc, answer});

@@ -195,7 +195,7 @@
     if (name==='export') {if(S){save();download(JSON.stringify(S,null,2),S.id+'-OMNI.json');}return;}
     if (name==='copy') {try{await navigator.clipboard.writeText(E.encodeSession(S));toast('已复制完整答卷代码。仅在你愿意分享答案时发送给他人。');}catch(_){toast('无法访问剪贴板，请使用导出答卷。');}return;}
     if (name==='print') {app.querySelectorAll('#report-content details').forEach(el=>el.open=true);window.print();return;}
-    if (name==='report-text') {const details=[...app.querySelectorAll('#report-content details')], previous=details.map(d=>d.open);details.forEach(d=>d.open=true);download(document.getElementById('report-content').innerText,S.id+'-报告.txt','text/plain;charset=utf-8');details.forEach((d,i)=>d.open=previous[i]);return;}
+    if (name==='report-text') {const details=[...app.querySelectorAll('#report-content details')], previous=details.map(d=>d.open);details.forEach(d=>d.open=true);document.body.classList.add('vz-text-export');const text=document.getElementById('report-content').innerText;document.body.classList.remove('vz-text-export');download(text,S.id+'-报告.txt','text/plain;charset=utf-8');details.forEach((d,i)=>d.open=previous[i]);return;}
     if (!S||S.finished) return;
     if (M.enforce(D,S)) {save();render(true);return;}
     if (name==='begin') {S.stage='base';S.pos=0;}

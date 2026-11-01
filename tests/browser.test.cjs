@@ -102,6 +102,17 @@ const server = http.createServer((req,res)=>{
     await supplementDetails.locator('summary').click();assert.equal(await supplementDetails.evaluate(el=>el.open),true);
     assert((await supplementDetails.innerText()).includes('价值主张'));
     await page.screenshot({path:path.join(output,'report-desktop.png'),fullPage:true});
+    // Charts: 3-D compass rotates and switches axes, the closing figure exports a PNG and reflows on phones.
+    assert(await page.locator('.vz-figure').count()>=12);await page.locator('.vz-compass[data-ready]').waitFor();
+    const compass=page.locator('.vz-compass-svg'),beforeTurn=await compass.innerHTML();await compass.focus();await page.keyboard.press('ArrowRight');
+    await page.waitForFunction(before=>document.querySelector('.vz-compass-svg').innerHTML!==before,beforeTurn);
+    await page.locator('select[data-axis="2"]').selectOption('ECO');assert((await page.locator('.vz-compass-table').innerText()).includes('生态目标'));
+    const png=page.waitForEvent('download');await page.locator('[data-export=summary]').click();
+    assert.equal(fs.readFileSync(await (await png).path()).subarray(0,4).toString('hex'),'89504e47');
+    await page.setViewportSize({width:390,height:844});await page.locator('.vz-summary-svg.compact').waitFor();
+    assert(await page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth));
+    await page.screenshot({path:path.join(output,'report-mobile.png'),fullPage:true});await page.setViewportSize({width:1360,height:980});
+    console.log('PASS charts: compass rotation and axis choice, summary PNG export, phone layout');
     const download=page.waitForEvent('download');await page.locator('[data-action=export]').click();const file=await download;const json=JSON.parse(fs.readFileSync(await file.path(),'utf8'));assert.deepEqual(json.answers,full.answers);
     console.log('PASS full '+(250+supplementalCount)+'-response flow, supplemental groups, 2-module/4-card caps, report and JSON export');
     await page.goto(origin+'/omni-admin.html');await page.locator('#import-text').fill(E.encodeSession(full));await page.locator('#import-run').click();await page.locator('#admin-report .omni-report').waitFor();
