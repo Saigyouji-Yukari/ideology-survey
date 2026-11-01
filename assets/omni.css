@@ -14,6 +14,7 @@
 .stat-grid strong:has(.home-icon) {display:flex;align-items:center;justify-content:center;gap:.35em}
 .stat-grid .home-icon {font-size:.68em}
 .stat-grid strong > span:last-child {white-space:nowrap}
+.stat-grid .stat-unit {font-size:.55em;margin-left:.12em}
 .feature-grid,.report-grid {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
 .feature,.report-card {border:1px solid var(--line);background:var(--surface);border-radius:12px;padding:22px}
 .feature h3 {font-size:1.14rem}.feature p {margin:10px 0 0;color:var(--muted);font-size:.92rem}
@@ -24,6 +25,8 @@
 .steps li {padding-top:14px;border-top:2px solid var(--accent-line);font-size:.9rem}
 .steps li::before {counter-increment:step;content:'0' counter(step);display:block;color:var(--accent);font:700 1.2rem var(--serif);margin-bottom:6px}
 .steps small {display:block;color:var(--muted)}
+.step-title {display:flex;align-items:center;gap:.4em}
+.step-title .home-icon {font-size:1.1em}
 .actions {display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:20px 0}
 .actions.center {justify-content:center}
 .muted,.help {color:var(--muted);font-size:.87rem}
