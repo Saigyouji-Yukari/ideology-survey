@@ -1,4 +1,4 @@
-# 意识形态测试调查 · 全景版
+# 意识形态测试调查
 
 [开始测试](https://saigyouji-yukari.github.io/ideology-survey/) · [新版施测者计分器](https://saigyouji-yukari.github.io/ideology-survey/omni-admin.html) · [旧版与原有记录](https://saigyouji-yukari.github.io/ideology-survey/legacy.html)
 
