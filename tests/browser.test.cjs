@@ -43,6 +43,15 @@ const server = http.createServer((req,res)=>{
     assert.equal(await page.locator('[data-question]').getAttribute('data-question'),'Q003');
     assert.equal((await state()).answers.Q002,4);
     console.log('PASS auto advance, previous edit, neutral/unknown, reload');
+    // Every question and claim title fits on one line on a desktop-width card (long ones shrink slightly).
+    const titles=[...D.core.items,...D.core.scenarios,...D.core.context,...D.modules.flatMap(m=>m.items),...D.legacySupplement.items].map(q=>q.text).concat(D.cards.flatMap(c=>[c.a,c.b,c.contrast]));
+    const wrapped=await page.evaluate(list=>{const h1=document.getElementById('question-title'),keep=[h1.textContent,h1.style.getPropertyValue('--qlen')],bad=[];
+      const em=t=>{let n=0;for(const ch of t)n+=ch.charCodeAt(0)<256?(ch===' '?0.3:0.56):1;return Math.ceil(n*1.02+0.6);};
+      if(String(em(keep[0]))!==keep[1].trim())bad.push('page --qlen differs from the formula: '+keep[1]);
+      for(const t of list){h1.textContent=t;h1.style.setProperty('--qlen',em(t));const r=document.createRange();r.selectNodeContents(h1);if(new Set([...r.getClientRects()].map(x=>Math.round(x.top))).size>1)bad.push(t);}
+      h1.textContent=keep[0];h1.style.setProperty('--qlen',keep[1]);return bad;},titles);
+    assert.deepEqual(wrapped,[]);
+    console.log('PASS all '+titles.length+' question titles fit on one line at desktop width');
     // Actual clicks traverse all common questions, then both selected branches.
     while(await page.locator('[data-question]').count()) {
       const q=await page.locator('[data-question]').getAttribute('data-question');

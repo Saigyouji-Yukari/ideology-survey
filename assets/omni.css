@@ -24,7 +24,10 @@
 .pill {display:inline-block;background:var(--accent-soft);color:var(--accent);border-radius:99px;padding:2px 10px;font-size:.78rem;margin:2px 5px 2px 0}
 .timer-row {display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:8px;font-size:.85rem;color:var(--muted)}
 .timer {font-variant-numeric:tabular-nums;font-weight:600;color:var(--accent)}
-.question-title {font-size:clamp(1.25rem,3.7vw,1.65rem);line-height:1.65;margin:14px 0 26px;overflow-wrap:anywhere}
+.question-title {font-size:clamp(1.25rem,3.7vw,1.65rem);line-height:1.65;margin:14px 0 26px;overflow-wrap:anywhere;text-wrap:pretty}
+/* Keep each question on one line where the card is wide enough: --qlen is the title width in em, so long
+   questions shrink slightly (never below 1.2rem) instead of breaking the sentence into two lines. */
+@supports (width:1cqi) {.q-card {container-type:inline-size}.question-title {font-size:max(1.2rem,min(calc(100cqi / var(--qlen,34)),clamp(1.25rem,3.7vw,1.65rem)))}}
 .q-card {min-height:360px}
 .answer-list {display:grid;gap:8px;max-width:680px;margin:0 auto}
 .answer {display:flex;align-items:center;gap:14px;text-align:left;width:100%;min-height:48px;border:1px solid var(--line);border-radius:8px;background:var(--surface);padding:10px 16px;transition:background .12s}

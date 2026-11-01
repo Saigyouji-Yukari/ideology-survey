@@ -58,6 +58,9 @@
     return labels.map((label,i) => ({value:i+1,label}));
   }
   function isText(q) { return ['Z04','Z05','Z06'].includes(q.id) || q.part === 'explanation'; }
+  // Approximate width of a title in em (CJK and full-width punctuation = 1, Latin and digits ≈ .56), so CSS can
+  // shrink a long question just enough to keep it on one line on wide screens instead of breaking the sentence.
+  function titleEm(text) { let n = 0; for (const ch of String(text)) n += ch.charCodeAt(0) < 256 ? (ch === ' ' ? 0.3 : 0.56) : 1; return Math.ceil(n * 1.02 + 0.6); }
   function current() { return S ? M.plan(D,S)[S.pos] : null; }
   function question() {
     const list = M.plan(D,S), q = list[S.pos];
@@ -85,7 +88,7 @@
       const hint = q.part === 'explanation' ? '可写：我支持什么安排、在哪些条件下保留意见，以及与相邻思想有什么不同。解释将保留供本人或施测者核对，不自动判定理解正确。' : q.options;
       inputs = `<p class="help">${esc(hint)}</p><label class="help" for="free-answer">你的说明</label><textarea id="free-answer" class="input" maxlength="2000" placeholder="可以留空；请勿填写姓名、单位等身份信息">${esc(value === 'X' || value === 'U' ? '' : value)}</textarea><div class="actions">${action('text-next','保存并继续','btn primary')}<button class="btn" data-value="X">不愿回答（×）</button></div>`;
     } else inputs = `<div class="answer-list">${questionOptions(q).map(o => `<button class="answer" data-value="${o.value}" aria-pressed="${value === o.value}"><b>${o.value}</b><span>${esc(o.label)}</span></button>`).join('')}</div><div class="alt"><button class="btn" data-value="U" aria-pressed="${value === 'U'}">不了解或无法判断（U）</button><button class="btn" data-value="X" aria-pressed="${value === 'X'}">不愿回答（×）</button></div>`;
-    app.innerHTML = `<div class="q-top">${timer()}<div class="q-meta"><span>${esc(topic)}</span><span>${esc(q.id)} · 本阶段 ${S.pos+1} / ${list.length}</span></div><div class="progress"><div class="bar" style="width:${100*answered/list.length}%"></div></div></div><article class="q-card" data-question="${q.id}" aria-labelledby="question-title">${intro}<h1 class="question-title" id="question-title" tabindex="-1">${esc(title)}</h1>${inputs}</article><nav class="q-nav" aria-label="题目切换">${action('prev','← 上一题','btn ghost')}<span class="spacer"></span>${action('review','检查已答','btn ghost')}${action('next',value !== undefined && value !== '' ? '下一题 →' : '跳过 →','btn ghost')}</nav><p class="help">选择后自动前进。键盘数字键作答，U 不了解，X 不愿回答，← 返回。背景题的 0 是有效选项。</p><div class="actions">${action('export','导出备份','linkbtn')}${action('finish-early','提前结束并分析','linkbtn')}</div>`;
+    app.innerHTML = `<div class="q-top">${timer()}<div class="q-meta"><span>${esc(topic)}</span><span>${esc(q.id)} · 本阶段 ${S.pos+1} / ${list.length}</span></div><div class="progress"><div class="bar" style="width:${100*answered/list.length}%"></div></div></div><article class="q-card" data-question="${q.id}" aria-labelledby="question-title">${intro}<h1 class="question-title" id="question-title" tabindex="-1" style="--qlen:${titleEm(title)}">${esc(title)}</h1>${inputs}</article><nav class="q-nav" aria-label="题目切换">${action('prev','← 上一题','btn ghost')}<span class="spacer"></span>${action('review','检查已答','btn ghost')}${action('next',value !== undefined && value !== '' ? '下一题 →' : '跳过 →','btn ghost')}</nav><p class="help">选择后自动前进。键盘数字键作答，U 不了解，X 不愿回答，← 返回。背景题的 0 是有效选项。</p><div class="actions">${action('export','导出备份','linkbtn')}${action('finish-early','提前结束并分析','linkbtn')}</div>`;
     const prev = app.querySelector('[data-action=prev]'); if (prev) prev.disabled = S.pos === 0;
   }
   function modules() {

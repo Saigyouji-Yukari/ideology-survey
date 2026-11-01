@@ -67,6 +67,16 @@ test('the compass draws only the possible range when an axis has no score', () =
   assert(full.includes('class="vz-point"'));
 });
 
+test('charts keep their colours when the stylesheet is missing (pasted copies, PDF converters)', () => {
+  const s = session(q => /^Q/.test(q.id) ? (q.id < 'Q050' ? 'U' : 6) : undefined), h = OMNI_REPORT.render(s);
+  // Unstyled SVG paints shapes black; every drawn SVG element must carry its own fill or stroke.
+  const bare = [...h.matchAll(/<(rect|circle|line|polygon|path) class="([^"]+)"([^>]*)>/g)].filter(m => !/ (fill|stroke)="/.test(m[3])).map(m => m[2]);
+  assert.deepEqual([...new Set(bare)], []);
+  const unboxed = [...h.matchAll(/<span class="(vz-bar [a-z]+|vz-range[a-z ]*|vz-seg r\d|vz-dot-h [a-z]+)"( style="([^"]*)")?/g)].filter(m => !/position:absolute/.test(m[3] || '')).map(m => m[1]);
+  assert.deepEqual([...new Set(unboxed)], []);
+  assert(!/ fill="[^"]*"[^<>]* fill="/.test(h), 'no duplicated presentation attributes');
+});
+
 test('chart labels are escaped', () => {
   const f = { id: 'X', name: '<img src=x onerror=alert(1)>', negative: '"a"', positive: "'b'", section: 'S', value: 10, mean: 4.3, valid: 6, bounds: [10, 10], items: [] };
   const h = C.overview({ facets: [f] });

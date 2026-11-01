@@ -51,6 +51,96 @@
   }
   const lean = f => f.value == null ? null : f.value <= -LEAN ? 'neg' : f.value >= LEAN ? 'pos' : null;
 
+  // ---------------------------------------------------------------- styling that survives without the stylesheet
+  // Copies of the report (PDF converters, pasted HTML, other browsers' "save page") often drop
+  // omni-charts.css. Unstyled SVG paints every shape black, so each SVG element also carries its light-theme
+  // colours as presentation attributes; the stylesheet still overrides them (dark mode, print, phone sizes).
+  const INK = '#17202c', MUTED = '#596678', GRID = '#e6e9ef', AXIS = '#b9c1cd', POINT = '#1f3864', NEG = '#2a78d6', POS = '#eb6834', NEU = '#cfcdc5';
+  const RAMP = { r1: '#1c5cab', r2: '#2a78d6', r3: '#9ec5f4', r4: '#cfcdc5', r5: '#f6b08f', r6: '#eb6834', r7: '#b4461a' };
+  const HALO = 'paint-order="stroke" stroke="#ffffff" stroke-width="3" stroke-linejoin="round"';
+  const PAINT = {
+    'vz-pane': 'fill="#edf1f7" stroke="#d5dce6" stroke-width="1"', 'vz-pane-grid': 'stroke="#d5dce6" stroke-width="0.8"', 'vz-pane-grid zero': 'stroke="' + AXIS + '" stroke-width="0.8"',
+    'vz-drop': 'stroke="' + POINT + '" stroke-width="1" stroke-dasharray="3 3" opacity="0.55"', 'vz-shadow': 'fill="' + POINT + '" opacity="0.42"',
+    'vz-axis': 'stroke="' + MUTED + '" stroke-width="1.4" opacity="0.75"', 'vz-box': 'stroke="' + POINT + '" stroke-width="1.3" opacity="0.55"',
+    'vz-axis-label': 'font-size="11" fill="' + INK + '" ' + HALO, 'vz-axis-tag': 'font-weight="700" fill="' + MUTED + '"',
+    'vz-point': 'fill="' + POINT + '" stroke="#ffffff" stroke-width="2"', 'vz-point-halo': 'fill="' + POINT + '" opacity="0.16"',
+    'vz-point-label': 'font-size="12" font-weight="700" fill="' + INK + '" ' + HALO, 'vz-note': 'font-size="11" fill="' + MUTED + '"',
+    'vz-sector-line': 'stroke="' + AXIS + '" stroke-width="1"', 'vz-sector-no': 'font-size="12" fill="' + MUTED + '"',
+    'vz-web': 'fill="none" stroke="' + GRID + '" stroke-width="1"', 'vz-web zero': 'fill="none" stroke="' + AXIS + '" stroke-width="1.4"', 'vz-spoke': 'stroke="' + GRID + '" stroke-width="1"',
+    'vz-band': 'fill="#7d8898" fill-opacity="0.2" stroke="none"', 'vz-area': 'fill="' + POINT + '" fill-opacity="0.1" stroke="' + POINT + '" stroke-width="2" stroke-linejoin="round"',
+    'vz-area-line': 'stroke="' + POINT + '" stroke-width="2" stroke-linecap="round"',
+    'vz-dot pos': 'fill="' + POS + '" stroke="#ffffff" stroke-width="2"', 'vz-dot neg': 'fill="' + NEG + '" stroke="#ffffff" stroke-width="2"', 'vz-dot zero': 'fill="' + MUTED + '" stroke="#ffffff" stroke-width="2"',
+    'vz-hit': 'fill="#000000" fill-opacity="0"', 'vz-hitbox': 'fill="#000000" fill-opacity="0"',
+    'vz-spoke-label': 'font-size="11" fill="' + INK + '"', 'vz-ring-label': 'font-size="9.5" fill="' + MUTED + '"',
+    'vz-gridline': 'stroke="' + GRID + '" stroke-width="1"', 'vz-gridline base': 'stroke="' + AXIS + '" stroke-width="1"',
+    'vz-tick': 'font-size="10" fill="' + MUTED + '"', 'vz-tick small': 'font-size="8.5" fill="' + MUTED + '"',
+    'vz-col pos': 'fill="' + POS + '"', 'vz-col neg': 'fill="' + NEG + '"', 'vz-col zero': 'fill="' + MUTED + '"', 'vz-col other': 'fill="#ffffff" stroke="' + MUTED + '" stroke-width="1.2"',
+    'vz-missing': 'fill="#ffffff" stroke="' + MUTED + '" stroke-width="1.3"', 'vz-mean': 'stroke="' + INK + '" stroke-width="2" stroke-linecap="round"',
+    'vz-group-label': 'font-size="11" fill="' + INK + '"', 'vz-group-value': 'font-size="10.5" fill="' + MUTED + '"', 'vz-group-sep': 'stroke="' + GRID + '" stroke-width="1"',
+    'vz-cap': 'font-size="10.5" fill="' + INK + '"', 'vz-row-label': 'font-size="11" fill="' + INK + '"',
+    'vz-link': 'stroke="' + POINT + '" stroke-width="2.5" opacity="0.45" stroke-linecap="round"', 'vz-a': 'fill="' + POINT + '" stroke="#ffffff" stroke-width="2"', 'vz-b': 'fill="#ffffff" stroke="' + POINT + '" stroke-width="2"',
+    'vz-diff': 'font-size="11.5" font-weight="600" fill="' + INK + '"',
+    'vz-s-bg': 'fill="#f6f7f9"', 'vz-s-title': 'font-size="20" font-weight="700" fill="' + INK + '"', 'vz-s-sub': 'font-size="11.5" fill="' + MUTED + '"', 'vz-s-meta': 'font-size="10.5" fill="' + MUTED + '"',
+    'vz-s-head': 'font-size="12.5" font-weight="700" fill="' + INK + '"', 'vz-s-theme': 'font-size="12" font-weight="700" fill="' + MUTED + '"', 'vz-s-rule': 'stroke="#d5dce6" stroke-width="1"',
+    'vz-s-pole': 'font-size="11" fill="' + INK + '"', 'vz-s-facet': 'font-size="10" fill="' + MUTED + '"', 'vz-s-facet strong': 'font-size="11" font-weight="600" fill="' + INK + '"',
+    'vz-s-seg neg': 'fill="' + NEG + '"', 'vz-s-seg pos': 'fill="' + POS + '"', 'vz-s-seg neu': 'fill="' + NEU + '"', 'vz-s-seg mis': 'fill="#f6f7f9" stroke="' + AXIS + '" stroke-width="1"',
+    'vz-s-pct neg': 'font-size="10.5" font-weight="600" fill="#ffffff"', 'vz-s-pct pos': 'font-size="10.5" font-weight="600" fill="#ffffff"', 'vz-s-pct neu': 'font-size="10.5" font-weight="600" fill="#1d232c"', 'vz-s-pct mis': 'font-size="10.5" font-weight="600" fill="' + MUTED + '"',
+    'vz-s-disc off': 'fill="#ffffff" stroke="' + AXIS + '" stroke-width="1"', 'vz-s-disc pos': 'fill="' + POS + '"', 'vz-s-disc neg': 'fill="' + NEG + '"', 'vz-badge-disc pos': 'fill="' + POS + '"', 'vz-badge-disc neg': 'fill="' + NEG + '"',
+    'vz-s-ring pos': 'fill="none" stroke="' + POS + '" stroke-width="1.6"', 'vz-s-ring neg': 'fill="none" stroke="' + NEG + '" stroke-width="1.6"',
+    'vz-icon': 'stroke="' + MUTED + '"', 'vz-icon on': 'stroke="#ffffff"', 'vz-badge-name': 'font-weight="700" fill="' + INK + '"', 'vz-badge-sub': 'font-size="10.5" fill="' + MUTED + '"', 'vz-s-note': 'font-size="10.5" fill="' + MUTED + '"'
+  };
+  for (const r of Object.keys(RAMP)) PAINT['vz-col ' + r] = 'fill="' + RAMP[r] + '"';
+  // Add the attributes right after class="…"; skipped when they are already there, so calling twice is harmless.
+  function paint(svg) {
+    return svg.replace(/<(rect|circle|line|polygon|path|text|tspan|g) class="([^"]+)"/g, (m, tag, cls, offset, all) => {
+      const attrs = PAINT[cls] || PAINT[cls.split(' ')[0]];
+      return !attrs || all.startsWith(' ' + attrs, offset + m.length) ? m : m + ' ' + attrs;
+    });
+  }
+  // HTML chart parts get the same treatment as inline styles; colours go through the theme variables with the
+  // light values as fallbacks, so dark mode still works when the stylesheet is present.
+  const v = (name, fallback) => 'var(--' + name + ',' + fallback + ')';
+  const BOX = {
+    'vz-track': 'position:relative;height:24px', 'vz-track compact': 'position:relative;height:24px',
+    'vz-trackbg': 'position:absolute;left:0;right:0;top:3px;height:12px;border-radius:3px;background:' + v('vz-track', '#f1f3f6'),
+    'vz-grid': 'position:absolute;top:0;bottom:4px;width:1px;background:' + v('vz-grid', GRID), 'vz-grid mid': 'position:absolute;top:0;bottom:4px;width:1px;background:' + v('vz-axis', AXIS),
+    'vz-grid mid sup': 'position:absolute;top:-3px;bottom:-3px;width:1px;background:' + v('vz-axis', AXIS),
+    'vz-bar pos': 'position:absolute;top:3px;height:12px;border-radius:0 4px 4px 0;background:' + v('vz-pos', POS), 'vz-bar neg': 'position:absolute;top:3px;height:12px;border-radius:4px 0 0 4px;background:' + v('vz-neg', NEG),
+    'vz-bar-zero': 'position:absolute;left:50%;top:1px;width:3px;height:16px;margin-left:-1.5px;border-radius:2px;background:' + v('vz-ink', INK),
+    'vz-range': 'position:absolute;top:19px;height:2px;border-radius:1px;opacity:.55;background:' + v('vz-ink', INK), 'vz-range only': 'position:absolute;top:8px;height:2px;border-radius:1px;opacity:.55;background:' + v('vz-ink', INK),
+    'vz-sup-track': 'position:relative;height:18px;border-radius:3px;background:' + v('vz-track', '#f1f3f6'),
+    'vz-scale': 'position:relative;height:18px', 'vz-scaleline': 'position:absolute;left:0;right:0;top:8px;height:2px;border-radius:1px;background:' + v('vz-grid', GRID),
+    'vz-tick-i': 'position:absolute;top:5px;width:1px;height:8px;background:' + v('vz-axis', AXIS), 'vz-tick-i mid': 'position:absolute;top:3px;width:1px;height:12px;background:' + v('vz-muted', MUTED),
+    'vz-dot-h pos': 'position:absolute;top:3px;width:12px;height:12px;margin-left:-6px;border-radius:50%;box-shadow:0 0 0 2px ' + v('raised', '#eef2f7') + ';background:' + v('vz-pos', POS),
+    'vz-dot-h neg': 'position:absolute;top:3px;width:12px;height:12px;margin-left:-6px;border-radius:50%;box-shadow:0 0 0 2px ' + v('raised', '#eef2f7') + ';background:' + v('vz-neg', NEG),
+    'vz-dot-h zero': 'position:absolute;top:3px;width:12px;height:12px;margin-left:-6px;border-radius:50%;box-shadow:0 0 0 2px ' + v('raised', '#eef2f7') + ';background:' + v('vz-muted', MUTED),
+    'vz-steps': 'display:inline-flex;gap:3px', 'vz-step': 'display:inline-block;width:18px;height:8px;border-radius:2px;background:' + v('vz-grid', GRID), 'vz-step on': 'display:inline-block;width:18px;height:8px;border-radius:2px;background:' + v('vz-point', POINT),
+    'vz-qbar': 'display:flex;gap:2px;height:28px', 'vz-legend': 'display:flex;flex-wrap:wrap;gap:6px 16px',
+    'vz-row-head': 'display:flex;justify-content:space-between;gap:10px', 'vz-row-poles': 'display:flex;justify-content:space-between;gap:12px',
+    'vz-qseg valid': 'display:flex;align-items:center;min-width:4px;padding-left:7px;border-radius:4px;background:' + v('vz-point', POINT),
+    'vz-qseg neutral': 'display:flex;align-items:center;min-width:4px;padding-left:7px;border-radius:4px;background:' + v('vz-neu', NEU),
+    'vz-qseg unknown': 'display:flex;align-items:center;min-width:4px;padding-left:7px;border-radius:4px;background:' + v('vz-q-unknown', '#a9b4c6'),
+    'vz-qseg refused': 'display:flex;align-items:center;min-width:4px;padding-left:7px;border-radius:4px;background:' + v('vz-q-refused', '#d3d9e3'),
+    'vz-qseg missing': 'display:flex;align-items:center;min-width:4px;padding-left:7px;border-radius:4px;background:transparent;box-shadow:inset 0 0 0 1px ' + v('vz-axis', AXIS),
+    'vz-qlabel valid': 'font-size:.76rem;font-weight:600;white-space:nowrap;color:' + v('vz-on-point', '#ffffff'), 'vz-qlabel': 'font-size:.76rem;font-weight:600;white-space:nowrap;color:' + v('vz-on-neu', '#1d232c')
+  };
+  const KEY = 'display:inline-block;width:12px;height:10px;border-radius:2px;margin-right:6px;flex:none;vertical-align:middle;';
+  const KEYS = { neg: v('vz-neg', NEG), pos: v('vz-pos', POS), neu: v('vz-neu', NEU), neutral: v('vz-neu', NEU), band: v('vz-band', 'rgba(125,136,152,.2)'), valid: v('vz-point', POINT), unknown: v('vz-q-unknown', '#a9b4c6'), refused: v('vz-q-refused', '#d3d9e3') };
+  for (const r of Object.keys(RAMP)) { KEYS[r] = v('vz-' + r, RAMP[r]); BOX['vz-seg ' + r] = 'position:absolute;top:0;height:18px;box-shadow:inset 1px 0 0 ' + v('surface', '#ffffff') + ',inset -1px 0 0 ' + v('surface', '#ffffff') + ';background:' + v('vz-' + r, RAMP[r]); }
+  for (const k of Object.keys(KEYS)) BOX['vz-key ' + k] = KEY + 'background:' + KEYS[k];
+  BOX['vz-key range'] = KEY + 'width:14px;height:2px;border-radius:1px;opacity:.6;background:' + v('vz-ink', INK);
+  BOX['vz-key mean'] = KEY + 'width:14px;height:2px;border-radius:1px;background:' + v('vz-ink', INK);
+  BOX['vz-key missing'] = KEY + 'width:9px;height:9px;border-radius:50%;box-sizing:border-box;border:1.5px solid ' + v('vz-muted', MUTED);
+  BOX['vz-key a'] = KEY + 'width:10px;height:10px;border-radius:50%;background:' + v('vz-point', POINT);
+  BOX['vz-key b'] = KEY + 'width:10px;height:10px;border-radius:50%;box-sizing:border-box;border:2px solid ' + v('vz-point', POINT);
+  function box(html) {
+    return html.replace(/<(span|div|i|b|p) class="([^"]+)"(?: style="([^"]*)")?/g, (m, tag, cls, style) => {
+      const base = BOX[cls];
+      if (!base || (style && style.includes(base))) return m;
+      return '<' + tag + ' class="' + cls + '" style="' + base + (style ? ';' + style : '') + '"';
+    });
+  }
+
   // Share of the six answers leaning to each end, neutral, or missing. Each valid answer y (oriented 1–7)
   // gives (y−4)/3 to one end and 1−|y−4|/3 to neutral; missing answers count as missing.
   // Hence 100·(pos−neg−missing) and 100·(pos−neg+missing) equal the report's missing-answer bounds.
@@ -146,10 +236,10 @@
     else if (v === 0) bar = '<span class="vz-bar-zero"></span>';
     // No missing answers means the range collapses onto the value; draw it only when it has width.
     const range = hi > lo ? '<span class="vz-range' + (v == null ? ' only' : '') + '" style="left:' + pc(at(lo)) + ';width:' + pc((hi - lo) / 2) + '"></span>' : '';
-    return '<div class="vz-track' + (compact ? ' compact' : '') + '"><span class="vz-grid" style="left:25%"></span><span class="vz-grid mid" style="left:50%"></span><span class="vz-grid" style="left:75%"></span>' + bar + range + '</div>';
+    return box('<div class="vz-track' + (compact ? ' compact' : '') + '"><span class="vz-trackbg"></span><span class="vz-grid" style="left:25%"></span><span class="vz-grid mid" style="left:50%"></span><span class="vz-grid" style="left:75%"></span>' + bar + range + '</div>');
   }
   function divergingRow(f) {
-    return '<div class="vz-row" data-tip="' + esc(facetTip(f)) + '"><div class="vz-row-head"><span class="vz-row-name">' + esc(f.name) + '</span><span class="vz-row-val">' + (f.value == null ? '信息不足' : esc(signed(f.value))) + '</span></div>' + track(f) + '<div class="vz-row-poles"><span>' + esc(f.negative) + '</span><span>' + esc(f.positive) + '</span></div></div>';
+    return box('<div class="vz-row" data-tip="' + esc(facetTip(f)) + '"><div class="vz-row-head"><span class="vz-row-name">' + esc(f.name) + '</span><span class="vz-row-val">' + (f.value == null ? '信息不足' : esc(signed(f.value))) + '</span></div>' + track(f) + '<div class="vz-row-poles"><span>' + esc(f.negative) + '</span><span>' + esc(f.positive) + '</span></div></div>');
   }
   function overview(result) {
     const groups = themes(result.facets);
@@ -158,7 +248,7 @@
       '</div></div>' + legend([['neg', '偏向左端（' + MINUS + '）'], ['pos', '偏向右端（+）'], ['range', '缺答可能范围']]) + '</figure>';
   }
   function legend(items) {
-    return '<p class="vz-legend">' + items.map(([cls, text]) => '<span><i class="vz-key ' + cls + '"></i>' + esc(text) + '</span>').join('') + '</p>';
+    return box('<p class="vz-legend">' + items.map(([cls, text]) => '<span><i class="vz-key ' + cls + '"></i>' + esc(text) + '</span>').join('') + '</p>');
   }
 
   // ---------------------------------------------------------------- 3D compass (SVG)
@@ -248,7 +338,7 @@
     } else {
       out.push('<text class="vz-note" x="' + GEO.cx + '" y="' + (GEO.h - 10) + '" text-anchor="middle">所选分面有效题不足 5 项，只显示缺答可能范围</text>');
     }
-    return out.join('');
+    return paint(out.join(''));
   }
   function compassLabel(model) {
     return '三维罗盘：' + model.axes.map((id, k) => { const f = model.facets[id]; return 'XYZ'[k] + ' 轴 ' + f.n + ' ' + (f.v == null ? '信息不足' : signed(f.v)) + '（' + MINUS + f.neg + '，+' + f.pos + '）'; }).join('；');
@@ -263,7 +353,7 @@
     const model = compassModel(result);
     const options = sel => themes(result.facets).map(t => '<optgroup label="' + esc(t.name) + '">' + t.facets.map(f => '<option value="' + esc(f.id) + '"' + (f.id === sel ? ' selected' : '') + '>' + esc(f.name) + (f.value == null ? '（信息不足）' : '') + '</option>').join('') + '</optgroup>').join('');
     return '<figure class="vz-figure vz-compass" data-viz="compass" data-model="' + esc(JSON.stringify(model)) + '"><figcaption><strong>三维罗盘</strong><span class="muted">以三个分面的分值为坐标（' + MINUS + '100～+100）。默认三轴为所有权目标、公民自由与社会习俗，可改选任意三个分面；墙面上的小点是位置在三个平面上的投影，细线方框是缺答可能范围。</span></figcaption>' +
-      '<div class="vz-compass-body"><div class="vz-graphic vz-compass-stage"><svg class="vz-svg vz-compass-svg" viewBox="0 0 ' + GEO.w + ' ' + GEO.h + '" role="img" tabindex="0" aria-label="' + esc(compassLabel(model)) + '" font-family="' + esc(FONT) + '">' + compassSVG(model) + '</svg></div>' +
+      '<div class="vz-compass-body"><div class="vz-graphic vz-compass-stage"><svg class="vz-svg vz-compass-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ' + GEO.w + ' ' + GEO.h + '" role="img" tabindex="0" aria-label="' + esc(compassLabel(model)) + '" font-family="' + esc(FONT) + '">' + compassSVG(model) + '</svg></div>' +
       '<div class="vz-compass-panel"><div class="vz-controls vz-axis-pick">' + model.axes.map((id, k) => '<label><span>' + 'XYZ'[k] + ' 轴</span><select class="input" data-axis="' + k + '">' + options(id) + '</select></label>').join('') + '</div>' +
       '<div class="vz-compass-table">' + compassTable(model) + '</div>' +
       '<div class="vz-controls vz-view-buttons"><button type="button" class="btn small" data-view="default">默认视角</button><button type="button" class="btn small" data-view="front">正视 X–Y</button><button type="button" class="btn small" data-view="top">俯视 X–Z</button><button type="button" class="btn small" data-view="side">侧视 Z–Y</button><button type="button" class="btn small" data-export="compass">保存图片</button></div>' +
@@ -313,7 +403,7 @@
       const tl = at(0, 0), tt = at(0, 100);
       out.push('<text class="vz-ring-label" x="' + num(tl[0] + 4) + '" y="' + num(tl[1] - 3) + '">0</text><text class="vz-ring-label" x="' + num(tt[0] + 4) + '" y="' + num(tt[1] + 10) + '">+100</text>');
     }
-    return '<svg class="vz-svg vz-radar" viewBox="0 0 ' + o.w + ' ' + o.h + '" role="img" aria-label="' + esc(o.label) + '" font-family="' + esc(FONT) + '">' + out.join('') + '</svg>';
+    return '<svg class="vz-svg vz-radar" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ' + o.w + ' ' + o.h + '" role="img" aria-label="' + esc(o.label) + '" font-family="' + esc(FONT) + '">' + paint(out.join('')) + '</svg>';
   }
   function fullRadar(result) {
     const groups = themes(result.facets);
@@ -354,7 +444,7 @@
       out.push('<text class="vz-group-label" x="' + num(x0 + gw / 2) + '" y="' + (H - 22) + '" text-anchor="middle">' + esc(short(f)) + '</text><text class="vz-group-value" x="' + num(x0 + gw / 2) + '" y="' + (H - 7) + '" text-anchor="middle">' + (f.value == null ? '信息不足' : esc(signed(f.value))) + '</text>');
       if (g) out.push('<line class="vz-group-sep" x1="' + num(x0) + '" x2="' + num(x0) + '" y1="' + top + '" y2="' + num(base + 3 * step) + '"/>');
     });
-    return '<svg class="vz-svg vz-columns" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(theme.name + '各分面逐题得分：每根柱是一道题，向上偏向该分面“+”端，向下偏向“' + MINUS + '”端，横线为已答均值。') + '" font-family="' + esc(FONT) + '">' + out.join('') + '</svg>';
+    return '<svg class="vz-svg vz-columns" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(theme.name + '各分面逐题得分：每根柱是一道题，向上偏向该分面“+”端，向下偏向“' + MINUS + '”端，横线为已答均值。') + '" font-family="' + esc(FONT) + '">' + paint(out.join('')) + '</svg>';
   }
   function themeBlock(theme) {
     return '<figure class="vz-figure vz-theme-charts"><figcaption><strong>' + esc(theme.name) + '：雷达图与逐题得分</strong><span class="muted">左：本主题各分面的雷达图。右：多维度得分条形图，每组六根柱是该分面的六道题，向上偏向“+”端、向下偏向“' + MINUS + '”端（反向题已换算），横线为已答均值，空心点为未作有效回答。</span></figcaption><div class="vz-graphic vz-theme-pair"><div class="vz-theme-radar">' + themeRadar(theme) + '</div><div class="vz-theme-columns">' + itemColumns(theme) + '</div></div>' + legend([['pos', '偏向“+”端'], ['neg', '偏向“' + MINUS + '”端'], ['mean', '已答均值'], ['missing', '不了解／不愿回答／漏答']]) + '</figure>';
@@ -367,11 +457,11 @@
     const rows = card.claims.map(c => {
       const v = c.answer, ok = validRating(v);
       const dot = ok ? '<span class="vz-dot-h ' + (v > 4 ? 'pos' : v < 4 ? 'neg' : 'zero') + '" style="left:' + pc((v - 1) / 6 * 100) + '"></span>' : '';
-      return '<div class="vz-claim" data-tip="' + esc(c.id + '：' + c.text + '\n作答 ' + answerText(v)) + '"><span class="vz-claim-key">' + esc(c.key) + '</span><div class="vz-scale">' + [1, 2, 3, 4, 5, 6, 7].map(i => '<i style="left:' + pc((i - 1) / 6 * 100) + '"' + (i === 4 ? ' class="mid"' : '') + '></i>').join('') + dot + '</div><span class="vz-claim-val">' + (ok ? v + ' ' + RATING_TEXT[v] : c.presented ? esc(answerText(v).replace(/^.+ · /, '')) : '未呈现') + '</span></div>';
+      return '<div class="vz-claim" data-tip="' + esc(c.id + '：' + c.text + '\n作答 ' + answerText(v)) + '"><span class="vz-claim-key">' + esc(c.key) + '</span><div class="vz-scale"><span class="vz-scaleline"></span>' + [1, 2, 3, 4, 5, 6, 7].map(i => '<i class="vz-tick-i' + (i === 4 ? ' mid' : '') + '" style="left:' + pc((i - 1) / 6 * 100) + '"></i>').join('') + dot + '</div><span class="vz-claim-val">' + (ok ? v + ' ' + RATING_TEXT[v] : c.presented ? esc(answerText(v).replace(/^.+ · /, '')) : '未呈现') + '</span></div>';
     }).join('');
-    const steps = (value, labels) => '<span class="vz-steps">' + [0, 1, 2, 3].map(i => '<i class="' + (value != null && i <= value ? 'on' : '') + '"></i>').join('') + '</span><span>' + (value == null ? '未记录' : esc(labels[value])) + '</span>';
-    return '<div class="vz-claims vz-graphic"><div class="vz-claims-scale"><span>1 非常不同意</span><span>4 中立</span><span>7 非常同意</span></div>' + rows +
-      '<div class="vz-ki"><span class="vz-ki-name">此前熟悉度</span>' + steps(card.familiarity, FAMILIARITY) + '</div><div class="vz-ki"><span class="vz-ki-name">名称自我认同</span>' + steps(card.identity, IDENTITY) + '</div></div>';
+    const steps = (value, labels) => '<span class="vz-steps">' + [0, 1, 2, 3].map(i => '<i class="vz-step' + (value != null && i <= value ? ' on' : '') + '"></i>').join('') + '</span><span>' + (value == null ? '未记录' : esc(labels[value])) + '</span>';
+    return box('<div class="vz-claims vz-graphic"><div class="vz-claims-scale"><span>1 非常不同意</span><span>4 中立</span><span>7 非常同意</span></div>' + rows +
+      '<div class="vz-ki"><span class="vz-ki-name">此前熟悉度</span>' + steps(card.familiarity, FAMILIARITY) + '</div><div class="vz-ki"><span class="vz-ki-name">名称自我认同</span>' + steps(card.identity, IDENTITY) + '</div></div>');
   }
 
   // ---------------------------------------------------------------- supplements: diverging stacked bars (HTML)
@@ -390,9 +480,9 @@
       if (counts[4]) segs += seg(4, counts[4], 50 - w(counts[4]) / 2);
       x = 50 + w(counts[4]) / 2;
       for (const v of [5, 6, 7]) if (counts[v]) { segs += seg(v, counts[v], x); x += w(counts[v]); }
-      return '<div class="vz-sup-row"><span class="vz-sup-name">' + esc(g.name) + '<small>已呈现 ' + shown + '/' + g.total + '</small></span><div class="vz-sup-track"><span class="vz-grid mid" style="left:50%"></span>' + segs + '</div><span class="vz-sup-other"><span>反对 ' + g.counts.oppose + ' · 中立 ' + g.counts.neutral + ' · 支持 ' + g.counts.support + '</span>' + (other ? '<span>未作有效回答 ' + other + '</span>' : '') + '</span></div>';
+      return '<div class="vz-sup-row"><span class="vz-sup-name">' + esc(g.name) + '<small>已呈现 ' + shown + '/' + g.total + '</small></span><div class="vz-sup-track"><span class="vz-grid mid sup" style="left:50%"></span>' + segs + '</div><span class="vz-sup-other"><span>反对 ' + g.counts.oppose + ' · 中立 ' + g.counts.neutral + ' · 支持 ' + g.counts.support + '</span>' + (other ? '<span>未作有效回答 ' + other + '</span>' : '') + '</span></div>';
     }).join('');
-    return '<figure class="vz-figure vz-sup"><figcaption><strong>补充题组作答分布</strong><span class="muted">每行一个题组，按已呈现的题计算：中线左侧为不同意，右侧为同意，颜色越深越强烈，中立跨在中线上。只统计题数，不计算题组分数。</span></figcaption><div class="vz-graphic">' + rows + '</div>' + legend([['r1', '非常不同意'], ['r2', '不同意'], ['r3', '略不同意'], ['r4', '中立'], ['r5', '略同意'], ['r6', '同意'], ['r7', '非常同意']]) + '</figure>';
+    return box('<figure class="vz-figure vz-sup"><figcaption><strong>补充题组作答分布</strong><span class="muted">每行一个题组，按已呈现的题计算：中线左侧为不同意，右侧为同意，颜色越深越强烈，中立跨在中线上。只统计题数，不计算题组分数。</span></figcaption><div class="vz-graphic">' + rows + '</div>' + legend([['r1', '非常不同意'], ['r2', '不同意'], ['r3', '略不同意'], ['r4', '中立'], ['r5', '略同意'], ['r6', '同意'], ['r7', '非常同意']]) + '</figure>');
   }
 
   // ---------------------------------------------------------------- scenarios: dumbbells (SVG)
@@ -410,7 +500,7 @@
       out.push('<text class="vz-diff" x="' + (W - 6) + '" y="' + (y + 4) + '" text-anchor="end">' + (p.difference == null ? '—' : esc(signed(p.difference))) + '</text>');
       out.push('<rect class="vz-hitbox" x="0" y="' + (y - 22) + '" width="' + W + '" height="' + rowH + '" data-tip="' + esc(p.id + ' ' + p.policy + '\n甲国 ' + answerText(p.a) + '\n乙国 ' + answerText(p.b) + '\n差值（甲−乙） ' + (p.difference == null ? '—' : signed(p.difference))) + '"/>');
     });
-    return '<figure class="vz-figure vz-scenario"><figcaption><strong>甲乙两国情境对照</strong><span class="muted">每行同一项安排在两种设定下的作答；两点相距越远，回答随设定变化越大。右侧为差值（甲−乙）。</span></figcaption><div class="vz-graphic"><svg class="vz-svg" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="甲乙两国情境哑铃图" font-family="' + esc(FONT) + '">' + out.join('') + '</svg></div>' + legend([['a', '甲国'], ['b', '乙国']]) + '</figure>';
+    return '<figure class="vz-figure vz-scenario"><figcaption><strong>甲乙两国情境对照</strong><span class="muted">每行同一项安排在两种设定下的作答；两点相距越远，回答随设定变化越大。右侧为差值（甲−乙）。</span></figcaption><div class="vz-graphic"><svg class="vz-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="甲乙两国情境哑铃图" font-family="' + esc(FONT) + '">' + paint(out.join('')) + '</svg></div>' + legend([['a', '甲国'], ['b', '乙国']]) + '</figure>';
   }
 
   // ---------------------------------------------------------------- answer quality: segmented bar + option histogram
@@ -423,7 +513,7 @@
     const q = result.quality, total = q.presented;
     if (!total) return '';
     const parts = [['valid', '有效（非中立）', q.valid - q.neutral], ['neutral', '中立', q.neutral], ['unknown', '不了解', q.unknown], ['refused', '不愿回答', q.refused], ['missing', '漏答', q.missing]].filter(p => p[2] > 0);
-    const seg = parts.map(([cls, name, n]) => { const share = n / total * 100; return '<span class="vz-qseg ' + cls + '" style="flex:' + n + ' 1 0" data-tip="' + esc(name + '：' + n + ' 项（' + share.toFixed(1) + '%）') + '">' + (share >= 9 ? '<b>' + Math.round(share) + '%</b>' : '') + '</span>'; }).join('');
+    const seg = parts.map(([cls, name, n]) => { const share = n / total * 100; return '<span class="vz-qseg ' + cls + '" style="flex:' + n + ' 1 0" data-tip="' + esc(name + '：' + n + ' 项（' + share.toFixed(1) + '%）') + '">' + (share >= 9 ? '<b class="vz-qlabel' + (cls === 'valid' ? ' valid' : '') + '">' + Math.round(share) + '%</b>' : '') + '</span>'; }).join('');
     const ids = ratingIds(data), counts = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, U: 0, X: 0 };
     for (const id of session.presented || []) {
       if (!ids.has(id)) continue;
@@ -440,7 +530,7 @@
       out.push('<rect class="vz-hitbox" x="' + num(left + i * slot) + '" y="10" width="' + num(slot) + '" height="' + (base - 6) + '" data-tip="' + esc((typeof k === 'number' ? k + ' · ' + RATING_TEXT[k] : k === 'U' ? 'U · 不了解' : '× · 不愿回答') + '：' + n + ' 项') + '"/>');
     });
     out.push('<text class="vz-tick" x="' + num(left + slot * 1.5) + '" y="' + (base + 34) + '" text-anchor="middle">不同意</text><text class="vz-tick" x="' + num(left + slot * 3.5) + '" y="' + (base + 34) + '" text-anchor="middle">中立</text><text class="vz-tick" x="' + num(left + slot * 5.5) + '" y="' + (base + 34) + '" text-anchor="middle">同意</text>');
-    return '<figure class="vz-figure vz-quality"><figcaption><strong>作答构成</strong><span class="muted">上：已呈现的 ' + total + ' 个立场响应项按作答状态划分。下：各选项被使用的次数，反映作答风格（是否常用两端或中立），不用于评判答卷质量。</span></figcaption><div class="vz-graphic"><div class="vz-qbar">' + seg + '</div>' + legend(parts.map(([cls, name, n]) => [cls, name + ' ' + n])) + '<svg class="vz-svg" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="选项使用次数柱状图" font-family="' + esc(FONT) + '">' + out.join('') + '</svg></div></figure>';
+    return '<figure class="vz-figure vz-quality"><figcaption><strong>作答构成</strong><span class="muted">上：已呈现的 ' + total + ' 个立场响应项按作答状态划分。下：各选项被使用的次数，反映作答风格（是否常用两端或中立），不用于评判答卷质量。</span></figcaption><div class="vz-graphic">' + box('<div class="vz-qbar">' + seg + '</div>') + legend(parts.map(([cls, name, n]) => [cls, name + ' ' + n])) + '<svg class="vz-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="选项使用次数柱状图" font-family="' + esc(FONT) + '">' + paint(out.join('')) + '</svg></div></figure>';
   }
 
   // ---------------------------------------------------------------- topic modules: raw answers, one column per item
@@ -458,7 +548,7 @@
       out.push('<rect class="vz-hitbox" x="' + num(left + i * slot) + '" y="' + top + '" width="' + num(slot) + '" height="' + (H - top - 24) + '" data-tip="' + esc(item.id + ' ' + item.text + '\n作答 ' + answerText(v)) + '"/>');
     });
     out.push('<text class="vz-tick" x="' + left + '" y="' + (H - 8) + '">题号（' + esc(module.id) + '01～' + esc(module.id) + String(module.items.length).padStart(2, '0') + '，只画已呈现的题）</text>');
-    return '<figure class="vz-figure vz-module"><figcaption><strong>' + esc(module.title) + '：逐题同意程度</strong><span class="muted">每根柱是一道题的原始作答：向上为同意、向下为不同意，空心点为未作有效回答。各题政治方向不同，图中不合成专题分数。</span></figcaption><div class="vz-graphic"><svg class="vz-svg" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(module.title + '逐题作答柱状图') + '" font-family="' + esc(FONT) + '">' + out.join('') + '</svg></div></figure>';
+    return '<figure class="vz-figure vz-module"><figcaption><strong>' + esc(module.title) + '：逐题同意程度</strong><span class="muted">每根柱是一道题的原始作答：向上为同意、向下为不同意，空心点为未作有效回答。各题政治方向不同，图中不合成专题分数。</span></figcaption><div class="vz-graphic"><svg class="vz-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(module.title + '逐题作答柱状图') + '" font-family="' + esc(FONT) + '">' + paint(out.join('')) + '</svg></div></figure>';
   }
 
   // ---------------------------------------------------------------- closing figure: tendencies with icons (SVG)
@@ -557,7 +647,7 @@
     for (const note of notes) for (const line of lines(note, 10.5, W - 2 * P)) { y += 16; out.push('<text class="vz-s-note" x="' + P + '" y="' + y + '">' + esc(line) + '</text>'); }
     out.push('<text class="vz-s-meta" x="' + P + '" y="' + (y + 20) + '">saigyouji-yukari.github.io/ideology-survey</text>');
     const H = Math.ceil(y + 36);
-    return '<svg class="vz-svg vz-summary-svg' + (compact ? ' compact' : '') + '" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc('作答倾向总览：' + model.facets.map(f => f.name + ' 偏向' + f.negative + f.pct.neg + '%、中立' + f.pct.neu + '%、缺答' + f.pct.mis + '%、偏向' + f.positive + f.pct.pos + '%').join('；')) + '" font-family="' + esc(FONT) + '">' + out.join('').replace('__H__', H) + '</svg>';
+    return '<svg class="vz-svg vz-summary-svg' + (compact ? ' compact' : '') + '" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc('作答倾向总览：' + model.facets.map(f => f.name + ' 偏向' + f.negative + f.pct.neg + '%、中立' + f.pct.neu + '%、缺答' + f.pct.mis + '%、偏向' + f.positive + f.pct.pos + '%').join('；')) + '" font-family="' + esc(FONT) + '">' + paint(out.join('').replace('__H__', H)) + '</svg>';
   }
   function summaryTable(model) {
     return '<details class="report-details vz-data"><summary>查看总览图的数据</summary><div class="report-table-wrap"><table class="report-table"><thead><tr><th scope="col">分面</th><th scope="col">偏向左端</th><th scope="col">中立</th><th scope="col">缺答</th><th scope="col">偏向右端</th><th scope="col">分值</th></tr></thead><tbody>' + model.facets.map(f =>
