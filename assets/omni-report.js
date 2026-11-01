@@ -57,6 +57,30 @@
     return head + charts.fullRadar(result) + charts.themes(result.facets).map(theme => '<div class="vz-theme-block"><h3>' + esc(theme.name) + '</h3>' + charts.themeBlock(theme) + '<div class="report-grid">' + theme.facets.map(facet => facetCard(facet, presented, charts)).join('') + '</div></div>').join('') + '</section>';
   }
 
+  function renderTendencyProfiles(result) {
+    if (!root.OMNI_PROFILE) return '';
+    const people = root.OMNI_PEOPLE || {};
+    const groups = root.OMNI_PROFILE.analyze(result);
+    const statuses = {insufficient:'信息不足',neutral:'中立或尚未形成',mixed:'交叉与混合倾向',unmatched:'暂未找到贴近的参照',tentative:'有条件的接近',closest:'较接近'};
+    function sourceLink(source) {
+      const url = safeUrl(source.url);
+      return url ? '<a href="' + url + '" target="_blank" rel="noopener noreferrer">' + esc(source.title || source.url) + '</a>' : esc(source.title || '资料来源');
+    }
+    function match(candidate) {
+      const person = people[candidate.personId];
+      const image = person && /^assets\/portraits\/[a-z0-9_-]+\.(?:jpg|jpeg|png|webp)$/.test(person.portrait) ? '<img class="tendency-portrait" src="' + esc(person.portrait) + '" alt="' + esc(person.name) + '肖像" width="96" height="120" decoding="async">' : '';
+      const condition = candidate.relation === 'conditional' ? '<p class="notice tendency-condition">' + esc(candidate.condition) + '</p>' : '';
+      const biography = person ? '<figure class="tendency-person">' + image + '<figcaption><strong>代表人物：' + esc(person.name) + '</strong><span class="tendency-years">' + esc(person.years || '') + '</span><p>' + esc(person.description) + '</p></figcaption></figure>' : '<p class="muted">人物资料暂未载入。</p>';
+      const credit = person && person.imageCredit;
+      const sources = (person ? (person.sources || []) : []).map(source=>'<li>' + sourceLink(source) + '</li>').join('');
+      const profileSources = (candidate.sourceUrls || []).map((source,index)=>'<li>' + sourceLink(typeof source === 'string' ? {title:candidate.label + ' · 主张资料 ' + (index+1),url:source} : source) + '</li>').join('');
+      const creditLine = credit ? '<p>肖像：' + esc(credit.title || person.name) + '；' + esc(credit.creator || '作者信息见来源') + '。' + (safeUrl(credit.sourceUrl) ? sourceLink({title:'图像来源',url:credit.sourceUrl}) : '') + ' · ' + (safeUrl(credit.licenseUrl) ? sourceLink({title:credit.licenseName || '许可信息',url:credit.licenseUrl}) : esc(credit.licenseName || '')) + (credit.changes ? '；' + esc(credit.changes) : '') + '</p>' : '';
+      const evidence = (candidate.evidence || []).map(item=>'<li>' + esc(item.name || item.id) + '：' + esc(item.description || ('本次分值 ' + signed(item.value))) + '</li>').join('');
+      return '<article class="tendency-match" data-tendency="' + esc(candidate.id) + '"><h4>' + esc(candidate.label) + '</h4>' + condition + '<p class="tendency-description">' + esc(candidate.description) + '</p>' + biography + '<details class="report-details"><summary>比较依据与资料出处</summary>' + (evidence ? '<ul class="report-evidence">' + evidence + '</ul>' : '') + (profileSources ? '<ul class="report-sources">' + profileSources + '</ul>' : '') + (sources ? '<ul class="report-sources">' + sources + '</ul>' : '') + creditLine + '</details></article>';
+    }
+    return '<section class="report-section tendency-profile" aria-labelledby="report-tendency-profile"><h2 id="report-tendency-profile">基本倾向性画像</h2><p>根据共同题，在六个维度内分别比较典型思想主张。这里的“更接近”是本维度的观点参照；不同维度可以接近不同流派，人物用于介绍思想背景，不表示你认同其全部观点。</p><div class="tendency-grid">' + groups.map((group,index)=>'<section class="tendency-dimension" data-dimension="' + esc(group.section) + '"><div class="tendency-dimension-head"><p class="tendency-section-name">' + String(index+1).padStart(2,'0') + ' · ' + esc(group.section) + '</p><span class="pill">' + esc(statuses[group.status] || group.status) + '</span></div><h3>' + esc(group.title) + '</h3><p class="tendency-basis">' + (group.basis || []).map(esc).join(' ') + '</p>' + (group.candidates.length ? group.candidates.map(match).join('') : '<p class="tendency-empty">' + (group.status === 'insufficient' ? '完成更多本维度的共同题后，再查看流派与人物参照。' : '本次保留这一作答状态，不指定单一流派或代表人物。') + '</p>') + '<p class="tendency-coverage">有效回答 ' + group.coverage.valid + '/' + group.coverage.total + ' · 可用分面 ' + group.coverage.reportable + '/' + group.coverage.required + '</p>' + ((group.limitations || []).length ? '<details class="report-details"><summary>如何理解这一项</summary><ul>' + group.limitations.map(text=>'<li>' + esc(text) + '</li>').join('') + '</ul></details>' : '') + '</section>').join('') + '</div><p class="muted">本栏目使用公开的典型主张比较规则，尚待真实样本校准；距离不代表归属概率。思想卡的逐项核验与自我认同在后文分别报告。<a href="https://github.com/Saigyouji-Yukari/ideology-survey/blob/main/PROFILE_RULES.md" target="_blank" rel="noopener noreferrer">查看比较规则</a></p></section>';
+  }
+
   function renderAtlas(result) {
     const charts = root.OMNI_CHARTS;
     if (!charts) return '';
@@ -177,7 +201,7 @@
     const directional = scoredFacets.filter(facet => facet.value !== 0).sort((a,b) => Math.abs(b.value) - Math.abs(a.value)).slice(0,4);
     const intro = directional.length ? '在有效作答较完整的分面中，本次表达得较突出的方向包括：' + directional.map(facet => facet.name + '偏向“' + (facet.value > 0 ? facet.positive : facet.negative) + '”').join('；') + '。' : scoredFacets.length ? '已可描述的分面均分位于中间位置，具体含义需结合单题中立与交叉立场理解。' : '目前完整作答不足以形成分面点值，报告保留已表达的主张和缺答范围。';
     const cardSummary = supported.length ? '在实际核验的卡片中，' + supported.map(card => card.name).join('、') + '的三项主张均获支持。' : '本次没有达到“三项主张均支持”的完整卡片；这不排除未检验的思想。';
-    return '<article class="omni-report"><header class="report-summary"><p class="eyebrow">个人立场报告 · ' + esc(result.version) + '</p><h1>你的政治立场与思想倾向</h1><p class="muted">答卷编号 ' + esc(result.id || '未命名') + ' · ' + (result.finished ? '已提交答卷' : '当前进度的阶段报告') + '</p><p>' + esc(intro) + '</p><p>' + esc(cardSummary) + (partial.length ? '另有 ' + partial.length + ' 张卡出现部分支持或分歧。' : '') + (insufficient.length ? '有 ' + insufficient.length + ' 张卡信息不足。' : '') + '</p><p>以下结论描述本次作答；名称认同、原有理解、具体保留意见和未检验范围分别列出。</p></header>' + (result.sourceVersion ? '<p class="notice">本答卷记录格式为 ' + esc(result.sourceVersion) + '，已答内容与提交状态予以保留；当前题库中尚未作答的题目不会自动填答。</p>' : '') + renderAtlas(result) + renderCoverage(result, session) + renderFacets(result, presented) + renderCards(result, session, data, presented) + renderSupplements(result, presented) + renderScenarios(result, presented) + renderClosing(result, session) + renderQuality(result, session) + renderRawModules(result, session, data, presented) + '</article>';
+    return '<article class="omni-report"><header class="report-summary"><p class="eyebrow">个人立场报告 · ' + esc(result.version) + '</p><h1>你的政治立场与思想倾向</h1><p class="muted">答卷编号 ' + esc(result.id || '未命名') + ' · ' + (result.finished ? '已提交答卷' : '当前进度的阶段报告') + '</p><p>' + esc(intro) + '</p><p>' + esc(cardSummary) + (partial.length ? '另有 ' + partial.length + ' 张卡出现部分支持或分歧。' : '') + (insufficient.length ? '有 ' + insufficient.length + ' 张卡信息不足。' : '') + '</p><p>以下结论描述本次作答；名称认同、原有理解、具体保留意见和未检验范围分别列出。</p></header>' + renderTendencyProfiles(result) + (result.sourceVersion ? '<p class="notice">本答卷记录格式为 ' + esc(result.sourceVersion) + '，已答内容与提交状态予以保留；当前题库中尚未作答的题目不会自动填答。</p>' : '') + renderAtlas(result) + renderCoverage(result, session) + renderFacets(result, presented) + renderCards(result, session, data, presented) + renderSupplements(result, presented) + renderScenarios(result, presented) + renderClosing(result, session) + renderQuality(result, session) + renderRawModules(result, session, data, presented) + '</article>';
   }
 
   root.OMNI_REPORT = Object.freeze({render, escape:esc, answer});

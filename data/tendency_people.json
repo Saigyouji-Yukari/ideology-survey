@@ -1,0 +1,569 @@
+{
+  "marx": {
+    "id": "marx",
+    "name": "卡尔·马克思",
+    "years": "1818—1883",
+    "description": "德国思想家，《资本论》作者。批判资本主义的阶级关系与剥削，主张生产资料的社会占有；此处用于说明社会主义经济批判传统。",
+    "portrait": "assets/portraits/marx.jpg",
+    "sources": [
+      {
+        "title": "《共产党宣言》原文",
+        "url": "https://www.marxists.org/archive/marx/works/1848/communist-manifesto/"
+      }
+    ],
+    "imageCredit": {
+      "title": "Karl Marx 1875 photographic portrait (3x4 close cropped).png",
+      "creator": "John Jabez Edwin Mayall",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Karl_Marx_1875_photographic_portrait_(3x4_close_cropped).png",
+      "licenseName": "公有领域（Public domain）",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "changes": "使用来源页面所列版本；仅等比缩小并转换为 JPEG，未改变人物形象。"
+    }
+  },
+  "smith": {
+    "id": "smith",
+    "name": "亚当·斯密",
+    "years": "1723—1790",
+    "description": "苏格兰经济学家，《国富论》作者。分析分工、交换与竞争，也承认司法、公共工程和教育的公共作用；此处展示古典市场自由主义。",
+    "portrait": "assets/portraits/smith.jpg",
+    "sources": [
+      {
+        "title": "《国富论》原文",
+        "url": "https://www.gutenberg.org/ebooks/3300"
+      }
+    ],
+    "imageCredit": {
+      "title": "Adam Smith The Muir portrait.jpg",
+      "creator": "作者不详",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Adam_Smith_The_Muir_portrait.jpg",
+      "licenseName": "公有领域（Public domain）",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "changes": "使用来源页面所列版本；仅等比缩小并转换为 JPEG，未改变人物形象。"
+    }
+  },
+  "mill": {
+    "id": "mill",
+    "name": "约翰·斯图亚特·密尔",
+    "years": "1806—1873",
+    "description": "英国哲学家，《论自由》作者。主张思想、讨论与生活方式的自由，并支持妇女平等；此处展示个人自由与社会宽容的思想传统。",
+    "portrait": "assets/portraits/mill.jpg",
+    "sources": [
+      {
+        "title": "《论自由》原文",
+        "url": "https://www.gutenberg.org/ebooks/34901"
+      }
+    ],
+    "imageCredit": {
+      "title": "John Stuart Mill by London Stereoscopic Company, c1870.jpg",
+      "creator": "London Stereoscopic Company",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:John_Stuart_Mill_by_London_Stereoscopic_Company,_c1870.jpg",
+      "licenseName": "公有领域（Public domain）",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "changes": "使用来源页面所列版本；仅等比缩小并转换为 JPEG，未改变人物形象。"
+    }
+  },
+  "keynes": {
+    "id": "keynes",
+    "name": "约翰·梅纳德·凯恩斯",
+    "years": "1883—1946",
+    "description": "英国经济学家，《就业、利息和货币通论》作者。重视有效需求与充分就业，主张公共政策稳定市场经济；此处展示干预型混合经济。",
+    "portrait": "assets/portraits/keynes.jpg",
+    "sources": [
+      {
+        "title": "剑桥大学出版社：《凯恩斯文集》作者介绍",
+        "url": "https://assets.cambridge.org/97811076/18565/frontmatter/9781107618565_frontmatter.pdf"
+      }
+    ],
+    "imageCredit": {
+      "title": "John Maynard Keynes (1929).jpg",
+      "creator": "作者不详；Bettmann Archive 藏",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:John_Maynard_Keynes_(1929).jpg",
+      "licenseName": "公有领域（Public domain）",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "changes": "使用来源页面所列版本；仅等比缩小并转换为 JPEG，未改变人物形象。"
+    }
+  },
+  "bernstein": {
+    "id": "bernstein",
+    "name": "爱德华·伯恩施坦",
+    "years": "1850—1932",
+    "description": "德国社会民主主义理论家。主张以议会民主、工会与合作社逐步推进社会主义，反对把革命崩溃视为唯一道路；此处展示民主渐进改革传统。",
+    "portrait": "assets/portraits/bernstein.jpg",
+    "sources": [
+      {
+        "title": "《社会主义的前提和社会民主党的任务》原文",
+        "url": "https://www.marxists.org/reference/archive/bernstein/works/1899/evsoc/index.htm"
+      }
+    ],
+    "imageCredit": {
+      "title": "Eduard Bernstein (portrait).jpg",
+      "creator": "作者不详",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Eduard_Bernstein_(portrait).jpg",
+      "licenseName": "公有领域（Public domain）",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "changes": "使用来源页面所列版本；仅等比缩小并转换为 JPEG，未改变人物形象。"
+    }
+  },
+  "spencer": {
+    "id": "spencer",
+    "name": "赫伯特·斯宾塞",
+    "years": "1820—1903",
+    "description": "英国哲学家，《个人对国家》作者。强调平等自由、个人权利与自愿合作，批评国家不断扩张；此处展示有限政府和经济自由主义。",
+    "portrait": "assets/portraits/spencer.jpg",
+    "sources": [
+      {
+        "title": "斯坦福哲学百科：Herbert Spencer",
+        "url": "https://plato.stanford.edu/entries/spencer/"
+      }
+    ],
+    "imageCredit": {
+      "title": "Herbert Spencer.jpg",
+      "creator": "Unknown",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Herbert_Spencer.jpg",
+      "licenseName": "公有领域（Public domain）",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "changes": "使用来源页面所列版本；仅等比缩小并转换为 JPEG，未改变人物形象。"
+    }
+  },
+  "proudhon": {
+    "id": "proudhon",
+    "name": "皮埃尔-约瑟夫·蒲鲁东",
+    "years": "1809—1865",
+    "description": "法国社会主义与无政府主义思想家。批判支配性的财产权，重视互惠交换、劳动者自治与联邦组织；此处展示互助主义和分散合作传统。",
+    "portrait": "assets/portraits/proudhon.jpg",
+    "sources": [
+      {
+        "title": "《什么是所有权？》原文",
+        "url": "https://www.gutenberg.org/ebooks/360"
+      }
+    ],
+    "imageCredit": {
+      "title": "Portrait of Pierre Joseph Proudhon 1865.jpg",
+      "creator": "Gustave Courbet",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Portrait_of_Pierre_Joseph_Proudhon_1865.jpg",
+      "licenseName": "公有领域（Public domain）",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "changes": "使用来源页面所列版本；仅等比缩小并转换为 JPEG，未改变人物形象。"
+    }
+  },
+  "lenin": {
+    "id": "lenin",
+    "name": "弗拉基米尔·列宁",
+    "years": "1870—1924",
+    "description": "俄国革命家与马克思主义理论家。强调革命政党组织、夺取国家权力及无产阶级过渡政权；此处展示集中组织的革命社会主义传统。",
+    "portrait": "assets/portraits/lenin.jpg",
+    "sources": [
+      {
+        "title": "《国家与革命》原文",
+        "url": "https://www.marxists.org/archive/lenin/works/1917/staterev/"
+      }
+    ],
+    "imageCredit": {
+      "title": "Lenin in 1920 (cropped).jpg",
+      "creator": "作者不详（官方摄影）",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lenin_in_1920_(cropped).jpg",
+      "licenseName": "公有领域（Public domain）",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "changes": "使用来源页面所列版本；仅等比缩小并转换为 JPEG，未改变人物形象。"
+    }
+  },
+  "hobbes": {
+    "id": "hobbes",
+    "name": "托马斯·霍布斯",
+    "years": "1588—1679",
+    "description": "英国哲学家，《利维坦》作者。以社会契约论证主权权威，强调避免内战与保障安全；此处展示秩序与统一权威优先的政治思路。",
+    "portrait": "assets/portraits/hobbes.jpg",
+    "sources": [
+      {
+        "title": "斯坦福哲学百科：霍布斯的道德与政治哲学",
+        "url": "https://plato.stanford.edu/entries/hobbes-moral/"
+      }
+    ],
+    "imageCredit": {
+      "title": "Thomas Hobbes by John Michael Wright (colour) (3x4 cropped).jpg",
+      "creator": "John Michael Wright",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Thomas_Hobbes_by_John_Michael_Wright_(colour)_(3x4_cropped).jpg",
+      "licenseName": "公有领域（Public domain）",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "changes": "使用来源页面所列版本；仅等比缩小并转换为 JPEG，未改变人物形象。"
+    }
+  },
+  "montesquieu": {
+    "id": "montesquieu",
+    "name": "孟德斯鸠",
+    "years": "1689—1755",
+    "description": "法国启蒙思想家，《论法的精神》作者。关注权力对自由的威胁，主张以制度安排约束权力；此处展示分权制衡与宪政传统。",
+    "portrait": "assets/portraits/montesquieu.jpg",
+    "sources": [
+      {
+        "title": "斯坦福哲学百科：Montesquieu",
+        "url": "https://plato.stanford.edu/entries/montesquieu/"
+      }
+    ],
+    "imageCredit": {
+      "title": "Charles Montesquieu.jpg",
+      "creator": "After Jacques-Antoine Dassier",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Charles_Montesquieu.jpg",
+      "licenseName": "公有领域（Public domain）",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "changes": "使用来源页面所列版本；仅等比缩小并转换为 JPEG，未改变人物形象。"
+    }
+  },
+  "rousseau": {
+    "id": "rousseau",
+    "name": "让-雅克·卢梭",
+    "years": "1712—1778",
+    "description": "日内瓦思想家，《社会契约论》作者。强调人民主权、公意与公民共同立法；此处展示参与和共和自治传统，不代表其全部社会观点。",
+    "portrait": "assets/portraits/rousseau.jpg",
+    "sources": [
+      {
+        "title": "斯坦福哲学百科：Jean-Jacques Rousseau",
+        "url": "https://plato.stanford.edu/entries/rousseau/"
+      }
+    ],
+    "imageCredit": {
+      "title": "Maurice Quentin de La Tour - Portrait of Jean-Jacques Rousseau - adjusted.jpg",
+      "creator": "Maurice Quentin de La Tour (Life time: 1788)",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Maurice_Quentin_de_La_Tour_-_Portrait_of_Jean-Jacques_Rousseau_-_adjusted.jpg",
+      "licenseName": "公有领域（Public domain）",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "changes": "使用来源页面所列版本；仅等比缩小并转换为 JPEG，未改变人物形象。"
+    }
+  },
+  "burke": {
+    "id": "burke",
+    "name": "埃德蒙·伯克",
+    "years": "1729—1797",
+    "description": "爱尔兰出生的英国政治家与思想家。重视历史经验、社会联系和审慎改革，批评抽象方案对既有秩序的激烈重塑；此处展示渐进保守传统。",
+    "portrait": "assets/portraits/burke.jpg",
+    "sources": [
+      {
+        "title": "斯坦福哲学百科：Edmund Burke",
+        "url": "https://plato.stanford.edu/entries/burke/"
+      }
+    ],
+    "imageCredit": {
+      "title": "Sir Joshua Reynolds - Edmund Burke, 1729 - 1797. Statesman, orator and author - PG 2362 - National Galleries of Scotland (cropped).jpg",
+      "creator": "Joshua Reynolds；裁切版由 Wikimedia Commons 提供",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sir_Joshua_Reynolds_-_Edmund_Burke,_1729_-_1797._Statesman,_orator_and_author_-_PG_2362_-_National_Galleries_of_Scotland_(cropped).jpg",
+      "licenseName": "公有领域（Public domain）",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "changes": "使用来源页面所列版本；仅等比缩小并转换为 JPEG，未改变人物形象。"
+    }
+  },
+  "dewey": {
+    "id": "dewey",
+    "name": "约翰·杜威",
+    "years": "1859—1952",
+    "description": "美国实用主义哲学家。把民主视为共同生活和公共探究的过程，重视教育、参与与以经验修正制度；此处展示民主实验主义传统。",
+    "portrait": "assets/portraits/dewey.jpg",
+    "sources": [
+      {
+        "title": "斯坦福哲学百科：杜威的政治哲学",
+        "url": "https://plato.stanford.edu/entries/dewey-political/"
+      }
+    ],
+    "imageCredit": {
+      "title": "John Dewey cph.3a51565.jpg",
+      "creator": "Underwood & Underwood",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:John_Dewey_cph.3a51565.jpg",
+      "licenseName": "公有领域（Public domain）",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "changes": "使用来源页面所列版本；仅等比缩小并转换为 JPEG，未改变人物形象。"
+    }
+  },
+  "luxemburg": {
+    "id": "luxemburg",
+    "name": "罗莎·卢森堡",
+    "years": "1871—1919",
+    "description": "波兰出生的马克思主义理论家。强调群众自发行动、社会主义变革与政治自由，反对以日常改良替代根本转型；此处展示群众民主的革命传统。",
+    "portrait": "assets/portraits/luxemburg.jpg",
+    "sources": [
+      {
+        "title": "《社会改良还是社会革命？》原文",
+        "url": "https://www.marxists.org/archive/luxemburg/1900/reform-revolution/"
+      }
+    ],
+    "imageCredit": {
+      "title": "Rosa Luxemburg (cropped).jpg",
+      "creator": "作者不详",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Rosa_Luxemburg_(cropped).jpg",
+      "licenseName": "公有领域（Public domain）",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "changes": "使用来源页面所列版本；仅等比缩小并转换为 JPEG，未改变人物形象。"
+    }
+  },
+  "gandhi": {
+    "id": "gandhi",
+    "name": "莫罕达斯·卡拉姆昌德·甘地",
+    "years": "1869—1948",
+    "description": "印度独立运动领袖。以坚持真理、非暴力不合作和自治组织政治行动，重视手段与目的的一致；此处展示非暴力社会变革传统。",
+    "portrait": "assets/portraits/gandhi.jpg",
+    "sources": [
+      {
+        "title": "甘地原著选集：Swaraj",
+        "url": "https://www.mkgandhi.org/voiceoftruth/swaraj.php"
+      }
+    ],
+    "imageCredit": {
+      "title": "Mahatma-Gandhi, studio, 1931.jpg",
+      "creator": "Elliott & Fry",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mahatma-Gandhi,_studio,_1931.jpg",
+      "licenseName": "公有领域（Public domain）",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "changes": "使用来源页面所列版本；仅等比缩小并转换为 JPEG，未改变人物形象。"
+    }
+  },
+  "kant": {
+    "id": "kant",
+    "name": "伊曼努尔·康德",
+    "years": "1724—1804",
+    "description": "德国哲学家，《永久和平论》作者。探讨共和制度、国际法和世界公民权，以法律合作限制战争；此处展示世界主义与国际法和平传统。",
+    "portrait": "assets/portraits/kant.jpg",
+    "sources": [
+      {
+        "title": "斯坦福哲学百科：康德的社会与政治哲学",
+        "url": "https://plato.stanford.edu/entries/kant-social-political/"
+      }
+    ],
+    "imageCredit": {
+      "title": "Immanuel Kant - Gemaelde 1.jpg",
+      "creator": "Johann Gottlieb Becker (1720-1782)",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Immanuel_Kant_-_Gemaelde_1.jpg",
+      "licenseName": "公有领域（Public domain）",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "changes": "使用来源页面所列版本；仅等比缩小并转换为 JPEG，未改变人物形象。"
+    }
+  },
+  "wollstonecraft": {
+    "id": "wollstonecraft",
+    "name": "玛丽·沃斯通克拉夫特",
+    "years": "1759—1797",
+    "description": "英国思想家，《女权辩护》作者。主张妇女具有理性能力，应享有教育与公民平等，批评使女性依附的社会安排；此处展示平等主义女权传统。",
+    "portrait": "assets/portraits/wollstonecraft.jpg",
+    "sources": [
+      {
+        "title": "斯坦福哲学百科：Mary Wollstonecraft",
+        "url": "https://plato.stanford.edu/entries/wollstonecraft/"
+      }
+    ],
+    "imageCredit": {
+      "title": "Mary Wollstonecraft Portrait.jpg",
+      "creator": "John Opie",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mary_Wollstonecraft_Portrait.jpg",
+      "licenseName": "公有领域（Public domain）",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "changes": "使用来源页面所列版本；仅等比缩小并转换为 JPEG，未改变人物形象。"
+    }
+  },
+  "douglass": {
+    "id": "douglass",
+    "name": "弗雷德里克·道格拉斯",
+    "years": "约1818—1895",
+    "description": "美国废奴主义者、作家和演说家。反对奴隶制与种族压迫，并支持妇女权利；此处展示平等公民资格与反支配的思想实践。",
+    "portrait": "assets/portraits/douglass.jpg",
+    "sources": [
+      {
+        "title": "美国国家公园管理局：Frederick Douglass",
+        "url": "https://www.nps.gov/people/frederick-douglass.htm"
+      }
+    ],
+    "imageCredit": {
+      "title": "Frederick Douglass (circa 1879) (cropped).jpg",
+      "creator": "George Kendall Warren",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Frederick_Douglass_(circa_1879)_(cropped).jpg",
+      "licenseName": "公有领域（Public domain）",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "changes": "使用来源页面所列版本；仅等比缩小并转换为 JPEG，未改变人物形象。"
+    }
+  },
+  "aquinas": {
+    "id": "aquinas",
+    "name": "托马斯·阿奎那",
+    "years": "约1225—1274",
+    "description": "中世纪神学家与哲学家。以自然法、共同善和德性讨论法律及公共秩序；此处展示宗教自然法传统，不把它等同于现代神权政治。",
+    "portrait": "assets/portraits/aquinas.jpg",
+    "sources": [
+      {
+        "title": "斯坦福哲学百科：阿奎那的道德、政治与法律哲学",
+        "url": "https://plato.stanford.edu/entries/aquinas-moral-political/"
+      }
+    ],
+    "imageCredit": {
+      "title": "St-thomas-aquinasFXD.jpg",
+      "creator": "Carlo Crivelli",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:St-thomas-aquinasFXD.jpg",
+      "licenseName": "公有领域（Public domain）",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "changes": "使用来源页面所列版本；仅等比缩小并转换为 JPEG，未改变人物形象。"
+    }
+  },
+  "herder": {
+    "id": "herder",
+    "name": "约翰·戈特弗里德·赫尔德",
+    "years": "1744—1803",
+    "description": "德国思想家。重视语言、历史与文化共同体，同时反对种族等级、征服及文化压迫；此处展示文化多样性传统，不代表血缘排外主义。",
+    "portrait": "assets/portraits/herder.jpg",
+    "sources": [
+      {
+        "title": "斯坦福哲学百科：Johann Gottfried von Herder",
+        "url": "https://plato.stanford.edu/entries/herder/"
+      }
+    ],
+    "imageCredit": {
+      "title": "Johann Gottfried Herder 2.jpg",
+      "creator": "Anton Graff",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Johann_Gottfried_Herder_2.jpg",
+      "licenseName": "公有领域（Public domain）",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "changes": "使用来源页面所列版本；仅等比缩小并转换为 JPEG，未改变人物形象。"
+    }
+  },
+  "mazzini": {
+    "id": "mazzini",
+    "name": "朱塞佩·马志尼",
+    "years": "1805—1872",
+    "description": "意大利共和主义者与民族统一运动人物。强调民族自决、人民共和及对人类的公共义务；此处展示公民共和式民族主义传统。",
+    "portrait": "assets/portraits/mazzini.jpg",
+    "sources": [
+      {
+        "title": "《论人的义务》原文：汉诺威学院历史文本项目",
+        "url": "https://history.hanover.edu/texts/mazzini/mazzini1.html"
+      }
+    ],
+    "imageCredit": {
+      "title": "Giuseppe Mazzini.jpg",
+      "creator": "作者不详",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Giuseppe_Mazzini.jpg",
+      "licenseName": "公有领域（Public domain）",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "changes": "使用来源页面所列版本；仅等比缩小并转换为 JPEG，未改变人物形象。"
+    }
+  },
+  "tolstoy": {
+    "id": "tolstoy",
+    "name": "列夫·托尔斯泰",
+    "years": "1828—1910",
+    "description": "俄国作家与宗教思想家。在《天国在你们心中》中批判国家暴力与战争，主张以爱和不抵抗暴力生活；此处展示伦理和平主义传统。",
+    "portrait": "assets/portraits/tolstoy.jpg",
+    "sources": [
+      {
+        "title": "《天国在你们心中》原文",
+        "url": "https://www.gutenberg.org/ebooks/43302"
+      }
+    ],
+    "imageCredit": {
+      "title": "Leo Tolstoy 1897, black and white, 37767u (cropped).jpg",
+      "creator": "F. W. Taylor",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Leo_Tolstoy_1897,_black_and_white,_37767u_(cropped).jpg",
+      "licenseName": "公有领域（Public domain）",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "changes": "使用来源页面所列版本；仅等比缩小并转换为 JPEG，未改变人物形象。"
+    }
+  },
+  "machiavelli": {
+    "id": "machiavelli",
+    "name": "尼科洛·马基雅维利",
+    "years": "1469—1527",
+    "description": "佛罗伦萨政治思想家，《君主论》与《论李维》作者。研究权力、国家存续和共和自由；此处展示政治现实主义，不等同于无条件赞成强权。",
+    "portrait": "assets/portraits/machiavelli.jpg",
+    "sources": [
+      {
+        "title": "斯坦福哲学百科：Niccolò Machiavelli",
+        "url": "https://plato.stanford.edu/entries/machiavelli/"
+      }
+    ],
+    "imageCredit": {
+      "title": "Portrait of Niccolò Machiavelli by Santi di Tito.jpg",
+      "creator": "Santi di Tito",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Portrait_of_Niccol%C3%B2_Machiavelli_by_Santi_di_Tito.jpg",
+      "licenseName": "公有领域（Public domain）",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "changes": "使用来源页面所列版本；仅等比缩小并转换为 JPEG，未改变人物形象。"
+    }
+  },
+  "muir": {
+    "id": "muir",
+    "name": "约翰·缪尔",
+    "years": "1838—1914",
+    "description": "苏格兰出生的美国自然保护倡导者。推动荒野与国家公园保护，强调自然的审美和精神价值；此处展示以保存自然为中心的生态保护传统。",
+    "portrait": "assets/portraits/muir.jpg",
+    "sources": [
+      {
+        "title": "约翰·缪尔国家历史遗址：美国国家公园管理局",
+        "url": "https://www.nps.gov/jomu/learn/historyculture/people.htm"
+      }
+    ],
+    "imageCredit": {
+      "title": "John Muir Watkins Portrait circa 1875 Edit.png",
+      "creator": "Carlton E. Watkins",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:John_Muir_Watkins_Portrait_circa_1875_Edit.png",
+      "licenseName": "公有领域（Public domain）",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "changes": "使用来源页面所列版本；仅等比缩小并转换为 JPEG，未改变人物形象。"
+    }
+  },
+  "carson": {
+    "id": "carson",
+    "name": "蕾切尔·卡森",
+    "years": "1907—1964",
+    "description": "美国海洋生物学家，《寂静的春天》作者。揭示农药的生态与健康风险，强调科学证据和公共监督；此处展示环境保护与技术审慎传统。",
+    "portrait": "assets/portraits/carson.jpg",
+    "sources": [
+      {
+        "title": "美国鱼类及野生动物管理局：Rachel Carson",
+        "url": "https://www.fws.gov/staff-profile/rachel-carson-1907-1964-author-modern-environmental-movement"
+      }
+    ],
+    "imageCredit": {
+      "title": "Rachel-Carson.jpg",
+      "creator": "U.S. Fish and Wildlife Service",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Rachel-Carson.jpg",
+      "licenseName": "公有领域（Public domain）",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "changes": "使用来源页面所列版本；仅等比缩小并转换为 JPEG，未改变人物形象。"
+    }
+  },
+  "bacon": {
+    "id": "bacon",
+    "name": "弗朗西斯·培根",
+    "years": "1561—1626",
+    "description": "英国哲学家与政治家。提倡以观察、实验和归纳重建知识，并通过合作研究改善生活；此处展示经验研究与科学应用的思想传统。",
+    "portrait": "assets/portraits/bacon.jpg",
+    "sources": [
+      {
+        "title": "斯坦福哲学百科：Francis Bacon",
+        "url": "https://plato.stanford.edu/entries/francis-bacon/"
+      }
+    ],
+    "imageCredit": {
+      "title": "Somer Francis Bacon.jpg",
+      "creator": "Paul van Somer I / Formerly attributed to Frans Pourbus the Younger",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Somer_Francis_Bacon.jpg",
+      "licenseName": "公有领域（Public domain）",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "changes": "使用来源页面所列版本；仅等比缩小并转换为 JPEG，未改变人物形象。"
+    }
+  },
+  "pinchot": {
+    "id": "pinchot",
+    "name": "吉福德·平肖",
+    "years": "1865—1946",
+    "description": "美国林业学家和公共管理者。倡导以科学管理实现自然资源的长期公共利用；此处展示资源保育传统，与缪尔强调荒野保存的路线有所不同。",
+    "portrait": "assets/portraits/pinchot.jpg",
+    "sources": [
+      {
+        "title": "美国国家公园管理局：Gifford Pinchot",
+        "url": "https://www.nps.gov/articles/gifford-pinchot.htm"
+      }
+    ],
+    "imageCredit": {
+      "title": "Gifford Pinchot.jpg",
+      "creator": "Unknown photographer",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gifford_Pinchot.jpg",
+      "licenseName": "公有领域（Public domain）",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "changes": "使用来源页面所列版本；仅等比缩小并转换为 JPEG，未改变人物形象。"
+    }
+  }
+}

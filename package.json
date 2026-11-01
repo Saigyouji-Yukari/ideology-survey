@@ -1,11 +1,12 @@
 {
   "name": "ideology-survey",
-  "version": "6.1.0",
+  "version": "6.2.0",
   "private": true,
   "description": "Browser-local OMNI political attitudes questionnaire",
   "scripts": {
-    "test": "node --test tests/engine.test.cjs tests/session.test.cjs tests/report.test.cjs tests/charts.test.cjs",
-    "test:browser": "node tests/browser.test.cjs"
+    "test": "node --test tests/engine.test.cjs tests/session.test.cjs tests/report.test.cjs tests/charts.test.cjs tests/profile.test.cjs tests/people.test.cjs",
+    "test:browser": "node tests/browser.test.cjs",
+    "test:profiles": "node tests/profile-browser.test.cjs"
   },
   "devDependencies": {"playwright": "1.62.1"}
 }

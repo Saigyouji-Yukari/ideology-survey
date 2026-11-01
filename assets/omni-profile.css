@@ -1,0 +1,24 @@
+/* Six-dimensional tendency references; colors follow the existing report theme. */
+.tendency-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; align-items:start; }
+.tendency-dimension { min-width:0; padding:20px; border:1px solid var(--line,#d6dde7); border-radius:12px; background:var(--surface,#fff); }
+.tendency-dimension-head { display:flex; gap:10px; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; }
+.tendency-section-name { margin:0 0 8px; font-size:.85rem; font-weight:700; color:var(--accent,#1f3864); }
+.tendency-dimension h3 { margin:6px 0 12px; font-size:1.12rem; color:var(--accent,#1f3864); overflow-wrap:anywhere; }
+.tendency-dimension .pill { font-size:.72rem; }
+.tendency-basis,.tendency-description { font-size:.88rem; line-height:1.7; }
+.tendency-match { margin-top:16px; padding-top:14px; border-top:1px solid var(--line,#d6dde7); }
+.tendency-match h4 { margin:0 0 8px; font-size:1rem; }
+.tendency-person { display:grid; grid-template-columns:80px minmax(0,1fr); gap:14px; align-items:start; margin:16px 0 8px; }
+.tendency-portrait { display:block; width:80px; height:100px; object-fit:cover; object-position:50% 28%; border:1px solid var(--line,#d6dde7); border-radius:8px; background:#e6e9ee; filter:grayscale(.2); }
+.tendency-person figcaption { min-width:0; line-height:1.6; font-size:.85rem; }
+.tendency-person strong { display:block; font-size:.9rem; }
+.tendency-years { display:block; color:var(--muted,#596678); font-size:.8rem; }
+.tendency-person p { margin:8px 0 0; }
+.tendency-coverage { font-size:.78rem; color:var(--muted,#596678); margin:14px 0 0; }
+.tendency-empty { margin:18px 0; padding:12px; background:var(--accent-soft,#e5ebf5); border-radius:8px; font-size:.88rem; }
+.tendency-profile .report-details { font-size:.82rem; }
+.tendency-profile .report-details ul { padding-left:20px; }
+.tendency-profile a { overflow-wrap:anywhere; }
+@media(max-width:760px) { .tendency-grid { grid-template-columns:minmax(0,1fr); } }
+@media(max-width:390px) { .tendency-dimension { padding:16px; } .tendency-person { grid-template-columns:64px minmax(0,1fr); gap:12px; } .tendency-portrait { width:64px; height:80px; } }
+@media print { .tendency-grid { display:block; } .tendency-dimension { break-inside:avoid; page-break-inside:avoid; margin:0 0 14px; padding:14px; background:#fff; color:#111; } .tendency-match { break-inside:avoid; } .tendency-profile .tendency-portrait { filter:none; } }
