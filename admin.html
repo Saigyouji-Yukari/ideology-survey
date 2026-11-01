@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'none'; form-action 'none'; base-uri 'none'; object-src 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="robots" content="noindex">
+<title>施测者计分器 · 意识形态测试调查</title>
+<link rel="stylesheet" href="assets/admin.css">
+</head>
+<body>
+<div class="page">
+  <header class="top">
+    <div>
+      <h1>意识形态测试计分器</h1>
+      <div class="sub">按《施测者计分说明》自动计分：录入答案，直接得到三层结果和补问建议</div>
+    </div>
+    <nav class="tabs" role="tablist" aria-label="视图">
+      <button class="tab" role="tab" id="tab-single" aria-selected="true" data-view="single">单份计分</button>
+      <button class="tab" role="tab" id="tab-batch" aria-selected="false" data-view="batch">批量计分</button>
+      <button class="tab" role="tab" id="tab-help" aria-selected="false" data-view="help">使用说明</button>
+    </nav>
+  </header>
+
+  <section id="view-single" role="tabpanel" aria-labelledby="tab-single">
+    <div class="toolbar">
+      <label for="cur-id">编号 <input type="text" id="cur-id" autocomplete="off" placeholder="如 2026-001"></label>
+      <button class="btn" id="btn-new">清空，录入新答卷</button>
+      <button class="btn" id="btn-example">载入示例答卷</button>
+      <span class="count" id="fill-count"></span>
+      <button class="btn narrow-only" id="btn-jump">看结果 ↓</button>
+      <span class="privacy">计分在本页内完成，答案不会上传；草稿只保存在这台电脑的浏览器里。作答者在问卷结果页得到的“答卷代码”，可以直接粘贴到第1格或“批量计分”。</span>
+    </div>
+    <div class="banner" id="example-banner" hidden>当前是示例答卷（虚构，不对应任何真实作答者），用来演示补问流程。点“清空，录入新答卷”开始录入真实答卷。</div>
+    <div class="work">
+      <div class="sheet-wrap">
+        <div class="sheet-head">
+          <div class="focus-bar" id="focus-bar"><span class="muted">点任意一格，这里显示对应的题目。</span></div>
+          <p class="hint">每格填 1～7；不了解填 U，不愿回答填 ×（可以直接按 x 键）。填完一格自动跳到下一格，←→ 键移动，退格键在空格上可回到上一格。也可以把 Excel 里一整行答案粘贴到第1格。带圆点的是判别题。</p>
+        </div>
+        <div class="sheet" id="sheet"></div>
+      </div>
+      <div class="result-wrap" id="result"></div>
+    </div>
+  </section>
+
+  <section id="view-batch" role="tabpanel" aria-labelledby="tab-batch" hidden>
+    <div class="batch-grid">
+      <div class="card">
+        <h2>批量计分</h2>
+        <p>在 Excel 或 WPS 表格里每位作答者录一行，第一行是表头。选中整张表（含表头）复制，粘贴到下面的框里，再点“计分”。也可以导入另存的 CSV 文件。表头和列顺序见“使用说明”，可以用下面的按钮复制或下载。</p>
+        <textarea class="paste" id="batch-text" spellcheck="false" placeholder="在这里粘贴：第一行表头（编号、1、2、……），下面每位作答者一行"></textarea>
+        <div class="row">
+          <button class="btn primary" id="batch-run">计分</button>
+          <span class="btn file-btn">从文件导入<input type="file" id="batch-file" accept=".csv,.txt,.tsv,text/csv,text/plain" aria-label="从文件导入"></span>
+          <button class="btn" id="batch-clear">清空</button>
+          <button class="btn" id="copy-header">复制录入表头</button>
+          <button class="btn dl-only" id="dl-template">下载录入模板（CSV）</button>
+        </div>
+        <div class="msg" id="batch-msg"></div>
+      </div>
+      <div class="card" id="batch-result-card">
+        <h2>结果 <span class="layer" id="batch-count"></span></h2>
+        <div id="batch-result"></div>
+        <div class="row">
+          <button class="btn dl-only" id="dl-results">导出结果（CSV）</button>
+          <button class="btn" id="copy-results">复制结果表</button>
+        </div>
+        <details><summary>结果表文字（复制按钮无效时，可在这里手动全选复制）</summary><textarea class="report" id="results-tsv" readonly></textarea></details>
+      </div>
+    </div>
+  </section>
+
+  <section id="view-help" role="tabpanel" aria-labelledby="tab-help" hidden>
+    <div class="help" id="help"></div>
+  </section>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="assets/data.js"></script>
+<script src="assets/examples.js"></script>
+<script src="assets/engine.js"></script>
+<script src="assets/admin.js"></script>
+</body>
+</html>

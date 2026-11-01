@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'none'; form-action 'none'; base-uri 'none'; object-src 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="description" content="意识形态测试调查：政治立场与思想倾向评估。267题，作答后自动生成各维度详细分析，以及与14个思想传统的比较。匿名作答，答案只保存在你的浏览器里。">
+<title>意识形态测试调查</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231f3864'/%3E%3Cpath d='M7 16h18' stroke='%23fff' stroke-width='2'/%3E%3Ccircle cx='20' cy='16' r='4' fill='%23fff'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="site-head">
+  <div class="wrap head-row">
+    <a class="brand" href="#" id="brand">意识形态测试调查</a>
+    <span class="head-sub">政治立场与思想倾向问卷</span>
+  </div>
+</header>
+
+<main class="wrap">
+  <!-- 首页与作答说明 -->
+  <section id="view-intro" class="view" aria-labelledby="intro-title">
+    <div class="intro-hero">
+      <svg class="emblem" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 32h48" stroke="currentColor" stroke-width="2"/><path d="M32 8v48" stroke="currentColor" stroke-width="1" opacity=".45"/><circle cx="43" cy="24" r="6" fill="currentColor"/></svg>
+      <h1 id="intro-title">意识形态测试调查</h1>
+      <p class="tagline">政治立场与思想倾向评估</p>
+      <p class="lede">本测试共 <b data-total>267</b> 道题，涵盖经济制度、国家与革命、民主与公民权利、阶级与社会、政党与组织、文化与宗教、民族、国际关系、生态与技术、方法与伦理等方面。作答结束后，网页会自动生成你在各维度上的详细分析，以及你的主张与 14 个思想传统的比较。</p>
+      <ul class="badges" aria-label="测试概况">
+        <li><b>14</b>个思想传统</li>
+        <li><b data-total>267</b>道题</li>
+        <li>逐维度详细解读</li>
+        <li>约 50～60 分钟</li>
+        <li>匿名，不上传</li>
+      </ul>
+      <div class="intro-actions" id="intro-actions"></div>
+      <p class="privacy-note"><b>隐私：</b>不需要填写任何身份信息。答案只保存在你这台设备的浏览器里，可以中途离开、回来继续；本页面不联网上传、不使用统计或第三方服务。用公共电脑作答时，结束后请点“清除本机记录”。</p>
+    </div>
+    <div class="instr">
+      <h2>作答说明</h2>
+      <ol id="instr-list" class="instr-list"></ol>
+    </div>
+  </section>
+
+  <!-- 逐题作答 -->
+  <section id="view-quiz" class="view" hidden aria-label="作答">
+    <div class="q-top">
+      <div class="q-meta"><span id="q-sec" class="q-sec"></span><span id="q-count" class="q-count"></span></div>
+      <div class="progress" aria-hidden="true"><div id="q-bar" class="bar"></div></div>
+    </div>
+    <article id="q-card" class="q-card" aria-live="polite"></article>
+    <nav class="q-nav" aria-label="题目切换">
+      <button class="btn ghost" id="q-prev">← 上一题</button>
+      <button class="btn ghost" id="q-map">题目总览</button>
+      <button class="btn ghost" id="q-next">跳过 →</button>
+    </nav>
+    <p class="kbd-hint">键盘：数字键作答，U 不了解，X 不愿回答，← 上一题，→ 下一题。每答一题自动保存。</p>
+  </section>
+
+  <!-- 交卷前检查 -->
+  <section id="view-review" class="view" hidden aria-labelledby="review-title">
+    <div class="panel">
+      <h2 id="review-title">全部题目已经答完</h2>
+      <div id="review-body"></div>
+    </div>
+  </section>
+
+  <!-- 补充题 -->
+  <section id="view-followup" class="view" hidden aria-label="补充作答">
+    <div id="fu-body"></div>
+  </section>
+
+  <!-- 结果 -->
+  <section id="view-result" class="view" hidden aria-label="分析结果">
+    <div id="result-body"></div>
+  </section>
+</main>
+
+<!-- 题目总览 -->
+<div class="overlay" id="map-overlay" hidden>
+  <div class="map-box" role="dialog" aria-modal="true" aria-labelledby="map-title">
+    <div class="map-head"><h2 id="map-title">题目总览</h2><button class="btn ghost" id="map-close">关闭</button></div>
+    <p class="map-legend"><span class="lg done"></span>已答 <span class="lg u"></span>不了解 <span class="lg x"></span>不愿回答 <span class="lg empty"></span>未答　点题号可跳转</p>
+    <div id="map-grid"></div>
+  </div>
+</div>
+
+<footer class="site-foot">
+  <div class="wrap">本测试的结果只概括你在问卷所列议题上的表态，不是对你意识形态的诊断；思想传统的比较只在问卷选定的14个传统之间进行，计分规则尚未经过真实样本检验。</div>
+</footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="assets/data.js"></script>
+<script src="assets/engine.js"></script>
+<script src="assets/survey.js"></script>
+</body>
+</html>
