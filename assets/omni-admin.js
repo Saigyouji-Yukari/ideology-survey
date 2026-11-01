@@ -142,10 +142,10 @@
   });
   $('session-select').addEventListener('change', event => { selectedIndex = Number(event.target.value); displaySelected(); });
   $('export-csv').addEventListener('click', () => {
-    if (sessions.length) download('OMNI-批量分析汇总.csv', csv(sessions), 'text/csv;charset=utf-8');
+    if (sessions.length) download('批量分析汇总.csv', csv(sessions), 'text/csv;charset=utf-8');
   });
   $('export-json').addEventListener('click', () => {
-    if (sessions[selectedIndex]) download('OMNI-' + safeFilename(sessions[selectedIndex].id) + '.json', JSON.stringify(sessions[selectedIndex],null,2), 'application/json;charset=utf-8');
+    if (sessions[selectedIndex]) download(safeFilename(sessions[selectedIndex].id) + '-答卷.json', JSON.stringify(sessions[selectedIndex],null,2), 'application/json;charset=utf-8');
   });
   $('print-report').addEventListener('click', () => {
     if (!sessions[selectedIndex]) return;

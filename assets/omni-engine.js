@@ -5,7 +5,7 @@
   else root.OMNI_ENGINE = factory(root.OMNI_DATA, root.OMNI_SESSION);
 })(typeof globalThis !== 'undefined' ? globalThis : this, function (D, Session) {
   'use strict';
-  if (!D) throw new Error('请先载入 OMNI 问卷题库。');
+  if (!D) throw new Error('请先载入问卷题库。');
   const byId = Object.fromEntries(D.core.items.concat(D.core.scenarios, D.core.context, ...D.modules.map(m => m.items), D.legacySupplement.items).map(q => [q.id, q]));
   const cardsById = Object.fromEntries(D.cards.map(c => [c.id, c]));
   const axesById = Object.fromEntries(D.core.axes.map(a => [a.id, a]));
@@ -159,7 +159,7 @@
     return { version: D.version, id: s.id, sourceVersion:s.sourceVersion || null, facets, supplements:supplemental, cards, scenarios: scenario(answers), quality, coverage, summary, context: D.core.context.map(q => ({ ...q, answer: own(answers, q.id) ? answers[q.id] : null })), stopReason: s.stopReason, finished: s.finished };
   }
   function validateSession(input) {
-    if (!Session || typeof Session.validate !== 'function') throw new Error('请先载入 OMNI 作答流程。');
+    if (!Session || typeof Session.validate !== 'function') throw new Error('请先载入作答流程。');
     return Session.validate(D, input);
   }
   function encodeSession(session) {
@@ -174,7 +174,7 @@
     const value = code.trim();
     try {
       if (value.startsWith('{')) return validateSession(JSON.parse(value));
-      if (!/^OMNI1\.[A-Za-z0-9_-]+$/.test(value)) throw new Error('请使用本版 OMNI1 答卷代码或 JSON 文件。');
+      if (!/^OMNI1\.[A-Za-z0-9_-]+$/.test(value)) throw new Error('请使用本测试导出的答卷代码或 JSON 文件。');
       const b64 = value.slice(6).replace(/-/g, '+').replace(/_/g, '/');
       let json;
       if (typeof Buffer !== 'undefined') json = Buffer.from(b64, 'base64').toString('utf8');

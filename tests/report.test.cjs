@@ -23,5 +23,5 @@ test('supplement report includes current claims, separate statuses and item type
 
 test('old OMNI report migration preserves its history and does not fabricate supplement responses',()=>{
  const s=S.fresh(OMNI_DATA);s.version=OMNI_DATA.compatibleVersions[0];delete s.selectedSupplements;s.finished=true;s.stage='result';s.stopReason='95分钟截止';s.elapsedMs=95*60000;
- const h=OMNI_REPORT.render(s);assert(h.includes('95分钟截止'));assert(h.includes(s.version));assert(h.includes('当前题库中尚未作答的题目不会自动填答'));assert(h.includes('本次未选择本组'));
+ const h=OMNI_REPORT.render(s);assert(h.includes('95分钟截止'));assert(h.includes('本答卷已完成格式兼容处理'));assert(!h.includes(s.version));assert(h.includes('当前题库中尚未作答的题目不会自动填答'));assert(h.includes('本次未选择本组'));
 });
