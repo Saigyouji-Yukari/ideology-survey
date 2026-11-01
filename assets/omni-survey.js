@@ -8,20 +8,20 @@
   const labels = ['非常不同意','不同意','有点不同意','中立（两边相当）','有点同意','同意','非常同意'];
   const instructionsText = [
     '本卷采用共同题与分支题库，供个人梳理当前政治立场。没有标准立场，也不据此评价人的好坏。结果包括议题画像、已核验思想的接近情况和本人认同，允许组合、分歧与暂未形成。',
-    `本题库有132道共同立场题、216道专题题、${D.legacySupplement.items.length}道旧版整合补充题和358张思想核验卡。题库不是整本全答；本次按分支最多${D.limits.maxResponses}个响应项。不限答题时间，可以分次完成，未完成部分保留为未检验。`,
-    '顺序为：共同题 → 九个主题的36道筛查题 → 情境题和背景记录 → 最多两个专题的剩余题 → 自选旧版补充题组 → 最多四张核验卡。网页按所选分支呈现题目，补充题组可以全选或跳过；不要从头做到题库末尾。',
-    '支持度题使用1～7：1 非常不同意，2 不同意，3 有点不同意，4 中立（两边相当），5 有点同意，6 同意，7 非常同意。把答案写在题末括号内。',
-    '理解问题且认为两边相当时选4；不了解或无法判断填U；不愿回答填×。漏答与这两项分开记录。背景题与核验卡的0～3有单独含义，0不是漏答。',
-    '先按你本人希望或认可的安排作答。明确写有假设情境的题，只评价该情境，不表示赞成其前提；不能接受前提到无法判断时填U，并可在Z06说明。',
-    '本卷不要求姓名、单位、账号等身份资料。施测者须如实说明答卷如何保管；自填文档本身不能保证外部收集系统匿名。宗教、国籍和族裔身份不等于政治立场。',
-    '请按当前真实看法作答，不必追求一致。卡片先回答三条主张，再获知思想名称，随后填写熟悉度和自我认同；不要为获得某个标签反改答案。',
+    `本题库有132道共同立场题、216道专题题、${D.legacySupplement.items.length}道补充题和358张思想核验卡。题库不是整本全答；本次按分支最多${D.limits.maxResponses}个响应项。不限答题时间，可以分次完成，未完成部分保留为未检验。`,
+    '顺序为：共同题 → 九个主题的36道筛查题 → 情境题和背景记录 → 最多两个专题的剩余题 → 自选补充题组 → 最多四张核验卡。网页按所选分支呈现题目，补充题组可以全选或跳过；不要从头做到题库末尾。',
+    '支持度题使用1～7：1 非常不同意，2 不同意，3 有点不同意，4 中立（两边相当），5 有点同意，6 同意，7 非常同意。点击与你的看法最接近的选项。',
+    '理解问题且认为两边相当时选4；不了解或无法判断选U；不愿回答选×。漏答与这两项分开记录。背景题与核验卡的0～3有单独含义，0不是漏答。',
+    '先按你本人希望或认可的安排作答。明确写有假设情境的题，只评价该情境，不表示赞成其前提；不能接受前提到无法判断时选U，并可在Z06说明。',
+    '本测试不要求姓名、单位、账号等身份资料。答案仅保存在当前浏览器；导出的答卷包含作答内容，请自行决定是否向他人提供，并确认对方的保管方式。宗教、国籍和族裔身份不等于政治立场。',
+    '请按当前真实看法作答，不必追求一致。核验卡默认先回答三条主张，再显示思想名称，随后选择熟悉度和自我认同；如果主动按名称选卡，报告会注明。不要为获得某个标签反改答案。',
     '未做的专题或卡片不能被解释为不接近。对历史路线和理论学派，问卷只能核对有限主张及自我认同；不能仅凭政策赞同证明学术或组织归属。',
     '本版尚待真实样本校准。它可生成有依据的个人描述，但不提供已验证的分类准确率、身份鉴定或全世界政治光谱中的精确坐标。'
   ];
   const instructionsHTML = () => '<ol class="instr-list">' + instructionsText.map(text => '<li>' + esc(text) + '</li>').join('') + '</ol>';
-  const webInstructions = '<p class="notice"><b>网页版操作：</b>本页由程序按上述规则呈现分支；点击选项即可作答，无需填写括号，选择后自动进入下一题。可以返回修改，每答一题自动保存。不限答题时间，可随时离开并回来继续；不会因用时较长而跳题或自动交卷。</p>';
+  const webInstructions = '<p class="notice"><b>网页版操作：</b>本页由程序按上述规则呈现分支；点击选项即可作答，选择后自动进入下一题。可以返回修改，每答一题自动保存。不限答题时间，可随时离开并回来继续；不会因用时较长而跳题或自动交卷。</p>';
   const contexts = {Z01:['完全不担心','有一点','比较担心','非常担心'],Z02:['没有','看过一部分','较完整地看过'],Z03:['尚未形成','部分确定','比较确定','很确定']};
-  const stageNames = {instructions:'作答说明',base:'共同立场与全主题筛查',moduleSelect:'选择深入专题',modules:'专题作答',supplementSelect:'选择补充题组',supplements:'旧版整合补充题',cardSelect:'选择思想核验卡',cards:'思想核验',review:'交卷前检查',result:'个人立场报告'};
+  const stageNames = {instructions:'作答说明',base:'共同立场与全主题筛查',moduleSelect:'选择深入专题',modules:'专题作答',supplementSelect:'选择补充题组',supplements:'补充题',cardSelect:'选择思想核验卡',cards:'思想核验',review:'交卷前检查',result:'个人立场报告'};
   const moduleFor = id => D.modules.find(m => m.items.some(q => q.id === id));
   const cardBy = id => D.cards.find(c => c.id === id);
   let catalogueSeenBeforeStart = false;
@@ -42,11 +42,11 @@
     const saved = S ? (S.finished ? action('result','查看我的报告','btn primary big') : action('resume','继续作答','btn primary big')) : action('start','开始测试','btn primary big');
     app.innerHTML = `<section class="intro-hero"><p class="kicker">政治立场与思想倾向问卷</p><h1>让观点先于标签</h1><p class="hero-copy">从具体主张出发，梳理你如何看待经济、权利、国家与社会。既看支持什么，也看保留什么；让一份详细报告呈现你自己的立场组合。</p><div class="stat-grid"><div><strong>22</strong>独立立场分面</div><div><strong>9</strong>专题方向</div><div><strong>358</strong>思想核验卡</div><div><strong>不限时</strong>可分次继续作答</div></div><div class="actions center">${saved}${action('catalog','浏览覆盖目录','btn')}${S ? action('export','导出答卷备份','btn') : ''}</div>${S && !S.finished ? '<p class="help">答卷已自动保存在本机。可随时回来继续作答，没有交卷截止时间。</p>' : ''}<p class="privacy-note"><b>你的答案留在本机。</b>无需注册，不要求姓名、单位或账号。没有统计服务，不加载外部字体，不上传答案。只有你主动导出的文件或答卷代码会包含作答内容。</p></section>
 +      ${loadError ? `<p class="notice warning">${esc(loadError)}</p>` : ''}
-+      <section class="section"><h2>这份测试能给你什么</h2><div class="feature-grid"><article class="feature"><h3>拆开不同问题，看见立场组合</h3><p>所有制、资源配置、再分配与劳动关系分别呈现；公民权利、政治竞争、组织、文化、生态和技术也分别分析。支持某项制度，不必被推成一整套立场。</p></article><article class="feature"><h3>把结论追溯到你的回答</h3><p>结果展示各分面的方向、具体主张、保留意见和信息缺口。中立、不了解、不愿回答、未呈现与漏答分开记录，避免把沉默当作反对。</p></article><article class="feature"><h3>广泛覆盖，按需深入</h3><p>358 张规范卡，另收录 196 个别名，附有 82 项资料来源；还可选择 ${D.legacySupplement.items.length} 道从旧版筛选、重编的补充题。目录涉及社会主义、自由主义、保守主义、无政府主义，以及宗教、地域、性别、生态与技术等思想。</p></article><article class="feature"><h3>保留相邻流派之间的差别</h3><p>共同题与全主题筛查后，最多深入两个专题、核对四张卡。建议同时核对相邻解释；先回答三项主张，再记录对名称的熟悉度和自我认同。</p></article></div></section>
-+      <section class="section"><h2>一次作答，四个步骤</h2><ol class="steps"><li>共同立场<small>132 道题，建立 22 个分面画像</small></li><li>全主题筛查<small>36 道筛查，另有情境与背景记录</small></li><li>选择深入方向<small>最多 2 个专题，并可另选旧版补充题组</small></li><li>核验与报告<small>最多 4 张卡，自动生成详细分析</small></li></ol><p class="notice">题库覆盖的广度与单次测量的范围不同。每次按分支最多 ${D.limits.maxResponses} 个响应项，包含最多 ${D.legacySupplement.items.length} 道旧版整合补充题。不限答题时间，支持分次完成，也可自行结束并根据已答内容生成报告。未做的卡会写明“未检验”，不会被判成与你不相符。</p></section>
++      <section class="section"><h2>这份测试能给你什么</h2><div class="feature-grid"><article class="feature"><h3>拆开不同问题，看见立场组合</h3><p>所有制、资源配置、再分配与劳动关系分别呈现；公民权利、政治竞争、组织、文化、生态和技术也分别分析。支持某项制度，不必被推成一整套立场。</p></article><article class="feature"><h3>把结论追溯到你的回答</h3><p>结果展示各分面的方向、具体主张、保留意见和信息缺口。中立、不了解、不愿回答、未呈现与漏答分开记录，避免把沉默当作反对。</p></article><article class="feature"><h3>广泛覆盖，按需深入</h3><p>358 张规范卡，另收录 196 个别名，附有 82 项资料来源；还可选择 ${D.legacySupplement.items.length} 道涵盖具体政策、治理与历史经验的补充题。目录涉及社会主义、自由主义、保守主义、无政府主义，以及宗教、地域、性别、生态与技术等思想。</p></article><article class="feature"><h3>保留相邻流派之间的差别</h3><p>共同题与全主题筛查后，最多深入两个专题、核对四张卡。建议同时核对相邻解释；先回答三项主张，再记录对名称的熟悉度和自我认同。</p></article></div></section>
++      <section class="section"><h2>一次作答，四个步骤</h2><ol class="steps"><li>共同立场<small>132 道题，建立 22 个分面画像</small></li><li>全主题筛查<small>36 道筛查，另有情境与背景记录</small></li><li>选择深入方向<small>最多 2 个专题，并可另选补充题组</small></li><li>核验与报告<small>最多 4 张卡，自动生成详细分析</small></li></ol><p class="notice">题库覆盖的广度与单次测量的范围不同。每次按分支最多 ${D.limits.maxResponses} 个响应项，包含最多 ${D.legacySupplement.items.length} 道补充题。不限答题时间，支持分次完成，也可自行结束并根据已答内容生成报告。未做的卡会写明“未检验”，不会被判成与你不相符。</p></section>
 +      <section class="section panel"><h2>关于完备性</h2><p>本版为目录中每个思想名称提供核验入口，支持跨专题选择、别名检索和多重认同。它能给出有作答依据的个人描述，但政治思想没有公认且封闭的“全部名单”，目录仍可补充。</p><p class="muted">题目和分界尚待真实样本检验；358 张卡的覆盖不等于已验证的分类准确率，也不表示一次测试逐一排除了所有思想。报告不会把单一得分当作身份鉴定、概率或人群排名。</p></section>
 +      <section class="section panel" aria-labelledby="instructions-title"><h2 id="instructions-title">测评说明</h2>${instructionsHTML()}${webInstructions}</section>
-+      <section class="section"><details><summary>本机记录、导入与旧版答卷</summary><p class="help">新版与旧版使用不同存档，原有 267 题答卷仍可在旧版入口查看。公共设备用完后请清除本机记录。</p><div class="actions"><label class="btn">导入新版答卷<input type="file" id="import-file" accept=".json,.txt" hidden></label>${action('reset','清除新版本机记录','btn')}<a href="legacy.html" class="btn">打开旧版</a></div></details></section>`.replace(/^\+/gm,'');
++      <section class="section"><details><summary>本机记录与答卷导入</summary><p class="help">答卷自动保存在当前浏览器，可导出备份，也可导入本测试生成的答卷。公共设备用完后请清除本机记录。</p><div class="actions"><label class="btn">导入答卷<input type="file" id="import-file" accept=".json,.txt" hidden></label>${action('reset','清除本机记录','btn')}</div></details></section>`.replace(/^\+/gm,'');
   }
   function instructions() {
     app.innerHTML = `${timer()}<section class="panel"><h1>测评说明</h1>${instructionsHTML()}${webInstructions}<p class="help">没有倒计时或自动交卷。你可以先保存进度，再回来继续。</p><div class="actions">${action('begin','我已了解，开始作答','btn primary')}</div></section>`;
@@ -75,7 +75,7 @@
       if (revealed) intro = `<div class="notice"><b>${esc(card.name)}</b> <span class="pill">${esc(card.kind)}</span><p>${q.part === 'K' ? '现在揭示思想名称。请回忆此次测评之前的了解程度；详细解释将在下一项显示。' : esc(card.summary)}</p>${q.part === 'K' ? '' : `<p class="help">与相邻思想的区分：${esc(card.near)}。${esc(card.note)}</p>`}</div>`;
       else intro = '<p class="help">先只评价这项主张。三项回答完成后显示思想名称。</p>';
       if (S.cardRevealed.includes(card.id) && !revealed) intro += '<p class="notice warning">你已经看过这张卡的名称。修改时会同时保留原回答与更正记录。</p>';
-    } else if (/^L\d{3}$/.test(q.id)) topic = '旧版整合补充 · ' + D.legacySupplement.groups.find(g => g.id === q.group).name;
+    } else if (/^L\d{3}$/.test(q.id)) topic = '补充议题 · ' + D.legacySupplement.groups.find(g => g.id === q.group).name;
     else if (q.axis) topic = D.core.axes.find(a => a.id === q.axis).section;
     else if (moduleFor(q.id)) topic = moduleFor(q.id).title + (S.stage === 'base' ? ' · 筛查' : '');
     else topic = q.id.startsWith('J') ? '条件情境' : '作答记录';
@@ -91,11 +91,11 @@
   function modules() {
     const recommendations = E.recommendModules(S.answers);
     if (!selectedModules.length && S.selectedModules.length) selectedModules = [...S.selectedModules];
-    app.innerHTML = `${timer()}<section class="panel"><h1>选择你想深入的方向</h1><p>最多两个专题，每个补答 20 题。先前四道筛查题会直接沿用。推荐仅帮助导航，你可以选择任何方向，或不补答直接选择旧版补充题组。</p><div class="choice-grid">${recommendations.map(m => `<label class="choice"><input type="checkbox" data-module="${m.id}" ${selectedModules.includes(m.id)?'checked':''}><strong>${esc(m.title)}</strong>${m.recommended?'<span class="pill">建议了解</span>':''}<small>${esc(m.reason || '可按你的兴趣选择')}</small></label>`).join('')}</div><div class="selection-bar"><span id="module-count">已选 ${selectedModules.length} / 2</span><div class="actions">${action('modules-confirm','确认方向并继续','btn primary')}${action('skip-modules','跳过专题，选择补充题组','btn')}</div></div></section>`;
+    app.innerHTML = `${timer()}<section class="panel"><h1>选择你想深入的方向</h1><p>最多两个专题，每个补答 20 题。先前四道筛查题会直接沿用。推荐仅帮助导航，你可以选择任何方向，或不补答直接选择补充题组。</p><div class="choice-grid">${recommendations.map(m => `<label class="choice"><input type="checkbox" data-module="${m.id}" ${selectedModules.includes(m.id)?'checked':''}><strong>${esc(m.title)}</strong>${m.recommended?'<span class="pill">建议了解</span>':''}<small>${esc(m.reason || '可按你的兴趣选择')}</small></label>`).join('')}</div><div class="selection-bar"><span id="module-count">已选 ${selectedModules.length} / 2</span><div class="actions">${action('modules-confirm','确认方向并继续','btn primary')}${action('skip-modules','跳过专题，选择补充题组','btn')}</div></div></section>`;
   }
   function supplements() {
     const bank = D.legacySupplement;
-    app.innerHTML = `${timer()}<section class="panel"><h1>选择旧版整合补充题组</h1><p>从旧版筛选、重编的 ${bank.items.length} 道题，补充具体政策、治理与历史经验。可选任意题组、全选或跳过，不限时。补充结果单独报告，不改变 22 个共同分面及思想卡判定。</p><div class="choice-grid">${bank.groups.map(g => `<label class="choice"><input type="checkbox" data-supplement="${g.id}" ${S.selectedSupplements.includes(g.id)?'checked':''}><strong>${esc(g.name)}</strong><small>${bank.items.filter(q=>q.group===g.id).length} 题 · ${esc(g.description)}${g.scored ? '（单独计算内容分项）' : '（逐题描述）'}</small></label>`).join('')}</div><p class="help">补充题使用 1～7 选项，请按重编后的题意重新作答；旧答卷不能直接混算。<a href="https://github.com/Saigyouji-Yukari/ideology-survey/blob/main/LEGACY_INTEGRATION.md" target="_blank" rel="noopener">查看旧题取舍与计分依据</a></p><div class="actions">${action('supplements-confirm','作答所选补充题组','btn primary')}${action('skip-supplements','跳过补充题，选择核验卡','btn')}</div></section>`;
+    app.innerHTML = `${timer()}<section class="panel"><h1>选择补充题组</h1><p>这里有 ${bank.items.length} 道补充题，涵盖具体政策、治理与历史经验。可选任意题组、全选或跳过，不限时。补充结果单独报告，不改变 22 个共同分面及思想卡判定。</p><div class="choice-grid">${bank.groups.map(g => `<label class="choice"><input type="checkbox" data-supplement="${g.id}" ${S.selectedSupplements.includes(g.id)?'checked':''}><strong>${esc(g.name)}</strong><small>${bank.items.filter(q=>q.group===g.id).length} 题 · ${esc(g.description)}${g.scored ? '（单独计算内容分项）' : '（逐题描述）'}</small></label>`).join('')}</div><p class="help">补充题同样使用 1～7 选项，请按当前看法作答。<a href="https://github.com/Saigyouji-Yukari/ideology-survey/blob/main/SCORING.md" target="_blank" rel="noopener">查看计分说明</a></p><div class="actions">${action('supplements-confirm','作答所选补充题组','btn primary')}${action('skip-supplements','跳过补充题，选择核验卡','btn')}</div></section>`;
   }
   function prepareCards() {
     const ranked = E.recommendCards(S.answers,S.selectedModules.length ? S.selectedModules : D.modules.map(m=>m.id));
@@ -189,7 +189,7 @@
     if (name==='resume') {view='test';render(true);return;}
     if (name==='result') {view='result';render(true);return;}
     if (name==='reset') {
-      if (!confirm('清除本浏览器中的新版答案？需要保留时，请先导出备份。旧版记录不受影响。')) return;
+      if (!confirm('清除本浏览器中的本测试答案？需要保留时，请先导出备份。')) return;
       try{localStorage.removeItem(KEY);}catch(_){}S=null;selectedCards=[];selectedModules=[];namedCards=false;loadError='';view='home';render();return;
     }
     if (name==='export') {if(S){save();download(JSON.stringify(S,null,2),S.id+'-OMNI.json');}return;}
@@ -221,7 +221,7 @@
     const el=event.target;
     if(el.dataset.module){if(el.checked&&selectedModules.length>=2){el.checked=false;toast('最多选择两个专题。');return;}selectedModules=el.checked?[...selectedModules,el.dataset.module]:selectedModules.filter(id=>id!==el.dataset.module);document.getElementById('module-count').textContent=`已选 ${selectedModules.length} / 2`;}
     if(el.dataset.card){if(el.checked&&selectedCards.length>=4){el.checked=false;toast('最多核验四张卡。可先取消一个候选。');return;}selectedCards=el.checked?[...selectedCards,el.dataset.card]:selectedCards.filter(id=>id!==el.dataset.card);updateSelection();}
-    if(el.id==='import-file'&&el.files[0]){try{if(el.files[0].size>2000000)throw new Error('文件过大');const text=await el.files[0].text();const imported=M.validate(D,text.trim().startsWith('{')?JSON.parse(text):E.decodeSession(text.trim()));if(S&&!confirm('用导入的答卷替换本机新版记录？'))return;S=imported;selectedCards=[];selectedModules=[];save();view=S.finished?'result':'test';render(true);}catch(error){toast('导入失败：'+error.message);}}
+    if(el.id==='import-file'&&el.files[0]){try{if(el.files[0].size>2000000)throw new Error('文件过大');const text=await el.files[0].text();const imported=M.validate(D,text.trim().startsWith('{')?JSON.parse(text):E.decodeSession(text.trim()));if(S&&!confirm('用导入的答卷替换本机记录？'))return;S=imported;selectedCards=[];selectedModules=[];save();view=S.finished?'result':'test';render(true);}catch(error){toast('导入失败：'+error.message);}}
   });
   document.addEventListener('input',event=>{
     if(event.target.id==='card-search')cardList(event.target.value);

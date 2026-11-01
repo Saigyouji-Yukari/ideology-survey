@@ -154,7 +154,7 @@
     summary.descriptiveText.push('本次可报告 ' + reportable.length + ' 个分面的平均倾向，共核验 ' + tested.size + ' 张思想卡。');
     if (summary.supportedCards.length) summary.descriptiveText.push('在实际核验的主张中，' + summary.supportedCards.map(c => c.name).join('、') + '的三项均得到支持；这不等于完整身份归属。');
     if (summary.partialCards.length) summary.descriptiveText.push('对' + summary.partialCards.map(c => c.name).join('、') + '保留了中立或不同意见，见逐项依据。');
-    if (supplemental.some(g=>g.presented)) summary.descriptiveText.push('另记录旧版补充题 ' + supplemental.reduce((n,g)=>n+g.valid,0) + ' 项有效回答；逐题呈现主张，不并入共同分面或思想卡判定。');
+    if (supplemental.some(g=>g.presented)) summary.descriptiveText.push('另记录补充题 ' + supplemental.reduce((n,g)=>n+g.valid,0) + ' 项有效回答；逐题呈现主张，不并入共同分面或思想卡判定。');
     summary.descriptiveText.push('未检验的思想不作排除；不同专题、不同时间的报告须结合各自覆盖范围比较。');
     return { version: D.version, id: s.id, sourceVersion:s.sourceVersion || null, facets, supplements:supplemental, cards, scenarios: scenario(answers), quality, coverage, summary, context: D.core.context.map(q => ({ ...q, answer: own(answers, q.id) ? answers[q.id] : null })), stopReason: s.stopReason, finished: s.finished };
   }

@@ -95,12 +95,12 @@ const server = http.createServer((req,res)=>{
     assert.equal(await page.locator('.report-axis').count(),22);
     let full=await state();assert.equal(full.finished,true);assert.equal(E.analyze(full).coverage.testedCardCount,4);
     const report=page.locator('.omni-report'),reportText=await report.textContent();
-    assert(reportText.includes('旧版题目补充画像'));assert.equal(await page.locator('.report-supplement').count(),supplementalGroups);
-    assert.match(reportText,/旧版第\s*\d+\s*题/);
+    assert(reportText.includes('补充议题画像'));assert.equal(await page.locator('.report-supplement').count(),supplementalGroups);
+    assert(reportText.includes('主张与题型'));
     for(const item of D.legacySupplement.items){assert(reportText.includes(item.id));assert(reportText.includes(item.text));}
     const supplementDetails=page.locator('.report-supplement details').first();
     await supplementDetails.locator('summary').click();assert.equal(await supplementDetails.evaluate(el=>el.open),true);
-    assert.match(await supplementDetails.innerText(),/旧版第\s*\d+\s*题/);
+    assert((await supplementDetails.innerText()).includes('价值主张'));
     await page.screenshot({path:path.join(output,'report-desktop.png'),fullPage:true});
     const download=page.waitForEvent('download');await page.locator('[data-action=export]').click();const file=await download;const json=JSON.parse(fs.readFileSync(await file.path(),'utf8'));assert.deepEqual(json.answers,full.answers);
     console.log('PASS full '+(250+supplementalCount)+'-response flow, supplemental groups, 2-module/4-card caps, report and JSON export');

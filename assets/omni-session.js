@@ -105,7 +105,7 @@
   }
   function validate(data, value) {
     const compatibleVersions = data.compatibleVersions || [];
-    if (!value || (value.version !== data.version && !compatibleVersions.includes(value.version)) || !value.answers || Array.isArray(value.answers) || typeof value.answers !== 'object') throw new Error('答卷版本或答案格式不兼容。旧版请使用旧版计分器。');
+    if (!value || (value.version !== data.version && !compatibleVersions.includes(value.version)) || !value.answers || Array.isArray(value.answers) || typeof value.answers !== 'object') throw new Error('答卷版本或答案格式不兼容。请导入本测试导出的答卷，其他题号体系不能混算。');
     const s = {...fresh(data), ...value};
     if (s.sourceVersion !== undefined && (typeof s.sourceVersion !== 'string' || (s.sourceVersion !== data.version && !compatibleVersions.includes(s.sourceVersion)))) throw new Error('答卷来源版本无效。');
     if (value.version !== data.version && s.sourceVersion === undefined) s.sourceVersion = value.version;

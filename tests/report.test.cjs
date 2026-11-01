@@ -16,12 +16,12 @@ test('import rejects responses outside selected branches and invalid review path
 });
 
 
-test('supplement report includes current claims, separate statuses and old-question provenance without a pooled score',()=>{
+test('supplement report includes current claims, separate statuses and item types without a pooled score',()=>{
  const q=OMNI_DATA.legacySupplement.items[0],s=S.fresh(OMNI_DATA);s.selectedSupplements=[q.group];s.presented=[q.id];s.answers={[q.id]:'U'};S.finish(s,'test');
- const h=OMNI_REPORT.render(s);assert(h.includes('旧版题目补充画像'));assert(h.includes(q.id));assert(h.includes(OMNI_REPORT.escape(q.text)));assert(h.includes('旧版第 '+q.sourceQuestion+' 题'));assert(h.includes('不了解 1'));assert(h.includes('不计算跨题政治总分'));assert.equal((h.match(/class="report-axis"/g)||[]).length,22);
+ const h=OMNI_REPORT.render(s);assert(h.includes('补充议题画像'));assert(h.includes(q.id));assert(h.includes(OMNI_REPORT.escape(q.text)));assert(h.includes('价值主张')); assert(h.includes('不了解 1'));assert(h.includes('不计算跨题政治总分'));assert.equal((h.match(/class="report-axis"/g)||[]).length,22);
 });
 
 test('old OMNI report migration preserves its history and does not fabricate supplement responses',()=>{
  const s=S.fresh(OMNI_DATA);s.version=OMNI_DATA.compatibleVersions[0];delete s.selectedSupplements;s.finished=true;s.stage='result';s.stopReason='95分钟截止';s.elapsedMs=95*60000;
- const h=OMNI_REPORT.render(s);assert(h.includes('95分钟截止'));assert(h.includes(s.version));assert(h.includes('新增补充题未自动填答'));assert(h.includes('本次未选择本组'));
+ const h=OMNI_REPORT.render(s);assert(h.includes('95分钟截止'));assert(h.includes(s.version));assert(h.includes('当前题库中尚未作答的题目不会自动填答'));assert(h.includes('本次未选择本组'));
 });
