@@ -99,8 +99,8 @@ function session(value) {
     await seed(complete); await structure();
     const profileText = await page.locator('.tendency-profile').innerText();
     for (const candidate of expected) assert.equal(await page.locator('[data-tendency="' + candidate.id + '"]').count(), 1, candidate.label + ' target is included in its dimension');
-    const portraitPaths = await page.evaluate(() => Object.values(window.OMNI_PEOPLE).map(person => person.portrait));
-    assert(portraitPaths.length > 0);
+    const portraitPaths = await page.evaluate(() => Object.values(window.OMNI_PEOPLE).filter(person => person.portrait).map(person => person.portrait));
+    assert.equal(portraitPaths.length, 27);
     assert(portraitPaths.every(src => /^assets\/portraits\/[a-z0-9_-]+\.(?:jpg|jpeg|png|webp)$/.test(src)), 'portrait catalogue contains only site-local image paths');
     const portraitDecodes = await page.evaluate(paths => Promise.all(paths.map(src => new Promise(resolve => {
       const image = new Image();
@@ -112,8 +112,17 @@ function session(value) {
       await image.scrollIntoViewIfNeeded();
       await image.evaluate(el => el.complete ? Promise.resolve() : new Promise((resolve, reject) => { el.addEventListener('load', resolve, { once: true }); el.addEventListener('error', () => reject(new Error(el.src)), { once: true }); }));
       assert(await image.evaluate(el => el.naturalWidth > 0 && el.naturalHeight > 0), 'real portrait loads');
-      assert(await image.getAttribute('alt'), 'portrait has accessible alternative text');
+      // The lead portrait is described; thumbnails in the list sit next to the printed name and are decorative.
+      if (await image.evaluate(el => el.classList.contains('tendency-mini'))) assert.equal(await image.getAttribute('alt'), '');
+      else assert(await image.getAttribute('alt'), 'portrait has accessible alternative text');
       assert(new URL(await image.getAttribute('src'), origin).origin === origin, 'portrait is hosted with the site');
+    }
+    // At a type's own centre the default (first) figure leads and the others are listed after it.
+    for (const candidate of expected) {
+      const card = page.locator('[data-tendency="' + candidate.id + '"]');
+      assert.equal(await card.locator('.tendency-person').getAttribute('data-person'), candidate.figures[0].personId);
+      assert.deepEqual((await card.locator('.tendency-others li').evaluateAll(items => items.map(li => li.dataset.person))).sort(), candidate.figures.slice(1).map(f => f.personId).sort());
+      assert.match(await card.locator('.tendency-figure-note').innerText(), new RegExp('列出的 ' + candidate.figures.length + ' 位代表人物'));
     }
     await page.locator('.tendency-profile').screenshot({ path: path.join(output, 'tendency-profile-desktop.png') });
     const textDownload = page.waitForEvent('download'); await page.locator('[data-action=report-text]').click();
@@ -131,6 +140,35 @@ function session(value) {
     assert(await page.locator('.tendency-profile').evaluate(el => el.scrollWidth <= el.clientWidth + 1), 'profile fits its phone column');
     await page.locator('.tendency-profile').screenshot({ path: path.join(output, 'tendency-profile-mobile.png') });
     console.log('PASS candidate portraits, text export, print/PDF and mobile layout');
+
+    // Answers built from other figures' reference points introduce those figures, including
+    // people without a local portrait, who get a one-character tile and no network image.
+    const P = require('../assets/omni-profile.js'), people = require('../data/tendency_people.json');
+    const chosen = { 'economic-public-coordination': 'kropotkin', 'political-sovereign-authority': 'han-fei', 'change-democratic-reformism': 'hu-shi', 'culture-feminist-equality': 'qiu-jin', 'international-civic-nationalism': 'sun-yat-sen', 'ecology-technology-caution': 'postman' };
+    const figureTargets = Object.assign({}, ...Object.entries(chosen).map(([typeId, personId]) => { const p = P.profiles.find(x => x.id === typeId); return P.figurePoint(p, p.figures.find(f => f.personId === personId)); }));
+    const figureSession = session(q => {
+      const sum = Math.round(6 * (4 + 3 * (figureTargets[q.axis] || 0) / 100)), low = Math.floor(sum / 6), extra = sum % 6;
+      const index = D.core.items.filter(item => item.axis === q.axis).findIndex(item => item.id === q.id);
+      const value = low + (index < extra ? 1 : 0);
+      return q.sign === '-' ? 8 - value : value;
+    });
+    await page.setViewportSize({ width: 1360, height: 980 });
+    await seed(figureSession); await structure();
+    for (const [typeId, personId] of Object.entries(chosen)) {
+      const lead = page.locator('[data-tendency="' + typeId + '"] .tendency-person').first();
+      assert.equal(await lead.getAttribute('data-person'), personId, typeId);
+      assert.equal(await lead.locator('img').count(), 0, personId + ' has no portrait file');
+      assert.equal(await lead.locator('.tendency-monogram').innerText(), people[personId].monogram);
+      assert((await lead.innerText()).includes(people[personId].name));
+      assert((await page.locator('[data-tendency="' + typeId + '"] .tendency-figure-note').first().innerText()).includes(people[personId].name));
+    }
+    const figureText = await page.locator('.tendency-profile').innerText();
+    for (const personId of Object.values(chosen)) assert(figureText.includes(people[personId].name));
+    await page.locator('[data-tendency="economic-public-coordination"] details').first().evaluate(el => { el.open = true; });
+    const basis = await page.locator('[data-tendency="economic-public-coordination"] details').first().innerText();
+    assert(/人物参照点（彼得·克鲁泡特金）/.test(basis) && /人物距离/.test(basis) && basis.includes('卡尔·马克思 · '));
+    await page.locator('.tendency-profile').screenshot({ path: path.join(output, 'tendency-profile-figures.png') });
+    console.log('PASS figure reference points choose other representatives, with name tiles for people without portraits');
 
     // Import uses the same report and must preserve the exact profile text.
     await page.setViewportSize({ width: 1360, height: 980 });

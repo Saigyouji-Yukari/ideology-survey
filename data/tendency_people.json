@@ -565,5 +565,962 @@
       "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
       "changes": "使用来源页面所列版本；仅等比缩小并转换为 JPEG，未改变人物形象。"
     }
+  },
+  "kropotkin": {
+    "id": "kropotkin",
+    "name": "彼得·克鲁泡特金",
+    "years": "1842—1921",
+    "monogram": "克",
+    "description": "俄国地理学家与无政府共产主义思想家，《面包与自由》《互助论》作者。主张由自由联合的公社共同占有生产资料、按需分配，反对国家和工资制度；此处展示无国家的公社共有经济。",
+    "sources": [
+      {
+        "title": "《面包与自由》（The Conquest of Bread）原文",
+        "url": "https://www.gutenberg.org/ebooks/23428"
+      }
+    ]
+  },
+  "nyerere": {
+    "id": "nyerere",
+    "name": "朱利叶斯·尼雷尔",
+    "years": "1922—1999",
+    "monogram": "尼",
+    "description": "坦桑尼亚首任总统。1967年《阿鲁沙宣言》提出以村社合作、公有制和自力更生为核心的“乌贾马”社会主义，工会等组织由执政党统一领导；此处展示非洲社会主义的经济设想。",
+    "sources": [
+      {
+        "title": "大英百科：Julius Nyerere",
+        "url": "https://www.britannica.com/biography/Julius-Nyerere"
+      },
+      {
+        "title": "大英百科：Ujamaa",
+        "url": "https://www.britannica.com/topic/ujamaa"
+      }
+    ]
+  },
+  "cole": {
+    "id": "cole",
+    "name": "G.D.H.柯尔",
+    "years": "1889—1959",
+    "monogram": "柯",
+    "description": "英国经济史学家与政治理论家，基尔特社会主义代表人物。主张由各行业劳动者自治的“基尔特”管理生产，反对把社会主义等同于国家经营；此处展示以产业自治为重点的社会主义。",
+    "sources": [
+      {
+        "title": "柯尔《基尔特社会主义》（1922）原文",
+        "url": "https://www.marxists.org/archive/cole/1922/guild-socialism.htm"
+      },
+      {
+        "title": "大英百科：Guild Socialism",
+        "url": "https://www.britannica.com/money/Guild-Socialism"
+      }
+    ]
+  },
+  "lange": {
+    "id": "lange",
+    "name": "奥斯卡·兰格",
+    "years": "1904—1965",
+    "monogram": "兰",
+    "description": "波兰经济学家，《论社会主义经济理论》作者。提出“市场社会主义”模型：生产资料公有，由计划机构以试错方式调整价格，让企业按价格规则决策；此处展示公有制与市场机制结合的设想。",
+    "sources": [
+      {
+        "title": "Econlib：Oskar Ryszard Lange",
+        "url": "https://www.econlib.org/library/Enc/bios/Lange.html"
+      }
+    ]
+  },
+  "tawney": {
+    "id": "tawney",
+    "name": "R.H.托尼",
+    "years": "1880—1962",
+    "monogram": "托",
+    "description": "英国经济史学家与基督教社会主义者，《获取型社会》《平等》作者。批评以逐利为中心的社会，主张以公共服务、普遍教育和保障缩小不平等；此处展示伦理社会主义传统。",
+    "sources": [
+      {
+        "title": "大英百科：Richard Henry Tawney",
+        "url": "https://www.britannica.com/money/Richard-Henry-Tawney"
+      }
+    ]
+  },
+  "warren": {
+    "id": "warren",
+    "name": "乔赛亚·沃伦",
+    "years": "1798—1874",
+    "monogram": "沃",
+    "description": "美国个人主义无政府主义者。1827年开设“时间商店”，以劳动时间为交换尺度，主张“成本即价格上限”的对等交易；此处展示以对等交换为核心的互助经济。",
+    "sources": [
+      {
+        "title": "大英百科：Anarchism in the Americas",
+        "url": "https://www.britannica.com/topic/anarchism/Anarchism-in-the-Americas"
+      }
+    ]
+  },
+  "myrdal": {
+    "id": "myrdal",
+    "name": "冈纳·缪尔达尔",
+    "years": "1898—1987",
+    "monogram": "缪",
+    "description": "瑞典经济学家，1974年诺贝尔经济学奖得主之一，《美国的两难》作者。曾作为社会民主党人主持战后规划委员会、任商务大臣，重视普遍社会政策和积极的公共干预；此处展示北欧福利国家的社会民主经济。",
+    "sources": [
+      {
+        "title": "诺贝尔奖官网：Gunnar Myrdal 生平",
+        "url": "https://www.nobelprize.org/prizes/economic-sciences/1974/myrdal/biographical/"
+      }
+    ]
+  },
+  "beveridge": {
+    "id": "beveridge",
+    "name": "威廉·贝弗里奇",
+    "years": "1879—1963",
+    "monogram": "贝",
+    "description": "英国经济学家与自由党人，1942年《社会保险及相关服务》报告（贝弗里奇报告）作者。主张在市场经济中建立覆盖全民的社会保险并追求充分就业；此处展示以普遍保障补充市场的自由主义改革。",
+    "sources": [
+      {
+        "title": "大英百科：William Beveridge",
+        "url": "https://www.britannica.com/money/William-Beveridge"
+      },
+      {
+        "title": "大英百科：Beveridge Report",
+        "url": "https://www.britannica.com/topic/Beveridge-Report"
+      }
+    ]
+  },
+  "george": {
+    "id": "george",
+    "name": "亨利·乔治",
+    "years": "1839—1897",
+    "monogram": "乔",
+    "description": "美国政治经济学家，《进步与贫困》作者。主张对土地价值征税，使土地增值归于公共，同时保留私人企业与自由贸易；此处展示土地税改革传统。",
+    "sources": [
+      {
+        "title": "《进步与贫困》（Progress and Poverty）原文",
+        "url": "https://www.gutenberg.org/ebooks/55308"
+      }
+    ]
+  },
+  "hayek": {
+    "id": "hayek",
+    "name": "弗里德里希·哈耶克",
+    "years": "1899—1992",
+    "monogram": "哈",
+    "description": "奥地利裔英国经济学家，1974年诺贝尔经济学奖得主之一，《通往奴役之路》作者。强调价格信号传递分散知识和自发秩序，批评中央计划与工会特权；此处展示古典自由主义的现代论证。",
+    "sources": [
+      {
+        "title": "诺贝尔奖官网：Friedrich August von Hayek",
+        "url": "https://www.nobelprize.org/prizes/economic-sciences/1974/hayek/facts/"
+      }
+    ]
+  },
+  "friedman": {
+    "id": "friedman",
+    "name": "米尔顿·弗里德曼",
+    "years": "1912—2006",
+    "monogram": "弗",
+    "description": "美国经济学家，1976年诺贝尔经济学奖得主，《资本主义与自由》作者。主张竞争市场与有限政府，并提出以负所得税替代多项分散的福利项目；此处展示芝加哥学派的市场经济主张。",
+    "sources": [
+      {
+        "title": "诺贝尔奖官网：Milton Friedman",
+        "url": "https://www.nobelprize.org/prizes/economic-sciences/1976/friedman/facts/"
+      }
+    ]
+  },
+  "bastiat": {
+    "id": "bastiat",
+    "name": "弗雷德里克·巴斯夏",
+    "years": "1801—1850",
+    "monogram": "巴",
+    "description": "法国经济学家，《法》作者。主张自由贸易，批评借法律进行的“合法掠夺”式再分配，也曾在议会支持工人的结社自由；此处展示反对国家再分配的自由市场传统。",
+    "sources": [
+      {
+        "title": "大英百科：Frédéric Bastiat",
+        "url": "https://www.britannica.com/money/Frederic-Bastiat"
+      },
+      {
+        "title": "Econlib：巴斯夏《政治经济学文选》（含《法》）",
+        "url": "https://www.econlib.org/library/Bastiat/basEss.html"
+      },
+      {
+        "title": "FEE：Bastiat and Unionism（1849年议会发言）",
+        "url": "https://fee.org/articles/bastiat-and-unionism/"
+      }
+    ]
+  },
+  "rand": {
+    "id": "rand",
+    "name": "安·兰德",
+    "years": "1905—1982",
+    "monogram": "兰",
+    "description": "俄裔美国作家与哲学家，《阿特拉斯耸耸肩》作者，客观主义创立者。以理性利己主义为个人权利和放任资本主义辩护，反对要求个人为他人牺牲；此处展示以个人权利为核心的放任市场主张。",
+    "sources": [
+      {
+        "title": "斯坦福哲学百科：Ayn Rand",
+        "url": "https://plato.stanford.edu/entries/ayn-rand/"
+      }
+    ]
+  },
+  "sun-yat-sen": {
+    "id": "sun-yat-sen",
+    "name": "孙中山",
+    "years": "1866—1925",
+    "monogram": "孙",
+    "description": "中国民主革命先行者，提出三民主义。民生主义主张“平均地权、节制资本”，由国家经营关系国计民生的大型事业；1924年《大亚洲主义》演讲以“王道”对比“霸道”；此处展示国家引导发展与民族独立的思想。",
+    "sources": [
+      {
+        "title": "大英百科：Three Principles of the People",
+        "url": "https://www.britannica.com/event/Three-Principles-of-the-People"
+      },
+      {
+        "title": "大英百科：Sun Yat-sen",
+        "url": "https://www.britannica.com/biography/Sun-Yat-sen"
+      }
+    ]
+  },
+  "wang-anshi": {
+    "id": "wang-anshi",
+    "name": "王安石",
+    "years": "1021—1086",
+    "monogram": "王",
+    "description": "北宋政治家、文学家。宋神宗时主持变法，推行青苗、市易、均输等新法，以官府借贷和购销调节物价与财政；此处展示国家主导经济调节的传统。",
+    "sources": [
+      {
+        "title": "大英百科：Wang Anshi",
+        "url": "https://www.britannica.com/biography/Wang-Anshi"
+      }
+    ]
+  },
+  "list": {
+    "id": "list",
+    "name": "弗里德里希·李斯特",
+    "years": "1789—1846",
+    "monogram": "李",
+    "description": "德国经济学家，《政治经济学的国民体系》作者。主张以保护幼稚产业、关税同盟和铁路建设推动后发国家工业化；此处展示国家引导的追赶型发展。",
+    "sources": [
+      {
+        "title": "大英百科：Friedrich List",
+        "url": "https://www.britannica.com/money/Friedrich-List"
+      },
+      {
+        "title": "《政治经济学的国民体系》英译本",
+        "url": "https://oll.libertyfund.org/titles/lloyd-the-national-system-of-political-economy"
+      }
+    ]
+  },
+  "nehru": {
+    "id": "nehru",
+    "name": "贾瓦哈拉尔·尼赫鲁",
+    "years": "1889—1964",
+    "monogram": "尼",
+    "description": "印度首任总理（1947—1964）。推行以五年计划和公营部门带动工业化的混合经济，并倡导不结盟外交；此处展示计划引导的发展型经济。",
+    "sources": [
+      {
+        "title": "大英百科：Jawaharlal Nehru",
+        "url": "https://www.britannica.com/biography/Jawaharlal-Nehru"
+      }
+    ]
+  },
+  "locke": {
+    "id": "locke",
+    "name": "约翰·洛克",
+    "years": "1632—1704",
+    "monogram": "洛",
+    "description": "英国哲学家，《政府论》《论宗教宽容》作者。主张生命、自由与财产权利，政府权力来自被统治者同意并受法律限制；此处展示自然权利与有限政府传统。",
+    "sources": [
+      {
+        "title": "斯坦福哲学百科：Locke’s Political Philosophy",
+        "url": "https://plato.stanford.edu/entries/locke-political/"
+      }
+    ]
+  },
+  "constant": {
+    "id": "constant",
+    "name": "邦雅曼·贡斯当",
+    "years": "1767—1830",
+    "monogram": "贡",
+    "description": "法国政治思想家。1819年演讲区分“古代人的自由”与“现代人的自由”，强调个人独立、代议制约束和地方权力；此处展示代议制自由主义。",
+    "sources": [
+      {
+        "title": "贡斯当《古代人的自由与现代人的自由》英译本",
+        "url": "https://oll.libertyfund.org/titles/constant-the-liberty-of-ancients-compared-with-that-of-moderns-1819"
+      }
+    ]
+  },
+  "ambedkar": {
+    "id": "ambedkar",
+    "name": "B.R.安贝德卡尔",
+    "years": "1891—1956",
+    "monogram": "安",
+    "description": "印度法学家与社会改革者，宪法起草委员会主席，《种姓的消灭》作者。反对种姓压迫，主张宪政民主、基本权利和妇女权利改革；此处展示以宪法保障平等公民权的传统。",
+    "sources": [
+      {
+        "title": "大英百科：Bhimrao Ramji Ambedkar",
+        "url": "https://www.britannica.com/biography/Bhimrao-Ramji-Ambedkar"
+      }
+    ]
+  },
+  "tocqueville": {
+    "id": "tocqueville",
+    "name": "阿历克西·德·托克维尔",
+    "years": "1805—1859",
+    "monogram": "托",
+    "description": "法国政治思想家，《论美国的民主》作者。重视乡镇自治和自由结社对多数暴政的约束，也认为宗教与国家分离能使宗教成为维系自由的民情；此处展示以地方自治和社会习俗支撑自由的传统。",
+    "sources": [
+      {
+        "title": "《论美国的民主》（第一卷）英译本",
+        "url": "https://www.gutenberg.org/ebooks/815"
+      },
+      {
+        "title": "《论美国的民主》（第二卷）英译本",
+        "url": "https://www.gutenberg.org/ebooks/816"
+      }
+    ]
+  },
+  "madison": {
+    "id": "madison",
+    "name": "詹姆斯·麦迪逊",
+    "years": "1751—1836",
+    "monogram": "麦",
+    "description": "美国第四任总统，宪法和《权利法案》主要起草者之一，《联邦党人文集》作者之一。主张以联邦分权和相互制衡控制派系危害；此处展示联邦制衡传统。",
+    "sources": [
+      {
+        "title": "《联邦党人文集》原文",
+        "url": "https://www.gutenberg.org/ebooks/18"
+      }
+    ]
+  },
+  "arendt": {
+    "id": "arendt",
+    "name": "汉娜·阿伦特",
+    "years": "1906—1975",
+    "monogram": "阿",
+    "description": "德裔美国政治思想家，《极权主义的起源》《论革命》作者。重视公共行动与政治多元，称赞议事会式的基层自治；此处展示参与式自治的共和传统。",
+    "sources": [
+      {
+        "title": "斯坦福哲学百科：Hannah Arendt",
+        "url": "https://plato.stanford.edu/entries/arendt/"
+      }
+    ]
+  },
+  "goldman": {
+    "id": "goldman",
+    "name": "艾玛·戈德曼",
+    "years": "1869—1940",
+    "monogram": "戈",
+    "description": "生于俄罗斯帝国立陶宛地区的无政府主义者与女权活动家，1919年被美国驱逐出境。反对国家强制和集中权力，主张自由结社与个人自主；此处展示无政府主义的自治联合。",
+    "sources": [
+      {
+        "title": "戈德曼《无政府主义及其他论文》原文",
+        "url": "https://www.gutenberg.org/ebooks/2162"
+      }
+    ]
+  },
+  "kautsky": {
+    "id": "kautsky",
+    "name": "卡尔·考茨基",
+    "years": "1854—1938",
+    "monogram": "考",
+    "description": "德国社会民主党理论家。主张由组织严密的工人政党通过议会民主实现社会主义，1918年著文批评布尔什维克的专政；此处展示民主群众党的社会主义传统。",
+    "sources": [
+      {
+        "title": "考茨基《无产阶级专政》（1918）英译本",
+        "url": "https://www.marxists.org/archive/kautsky/1918/dictprole/index.htm"
+      }
+    ]
+  },
+  "blanqui": {
+    "id": "blanqui",
+    "name": "奥古斯特·布朗基",
+    "years": "1805—1881",
+    "monogram": "布",
+    "description": "法国革命家，一生多次入狱。主张由少数组织严密的革命者夺取政权，并在过渡时期实行专政；此处展示密谋式先锋组织的革命路线。",
+    "sources": [
+      {
+        "title": "大英百科：Auguste Blanqui",
+        "url": "https://www.britannica.com/biography/Auguste-Blanqui"
+      }
+    ]
+  },
+  "bodin": {
+    "id": "bodin",
+    "name": "让·博丹",
+    "years": "1530—1596",
+    "monogram": "博",
+    "description": "法国法学家，《国家六论》作者。系统阐述不可分割的主权，认为主权者拥有最高立法权，但仍受自然法、神法和基本法约束；此处展示主权统一的国家理论。",
+    "sources": [
+      {
+        "title": "斯坦福哲学百科：Jean Bodin",
+        "url": "https://plato.stanford.edu/entries/bodin/"
+      }
+    ]
+  },
+  "han-fei": {
+    "id": "han-fei",
+    "name": "韩非",
+    "years": "约前280—前233",
+    "monogram": "韩",
+    "description": "战国末期法家集大成者，《韩非子》作者。主张君主以法、术、势统一治理，以严格赏罚维护秩序；此处展示中央集权的法家传统。",
+    "sources": [
+      {
+        "title": "斯坦福哲学百科：Legalism in Chinese Philosophy",
+        "url": "https://plato.stanford.edu/entries/chinese-legalism/"
+      }
+    ]
+  },
+  "plato": {
+    "id": "plato",
+    "name": "柏拉图",
+    "years": "约前427—前347",
+    "monogram": "柏",
+    "description": "古希腊哲学家，《理想国》作者。主张由受过哲学训练的统治者治理城邦，批评民主易受煽动；此处展示由贤智者统一治理的思想。",
+    "sources": [
+      {
+        "title": "斯坦福哲学百科：Plato’s Ethics and Politics in The Republic",
+        "url": "https://plato.stanford.edu/entries/plato-ethics-politics/"
+      }
+    ]
+  },
+  "liang-qichao": {
+    "id": "liang-qichao",
+    "name": "梁启超",
+    "years": "1873—1929",
+    "monogram": "梁",
+    "description": "近代中国思想家，戊戌变法参与者，《新民说》作者。1906年发表《开明专制论》，主张在国民素质与制度条件成熟前，先由开明政府依法推动改革；此处展示开明权威的改良思路。",
+    "sources": [
+      {
+        "title": "大英百科：Liang Qichao",
+        "url": "https://www.britannica.com/biography/Liang-Qichao"
+      }
+    ]
+  },
+  "voltaire": {
+    "id": "voltaire",
+    "name": "伏尔泰",
+    "years": "1694—1778",
+    "monogram": "伏",
+    "description": "法国启蒙思想家，《论宽容》作者。抨击教会特权与宗教迫害，为卡拉斯案平反奔走，寄望开明君主推行改革；此处展示宗教宽容与开明君主制思想。",
+    "sources": [
+      {
+        "title": "斯坦福哲学百科：Voltaire",
+        "url": "https://plato.stanford.edu/entries/voltaire/"
+      }
+    ]
+  },
+  "saint-simon": {
+    "id": "saint-simon",
+    "name": "圣西门",
+    "years": "1760—1825",
+    "monogram": "圣",
+    "description": "法国社会思想家。主张由科学家与实业家组织社会管理，以工业生产和技术进步改善人数最多的贫苦阶级的生活；此处展示专家治理与工业进步的设想。",
+    "sources": [
+      {
+        "title": "大英百科：Henri de Saint-Simon",
+        "url": "https://www.britannica.com/biography/Henri-de-Saint-Simon"
+      }
+    ]
+  },
+  "confucius": {
+    "id": "confucius",
+    "name": "孔子",
+    "years": "前551—前479",
+    "monogram": "孔",
+    "description": "春秋时期思想家，儒家创始人，言行见于《论语》。主张“为政以德”，以仁与礼规范家庭和社会伦理，重视传统与教化；此处展示重礼俗与德治的思想传统。",
+    "sources": [
+      {
+        "title": "斯坦福哲学百科：Confucius",
+        "url": "https://plato.stanford.edu/entries/confucius/"
+      }
+    ]
+  },
+  "hu-shi": {
+    "id": "hu-shi",
+    "name": "胡适",
+    "years": "1891—1962",
+    "monogram": "胡",
+    "description": "中国学者，杜威的学生。1919年发表《多研究些问题，少谈些“主义”》，主张以点滴改良推进社会进步，倡导个人自由与言论自由；此处展示渐进的自由主义改革。",
+    "sources": [
+      {
+        "title": "大英百科：Hu Shih",
+        "url": "https://www.britannica.com/biography/Hu-Shih"
+      }
+    ]
+  },
+  "addams": {
+    "id": "addams",
+    "name": "简·亚当斯",
+    "years": "1860—1935",
+    "monogram": "亚",
+    "description": "美国社会改革者，1889年创办赫尔馆，1931年诺贝尔和平奖得主。以社区服务、社会调查和公民合作推动劳工、儿童与公共卫生改革；此处展示参与式的社会改革传统。",
+    "sources": [
+      {
+        "title": "斯坦福哲学百科：Jane Addams",
+        "url": "https://plato.stanford.edu/entries/addams-jane/"
+      }
+    ]
+  },
+  "popper": {
+    "id": "popper",
+    "name": "卡尔·波普尔",
+    "years": "1902—1994",
+    "monogram": "波",
+    "description": "奥地利裔英国哲学家，《开放社会及其敌人》作者。主张以可检验、可纠错的“零星社会工程”替代整体乌托邦方案，并以能否和平更换政府衡量民主；此处展示开放社会的渐进改革。",
+    "sources": [
+      {
+        "title": "斯坦福哲学百科：Karl Popper",
+        "url": "https://plato.stanford.edu/entries/popper/"
+      }
+    ]
+  },
+  "king": {
+    "id": "king",
+    "name": "马丁·路德·金",
+    "years": "1929—1968",
+    "monogram": "金",
+    "description": "美国民权运动领袖，1964年诺贝尔和平奖得主。以非暴力直接行动挑战种族隔离，要求兑现宪法承诺的平等权利；此处展示非暴力争取平等的传统。",
+    "sources": [
+      {
+        "title": "诺贝尔奖官网：Martin Luther King Jr. 生平",
+        "url": "https://www.nobelprize.org/prizes/peace/1964/king/biographical/"
+      }
+    ]
+  },
+  "havel": {
+    "id": "havel",
+    "name": "瓦茨拉夫·哈维尔",
+    "years": "1936—2011",
+    "monogram": "哈",
+    "description": "捷克剧作家与异见者，《无权者的权力》作者，后任捷克斯洛伐克及捷克总统。主张“生活在真实中”，以非暴力的公民社会抵抗推动制度转变；此处展示非暴力公民抵抗的传统。",
+    "sources": [
+      {
+        "title": "大英百科：Václav Havel",
+        "url": "https://www.britannica.com/biography/Vaclav-Havel"
+      }
+    ]
+  },
+  "gramsci": {
+    "id": "gramsci",
+    "name": "安东尼奥·葛兰西",
+    "years": "1891—1937",
+    "monogram": "葛",
+    "description": "意大利马克思主义思想家，被法西斯政府监禁期间写成《狱中札记》。提出文化“领导权”与“阵地战”，强调变革须在长期的社会与文化斗争中形成集体意志；此处展示以文化领导权为重点的革命理论。",
+    "sources": [
+      {
+        "title": "斯坦福哲学百科：Antonio Gramsci",
+        "url": "https://plato.stanford.edu/entries/gramsci/"
+      }
+    ]
+  },
+  "humboldt": {
+    "id": "humboldt",
+    "name": "威廉·冯·洪堡",
+    "years": "1767—1835",
+    "monogram": "洪",
+    "description": "德国学者、外交家与教育改革者，《论国家作用的界限》作者。主张国家只应保障安全，把个人的多样发展留给自由选择；此处展示限制国家作用的个人主义。",
+    "sources": [
+      {
+        "title": "斯坦福哲学百科：Wilhelm von Humboldt",
+        "url": "https://plato.stanford.edu/entries/wilhelm-humboldt/"
+      },
+      {
+        "title": "洪堡《论国家作用的界限》英译本",
+        "url": "https://oll.libertyfund.org/titles/coulthard-the-sphere-and-duties-of-government-1792-1854"
+      }
+    ]
+  },
+  "nozick": {
+    "id": "nozick",
+    "name": "罗伯特·诺齐克",
+    "years": "1938—2002",
+    "monogram": "诺",
+    "description": "美国哲学家，《无政府、国家与乌托邦》作者。以个人权利论证“最低限度国家”，反对强制性的再分配；此处展示自由至上主义的权利理论。",
+    "sources": [
+      {
+        "title": "斯坦福哲学百科：Robert Nozick’s Political Philosophy",
+        "url": "https://plato.stanford.edu/entries/nozick-political/"
+      }
+    ]
+  },
+  "kautilya": {
+    "id": "kautilya",
+    "name": "考底利耶",
+    "years": "约前4世纪",
+    "monogram": "考",
+    "description": "古印度政治家，相传为孔雀王朝旃陀罗笈多的谋臣、《政事论》作者。以国家利益和存续为核心讨论治国、法律、外交与谍报，提出以邻国关系划分敌友的“曼荼罗”学说；此处展示以效果为先的治国术。",
+    "sources": [
+      {
+        "title": "大英百科：Kautilya（Chanakya）",
+        "url": "https://www.britannica.com/biography/Kautilya"
+      }
+    ]
+  },
+  "shang-yang": {
+    "id": "shang-yang",
+    "name": "商鞅",
+    "years": "约前390—前338",
+    "monogram": "商",
+    "description": "战国时期法家改革者，在秦孝公支持下主持变法。以严刑峻法、奖励耕战和连坐制度重塑国家；此处展示目的优先的变法路径。",
+    "sources": [
+      {
+        "title": "斯坦福哲学百科：Legalism in Chinese Philosophy",
+        "url": "https://plato.stanford.edu/entries/chinese-legalism/"
+      }
+    ]
+  },
+  "bryan": {
+    "id": "bryan",
+    "name": "威廉·詹宁斯·布赖恩",
+    "years": "1860—1925",
+    "monogram": "布",
+    "description": "美国政治家，三次获民主党总统提名。1896年以“金十字架”演说代表农民与劳工反对金融利益集团，倡导平民主义改革；此处展示通过选举动员普通人民的平民主义。",
+    "sources": [
+      {
+        "title": "大英百科：William Jennings Bryan",
+        "url": "https://www.britannica.com/biography/William-Jennings-Bryan"
+      },
+      {
+        "title": "大英百科：Cross of Gold speech",
+        "url": "https://www.britannica.com/event/Cross-of-Gold-speech"
+      }
+    ]
+  },
+  "condorcet": {
+    "id": "condorcet",
+    "name": "孔多塞",
+    "years": "1743—1794",
+    "monogram": "孔",
+    "description": "法国数学家与启蒙思想家。1790年发表《论承认妇女的公民权》，主张普及世俗公共教育，并相信人类社会可以不断进步；此处展示启蒙平等主义。",
+    "sources": [
+      {
+        "title": "斯坦福哲学百科：The History of Feminism: Condorcet",
+        "url": "https://plato.stanford.edu/entries/histfem-condorcet/"
+      }
+    ]
+  },
+  "qiu-jin": {
+    "id": "qiu-jin",
+    "name": "秋瑾",
+    "years": "约1875—1907",
+    "monogram": "秋",
+    "description": "清末革命者与女权先驱，创办《中国女报》。反对缠足和包办婚姻，提倡女子教育、经济自立与男女平权，1907年起义失败后就义；此处展示中国近代女性解放思想。",
+    "sources": [
+      {
+        "title": "香港中文大学《译丛》：Qiu Jin",
+        "url": "https://www.cuhk.edu.hk/renditions/authors/qiujin.html"
+      }
+    ]
+  },
+  "cai-yuanpei": {
+    "id": "cai-yuanpei",
+    "name": "蔡元培",
+    "years": "1868—1940",
+    "monogram": "蔡",
+    "description": "中国教育家，曾任北京大学校长。1917年提出“以美育代宗教”，倡导思想自由、兼容并包，主持北大招收女生；此处展示世俗人文教育理念。",
+    "sources": [
+      {
+        "title": "北京大学图书馆：Cai Yuanpei",
+        "url": "https://www.lib.pku.edu.cn/portal/en/bggk/bgjs/lishiyange/caiyuanpei"
+      }
+    ]
+  },
+  "augustine": {
+    "id": "augustine",
+    "name": "奥古斯丁",
+    "years": "354—430",
+    "monogram": "奥",
+    "description": "北非希波主教与基督教神学家，《上帝之城》作者。区分“上帝之城”与“地上之城”，认为世俗权力的作用在于维护和平与秩序；此处展示基督教政治神学传统。",
+    "sources": [
+      {
+        "title": "斯坦福哲学百科：Augustine of Hippo",
+        "url": "https://plato.stanford.edu/entries/augustine/"
+      }
+    ]
+  },
+  "calvin": {
+    "id": "calvin",
+    "name": "约翰·加尔文",
+    "years": "1509—1564",
+    "monogram": "加",
+    "description": "法国出生的新教改革家，《基督教要义》作者，长期在日内瓦主持教会改革。主张以教会纪律和道德监督规范公共生活；此处展示改革宗的宗教秩序传统。",
+    "sources": [
+      {
+        "title": "大英百科：John Calvin",
+        "url": "https://www.britannica.com/biography/John-Calvin"
+      }
+    ]
+  },
+  "roger-williams": {
+    "id": "roger-williams",
+    "name": "罗杰·威廉斯",
+    "years": "约1603—1683",
+    "monogram": "威",
+    "description": "英格兰出生的清教徒牧师，因主张政教分离被逐出马萨诸塞，后创建普罗维登斯（罗得岛）。坚持良心自由，让不同信仰者平等生活；此处展示由虔信者提出的宗教自由传统。",
+    "sources": [
+      {
+        "title": "大英百科：Roger Williams",
+        "url": "https://www.britannica.com/biography/Roger-Williams-American-religious-leader"
+      },
+      {
+        "title": "美国国家公园管理局：Roger Williams",
+        "url": "https://www.nps.gov/people/roger-williams.htm"
+      }
+    ]
+  },
+  "tagore": {
+    "id": "tagore",
+    "name": "罗宾德拉纳特·泰戈尔",
+    "years": "1861—1941",
+    "monogram": "泰",
+    "description": "印度诗人与思想家，1913年诺贝尔文学奖得主。在《民族主义》演讲中批评民族国家的排他与扩张，提倡跨文化的人类共同体；此处展示人文主义的世界主义。",
+    "sources": [
+      {
+        "title": "诺贝尔奖官网：Rabindranath Tagore 生平",
+        "url": "https://www.nobelprize.org/prizes/literature/1913/tagore/biographical/"
+      },
+      {
+        "title": "泰戈尔《民族主义》原文",
+        "url": "https://www.gutenberg.org/ebooks/40766"
+      }
+    ]
+  },
+  "suttner": {
+    "id": "suttner",
+    "name": "贝尔塔·冯·苏特纳",
+    "years": "1843—1914",
+    "monogram": "苏",
+    "description": "奥地利作家，小说《放下武器！》作者，1905年诺贝尔和平奖得主。倡导国际仲裁、裁军与和平组织；此处展示以国际仲裁维护和平的主张。",
+    "sources": [
+      {
+        "title": "诺贝尔奖官网：Bertha von Suttner 生平",
+        "url": "https://www.nobelprize.org/prizes/peace/1905/suttner/biographical/"
+      }
+    ]
+  },
+  "marti": {
+    "id": "marti",
+    "name": "何塞·马蒂",
+    "years": "1853—1895",
+    "monogram": "马",
+    "description": "古巴诗人与独立运动领袖，古巴革命党创建者，《我们的美洲》作者。主张民族独立与拉丁美洲团结，反对种族歧视，1895年在独立战争中牺牲；此处展示反殖民的公民民族主义。",
+    "sources": [
+      {
+        "title": "大英百科：José Martí",
+        "url": "https://www.britannica.com/biography/Jose-Marti"
+      }
+    ]
+  },
+  "washington": {
+    "id": "washington",
+    "name": "乔治·华盛顿",
+    "years": "1732—1799",
+    "monogram": "华",
+    "description": "美国首任总统。1796年《告别演说》告诫国家避免卷入永久同盟，在商业往来之外尽量减少政治牵连；此处展示主权自主与审慎外交的主张。",
+    "sources": [
+      {
+        "title": "耶鲁大学阿瓦隆项目：Washington’s Farewell Address 1796",
+        "url": "https://avalon.law.yale.edu/18th_century/washing.asp"
+      }
+    ]
+  },
+  "mozi": {
+    "id": "mozi",
+    "name": "墨子",
+    "years": "约前5世纪",
+    "monogram": "墨",
+    "description": "战国初期墨家创始人。主张“兼爱”“非攻”，反对攻伐战争，同时重视守城防御，墨家以善守著称；此处展示普遍关怀与反战传统。",
+    "sources": [
+      {
+        "title": "斯坦福哲学百科：Mohism",
+        "url": "https://plato.stanford.edu/entries/mohism/"
+      }
+    ]
+  },
+  "erasmus": {
+    "id": "erasmus",
+    "name": "伊拉斯谟",
+    "years": "约1466—1536",
+    "monogram": "伊",
+    "description": "尼德兰人文主义学者，《和平的控诉》作者。批评君主之间的战争，呼吁以仲裁和协商解决争端；此处展示基督教人文主义的和平主张。",
+    "sources": [
+      {
+        "title": "斯坦福哲学百科：Desiderius Erasmus",
+        "url": "https://plato.stanford.edu/entries/erasmus/"
+      }
+    ]
+  },
+  "grotius": {
+    "id": "grotius",
+    "name": "胡果·格劳秀斯",
+    "years": "1583—1645",
+    "monogram": "格",
+    "description": "荷兰法学家，《战争与和平法》作者。以自然法建立国家间法律秩序，承认有限条件下的正义战争，同时规范战争行为；此处展示国际法与正义战争传统。",
+    "sources": [
+      {
+        "title": "斯坦福哲学百科：Hugo Grotius",
+        "url": "https://plato.stanford.edu/entries/grotius/"
+      }
+    ]
+  },
+  "eleanor-roosevelt": {
+    "id": "eleanor-roosevelt",
+    "name": "埃莉诺·罗斯福",
+    "years": "1884—1962",
+    "monogram": "罗",
+    "description": "美国社会活动家与外交家，联合国人权委员会主席，主持起草1948年《世界人权宣言》。推动以国际规范保障人权；此处展示以国际规则和联合国合作保障人权的传统。",
+    "sources": [
+      {
+        "title": "联合国：Drafters of the Declaration",
+        "url": "https://www.un.org/en/about-us/udhr/drafters-of-the-declaration"
+      }
+    ]
+  },
+  "lemkin": {
+    "id": "lemkin",
+    "name": "拉斐尔·莱姆金",
+    "years": "1900—1959",
+    "monogram": "莱",
+    "description": "波兰裔法学家，1944年创造“灭绝种族”（genocide）一词，推动联合国1948年通过《防止及惩治灭绝种族罪公约》；此处展示以国际法防止和惩治大规模暴行的主张。",
+    "sources": [
+      {
+        "title": "大英百科：Raphael Lemkin",
+        "url": "https://www.britannica.com/biography/Raphael-Lemkin"
+      },
+      {
+        "title": "美国大屠杀纪念馆：The Story of Raphael Lemkin",
+        "url": "https://encyclopedia.ushmm.org/content/en/article/coining-a-word-and-championing-a-cause-the-story-of-raphael-lemkin"
+      }
+    ]
+  },
+  "leopold": {
+    "id": "leopold",
+    "name": "奥尔多·利奥波德",
+    "years": "1887—1948",
+    "monogram": "利",
+    "description": "美国林学家与生态学家，《沙乡年鉴》作者。提出“土地伦理”，把土壤、水、动植物纳入道德共同体；此处展示生态整体主义的保护传统。",
+    "sources": [
+      {
+        "title": "大英百科：Aldo Leopold",
+        "url": "https://www.britannica.com/biography/Aldo-Leopold"
+      },
+      {
+        "title": "奥尔多·利奥波德基金会：Understanding the Land Ethic",
+        "url": "https://www.aldoleopold.org/blogs/understanding-the-land-ethic"
+      }
+    ]
+  },
+  "thoreau": {
+    "id": "thoreau",
+    "name": "亨利·戴维·梭罗",
+    "years": "1817—1862",
+    "monogram": "梭",
+    "description": "美国作家，《瓦尔登湖》《论公民的不服从》作者。倡导简朴生活与亲近自然，对铁路等新技术改变生活的方式保持警惕；此处展示简朴生活与自然价值传统。",
+    "sources": [
+      {
+        "title": "斯坦福哲学百科：Henry David Thoreau",
+        "url": "https://plato.stanford.edu/entries/thoreau/"
+      }
+    ]
+  },
+  "maathai": {
+    "id": "maathai",
+    "name": "旺加里·马塔伊",
+    "years": "1940—2011",
+    "monogram": "马",
+    "description": "肯尼亚环境与社会活动家，1977年发起“绿带运动”，2004年诺贝尔和平奖得主。组织妇女和社区植树，把生态保护与民生、民主参与结合起来；此处展示社区参与的生态保护。",
+    "sources": [
+      {
+        "title": "诺贝尔奖官网：Wangari Maathai 生平",
+        "url": "https://www.nobelprize.org/prizes/peace/2004/maathai/biographical/"
+      }
+    ]
+  },
+  "schumacher": {
+    "id": "schumacher",
+    "name": "E.F.舒马赫",
+    "years": "1911—1977",
+    "monogram": "舒",
+    "description": "德裔英国经济学家，《小的是美好的》作者。主张适度规模和“中间技术”，批评对无限增长与大型技术的追求；此处展示适度技术与生态经济的思想。",
+    "sources": [
+      {
+        "title": "大英百科：E.F. Schumacher",
+        "url": "https://www.britannica.com/money/E-F-Schumacher"
+      },
+      {
+        "title": "舒马赫新经济中心：E. F. Schumacher",
+        "url": "https://centerforneweconomics.org/people/e-f-schumacher/"
+      }
+    ]
+  },
+  "theodore-roosevelt": {
+    "id": "theodore-roosevelt",
+    "name": "西奥多·罗斯福",
+    "years": "1858—1919",
+    "monogram": "罗",
+    "description": "美国第26任总统。与平肖合作设立大量国家森林、鸟类保护区和国家纪念地，把资源保育纳入联邦政策；此处展示公共管理的资源保育传统。",
+    "sources": [
+      {
+        "title": "美国国家公园管理局：Theodore Roosevelt and Conservation",
+        "url": "https://www.nps.gov/thro/learn/historyculture/theodore-roosevelt-and-conservation.htm"
+      }
+    ]
+  },
+  "fuller": {
+    "id": "fuller",
+    "name": "巴克敏斯特·富勒",
+    "years": "1895—1983",
+    "monogram": "富",
+    "description": "美国建筑师、设计师与发明家，《地球号太空船操作手册》作者。主张以设计与技术“少用多得”，用更少资源满足全人类需要；此处展示技术乐观的资源设计思路。",
+    "sources": [
+      {
+        "title": "巴克敏斯特·富勒研究所：Operating Manual for Spaceship Earth",
+        "url": "https://www.bfi.org/resource/operating-manual-for-spaceship-earth/"
+      }
+    ]
+  },
+  "julian-simon": {
+    "id": "julian-simon",
+    "name": "朱利安·西蒙",
+    "years": "1932—1998",
+    "monogram": "西",
+    "description": "美国经济学家，著有 The Ultimate Resource。认为人类的知识与创造力能够不断突破资源约束，曾与生态学家埃利希就资源价格打赌；此处展示资源乐观主义。",
+    "sources": [
+      {
+        "title": "Econlib：Julian Simon",
+        "url": "https://www.econlib.org/library/enc/bios/simonj.html"
+      }
+    ]
+  },
+  "ellul": {
+    "id": "ellul",
+    "name": "雅克·埃吕尔",
+    "years": "1912—1994",
+    "monogram": "埃",
+    "description": "法国社会学家与神学家，《技术社会》作者。批评以效率为唯一标准的“技术”逻辑自主扩张、支配社会生活；此处展示对技术自主扩张的批判。",
+    "sources": [
+      {
+        "title": "大英百科：Jacques Ellul",
+        "url": "https://www.britannica.com/biography/Jacques-Ellul"
+      }
+    ]
+  },
+  "illich": {
+    "id": "illich",
+    "name": "伊万·伊利奇",
+    "years": "1926—2002",
+    "monogram": "伊",
+    "description": "出生于维也纳的社会批评家，《去学校化社会》作者。主张工具、能源使用和制度应保持在人能够自主掌握的规模；此处展示“宜人工具”的技术批判。",
+    "sources": [
+      {
+        "title": "大英百科：Ivan Illich",
+        "url": "https://www.britannica.com/biography/Ivan-Illich"
+      }
+    ]
+  },
+  "postman": {
+    "id": "postman",
+    "name": "尼尔·波兹曼",
+    "years": "1931—2003",
+    "monogram": "波",
+    "description": "美国媒体文化学者，《娱乐至死》《技术垄断》作者。批评社会文化让位于技术逻辑；此处展示媒介与技术的文化批判。",
+    "sources": [
+      {
+        "title": "大英百科：Neil Postman",
+        "url": "https://www.britannica.com/biography/Neil-Postman"
+      }
+    ]
   }
 }

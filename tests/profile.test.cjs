@@ -25,7 +25,7 @@ function answersFor(targets) {
 test('six transparent sections retain the existing 22-facet boundary and complete prototypes', () => {
   assert.deepEqual(P.config, config);
   assert.equal(config.sections.length, 6);
-  assert.equal(config.profiles.length, 32);
+  assert.equal(config.profiles.length, 39);
   assert.equal(new Set(config.profiles.map(p => p.id)).size, config.profiles.length);
   assert.deepEqual(config.sections.flatMap(s => s.axes), D.core.axes.map(a => a.id));
   for (const section of config.sections) {
@@ -33,7 +33,7 @@ test('six transparent sections retain the existing 22-facet boundary and complet
     assert(profiles.length >= 4);
     for (const p of profiles) {
       assert.deepEqual(Object.keys(p.targets), section.matchingAxes);
-      assert(p.personId && p.description && p.label);
+      assert(p.figures.length >= 2 && p.description && p.label);
       assert(p.sourceUrls.length && p.sourceUrls.every(url => /^https:\/\//.test(url)));
       assert(Object.values(p.targets).every(x => Number.isFinite(x) && x >= -100 && x <= 100));
       assert(Object.keys(p.anchors).every(id => section.matchingAxes.includes(id)));
@@ -52,7 +52,7 @@ test('browser and CommonJS use exactly the same published rule data', () => {
   assert.equal(context.OMNI_PROFILE.analyze({ facets: [] }).length, 6);
 });
 
-test('all 32 authored policy combinations are reachable without manufacturing a global identity', () => {
+test('all 39 authored policy combinations are reachable without manufacturing a global identity', () => {
   for (const p of config.profiles) {
     const g = group(answersFor(p.targets), p.section);
     assert.equal(g.status, 'closest', p.id);
@@ -154,4 +154,63 @@ test('analysis is read-only and malformed or absent result data fails closed', (
   assert.equal(JSON.stringify(r), before);
   assert(P.analyze(null).every(g => g.status === 'insufficient'));
   assert(P.analyze({ facets: D.core.axes.map(a => ({ ...a, valid: 6, value: Infinity, rawValue: NaN })) }).every(g => g.status === 'insufficient'));
+});
+
+test('figure reference points stay inside their type and every one of the 117 figures is reachable', () => {
+  const rule = config.method.figureSelection;
+  assert.deepEqual([rule.tieMargin, rule.maximumMeanOffset, rule.minimumSeparation], [3, 30, 7.5]);
+  let entries = 0;
+  for (const p of config.profiles) {
+    const section = config.sections.find(s => s.section === p.section), axes = section.matchingAxes;
+    const points = p.figures.map(f => P.figurePoint(p, f));
+    p.figures.forEach((f, i) => {
+      entries++;
+      assert(Object.keys(f.targets).every(id => axes.includes(id) && Number.isFinite(f.targets[id]) && Math.abs(f.targets[id]) <= 100), p.id + '/' + f.personId);
+      const point = points[i], mean = (a, b) => axes.reduce((n, id) => n + Math.abs(a[id] - b[id]), 0) / axes.length;
+      for (const [id, r] of Object.entries(p.anchors)) {
+        if (r.min !== undefined) assert(point[id] >= r.min, p.id + '/' + f.personId + ' ' + id);
+        if (r.max !== undefined) assert(point[id] <= r.max, p.id + '/' + f.personId + ' ' + id);
+      }
+      assert(mean(point, p.targets) <= rule.maximumMeanOffset, p.id + '/' + f.personId + ' offset');
+      for (let j = 0; j < i; j++) assert(mean(point, points[j]) >= rule.minimumSeparation, p.id + ': ' + f.personId + ' vs ' + p.figures[j].personId);
+      const g = group(answersFor(point), p.section), top = g.candidates[0];
+      assert(top && top.id === p.id, p.id + '/' + f.personId + ' reaches ' + (top && top.id));
+      assert.equal(top.personId, f.personId, p.id + ' chooses ' + top.personId + ' instead of ' + f.personId);
+      assert.equal(top.figure.personId, f.personId);
+      assert.deepEqual(top.figures.map(x => x.distance), top.figures.map(x => x.distance).slice().sort((a, b) => a - b));
+      assert.equal(top.figures.length, p.figures.length);
+    });
+  }
+  assert.equal(entries, 117);
+});
+
+test('figures only choose whom to introduce: type results are identical without them', () => {
+  const stripped = JSON.parse(JSON.stringify(config));
+  for (const p of stripped.profiles) p.figures = p.figures.slice(0, 1);
+  const source = fs.readFileSync(path.join(__dirname, '../assets/omni-profile.js'), 'utf8').replace(/\/\* PROFILE_DATA_START \*\/[\s\S]*?\/\* PROFILE_DATA_END \*\//, JSON.stringify(stripped));
+  const context = {}; vm.runInNewContext(source, context);
+  const Q = context.OMNI_PROFILE;
+  let seed = 20261102;
+  const random = () => (seed = (seed * 1103515245 + 12345) % 2147483648) / 2147483648;
+  const summary = groups => JSON.stringify(groups.map(g => [g.status, g.title.replace(/：.*/, ''), g.candidates.map(c => [c.id, c.relation, c.distance]), g.sensitivity]));
+  for (let n = 0; n < 300; n++) {
+    const answers = {};
+    // Mix strong, moderate and missing answers so that ties, conditional candidates and boundaries all occur.
+    for (const q of D.core.items) { const r = random(); answers[q.id] = r < 0.06 ? 'U' : 1 + Math.floor(random() * 7); }
+    const r = result(answers);
+    assert.equal(summary(P.analyze(r)), summary(Q.analyze(r)), 'sample ' + n);
+  }
+});
+
+test('figure near ties are flagged rather than hidden, and figure distance is never a percentage', () => {
+  const p = config.profiles.find(x => x.id === 'ecology-preservationism');
+  const ranked = P.figureRanking(p, { ECO: 95, TECH: 32.5 });
+  assert.deepEqual(ranked.slice(0, 2).map(f => f.personId).sort(), ['leopold', 'muir']);
+  assert(ranked[0].tie && ranked[1].tie);
+  assert.equal(ranked[0].distance, ranked[1].distance);
+  assert.equal(ranked.find(f => f.personId === 'muir').primary, true);
+  for (const f of ranked) { assert.equal(f.percentage, undefined); assert.equal(f.probability, undefined); }
+  const far = P.figureRanking(p, { ECO: 100, TECH: 40 });
+  assert.equal(far[0].personId, 'leopold');
+  assert.deepEqual(far.filter(f => f.tie).map(f => f.personId), ['leopold']);
 });

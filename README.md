@@ -16,9 +16,9 @@
 
 ## 结果包括什么
 
-六个维度的基本倾向性画像、较接近流派及代表人物的肖像与介绍；每个分面的方向、有效题数、缺答范围与六题原答；实际核验卡的逐项支持、反对、中立及缺答；名称认同与熟悉度；已核验近邻之间的差异；情境配对；补充题的支持、反对、中立、信息缺口与逐题记录；本人补充；作答完整性；所有未检验卡的范围。
+六个维度的基本倾向性画像、较接近流派及其中侧重最相近的代表人物介绍；每个分面的方向、有效题数、缺答范围与六题原答；实际核验卡的逐项支持、反对、中立及缺答；名称认同与熟悉度；已核验近邻之间的差异；情境配对；补充题的支持、反对、中立、信息缺口与逐题记录；本人补充；作答完整性；所有未检验卡的范围。
 
-报告首先提供 **基本倾向性画像**：六个维度分别比较典型主张，显示思想参照、代表人物肖像与简介，并保留中立、混合、信息不足和近似并列。依据和人物来源可展开查看；不把局部接近当作完整身份。比较规则见 [PROFILE_RULES.md](PROFILE_RULES.md)，图像许可见 [PORTRAIT_SOURCES.md](PORTRAIT_SOURCES.md)。
+报告首先提供 **基本倾向性画像**：六个维度分别比较 39 个参考型的典型主张，再在较接近的参考型所列的 2～5 位代表人物中（共 96 位历史人物），按人物参照点选出侧重最相近的一位介绍，并列出同型其他人物；保留中立、混合、信息不足和近似并列。依据、人物距离和人物出处可展开查看；不把局部接近当作完整身份。比较规则见 [PROFILE_RULES.md](PROFILE_RULES.md)，图像许可见 [PORTRAIT_SOURCES.md](PORTRAIT_SOURCES.md)。
 
 报告配有图表，全部在本机生成：
 
@@ -54,9 +54,9 @@
 | `assets/omni-engine.js` | 分面、卡片、情境、覆盖与原有答卷格式校验 |
 | `assets/omni-transfer.js`、`assets/omni-backup.js` | 带长度和校验的答卷代码、聊天分段备份与逐段导入 |
 | `assets/omni-image-export.js`、`assets/vendor/` | 本地完整报告分页 PNG 生成与可长按的图片预览 |
-| `scripts/build-profiles.py` | 从人物与参照数据重建浏览器脚本 |
+| `scripts/build-profiles.py` | 从人物与参照数据重建浏览器脚本和规则文档中的明细表 |
 | `assets/omni-profile.js`、`data/tendency_profiles.json` | 六个维度的典型主张比较及公开规则 |
-| `assets/omni-people.js`、`data/tendency_people.json`、`assets/portraits/` | 人物介绍、资料与本地肖像 |
+| `assets/omni-people.js`、`data/tendency_people.json`、`assets/portraits/` | 代表人物介绍、出处与本地肖像 |
 | `assets/omni-report.js` | 测试页与计分器共用的详细报告 |
 | `assets/omni-charts.js`、`assets/omni-charts.css` | 报告图表（三维罗盘、发散条形图、雷达图、作答倾向总览等），测试页与计分器共用 |
 | `omni-admin.html`、`assets/omni-admin.js` | 答卷导入与批量汇总 |
@@ -87,4 +87,4 @@
 
 编制阶段的题目取舍与映射资料保存在 [编制审计](LEGACY_INTEGRATION.md)，供维护者追溯；不作为答题者的作答流程说明。
 
-维护人物介绍或参照数据后执行 `python scripts/build-profiles.py`，同步 JSON 与浏览器脚本；`npm run test:profiles` 核对六维报告、头像、手机布局和导出。
+维护人物介绍或参照数据后执行 `python scripts/build-profiles.py`，同步浏览器脚本和 PROFILE_RULES.md 中的两张明细表；`npm test` 检查人物参照点的编制约束，`npm run test:profiles` 核对六维报告、代表人物、头像、手机布局和导出。

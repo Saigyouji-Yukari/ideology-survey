@@ -10,6 +10,19 @@
 .tendency-match h4 { margin:0 0 8px; font-size:1rem; }
 .tendency-person { display:grid; grid-template-columns:80px minmax(0,1fr); gap:14px; align-items:start; margin:16px 0 8px; }
 .tendency-portrait { display:block; width:80px; height:100px; object-fit:cover; object-position:50% 28%; border:1px solid var(--line,#d6dde7); border-radius:8px; background:#e6e9ee; filter:grayscale(.2); }
+/* Figures without a licensed local portrait: one character of the name on a tile of the same size. */
+.tendency-monogram { display:grid; place-items:center; width:80px; height:100px; border:1px solid var(--accent-line,#b9c6dc); border-radius:8px; background:linear-gradient(160deg,var(--accent-soft,#e5ebf5),var(--surface,#fff)); color:var(--accent,#1f3864); font:700 2.2rem/1 var(--serif,serif); -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+.tendency-focus { display:block; margin-top:3px; font-size:.8rem; font-weight:600; color:var(--accent,#1f3864); }
+.tendency-figure-note { margin:2px 0 0; font-size:.82rem; line-height:1.6; color:var(--muted,#596678); }
+.tendency-others { margin:10px 0 2px; padding:10px 12px; border-radius:10px; background:var(--raised,#f4f6fa); }
+.tendency-others-title { margin:0 0 6px; font-size:.76rem; font-weight:700; color:var(--muted,#596678); }
+.tendency-others ul { list-style:none; margin:0; padding:0; display:grid; gap:6px; }
+/* Each listed figure styles itself, so it keeps its layout when the image export moves it into a page of its own. */
+.tendency-other { display:grid; grid-template-columns:28px minmax(0,1fr); gap:8px; align-items:center; font-size:.8rem; line-height:1.5; min-width:0; list-style:none; }
+.tendency-other > span:last-child { min-width:0; overflow-wrap:anywhere; }
+.tendency-mini { display:block; width:28px; height:35px; border-radius:5px; border:1px solid var(--line,#d6dde7); object-fit:cover; object-position:50% 28%; background:#e6e9ee; }
+span.tendency-mini { display:grid; place-items:center; background:var(--accent-soft,#e5ebf5); color:var(--accent,#1f3864); font:700 .95rem/1 var(--serif,serif); -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+.tendency-tie { display:inline-block; margin-left:6px; padding:0 6px; border-radius:999px; background:var(--accent-soft,#e5ebf5); color:var(--accent,#1f3864); font-style:normal; font-size:.7rem; font-weight:600; }
 .tendency-person figcaption { min-width:0; line-height:1.6; font-size:.85rem; }
 .tendency-person strong { display:block; font-size:.9rem; }
 .tendency-years { display:block; color:var(--muted,#596678); font-size:.8rem; }
@@ -20,5 +33,5 @@
 .tendency-profile .report-details ul { padding-left:20px; }
 .tendency-profile a { overflow-wrap:anywhere; }
 @media(max-width:760px) { .tendency-grid { grid-template-columns:minmax(0,1fr); } }
-@media(max-width:390px) { .tendency-dimension { padding:16px; } .tendency-person { grid-template-columns:64px minmax(0,1fr); gap:12px; } .tendency-portrait { width:64px; height:80px; } }
-@media print { .tendency-grid { display:block; } .tendency-dimension { break-inside:avoid; page-break-inside:avoid; margin:0 0 14px; padding:14px; background:#fff; color:#111; } .tendency-match { break-inside:avoid; } .tendency-profile .tendency-portrait { filter:none; } }
+@media(max-width:390px) { .tendency-dimension { padding:16px; } .tendency-person { grid-template-columns:64px minmax(0,1fr); gap:12px; } .tendency-portrait, .tendency-monogram { width:64px; height:80px; } .tendency-monogram { font-size:1.8rem; } }
+@media print { .tendency-grid { display:block; } .tendency-dimension { break-inside:avoid; page-break-inside:avoid; margin:0 0 14px; padding:14px; background:#fff; color:#111; } .tendency-match { break-inside:avoid; } .tendency-profile .tendency-portrait { filter:none; } .tendency-others { background:#f4f6fa; -webkit-print-color-adjust:exact; print-color-adjust:exact; } }
