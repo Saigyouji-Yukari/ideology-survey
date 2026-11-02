@@ -577,7 +577,18 @@
         "title": "《面包与自由》（The Conquest of Bread）原文",
         "url": "https://www.gutenberg.org/ebooks/23428"
       }
-    ]
+    ],
+    "portrait": "assets/portraits/kropotkin.jpg",
+    "imageCredit": {
+      "title": "Peter Kropotkin circa 1900.jpg",
+      "creator": "Nadar",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Peter_Kropotkin_circa_1900.jpg",
+      "licenseName": "公有领域（Public domain）",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "changes": "使用来源页面所列版本；本站仅等比缩小并转换为 JPEG，未改变人物形象。",
+      "licenseBasis": "Commons 文件页标注 Public domain；已核对该页作者、许可模板与文件元数据。",
+      "verifiedOn": "2026-11-02"
+    }
   },
   "nyerere": {
     "id": "nyerere",
@@ -594,7 +605,18 @@
         "title": "大英百科：Ujamaa",
         "url": "https://www.britannica.com/topic/ujamaa"
       }
-    ]
+    ],
+    "portrait": "assets/portraits/nyerere.jpg",
+    "imageCredit": {
+      "title": "President Nyerere van Tanzania, koppen, Bestanddeelnr 928-2879 (cropped).jpg",
+      "creator": "Rob Mieremet / Anefo",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:President_Nyerere_van_Tanzania,_koppen,_Bestanddeelnr_928-2879_(cropped).jpg",
+      "licenseName": "CC0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "changes": "使用来源页面所列版本；本站仅等比缩小并转换为 JPEG，未改变人物形象。",
+      "licenseBasis": "Commons 文件页标注 CC0；已核对该页作者、许可模板与文件元数据。",
+      "verifiedOn": "2026-11-02"
+    }
   },
   "cole": {
     "id": "cole",
@@ -624,7 +646,18 @@
         "title": "Econlib：Oskar Ryszard Lange",
         "url": "https://www.econlib.org/library/Enc/bios/Lange.html"
       }
-    ]
+    ],
+    "portrait": "assets/portraits/lange.jpg",
+    "imageCredit": {
+      "title": "Oskar Lange 1956.jpg",
+      "creator": "Władysław Miernicki",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Oskar_Lange_1956.jpg",
+      "licenseName": "公有领域（Public domain）",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "changes": "使用来源页面所列版本；本站仅等比缩小并转换为 JPEG，未改变人物形象。",
+      "licenseBasis": "Commons 文件页标注 Public domain；已核对该页作者、许可模板与文件元数据。",
+      "verifiedOn": "2026-11-02"
+    }
   },
   "tawney": {
     "id": "tawney",
@@ -650,7 +683,18 @@
         "title": "大英百科：Anarchism in the Americas",
         "url": "https://www.britannica.com/topic/anarchism/Anarchism-in-the-Americas"
       }
-    ]
+    ],
+    "portrait": "assets/portraits/warren.jpg",
+    "imageCredit": {
+      "title": "Josiah Warren.jpg",
+      "creator": "Frank Rowell",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Josiah_Warren.jpg",
+      "licenseName": "公有领域（Public domain）",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "changes": "使用来源页面所列版本；本站裁切至人物上半身、等比缩小并转换为 JPEG。",
+      "licenseBasis": "Commons 文件页标注 Public domain；已核对该页作者、许可模板与文件元数据。",
+      "verifiedOn": "2026-11-02"
+    }
   },
   "myrdal": {
     "id": "myrdal",
@@ -663,7 +707,18 @@
         "title": "诺贝尔奖官网：Gunnar Myrdal 生平",
         "url": "https://www.nobelprize.org/prizes/economic-sciences/1974/myrdal/biographical/"
       }
-    ]
+    ],
+    "portrait": "assets/portraits/myrdal.jpg",
+    "imageCredit": {
+      "title": "Gunnar Myrdal 1964 002 (cropped).jpg",
+      "creator": "Uppsala-Bild / Upplandsmuseet",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gunnar_Myrdal_1964_002_(cropped).jpg",
+      "licenseName": "公有领域（Public domain）",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "changes": "使用来源页面所列版本；本站仅等比缩小并转换为 JPEG，未改变人物形象。",
+      "licenseBasis": "Commons 文件页标注 Public domain；已核对该页作者、许可模板与文件元数据。",
+      "verifiedOn": "2026-11-02"
+    }
   },
   "beveridge": {
     "id": "beveridge",
@@ -680,7 +735,18 @@
         "title": "大英百科：Beveridge Report",
         "url": "https://www.britannica.com/topic/Beveridge-Report"
       }
-    ]
+    ],
+    "portrait": "assets/portraits/beveridge.jpg",
+    "imageCredit": {
+      "title": "Sir W.H. Beveridge, head-and-shoulders portrait, facing left.jpg",
+      "creator": "Bain Photo Company",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sir_W.H._Beveridge,_head-and-shoulders_portrait,_facing_left.jpg",
+      "licenseName": "公有领域（Public domain）",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "changes": "使用来源页面所列版本；本站仅等比缩小并转换为 JPEG，未改变人物形象。",
+      "licenseBasis": "Commons 文件页标注 Public domain；已核对该页作者、许可模板与文件元数据。",
+      "verifiedOn": "2026-11-02"
+    }
   },
   "george": {
     "id": "george",
@@ -693,7 +759,18 @@
         "title": "《进步与贫困》（Progress and Poverty）原文",
         "url": "https://www.gutenberg.org/ebooks/55308"
       }
-    ]
+    ],
+    "portrait": "assets/portraits/george.jpg",
+    "imageCredit": {
+      "title": "Henry George c1885 retouched.jpg",
+      "creator": "Unknown author Unknown author",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Henry_George_c1885_retouched.jpg",
+      "licenseName": "公有领域（Public domain）",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "changes": "使用来源页面所列版本；本站仅等比缩小并转换为 JPEG，未改变人物形象。",
+      "licenseBasis": "Commons 文件页标注 Public domain；已核对该页作者、许可模板与文件元数据。",
+      "verifiedOn": "2026-11-02"
+    }
   },
   "hayek": {
     "id": "hayek",
@@ -706,7 +783,18 @@
         "title": "诺贝尔奖官网：Friedrich August von Hayek",
         "url": "https://www.nobelprize.org/prizes/economic-sciences/1974/hayek/facts/"
       }
-    ]
+    ],
+    "portrait": "assets/portraits/hayek.jpg",
+    "imageCredit": {
+      "title": "Friedrich Hayek portrait.jpg",
+      "creator": "The original uploader was DickClarkMises at English Wikipedia .",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Friedrich_Hayek_portrait.jpg",
+      "licenseName": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "changes": "使用来源页面所列版本；本站仅等比缩小并转换为 JPEG，未改变人物形象。本站转换版沿用原图所列 CC BY-SA 许可。",
+      "licenseBasis": "Commons 文件页标注 CC BY-SA 3.0；已核对该页作者、许可模板与文件元数据。",
+      "verifiedOn": "2026-11-02"
+    }
   },
   "friedman": {
     "id": "friedman",
@@ -719,7 +807,18 @@
         "title": "诺贝尔奖官网：Milton Friedman",
         "url": "https://www.nobelprize.org/prizes/economic-sciences/1976/friedman/facts/"
       }
-    ]
+    ],
+    "portrait": "assets/portraits/friedman.jpg",
+    "imageCredit": {
+      "title": "Portrait of Milton Friedman (4x5 cropped).jpg",
+      "creator": "Bachrach Studios",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Portrait_of_Milton_Friedman_(4x5_cropped).jpg",
+      "licenseName": "公有领域（Public domain）",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "changes": "使用来源页面所列版本；本站仅等比缩小并转换为 JPEG，未改变人物形象。",
+      "licenseBasis": "Commons 文件页标注 Public domain；已核对该页作者、许可模板与文件元数据。",
+      "verifiedOn": "2026-11-02"
+    }
   },
   "bastiat": {
     "id": "bastiat",
@@ -740,7 +839,18 @@
         "title": "FEE：Bastiat and Unionism（1849年议会发言）",
         "url": "https://fee.org/articles/bastiat-and-unionism/"
       }
-    ]
+    ],
+    "portrait": "assets/portraits/bastiat.jpg",
+    "imageCredit": {
+      "title": "Bastiat.jpg",
+      "creator": "Émile Desmaisons. Lithograph by Auguste-Hilaire Léveillé.",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bastiat.jpg",
+      "licenseName": "公有领域（Public domain）",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "changes": "使用来源页面所列版本；本站仅等比缩小并转换为 JPEG，未改变人物形象。",
+      "licenseBasis": "Commons 文件页标注 Public domain；已核对该页作者、许可模板与文件元数据。",
+      "verifiedOn": "2026-11-02"
+    }
   },
   "rand": {
     "id": "rand",
@@ -753,7 +863,18 @@
         "title": "斯坦福哲学百科：Ayn Rand",
         "url": "https://plato.stanford.edu/entries/ayn-rand/"
       }
-    ]
+    ],
+    "portrait": "assets/portraits/rand.jpg",
+    "imageCredit": {
+      "title": "Ayn Rand (1943 Talbot portrait).jpg",
+      "creator": "Photo portrait credited to \"Talbot\" (though not on original dust jacket). Published by the Bobbs-Merrill Company .",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ayn_Rand_(1943_Talbot_portrait).jpg",
+      "licenseName": "公有领域（Public domain）",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "changes": "使用来源页面所列版本；本站仅等比缩小并转换为 JPEG，未改变人物形象。",
+      "licenseBasis": "Commons 文件页标注 Public domain；已核对该页作者、许可模板与文件元数据。",
+      "verifiedOn": "2026-11-02"
+    }
   },
   "sun-yat-sen": {
     "id": "sun-yat-sen",
@@ -770,7 +891,18 @@
         "title": "大英百科：Sun Yat-sen",
         "url": "https://www.britannica.com/biography/Sun-Yat-sen"
       }
-    ]
+    ],
+    "portrait": "assets/portraits/sun-yat-sen.jpg",
+    "imageCredit": {
+      "title": "孙中山肖像.jpg",
+      "creator": "上海波尔照相馆",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:%E5%AD%99%E4%B8%AD%E5%B1%B1%E8%82%96%E5%83%8F.jpg",
+      "licenseName": "公有领域（Public domain）",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "changes": "使用来源页面所列版本；本站仅等比缩小并转换为 JPEG，未改变人物形象。",
+      "licenseBasis": "Commons 文件页标注 Public domain；已核对该页作者、许可模板与文件元数据。",
+      "verifiedOn": "2026-11-02"
+    }
   },
   "wang-anshi": {
     "id": "wang-anshi",
@@ -783,7 +915,19 @@
         "title": "大英百科：Wang Anshi",
         "url": "https://www.britannica.com/biography/Wang-Anshi"
       }
-    ]
+    ],
+    "portrait": "assets/portraits/wang-anshi.jpg",
+    "imageCredit": {
+      "title": "Wang Anshi.jpg",
+      "creator": "Unknown author Unknown author",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Wang_Anshi.jpg",
+      "licenseName": "公有领域（Public domain）",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "changes": "使用来源页面所列版本；本站仅等比缩小并转换为 JPEG，未改变人物形象。",
+      "licenseBasis": "Commons 文件页标注 Public domain；已核对该页作者、许可模板与文件元数据。",
+      "verifiedOn": "2026-11-02",
+      "depiction": "历史绘画或后世描绘，并非人物照片。"
+    }
   },
   "list": {
     "id": "list",
@@ -800,7 +944,18 @@
         "title": "《政治经济学的国民体系》英译本",
         "url": "https://oll.libertyfund.org/titles/lloyd-the-national-system-of-political-economy"
       }
-    ]
+    ],
+    "portrait": "assets/portraits/list.jpg",
+    "imageCredit": {
+      "title": "Friedrich List 1845 crop.jpg",
+      "creator": "Josef Kriehuber",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Friedrich_List_1845_crop.jpg",
+      "licenseName": "公有领域（Public domain）",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "changes": "使用来源页面所列版本；本站仅等比缩小并转换为 JPEG，未改变人物形象。",
+      "licenseBasis": "Commons 文件页标注 Public domain；已核对该页作者、许可模板与文件元数据。",
+      "verifiedOn": "2026-11-02"
+    }
   },
   "nehru": {
     "id": "nehru",
@@ -813,7 +968,18 @@
         "title": "大英百科：Jawaharlal Nehru",
         "url": "https://www.britannica.com/biography/Jawaharlal-Nehru"
       }
-    ]
+    ],
+    "portrait": "assets/portraits/nehru.jpg",
+    "imageCredit": {
+      "title": "Nehru in the Netherlands, 1957.jpg",
+      "creator": "Harry Pot",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Nehru_in_the_Netherlands,_1957.jpg",
+      "licenseName": "CC0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "changes": "使用来源页面所列版本；本站仅等比缩小并转换为 JPEG，未改变人物形象。",
+      "licenseBasis": "Commons 文件页标注 CC0；已核对该页作者、许可模板与文件元数据。",
+      "verifiedOn": "2026-11-02"
+    }
   },
   "locke": {
     "id": "locke",
@@ -826,7 +992,18 @@
         "title": "斯坦福哲学百科：Locke’s Political Philosophy",
         "url": "https://plato.stanford.edu/entries/locke-political/"
       }
-    ]
+    ],
+    "portrait": "assets/portraits/locke.jpg",
+    "imageCredit": {
+      "title": "Godfrey Kneller - Portrait of John Locke (Hermitage).jpg",
+      "creator": "Godfrey Kneller",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Godfrey_Kneller_-_Portrait_of_John_Locke_(Hermitage).jpg",
+      "licenseName": "公有领域（Public domain）",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "changes": "使用来源页面所列版本；本站仅等比缩小并转换为 JPEG，未改变人物形象。",
+      "licenseBasis": "Commons 文件页标注 Public domain；已核对该页作者、许可模板与文件元数据。",
+      "verifiedOn": "2026-11-02"
+    }
   },
   "constant": {
     "id": "constant",
@@ -839,7 +1016,18 @@
         "title": "贡斯当《古代人的自由与现代人的自由》英译本",
         "url": "https://oll.libertyfund.org/titles/constant-the-liberty-of-ancients-compared-with-that-of-moderns-1819"
       }
-    ]
+    ],
+    "portrait": "assets/portraits/constant.jpg",
+    "imageCredit": {
+      "title": "Roche - Portrait de Benjamin Constant (1767-1830), écrivain et homme politique - P1679 - Musée Carnavalet (cropped).jpg",
+      "creator": "Hercule de Roche",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Roche_-_Portrait_de_Benjamin_Constant_(1767-1830),_%C3%A9crivain_et_homme_politique_-_P1679_-_Mus%C3%A9e_Carnavalet_(cropped).jpg",
+      "licenseName": "CC0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "changes": "使用来源页面所列版本；本站仅等比缩小并转换为 JPEG，未改变人物形象。",
+      "licenseBasis": "Commons 文件页标注 CC0；已核对该页作者、许可模板与文件元数据。",
+      "verifiedOn": "2026-11-02"
+    }
   },
   "ambedkar": {
     "id": "ambedkar",
@@ -852,7 +1040,18 @@
         "title": "大英百科：Bhimrao Ramji Ambedkar",
         "url": "https://www.britannica.com/biography/Bhimrao-Ramji-Ambedkar"
       }
-    ]
+    ],
+    "portrait": "assets/portraits/ambedkar.jpg",
+    "imageCredit": {
+      "title": "Dr. Bhimrao Ambedkar.jpg",
+      "creator": "Unknown author Unknown author",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Dr._Bhimrao_Ambedkar.jpg",
+      "licenseName": "公有领域（Public domain）",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "changes": "使用来源页面所列版本；本站仅等比缩小并转换为 JPEG，未改变人物形象。",
+      "licenseBasis": "Commons 文件页标注 Public domain；已核对该页作者、许可模板与文件元数据。",
+      "verifiedOn": "2026-11-02"
+    }
   },
   "tocqueville": {
     "id": "tocqueville",
@@ -869,7 +1068,18 @@
         "title": "《论美国的民主》（第二卷）英译本",
         "url": "https://www.gutenberg.org/ebooks/816"
       }
-    ]
+    ],
+    "portrait": "assets/portraits/tocqueville.jpg",
+    "imageCredit": {
+      "title": "Portrait of Alexis de Tocqueville.jpg",
+      "creator": "Théodore Chassériau",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Portrait_of_Alexis_de_Tocqueville.jpg",
+      "licenseName": "公有领域（Public domain）",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "changes": "使用来源页面所列版本；本站裁切至人物上半身、等比缩小并转换为 JPEG。",
+      "licenseBasis": "Commons 文件页标注 Public domain；已核对该页作者、许可模板与文件元数据。",
+      "verifiedOn": "2026-11-02"
+    }
   },
   "madison": {
     "id": "madison",
@@ -882,7 +1092,18 @@
         "title": "《联邦党人文集》原文",
         "url": "https://www.gutenberg.org/ebooks/18"
       }
-    ]
+    ],
+    "portrait": "assets/portraits/madison.jpg",
+    "imageCredit": {
+      "title": "James Madison.jpg",
+      "creator": "John Vanderlyn",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:James_Madison.jpg",
+      "licenseName": "公有领域（Public domain）",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "changes": "使用来源页面所列版本；本站仅等比缩小并转换为 JPEG，未改变人物形象。",
+      "licenseBasis": "Commons 文件页标注 Public domain；已核对该页作者、许可模板与文件元数据。",
+      "verifiedOn": "2026-11-02"
+    }
   },
   "arendt": {
     "id": "arendt",
@@ -895,7 +1116,18 @@
         "title": "斯坦福哲学百科：Hannah Arendt",
         "url": "https://plato.stanford.edu/entries/arendt/"
       }
-    ]
+    ],
+    "portrait": "assets/portraits/arendt.jpg",
+    "imageCredit": {
+      "title": "Hannah Arendt auf dem 1. Kulturkritikerkongress, Barbara Niggl Radloff, FM-2019-1-5-9-16 (cropped).jpg",
+      "creator": "Barbara Niggl Radloff",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hannah_Arendt_auf_dem_1._Kulturkritikerkongress,_Barbara_Niggl_Radloff,_FM-2019-1-5-9-16_(cropped).jpg",
+      "licenseName": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "changes": "使用来源页面所列版本；本站仅等比缩小并转换为 JPEG，未改变人物形象。本站转换版沿用原图所列 CC BY-SA 许可。",
+      "licenseBasis": "Commons 文件页标注 CC BY-SA 4.0；已核对该页作者、许可模板与文件元数据。",
+      "verifiedOn": "2026-11-02"
+    }
   },
   "goldman": {
     "id": "goldman",
@@ -908,7 +1140,18 @@
         "title": "戈德曼《无政府主义及其他论文》原文",
         "url": "https://www.gutenberg.org/ebooks/2162"
       }
-    ]
+    ],
+    "portrait": "assets/portraits/goldman.jpg",
+    "imageCredit": {
+      "title": "Emma Goldman seated.jpg",
+      "creator": "Takuma Kajiwara",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Emma_Goldman_seated.jpg",
+      "licenseName": "公有领域（Public domain）",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "changes": "使用来源页面所列版本；本站仅等比缩小并转换为 JPEG，未改变人物形象。",
+      "licenseBasis": "Commons 文件页标注 Public domain；已核对该页作者、许可模板与文件元数据。",
+      "verifiedOn": "2026-11-02"
+    }
   },
   "kautsky": {
     "id": "kautsky",
@@ -921,7 +1164,18 @@
         "title": "考茨基《无产阶级专政》（1918）英译本",
         "url": "https://www.marxists.org/archive/kautsky/1918/dictprole/index.htm"
       }
-    ]
+    ],
+    "portrait": "assets/portraits/kautsky.jpg",
+    "imageCredit": {
+      "title": "Karl Kautsky High Res.jpg",
+      "creator": "Unknown author Unknown author",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Karl_Kautsky_High_Res.jpg",
+      "licenseName": "公有领域（Public domain）",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "changes": "使用来源页面所列版本；本站仅等比缩小并转换为 JPEG，未改变人物形象。",
+      "licenseBasis": "Commons 文件页标注 Public domain；已核对该页作者、许可模板与文件元数据。",
+      "verifiedOn": "2026-11-02"
+    }
   },
   "blanqui": {
     "id": "blanqui",
@@ -934,7 +1188,18 @@
         "title": "大英百科：Auguste Blanqui",
         "url": "https://www.britannica.com/biography/Auguste-Blanqui"
       }
-    ]
+    ],
+    "portrait": "assets/portraits/blanqui.jpg",
+    "imageCredit": {
+      "title": "Blanqui Louis-Auguste (1805-1881). Révolutionnaire et activiste, il est de toutes les manifestations qui prône l' égal, PH4142-49 (cropped).jpg",
+      "creator": "Appert, Eugène (Châteauroux, 13–03–1830), photographe",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Blanqui_Louis-Auguste_(1805-1881)._R%C3%A9volutionnaire_et_activiste,_il_est_de_toutes_les_manifestations_qui_pr%C3%B4ne_l%27_%C3%A9gal,_PH4142-49_(cropped).jpg",
+      "licenseName": "CC0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "changes": "使用来源页面所列版本；本站仅等比缩小并转换为 JPEG，未改变人物形象。",
+      "licenseBasis": "Commons 文件页标注 CC0；已核对该页作者、许可模板与文件元数据。",
+      "verifiedOn": "2026-11-02"
+    }
   },
   "bodin": {
     "id": "bodin",
@@ -947,7 +1212,19 @@
         "title": "斯坦福哲学百科：Jean Bodin",
         "url": "https://plato.stanford.edu/entries/bodin/"
       }
-    ]
+    ],
+    "portrait": "assets/portraits/bodin.jpg",
+    "imageCredit": {
+      "title": "Jean Bodin.jpg",
+      "creator": "François Stuerhelt",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Jean_Bodin.jpg",
+      "licenseName": "公有领域（Public domain）",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "changes": "使用来源页面所列版本；本站仅等比缩小并转换为 JPEG，未改变人物形象。",
+      "licenseBasis": "Commons 文件页标注 Public domain；已核对该页作者、许可模板与文件元数据。",
+      "verifiedOn": "2026-11-02",
+      "depiction": "历史绘画或后世描绘，并非人物照片。"
+    }
   },
   "han-fei": {
     "id": "han-fei",
@@ -960,7 +1237,19 @@
         "title": "斯坦福哲学百科：Legalism in Chinese Philosophy",
         "url": "https://plato.stanford.edu/entries/chinese-legalism/"
       }
-    ]
+    ],
+    "portrait": "assets/portraits/han-fei.jpg",
+    "imageCredit": {
+      "title": "Statue Of Han Fei.png",
+      "creator": "Sabinowitz",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Statue_Of_Han_Fei.png",
+      "licenseName": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "changes": "使用来源页面所列版本；本站裁切至人物上半身、等比缩小并转换为 JPEG。本站转换版沿用原图所列 CC BY-SA 许可。",
+      "licenseBasis": "Commons 文件页标注 CC BY-SA 4.0；已核对该页作者、许可模板与文件元数据。",
+      "verifiedOn": "2026-11-02",
+      "depiction": "雕塑照片，为后世对人物形象的表现。"
+    }
   },
   "plato": {
     "id": "plato",
@@ -973,7 +1262,19 @@
         "title": "斯坦福哲学百科：Plato’s Ethics and Politics in The Republic",
         "url": "https://plato.stanford.edu/entries/plato-ethics-politics/"
       }
-    ]
+    ],
+    "portrait": "assets/portraits/plato.jpg",
+    "imageCredit": {
+      "title": "Plato Silanion Musei Capitolini MC1377.png",
+      "creator": "Marie-Lan Nguyen",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Plato_Silanion_Musei_Capitolini_MC1377.png",
+      "licenseName": "CC BY 2.5",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.5/",
+      "changes": "使用来源页面所列版本；本站仅等比缩小并转换为 JPEG，未改变人物形象。",
+      "licenseBasis": "Commons 文件页标注 CC BY 2.5；已核对该页作者、许可模板与文件元数据。",
+      "verifiedOn": "2026-11-02",
+      "depiction": "雕塑照片，为后世对人物形象的表现。"
+    }
   },
   "liang-qichao": {
     "id": "liang-qichao",
@@ -986,7 +1287,18 @@
         "title": "大英百科：Liang Qichao",
         "url": "https://www.britannica.com/biography/Liang-Qichao"
       }
-    ]
+    ],
+    "portrait": "assets/portraits/liang-qichao.jpg",
+    "imageCredit": {
+      "title": "Liang Qichao portrait.jpg",
+      "creator": "Unknown author Unknown author",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Liang_Qichao_portrait.jpg",
+      "licenseName": "公有领域（Public domain）",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "changes": "使用来源页面所列版本；本站仅等比缩小并转换为 JPEG，未改变人物形象。",
+      "licenseBasis": "Commons 文件页标注 Public domain；已核对该页作者、许可模板与文件元数据。",
+      "verifiedOn": "2026-11-02"
+    }
   },
   "voltaire": {
     "id": "voltaire",
@@ -999,7 +1311,18 @@
         "title": "斯坦福哲学百科：Voltaire",
         "url": "https://plato.stanford.edu/entries/voltaire/"
       }
-    ]
+    ],
+    "portrait": "assets/portraits/voltaire.jpg",
+    "imageCredit": {
+      "title": "Nicolas de Largillière - Portrait de Voltaire (1694-1778) en 1718 - P208 - musée Carnavalet - 5 (cropped).jpg",
+      "creator": "Nicolas de Largillière",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Nicolas_de_Largilli%C3%A8re_-_Portrait_de_Voltaire_(1694-1778)_en_1718_-_P208_-_mus%C3%A9e_Carnavalet_-_5_(cropped).jpg",
+      "licenseName": "CC0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "changes": "使用来源页面所列版本；本站仅等比缩小并转换为 JPEG，未改变人物形象。",
+      "licenseBasis": "Commons 文件页标注 CC0；已核对该页作者、许可模板与文件元数据。",
+      "verifiedOn": "2026-11-02"
+    }
   },
   "saint-simon": {
     "id": "saint-simon",
@@ -1012,7 +1335,19 @@
         "title": "大英百科：Henri de Saint-Simon",
         "url": "https://www.britannica.com/biography/Henri-de-Saint-Simon"
       }
-    ]
+    ],
+    "portrait": "assets/portraits/saint-simon.jpg",
+    "imageCredit": {
+      "title": "Portrait de Claude-Henri de Rouvroy, comte de Saint-Simon.jpg",
+      "creator": "After Adélaïde Labille-Guiard",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Portrait_de_Claude-Henri_de_Rouvroy,_comte_de_Saint-Simon.jpg",
+      "licenseName": "公有领域（Public domain）",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "changes": "使用来源页面所列版本；本站仅等比缩小并转换为 JPEG，未改变人物形象。",
+      "licenseBasis": "Commons 文件页标注 Public domain；已核对该页作者、许可模板与文件元数据。",
+      "verifiedOn": "2026-11-02",
+      "depiction": "历史绘画或后世描绘，并非人物照片。"
+    }
   },
   "confucius": {
     "id": "confucius",
@@ -1025,7 +1360,19 @@
         "title": "斯坦福哲学百科：Confucius",
         "url": "https://plato.stanford.edu/entries/confucius/"
       }
-    ]
+    ],
+    "portrait": "assets/portraits/confucius.jpg",
+    "imageCredit": {
+      "title": "Confucius, fresco from a Western Han tomb of Dongping County, Shandong province, China (cropped).jpg",
+      "creator": "Anonymous Chinese painter of the Western Han period",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Confucius,_fresco_from_a_Western_Han_tomb_of_Dongping_County,_Shandong_province,_China_(cropped).jpg",
+      "licenseName": "公有领域（Public domain）",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "changes": "使用来源页面所列版本；本站仅等比缩小并转换为 JPEG，未改变人物形象。",
+      "licenseBasis": "Commons 文件页标注 Public domain；已核对该页作者、许可模板与文件元数据。",
+      "verifiedOn": "2026-11-02",
+      "depiction": "历史绘画或后世描绘，并非人物照片。"
+    }
   },
   "hu-shi": {
     "id": "hu-shi",
@@ -1038,7 +1385,18 @@
         "title": "大英百科：Hu Shih",
         "url": "https://www.britannica.com/biography/Hu-Shih"
       }
-    ]
+    ],
+    "portrait": "assets/portraits/hu-shi.jpg",
+    "imageCredit": {
+      "title": "Hu Shih 1960 color Crop.jpg",
+      "creator": "Unknown author Unknown author",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hu_Shih_1960_color_Crop.jpg",
+      "licenseName": "公有领域（Public domain）",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "changes": "使用来源页面所列版本；本站仅等比缩小并转换为 JPEG，未改变人物形象。",
+      "licenseBasis": "Commons 文件页标注 Public domain；已核对该页作者、许可模板与文件元数据。",
+      "verifiedOn": "2026-11-02"
+    }
   },
   "addams": {
     "id": "addams",
@@ -1051,7 +1409,18 @@
         "title": "斯坦福哲学百科：Jane Addams",
         "url": "https://plato.stanford.edu/entries/addams-jane/"
       }
-    ]
+    ],
+    "portrait": "assets/portraits/addams.jpg",
+    "imageCredit": {
+      "title": "Jane Addams - Bain News Service.jpg",
+      "creator": "Adam Cuerden",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Jane_Addams_-_Bain_News_Service.jpg",
+      "licenseName": "公有领域（Public domain）",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "changes": "使用来源页面所列版本；本站仅等比缩小并转换为 JPEG，未改变人物形象。",
+      "licenseBasis": "Commons 文件页标注 Public domain；已核对该页作者、许可模板与文件元数据。",
+      "verifiedOn": "2026-11-02"
+    }
   },
   "popper": {
     "id": "popper",
@@ -1064,7 +1433,18 @@
         "title": "斯坦福哲学百科：Karl Popper",
         "url": "https://plato.stanford.edu/entries/popper/"
       }
-    ]
+    ],
+    "portrait": "assets/portraits/popper.jpg",
+    "imageCredit": {
+      "title": "Photo of Karl Popper.jpg",
+      "creator": "DorianKBandy",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Photo_of_Karl_Popper.jpg",
+      "licenseName": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "changes": "使用来源页面所列版本；本站仅等比缩小并转换为 JPEG，未改变人物形象。本站转换版沿用原图所列 CC BY-SA 许可。",
+      "licenseBasis": "Commons 文件页标注 CC BY-SA 4.0；已核对该页作者、许可模板与文件元数据。",
+      "verifiedOn": "2026-11-02"
+    }
   },
   "king": {
     "id": "king",
@@ -1077,7 +1457,18 @@
         "title": "诺贝尔奖官网：Martin Luther King Jr. 生平",
         "url": "https://www.nobelprize.org/prizes/peace/1964/king/biographical/"
       }
-    ]
+    ],
+    "portrait": "assets/portraits/king.jpg",
+    "imageCredit": {
+      "title": "Martin Luther King, Jr. and Lyndon Johnson (cropped).jpg",
+      "creator": "Yoichi Okamoto",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Martin_Luther_King,_Jr._and_Lyndon_Johnson_(cropped).jpg",
+      "licenseName": "公有领域（Public domain）",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "changes": "使用来源页面所列版本；本站仅等比缩小并转换为 JPEG，未改变人物形象。",
+      "licenseBasis": "Commons 文件页标注 Public domain；已核对该页作者、许可模板与文件元数据。",
+      "verifiedOn": "2026-11-02"
+    }
   },
   "havel": {
     "id": "havel",
@@ -1090,7 +1481,18 @@
         "title": "大英百科：Václav Havel",
         "url": "https://www.britannica.com/biography/Vaclav-Havel"
       }
-    ]
+    ],
+    "portrait": "assets/portraits/havel.jpg",
+    "imageCredit": {
+      "title": "Vaclav Havel.jpg",
+      "creator": "Kingkongphoto & www.celebrity-photos.com from Laurel Maryland, USA",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Vaclav_Havel.jpg",
+      "licenseName": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+      "changes": "使用来源页面所列版本；本站仅等比缩小并转换为 JPEG，未改变人物形象。本站转换版沿用原图所列 CC BY-SA 许可。",
+      "licenseBasis": "Commons 文件页标注 CC BY-SA 2.0；已核对该页作者、许可模板与文件元数据。",
+      "verifiedOn": "2026-11-02"
+    }
   },
   "gramsci": {
     "id": "gramsci",
@@ -1103,7 +1505,18 @@
         "title": "斯坦福哲学百科：Antonio Gramsci",
         "url": "https://plato.stanford.edu/entries/gramsci/"
       }
-    ]
+    ],
+    "portrait": "assets/portraits/gramsci.jpg",
+    "imageCredit": {
+      "title": "Gramsci.png",
+      "creator": "Unknown author Unknown author",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gramsci.png",
+      "licenseName": "公有领域（Public domain）",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "changes": "使用来源页面所列版本；本站仅等比缩小并转换为 JPEG，未改变人物形象。",
+      "licenseBasis": "Commons 文件页标注 Public domain；已核对该页作者、许可模板与文件元数据。",
+      "verifiedOn": "2026-11-02"
+    }
   },
   "humboldt": {
     "id": "humboldt",
@@ -1120,7 +1533,18 @@
         "title": "洪堡《论国家作用的界限》英译本",
         "url": "https://oll.libertyfund.org/titles/coulthard-the-sphere-and-duties-of-government-1792-1854"
       }
-    ]
+    ],
+    "portrait": "assets/portraits/humboldt.jpg",
+    "imageCredit": {
+      "title": "Sir Thomas Lawrence (1769-1830) - Charles William, Baron von Humboldt (1767-1835) - RCIN 404936 - Royal Collection.jpg",
+      "creator": "Thomas Lawrence",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sir_Thomas_Lawrence_(1769-1830)_-_Charles_William,_Baron_von_Humboldt_(1767-1835)_-_RCIN_404936_-_Royal_Collection.jpg",
+      "licenseName": "公有领域（Public domain）",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "changes": "使用来源页面所列版本；本站仅等比缩小并转换为 JPEG，未改变人物形象。",
+      "licenseBasis": "Commons 文件页标注 Public domain；已核对该页作者、许可模板与文件元数据。",
+      "verifiedOn": "2026-11-02"
+    }
   },
   "nozick": {
     "id": "nozick",
@@ -1133,7 +1557,18 @@
         "title": "斯坦福哲学百科：Robert Nozick’s Political Philosophy",
         "url": "https://plato.stanford.edu/entries/nozick-political/"
       }
-    ]
+    ],
+    "portrait": "assets/portraits/nozick.jpg",
+    "imageCredit": {
+      "title": "Robert Nozick 1977 Libertarian Review cover (4x5 cropped).jpg",
+      "creator": "Libertarian Review",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Robert_Nozick_1977_Libertarian_Review_cover_(4x5_cropped).jpg",
+      "licenseName": "公有领域（Public domain）",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "changes": "使用来源页面所列版本；本站仅等比缩小并转换为 JPEG，未改变人物形象。",
+      "licenseBasis": "Commons 文件页标注 Public domain；已核对该页作者、许可模板与文件元数据。",
+      "verifiedOn": "2026-11-02"
+    }
   },
   "kautilya": {
     "id": "kautilya",
@@ -1146,7 +1581,19 @@
         "title": "大英百科：Kautilya（Chanakya）",
         "url": "https://www.britannica.com/biography/Kautilya"
       }
-    ]
+    ],
+    "portrait": "assets/portraits/kautilya.jpg",
+    "imageCredit": {
+      "title": "Chanakya artistic depiction.jpg",
+      "creator": "Unknown author Unknown author",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Chanakya_artistic_depiction.jpg",
+      "licenseName": "公有领域（Public domain）",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "changes": "使用来源页面所列版本；本站仅等比缩小并转换为 JPEG，未改变人物形象。",
+      "licenseBasis": "Commons 文件页标注 Public domain；已核对该页作者、许可模板与文件元数据。",
+      "verifiedOn": "2026-11-02",
+      "depiction": "雕塑照片，为后世对人物形象的表现。"
+    }
   },
   "shang-yang": {
     "id": "shang-yang",
@@ -1159,7 +1606,19 @@
         "title": "斯坦福哲学百科：Legalism in Chinese Philosophy",
         "url": "https://plato.stanford.edu/entries/chinese-legalism/"
       }
-    ]
+    ],
+    "portrait": "assets/portraits/shang-yang.jpg",
+    "imageCredit": {
+      "title": "Statue of Shang Yang.jpg",
+      "creator": "Taken by Fanghong",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Statue_of_Shang_Yang.jpg",
+      "licenseName": "CC BY 2.5",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.5",
+      "changes": "使用来源页面所列版本；本站裁切至人物上半身、等比缩小并转换为 JPEG。",
+      "licenseBasis": "Commons 文件页标注 CC BY 2.5；已核对该页作者、许可模板与文件元数据。",
+      "verifiedOn": "2026-11-02",
+      "depiction": "雕塑照片，为后世对人物形象的表现。"
+    }
   },
   "bryan": {
     "id": "bryan",
@@ -1176,7 +1635,18 @@
         "title": "大英百科：Cross of Gold speech",
         "url": "https://www.britannica.com/event/Cross-of-Gold-speech"
       }
-    ]
+    ],
+    "portrait": "assets/portraits/bryan.jpg",
+    "imageCredit": {
+      "title": "Portrait of Secretary William Jennings Bryan of Nebraska, 1913.jpeg",
+      "creator": "Harris & Ewing, photographer",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Portrait_of_Secretary_William_Jennings_Bryan_of_Nebraska,_1913.jpeg",
+      "licenseName": "公有领域（Public domain）",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "changes": "使用来源页面所列版本；本站仅等比缩小并转换为 JPEG，未改变人物形象。",
+      "licenseBasis": "Commons 文件页标注 Public domain；已核对该页作者、许可模板与文件元数据。",
+      "verifiedOn": "2026-11-02"
+    }
   },
   "condorcet": {
     "id": "condorcet",
@@ -1189,7 +1659,18 @@
         "title": "斯坦福哲学百科：The History of Feminism: Condorcet",
         "url": "https://plato.stanford.edu/entries/histfem-condorcet/"
       }
-    ]
+    ],
+    "portrait": "assets/portraits/condorcet.jpg",
+    "imageCredit": {
+      "title": "Nicolas de Condorcet.PNG",
+      "creator": "Unidentified painter / Formerly attributed to Jean-Baptiste Greuze",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Nicolas_de_Condorcet.PNG",
+      "licenseName": "公有领域（Public domain）",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "changes": "使用来源页面所列版本；本站仅等比缩小并转换为 JPEG，未改变人物形象。",
+      "licenseBasis": "Commons 文件页标注 Public domain；已核对该页作者、许可模板与文件元数据。",
+      "verifiedOn": "2026-11-02"
+    }
   },
   "qiu-jin": {
     "id": "qiu-jin",
@@ -1202,7 +1683,18 @@
         "title": "香港中文大学《译丛》：Qiu Jin",
         "url": "https://www.cuhk.edu.hk/renditions/authors/qiujin.html"
       }
-    ]
+    ],
+    "portrait": "assets/portraits/qiu-jin.jpg",
+    "imageCredit": {
+      "title": "Qiu Jin2.jpg",
+      "creator": "Unknown author Unknown author",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Qiu_Jin2.jpg",
+      "licenseName": "公有领域（Public domain）",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "changes": "使用来源页面所列版本；本站仅等比缩小并转换为 JPEG，未改变人物形象。",
+      "licenseBasis": "Commons 文件页标注 Public domain；已核对该页作者、许可模板与文件元数据。",
+      "verifiedOn": "2026-11-02"
+    }
   },
   "cai-yuanpei": {
     "id": "cai-yuanpei",
@@ -1215,7 +1707,18 @@
         "title": "北京大学图书馆：Cai Yuanpei",
         "url": "https://www.lib.pku.edu.cn/portal/en/bggk/bgjs/lishiyange/caiyuanpei"
       }
-    ]
+    ],
+    "portrait": "assets/portraits/cai-yuanpei.jpg",
+    "imageCredit": {
+      "title": "Cai Yuanpei-loc-nodate-crop.jpg",
+      "creator": "The Library of Congress",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cai_Yuanpei-loc-nodate-crop.jpg",
+      "licenseName": "公有领域（Public domain）",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "changes": "使用来源页面所列版本；本站仅等比缩小并转换为 JPEG，未改变人物形象。",
+      "licenseBasis": "Commons 文件页标注 Public domain；已核对该页作者、许可模板与文件元数据。",
+      "verifiedOn": "2026-11-02"
+    }
   },
   "augustine": {
     "id": "augustine",
@@ -1228,7 +1731,19 @@
         "title": "斯坦福哲学百科：Augustine of Hippo",
         "url": "https://plato.stanford.edu/entries/augustine/"
       }
-    ]
+    ],
+    "portrait": "assets/portraits/augustine.jpg",
+    "imageCredit": {
+      "title": "Saint Augustine by Philippe de Champaigne.jpg",
+      "creator": "Philippe de Champaigne",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Saint_Augustine_by_Philippe_de_Champaigne.jpg",
+      "licenseName": "公有领域（Public domain）",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "changes": "使用来源页面所列版本；本站仅等比缩小并转换为 JPEG，未改变人物形象。",
+      "licenseBasis": "Commons 文件页标注 Public domain；已核对该页作者、许可模板与文件元数据。",
+      "verifiedOn": "2026-11-02",
+      "depiction": "历史绘画或后世描绘，并非人物照片。"
+    }
   },
   "calvin": {
     "id": "calvin",
@@ -1241,7 +1756,19 @@
         "title": "大英百科：John Calvin",
         "url": "https://www.britannica.com/biography/John-Calvin"
       }
-    ]
+    ],
+    "portrait": "assets/portraits/calvin.jpg",
+    "imageCredit": {
+      "title": "John Calvin Museum Catharijneconvent RMCC s84 cropped.png",
+      "creator": "Anonymous ( France ) Unknown author",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:John_Calvin_Museum_Catharijneconvent_RMCC_s84_cropped.png",
+      "licenseName": "公有领域（Public domain）",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "changes": "使用来源页面所列版本；本站仅等比缩小并转换为 JPEG，未改变人物形象。",
+      "licenseBasis": "Commons 文件页标注 Public domain；已核对该页作者、许可模板与文件元数据。",
+      "verifiedOn": "2026-11-02",
+      "depiction": "历史绘画或后世描绘，并非人物照片。"
+    }
   },
   "roger-williams": {
     "id": "roger-williams",
@@ -1258,7 +1785,19 @@
         "title": "美国国家公园管理局：Roger Williams",
         "url": "https://www.nps.gov/people/roger-williams.htm"
       }
-    ]
+    ],
+    "portrait": "assets/portraits/roger-williams.jpg",
+    "imageCredit": {
+      "title": "Roger Williams statue by Franklin Simmons.jpg",
+      "creator": "作者不详",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Roger_Williams_statue_by_Franklin_Simmons.jpg",
+      "licenseName": "公有领域（Public domain）",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "changes": "使用来源页面所列版本；本站裁切至人物上半身、等比缩小并转换为 JPEG。",
+      "licenseBasis": "Commons 文件页标注 Public domain；已核对该页作者、许可模板与文件元数据。",
+      "verifiedOn": "2026-11-02",
+      "depiction": "雕塑照片，为后世对人物形象的表现。"
+    }
   },
   "tagore": {
     "id": "tagore",
@@ -1275,7 +1814,18 @@
         "title": "泰戈尔《民族主义》原文",
         "url": "https://www.gutenberg.org/ebooks/40766"
       }
-    ]
+    ],
+    "portrait": "assets/portraits/tagore.jpg",
+    "imageCredit": {
+      "title": "1926 Rabindrath Tagore.jpg",
+      "creator": "Georges Chevalier",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:1926_Rabindrath_Tagore.jpg",
+      "licenseName": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+      "changes": "使用来源页面所列版本；本站仅等比缩小并转换为 JPEG，未改变人物形象。",
+      "licenseBasis": "Commons 文件页标注 CC BY 4.0；已核对该页作者、许可模板与文件元数据。",
+      "verifiedOn": "2026-11-02"
+    }
   },
   "suttner": {
     "id": "suttner",
@@ -1288,7 +1838,18 @@
         "title": "诺贝尔奖官网：Bertha von Suttner 生平",
         "url": "https://www.nobelprize.org/prizes/peace/1905/suttner/biographical/"
       }
-    ]
+    ],
+    "portrait": "assets/portraits/suttner.jpg",
+    "imageCredit": {
+      "title": "Bertha von Suttner nobel.jpg",
+      "creator": "Unknown author Unknown author",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bertha_von_Suttner_nobel.jpg",
+      "licenseName": "公有领域（Public domain）",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "changes": "使用来源页面所列版本；本站仅等比缩小并转换为 JPEG，未改变人物形象。",
+      "licenseBasis": "Commons 文件页标注 Public domain；已核对该页作者、许可模板与文件元数据。",
+      "verifiedOn": "2026-11-02"
+    }
   },
   "marti": {
     "id": "marti",
@@ -1301,7 +1862,18 @@
         "title": "大英百科：José Martí",
         "url": "https://www.britannica.com/biography/Jose-Marti"
       }
-    ]
+    ],
+    "portrait": "assets/portraits/marti.jpg",
+    "imageCredit": {
+      "title": "José Martí retrato hecho en México 1875.jpg",
+      "creator": "Cuba. Secretaría de Instrucción Pública y Bellas Artes.",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Jos%C3%A9_Mart%C3%AD_retrato_hecho_en_M%C3%A9xico_1875.jpg",
+      "licenseName": "CC0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "changes": "使用来源页面所列版本；本站仅等比缩小并转换为 JPEG，未改变人物形象。",
+      "licenseBasis": "Commons 文件页标注 CC0；已核对该页作者、许可模板与文件元数据。",
+      "verifiedOn": "2026-11-02"
+    }
   },
   "washington": {
     "id": "washington",
@@ -1314,7 +1886,18 @@
         "title": "耶鲁大学阿瓦隆项目：Washington’s Farewell Address 1796",
         "url": "https://avalon.law.yale.edu/18th_century/washing.asp"
       }
-    ]
+    ],
+    "portrait": "assets/portraits/washington.jpg",
+    "imageCredit": {
+      "title": "Gilbert Stuart Williamstown Portrait of George Washington.jpg",
+      "creator": "Gilbert Stuart",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gilbert_Stuart_Williamstown_Portrait_of_George_Washington.jpg",
+      "licenseName": "公有领域（Public domain）",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "changes": "使用来源页面所列版本；本站仅等比缩小并转换为 JPEG，未改变人物形象。",
+      "licenseBasis": "Commons 文件页标注 Public domain；已核对该页作者、许可模板与文件元数据。",
+      "verifiedOn": "2026-11-02"
+    }
   },
   "mozi": {
     "id": "mozi",
@@ -1327,7 +1910,19 @@
         "title": "斯坦福哲学百科：Mohism",
         "url": "https://plato.stanford.edu/entries/mohism/"
       }
-    ]
+    ],
+    "portrait": "assets/portraits/mozi.jpg",
+    "imageCredit": {
+      "title": "Философ Мо-Цзы.jpg",
+      "creator": "Vjacheslav Rublevskiy",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:%D0%A4%D0%B8%D0%BB%D0%BE%D1%81%D0%BE%D1%84_%D0%9C%D0%BE-%D0%A6%D0%B7%D1%8B.jpg",
+      "licenseName": "CC0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "changes": "使用来源页面所列版本；本站仅等比缩小并转换为 JPEG，未改变人物形象。",
+      "licenseBasis": "Commons 文件页标注 CC0；已核对该页作者、许可模板与文件元数据。",
+      "verifiedOn": "2026-11-02",
+      "depiction": "历史绘画或后世描绘，并非人物照片。"
+    }
   },
   "erasmus": {
     "id": "erasmus",
@@ -1340,7 +1935,18 @@
         "title": "斯坦福哲学百科：Desiderius Erasmus",
         "url": "https://plato.stanford.edu/entries/erasmus/"
       }
-    ]
+    ],
+    "portrait": "assets/portraits/erasmus.jpg",
+    "imageCredit": {
+      "title": "Holbein-erasmus.jpg",
+      "creator": "Hans Holbein the Younger",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Holbein-erasmus.jpg",
+      "licenseName": "公有领域（Public domain）",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "changes": "使用来源页面所列版本；本站仅等比缩小并转换为 JPEG，未改变人物形象。",
+      "licenseBasis": "Commons 文件页标注 Public domain；已核对该页作者、许可模板与文件元数据。",
+      "verifiedOn": "2026-11-02"
+    }
   },
   "grotius": {
     "id": "grotius",
@@ -1353,7 +1959,18 @@
         "title": "斯坦福哲学百科：Hugo Grotius",
         "url": "https://plato.stanford.edu/entries/grotius/"
       }
-    ]
+    ],
+    "portrait": "assets/portraits/grotius.jpg",
+    "imageCredit": {
+      "title": "Michiel Jansz van Mierevelt - Hugo Grotius.jpg",
+      "creator": "Michiel Jansz. van Mierevelt",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Michiel_Jansz_van_Mierevelt_-_Hugo_Grotius.jpg",
+      "licenseName": "公有领域（Public domain）",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "changes": "使用来源页面所列版本；本站仅等比缩小并转换为 JPEG，未改变人物形象。",
+      "licenseBasis": "Commons 文件页标注 Public domain；已核对该页作者、许可模板与文件元数据。",
+      "verifiedOn": "2026-11-02"
+    }
   },
   "eleanor-roosevelt": {
     "id": "eleanor-roosevelt",
@@ -1366,7 +1983,18 @@
         "title": "联合国：Drafters of the Declaration",
         "url": "https://www.un.org/en/about-us/udhr/drafters-of-the-declaration"
       }
-    ]
+    ],
+    "portrait": "assets/portraits/eleanor-roosevelt.jpg",
+    "imageCredit": {
+      "title": "Eleanor Roosevelt at the United Nations, circa 1946-1947 (3x4 cropped).jpg",
+      "creator": "FDR Presidential Library & Museum",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Eleanor_Roosevelt_at_the_United_Nations,_circa_1946-1947_(3x4_cropped).jpg",
+      "licenseName": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+      "changes": "使用来源页面所列版本；本站仅等比缩小并转换为 JPEG，未改变人物形象。",
+      "licenseBasis": "Commons 文件页标注 CC BY 2.0；已核对该页作者、许可模板与文件元数据。",
+      "verifiedOn": "2026-11-02"
+    }
   },
   "lemkin": {
     "id": "lemkin",
@@ -1383,7 +2011,19 @@
         "title": "美国大屠杀纪念馆：The Story of Raphael Lemkin",
         "url": "https://encyclopedia.ushmm.org/content/en/article/coining-a-word-and-championing-a-cause-the-story-of-raphael-lemkin"
       }
-    ]
+    ],
+    "portrait": "assets/portraits/lemkin.jpg",
+    "imageCredit": {
+      "title": "A bust of Raphael Lemkin, Yerevan.jpg",
+      "creator": "MSyuzan",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:A_bust_of_Raphael_Lemkin,_Yerevan.jpg",
+      "licenseName": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "changes": "使用来源页面所列版本；本站裁切至人物上半身、等比缩小并转换为 JPEG。本站转换版沿用原图所列 CC BY-SA 许可。",
+      "licenseBasis": "Commons 文件页标注 CC BY-SA 4.0；已核对该页作者、许可模板与文件元数据。",
+      "verifiedOn": "2026-11-02",
+      "depiction": "雕塑照片，为后世对人物形象的表现。"
+    }
   },
   "leopold": {
     "id": "leopold",
@@ -1400,7 +2040,18 @@
         "title": "奥尔多·利奥波德基金会：Understanding the Land Ethic",
         "url": "https://www.aldoleopold.org/blogs/understanding-the-land-ethic"
       }
-    ]
+    ],
+    "portrait": "assets/portraits/leopold.jpg",
+    "imageCredit": {
+      "title": "Aldo Leopold, 1946 (cropped).jpg",
+      "creator": "Howard Zahniser",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Aldo_Leopold,_1946_(cropped).jpg",
+      "licenseName": "公有领域（Public domain）",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "changes": "使用来源页面所列版本；本站仅等比缩小并转换为 JPEG，未改变人物形象。",
+      "licenseBasis": "Commons 文件页标注 Public domain；已核对该页作者、许可模板与文件元数据。",
+      "verifiedOn": "2026-11-02"
+    }
   },
   "thoreau": {
     "id": "thoreau",
@@ -1413,7 +2064,18 @@
         "title": "斯坦福哲学百科：Henry David Thoreau",
         "url": "https://plato.stanford.edu/entries/thoreau/"
       }
-    ]
+    ],
+    "portrait": "assets/portraits/thoreau.jpg",
+    "imageCredit": {
+      "title": "Benjamin D. Maxham - Henry David Thoreau - Restored.jpg",
+      "creator": "Benjamin D. Maxham active 1848 - 1858",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Benjamin_D._Maxham_-_Henry_David_Thoreau_-_Restored.jpg",
+      "licenseName": "公有领域（Public domain）",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "changes": "使用来源页面所列版本；本站仅等比缩小并转换为 JPEG，未改变人物形象。",
+      "licenseBasis": "Commons 文件页标注 Public domain；已核对该页作者、许可模板与文件元数据。",
+      "verifiedOn": "2026-11-02"
+    }
   },
   "maathai": {
     "id": "maathai",
@@ -1426,7 +2088,18 @@
         "title": "诺贝尔奖官网：Wangari Maathai 生平",
         "url": "https://www.nobelprize.org/prizes/peace/2004/maathai/biographical/"
       }
-    ]
+    ],
+    "portrait": "assets/portraits/maathai.jpg",
+    "imageCredit": {
+      "title": "Wangari Maathai in Nairobi.jpg",
+      "creator": "Fredrick Onyango",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Wangari_Maathai_in_Nairobi.jpg",
+      "licenseName": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+      "changes": "使用来源页面所列版本；本站仅等比缩小并转换为 JPEG，未改变人物形象。",
+      "licenseBasis": "Commons 文件页标注 CC BY 2.0；已核对该页作者、许可模板与文件元数据。",
+      "verifiedOn": "2026-11-02"
+    }
   },
   "schumacher": {
     "id": "schumacher",
@@ -1456,7 +2129,18 @@
         "title": "美国国家公园管理局：Theodore Roosevelt and Conservation",
         "url": "https://www.nps.gov/thro/learn/historyculture/theodore-roosevelt-and-conservation.htm"
       }
-    ]
+    ],
+    "portrait": "assets/portraits/theodore-roosevelt.jpg",
+    "imageCredit": {
+      "title": "Theodore Roosevelt by the Pach Bros (4x5 cropped) (3).jpg",
+      "creator": "Adam Cuerden",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Theodore_Roosevelt_by_the_Pach_Bros_(4x5_cropped)_(3).jpg",
+      "licenseName": "公有领域（Public domain）",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "changes": "使用来源页面所列版本；本站仅等比缩小并转换为 JPEG，未改变人物形象。",
+      "licenseBasis": "Commons 文件页标注 Public domain；已核对该页作者、许可模板与文件元数据。",
+      "verifiedOn": "2026-11-02"
+    }
   },
   "fuller": {
     "id": "fuller",
@@ -1469,7 +2153,18 @@
         "title": "巴克敏斯特·富勒研究所：Operating Manual for Spaceship Earth",
         "url": "https://www.bfi.org/resource/operating-manual-for-spaceship-earth/"
       }
-    ]
+    ],
+    "portrait": "assets/portraits/fuller.jpg",
+    "imageCredit": {
+      "title": "BuckminsterFuller1.jpg",
+      "creator": "en:User:Edgy01 (Dan Lindsay)",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:BuckminsterFuller1.jpg",
+      "licenseName": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+      "changes": "使用来源页面所列版本；本站仅等比缩小并转换为 JPEG，未改变人物形象。",
+      "licenseBasis": "Commons 文件页标注 CC BY 3.0；已核对该页作者、许可模板与文件元数据。",
+      "verifiedOn": "2026-11-02"
+    }
   },
   "julian-simon": {
     "id": "julian-simon",
@@ -1482,7 +2177,19 @@
         "title": "Econlib：Julian Simon",
         "url": "https://www.econlib.org/library/enc/bios/simonj.html"
       }
-    ]
+    ],
+    "portrait": "assets/portraits/julian-simon.jpg",
+    "imageCredit": {
+      "title": "Julian Lincoln Simon.jpg",
+      "creator": "Manuel Castells",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Julian_Lincoln_Simon.jpg",
+      "licenseName": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+      "changes": "使用来源页面所列版本；本站仅等比缩小并转换为 JPEG，未改变人物形象。本站转换版沿用原图所列 CC BY-SA 许可。",
+      "licenseBasis": "Commons 文件页标注 CC BY-SA 2.0；已核对该页作者、许可模板与文件元数据。",
+      "verifiedOn": "2026-11-02",
+      "depiction": "摄于1998年荣誉博士授予仪式，人物身着学术礼服。"
+    }
   },
   "ellul": {
     "id": "ellul",
@@ -1495,7 +2202,18 @@
         "title": "大英百科：Jacques Ellul",
         "url": "https://www.britannica.com/biography/Jacques-Ellul"
       }
-    ]
+    ],
+    "portrait": "assets/portraits/ellul.jpg",
+    "imageCredit": {
+      "title": "Jacques Ellul, 1990 (cropped).jpg",
+      "creator": "Jan van Boeckel, ReRun Productions",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Jacques_Ellul,_1990_(cropped).jpg",
+      "licenseName": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "changes": "使用来源页面所列版本；本站仅等比缩小并转换为 JPEG，未改变人物形象。本站转换版沿用原图所列 CC BY-SA 许可。",
+      "licenseBasis": "Commons 文件页标注 CC BY-SA 4.0；已核对该页作者、许可模板与文件元数据。",
+      "verifiedOn": "2026-11-02"
+    }
   },
   "illich": {
     "id": "illich",
@@ -1508,7 +2226,18 @@
         "title": "大英百科：Ivan Illich",
         "url": "https://www.britannica.com/biography/Ivan-Illich"
       }
-    ]
+    ],
+    "portrait": "assets/portraits/illich.jpg",
+    "imageCredit": {
+      "title": "1969 press photo of Ivan Illich.jpg",
+      "creator": "Associated Press",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:1969_press_photo_of_Ivan_Illich.jpg",
+      "licenseName": "公有领域（Public domain）",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "changes": "使用来源页面所列版本；本站仅等比缩小并转换为 JPEG，未改变人物形象。",
+      "licenseBasis": "Commons 文件页标注 Public domain；已核对该页作者、许可模板与文件元数据。",
+      "verifiedOn": "2026-11-02"
+    }
   },
   "postman": {
     "id": "postman",

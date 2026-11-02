@@ -70,12 +70,12 @@
     // People without a licensed local portrait get a one-character name tile; no remote or generated images.
     const monogram = person => person.monogram || ((String(person.name || '').split('·').pop().match(/[㐀-鿿]/) || [String(person.name || '?').charAt(0)])[0]);
     function picture(person, size) {
-      if (hasPortrait(person)) return size === 'mini' ? '<img class="tendency-mini" src="' + esc(person.portrait) + '" alt="" width="28" height="35" decoding="async" loading="lazy">' : '<img class="tendency-portrait" src="' + esc(person.portrait) + '" alt="' + esc(person.name) + '肖像" width="96" height="120" decoding="async">';
+      if (hasPortrait(person)) return size === 'mini' ? '<img class="tendency-mini" src="' + esc(person.portrait) + '" alt="" width="28" height="35" decoding="async" loading="lazy">' : '<img class="tendency-portrait" src="' + esc(person.portrait) + '" alt="' + esc(person.name) + (person.imageCredit && person.imageCredit.depiction ? '：' + esc(person.imageCredit.depiction) : '肖像') + '" width="96" height="120" decoding="async">';
       return '<span class="' + (size === 'mini' ? 'tendency-mini' : 'tendency-monogram') + '" aria-hidden="true">' + esc(monogram(person)) + '</span>';
     }
     function creditLine(person) {
       const credit = person.imageCredit;
-      return credit ? '<p>' + esc(person.name) + '肖像：' + esc(credit.title || person.name) + '；' + esc(credit.creator || '作者信息见来源') + '。' + (safeUrl(credit.sourceUrl) ? sourceLink({title:'图像来源',url:credit.sourceUrl}) : '') + ' · ' + (safeUrl(credit.licenseUrl) ? sourceLink({title:credit.licenseName || '许可信息',url:credit.licenseUrl}) : esc(credit.licenseName || '')) + (credit.changes ? '；' + esc(credit.changes) : '') + '</p>' : '';
+      return credit ? '<p>' + esc(person.name) + '图像：' + esc(credit.title || person.name) + '；' + esc(credit.creator || '作者信息见来源') + '。' + (safeUrl(credit.sourceUrl) ? sourceLink({title:'图像来源',url:credit.sourceUrl}) : '') + ' · ' + (safeUrl(credit.licenseUrl) ? sourceLink({title:credit.licenseName || '许可信息',url:credit.licenseUrl}) : esc(credit.licenseName || '')) + (credit.depiction ? '；' + esc(credit.depiction) : '') + (credit.changes ? '；' + esc(credit.changes) : '') + '</p>' : '';
     }
     function match(candidate) {
       const ranked = (candidate.figures || []).filter(f => people[f.personId]);

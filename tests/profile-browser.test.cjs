@@ -100,7 +100,7 @@ function session(value) {
     const profileText = await page.locator('.tendency-profile').innerText();
     for (const candidate of expected) assert.equal(await page.locator('[data-tendency="' + candidate.id + '"]').count(), 1, candidate.label + ' target is included in its dimension');
     const portraitPaths = await page.evaluate(() => Object.values(window.OMNI_PEOPLE).filter(person => person.portrait).map(person => person.portrait));
-    assert.equal(portraitPaths.length, 27);
+    assert.equal(portraitPaths.length, 92);
     assert(portraitPaths.every(src => /^assets\/portraits\/[a-z0-9_-]+\.(?:jpg|jpeg|png|webp)$/.test(src)), 'portrait catalogue contains only site-local image paths');
     const portraitDecodes = await page.evaluate(paths => Promise.all(paths.map(src => new Promise(resolve => {
       const image = new Image();
@@ -141,10 +141,9 @@ function session(value) {
     await page.locator('.tendency-profile').screenshot({ path: path.join(output, 'tendency-profile-mobile.png') });
     console.log('PASS candidate portraits, text export, print/PDF and mobile layout');
 
-    // Answers built from other figures' reference points introduce those figures, including
-    // people without a local portrait, who get a one-character tile and no network image.
+    // Answers built from the new figures' reference points introduce their local portraits.
     const P = require('../assets/omni-profile.js'), people = require('../data/tendency_people.json');
-    const chosen = { 'economic-public-coordination': 'kropotkin', 'political-sovereign-authority': 'han-fei', 'change-democratic-reformism': 'hu-shi', 'culture-feminist-equality': 'qiu-jin', 'international-civic-nationalism': 'sun-yat-sen', 'ecology-technology-caution': 'postman' };
+    const chosen = { 'economic-public-coordination': 'kropotkin', 'political-sovereign-authority': 'han-fei', 'change-democratic-reformism': 'hu-shi', 'culture-feminist-equality': 'qiu-jin', 'international-civic-nationalism': 'sun-yat-sen', 'ecology-technology-caution': 'illich' };
     const figureTargets = Object.assign({}, ...Object.entries(chosen).map(([typeId, personId]) => { const p = P.profiles.find(x => x.id === typeId); return P.figurePoint(p, p.figures.find(f => f.personId === personId)); }));
     const figureSession = session(q => {
       const sum = Math.round(6 * (4 + 3 * (figureTargets[q.axis] || 0) / 100)), low = Math.floor(sum / 6), extra = sum % 6;
@@ -157,8 +156,13 @@ function session(value) {
     for (const [typeId, personId] of Object.entries(chosen)) {
       const lead = page.locator('[data-tendency="' + typeId + '"] .tendency-person').first();
       assert.equal(await lead.getAttribute('data-person'), personId, typeId);
-      assert.equal(await lead.locator('img').count(), 0, personId + ' has no portrait file');
-      assert.equal(await lead.locator('.tendency-monogram').innerText(), people[personId].monogram);
+      assert.equal(await lead.locator('img').count(), 1, personId + ' has a local portrait');
+      await lead.locator('img').evaluate(img => img.decode());
+      assert(await lead.locator('img').evaluate(img => img.naturalWidth > 0 && img.naturalHeight > 0));
+      assert.equal(await lead.locator('.tendency-monogram').count(), 0);
+      const credits = await page.locator('[data-tendency="' + typeId + '"] details').first().textContent();
+      assert(credits.includes(people[personId].imageCredit.creator));
+      assert(credits.includes(people[personId].imageCredit.licenseName));
       assert((await lead.innerText()).includes(people[personId].name));
       assert((await page.locator('[data-tendency="' + typeId + '"] .tendency-figure-note').first().innerText()).includes(people[personId].name));
     }
@@ -168,7 +172,7 @@ function session(value) {
     const basis = await page.locator('[data-tendency="economic-public-coordination"] details').first().innerText();
     assert(/人物参照点（彼得·克鲁泡特金）/.test(basis) && /人物距离/.test(basis) && basis.includes('卡尔·马克思 · '));
     await page.locator('.tendency-profile').screenshot({ path: path.join(output, 'tendency-profile-figures.png') });
-    console.log('PASS figure reference points choose other representatives, with name tiles for people without portraits');
+    console.log('PASS new representative portraits load with author and license attribution');
 
     // Import uses the same report and must preserve the exact profile text.
     await page.setViewportSize({ width: 1360, height: 980 });

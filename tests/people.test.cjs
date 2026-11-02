@@ -23,14 +23,20 @@ test('every person has dates, an introduction and https sources; portraits are l
    portraits++;
    assert(/^assets\/portraits\/[a-z0-9_-]+\.jpg$/.test(person.portrait));
    const bytes=fs.readFileSync(path.join(root,person.portrait));assert.equal(bytes[0],0xff);assert.equal(bytes[1],0xd8);assert(bytes.length>1000);
-   const credit=person.imageCredit;assert(credit.creator&&credit.title&&credit.changes);assert(/公有领域|Public domain/.test(credit.licenseName));assert.equal(new URL(credit.sourceUrl).hostname,'commons.wikimedia.org');assert.equal(new URL(credit.licenseUrl).protocol,'https:');
+   const credit=person.imageCredit;assert(credit.creator&&credit.title&&credit.changes);
+   assert(/公有领域|Public domain|CC BY(?:-SA)? [234]\.[05]|CC0/.test(credit.licenseName),id+' supported free license');
+   assert.equal(new URL(credit.sourceUrl).hostname,'commons.wikimedia.org');assert.equal(new URL(credit.licenseUrl).protocol,'https:');
+   assert.equal(new URL(credit.licenseUrl).hostname,'creativecommons.org');
+   const sources=fs.readFileSync(path.join(root,'PORTRAIT_SOURCES.md'),'utf8');
+   for(const value of [person.name,person.portrait,credit.title,credit.creator,credit.sourceUrl,credit.licenseUrl])assert(sources.includes(value),id+' attribution is documented: '+value);
   }else{
    // People without a licensed local portrait get a one-character name tile, never a remote or generated image.
    assert.equal(person.imageCredit,undefined,id);
    assert(/^[㐀-鿿]$/.test(person.monogram)&&person.name.includes(person.monogram),id+' monogram');
   }
  }
- assert.equal(portraits,27);
+ assert.equal(portraits,92,'all 65 newly verified portraits are included');
+ assert.deepEqual(Object.values(people).filter(p=>!p.portrait).map(p=>p.id).sort(),['cole','postman','schumacher','tawney']);
  assert.deepEqual(fs.readdirSync(path.join(root,'assets/portraits')).sort(),Object.values(people).filter(p=>p.portrait).map(p=>path.basename(p.portrait)).sort());
 });
 test('browser reference data matches CommonJS rules and people exactly',()=>{
