@@ -18,7 +18,7 @@
 
   function validate(value) {
     // Both entry points share the session schema, including original blind answers.
-    return S.validate(D, typeof value === 'string' ? E.decodeSession(value) : value);
+    return S.validate(D, typeof value === 'string' ? root.OMNI_TRANSFER.decode(value) : value);
   }
 
   function extract(text) {
@@ -34,7 +34,15 @@
         if (value[0] === '[' || !value.split(/\r?\n/).filter(line => line.trim()).every(line => line.trim().startsWith('{'))) throw new Error('JSON 格式不完整，请重新复制或导入原文件。');
       }
     }
-    return value.split(/\r?\n/).map(line => line.trim()).filter(Boolean);
+    const entries=[], groups=new Map();
+    for(const line of value.split(/\r?\n/).map(line=>line.trim()).filter(Boolean)){
+      const match=/^OMNIP1\.([0-9a-f]{8})\./i.exec(line);
+      if(!match){entries.push(line);continue;}
+      const key=match[1].toLowerCase();
+      if(!groups.has(key)){const group=[];groups.set(key,group);entries.push(group);}
+      groups.get(key).push(line);
+    }
+    return entries.map(entry=>Array.isArray(entry)?entry.join('\n'):entry);
   }
 
   function parseSources(sources) {
@@ -122,6 +130,9 @@
   }
 
   $('import-run').addEventListener('click', () => importSources([{name:'粘贴内容',text:$('import-text').value}]));
+  $('import-parts').addEventListener('click',()=>root.OMNI_BACKUP.openImport(session=>{setSessions([session]);showErrors([]);status('已收齐全部片段并通过校验，导入 1 份答卷。');}));
+  $('backup-current').addEventListener('click',()=>{if(sessions[selectedIndex])root.OMNI_BACKUP.open(sessions[selectedIndex]);});
+  $('export-report-images').addEventListener('click',()=>{if(sessions[selectedIndex])root.OMNI_IMAGE_EXPORT.open($('admin-report'),{id:sessions[selectedIndex].id});});
   $('import-files').addEventListener('change', async event => {
     const files = [...event.target.files];
     if (!files.length) return;

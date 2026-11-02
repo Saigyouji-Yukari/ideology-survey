@@ -35,11 +35,13 @@
 
 ## 隐私与答卷
 
-答案仅保存在当前浏览器中。不加载第三方脚本、字体、统计服务，不调用外部 AI，不上传答案；内容安全策略为 `connect-src 'none'`。访问 GitHub Pages 本身仍需加载网页文件。
+答案仅保存在当前浏览器中。不从第三方站点加载脚本、字体或统计服务，不调用外部 AI，不上传答案；内容安全策略为 `connect-src 'none'`。访问 GitHub Pages 本身仍需加载网页文件。
 
-可在作答中导出 JSON 备份，结果页可导出完整答卷、复制 OMNI1 答卷代码、下载文字报告或打印为 PDF。只在愿意分享答案时向施测者提供导出文件。公共电脑用完后请清除本机记录。
+可在作答中导出 JSON 备份，也可打开“复制／分段备份”：当前代码带长度与 CRC32 校验，每段不超过 1000 字符，计分器支持乱序逐段加入、缺段提示和完整性校验；以前的 OMNI1 代码与 JSON 继续兼容。自动复制受限时可以长按选中的短段文字手动复制。结果页还可下载文字报告或打印为 PDF。
 
-[计分器](https://saigyouji-yukari.github.io/ideology-survey/omni-admin.html) 支持单份与批量 JSON / 答卷代码导入、逐人报告和 CSV 汇总，不保存导入记录。不同题号体系的答卷不直接混算。
+“分批导出报告图片”将整份报告的详细内容展开并分页，每批生成最多六张 PNG，在页面内预览，可逐张长按保存。图片供阅读和分享，不能代替可重新计分的答卷代码。所有渲染与校验在本机完成，截图组件随站点保存，不上传报告。QQ、微信等内置浏览器可能限制下载，首页提示优先在桌面浏览器测试；已在内置浏览器完成的答卷应在原浏览器先分段备份，复制网址不会迁移本机答案。只在愿意分享答案时向施测者提供导出文件。公共电脑用完后请清除本机记录。
+
+[计分器](https://saigyouji-yukari.github.io/ideology-survey/omni-admin.html) 支持单份与批量 JSON / 答卷代码 / 完整分段导入、逐人报告和 CSV 汇总，不保存导入记录。不同题号体系的答卷不直接混算。
 
 ## 文件与维护
 
@@ -49,7 +51,9 @@
 | `data/registry.json`、`data/near_card_map.json`、`data/legacy_supplement.json` | 题库与近邻索引 |
 | `scripts/build-data.py`、`assets/omni-data.js` | 将题库封装为浏览器本地脚本 |
 | `assets/omni-session.js` | 流程、进度与答卷格式校验 |
-| `assets/omni-engine.js` | 分面、卡片、情境、覆盖与导入导出 |
+| `assets/omni-engine.js` | 分面、卡片、情境、覆盖与原有答卷格式校验 |
+| `assets/omni-transfer.js`、`assets/omni-backup.js` | 带长度和校验的答卷代码、聊天分段备份与逐段导入 |
+| `assets/omni-image-export.js`、`assets/vendor/` | 本地完整报告分页 PNG 生成与可长按的图片预览 |
 | `scripts/build-profiles.py` | 从人物与参照数据重建浏览器脚本 |
 | `assets/omni-profile.js`、`data/tendency_profiles.json` | 六个维度的典型主张比较及公开规则 |
 | `assets/omni-people.js`、`data/tendency_people.json`、`assets/portraits/` | 人物介绍、资料与本地肖像 |
@@ -58,7 +62,7 @@
 | `omni-admin.html`、`assets/omni-admin.js` | 答卷导入与批量汇总 |
 | `legacy.html`、`admin.html`、原有 `assets/*.js` | 编制阶段的归档页面，未作为当前测评入口 |
 
-网站为静态页面，运行不依赖第三方库，也不需要构建。可在仓库目录执行 `python -m http.server 8000`，打开 `http://localhost:8000/`。GitHub Pages 从 `gh-pages` 分支根目录发布；`main` 用于维护。发布时将已核验的 `main` 提交同步到 `gh-pages`，仅更新 `main` 不会更新线上网站。
+网站为静态页面，不需要构建；分页图片导出使用随站点分发的 html2canvas 1.4.1（MIT），运行时不加载 CDN。可在仓库目录执行 `python -m http.server 8000`，打开 `http://localhost:8000/`。GitHub Pages 从 `gh-pages` 分支根目录发布；`main` 用于维护。发布时将已核验的 `main` 提交同步到 `gh-pages`，仅更新 `main` 不会更新线上网站。
 
 更新题库后执行 `python scripts/build-data.py`，同时更新计分规则与版本。不得直接混算不同题号体系的答卷。网页导入会核验版本、题型、呈现记录和分支范围。
 
@@ -69,6 +73,8 @@
 `npm test` 运行无需第三方依赖的计分与流程回归检查，包括反向计分、缺答边界、原始盲答、元数据零值、补充题范围、不限时续答，以及图表数值与分值、缺答范围是否一致。
 
 浏览器回归：`npm install` 后执行 `npm run test:browser`。Windows 默认使用本机 Chrome，可用 `CHROME_PATH` 指定浏览器可执行文件；其他系统需预先安装 Playwright Chromium。覆盖真实点击的完整 307 响应流程、自动前进、返回修改、刷新续答、分支上限、导出与管理员导入、跨日续答、手机布局、键盘、全部 1497 个题目在桌面宽度下单行显示、三维罗盘旋转与改选坐标轴、总览图导出及归档页面。截图与结果放在不提交的 `.qa/`。
+
+`npm run test:backup` 检查分段备份、复制受限的手动方式、逐段导入、坏段和缺段、旧格式兼容及恢复；`npm run test:images` 检查完整报告文字覆盖、分页图片、头像和图表、批次生成、取消与手机预览。导出协议和操作边界见 [BACKUP_EXPORT.md](BACKUP_EXPORT.md)。
 
 这些测试验证实现是否符合公开规则，**不代表真实人群中的心理测量效度或分类准确率**。
 

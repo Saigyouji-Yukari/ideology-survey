@@ -94,3 +94,5 @@ textarea.input {min-height:140px;resize:vertical}
 
 .report-supplement { margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--line, #dce2ea); }
 .report-supplement td small { display: block; margin-top: .4rem; }
+
+.browser-notice {max-width:43rem;text-align:left;margin:0 auto 4px;line-height:1.7}
