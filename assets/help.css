@@ -1,0 +1,62 @@
+/* “QQ和微信内置浏览器无法下载文件的解决办法”教程页。多数读者在手机的 QQ／微信里打开，先按窄屏排版。 */
+.help-page {max-width:800px;padding-bottom:24px}
+.help-page h1 {font-size:clamp(1.5rem,5vw,2.1rem);color:var(--accent);line-height:1.4;margin:0 0 16px}
+.help-page h2 {font-size:1.28rem;margin:0 0 14px;display:flex;align-items:center;gap:10px}
+.help-page h3 {font-size:1.05rem;margin:22px 0 8px;font-family:var(--sans);font-weight:700}
+.help-page p, .help-page li {font-size:.97rem;line-height:1.8}
+.help-lede {margin:0 0 12px}
+.help-page code {font-family:var(--mono);font-size:.88em;background:var(--raised);border:1px solid var(--line);border-radius:5px;padding:1px 5px;overflow-wrap:anywhere}
+.help-page kbd {font-family:var(--mono);font-size:.85em;border:1px solid var(--line);border-bottom-width:2px;border-radius:5px;padding:0 6px;background:var(--surface)}
+.help-code-url {display:inline-block;margin-top:4px}
+/* 文中提到的界面按钮，画成和网页上一样的小药丸，方便对照 */
+.ui {display:inline-block;margin:0 3px;padding:0 10px;border:1px solid var(--line);border-radius:999px;background:var(--surface);color:var(--ink);font-size:.88em;font-weight:600;line-height:1.75;white-space:nowrap}
+.ui.primary {background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.help-overview {margin:22px 0;padding:18px;border:1px solid var(--accent-line);border-radius:14px;background:linear-gradient(135deg,var(--accent-soft),var(--surface))}
+.help-overview h2 {margin-bottom:12px}
+.help-overview ol {list-style:none;counter-reset:help;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:0;padding:0}
+.help-overview li {counter-increment:help}
+.help-overview a {display:flex;flex-direction:column;gap:4px;height:100%;padding:12px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink);text-decoration:none}
+.help-overview a::before {content:counter(help);display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--accent);color:var(--accent-ink);font-weight:700;font-size:.9rem}
+.help-overview b {font-size:.98rem}
+.help-overview span {font-size:.82rem;line-height:1.55;color:var(--muted)}
+.help-overview a:hover {border-color:var(--accent-line)}
+.help-callout {margin:18px 0;padding:12px 16px;border:1px solid var(--warn);border-left-width:5px;border-radius:10px;background:var(--warn-soft);font-size:.95rem}
+.help-tip {margin:14px 0;padding:10px 14px;border-left:3px solid var(--accent-line);border-radius:6px;background:var(--raised);font-size:.92rem}
+.help-needs, .help-step, .help-faq, .help-share {margin:22px 0;padding:22px;border:1px solid var(--line);border-radius:14px;background:var(--surface)}
+.help-step {scroll-margin-top:12px}
+.help-step.alt {background:var(--raised)}
+.help-num {flex:none;display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--accent);color:var(--accent-ink);font:700 1.05rem var(--sans)}
+.help-list {padding-left:1.4em;margin:8px 0}
+.help-list li {margin:6px 0}
+.help-list ul {padding-left:1.2em;margin:4px 0}
+.help-notes {margin:10px 0 0;padding-left:1.2em;color:var(--muted)}
+.help-notes li {font-size:.9rem}
+/* 截图：真实界面，红框为操作位置 */
+.help-shot {margin:14px 0 18px;text-align:center}
+.help-shot img {display:block;width:100%;height:auto;margin:0 auto;border:1px solid var(--line);border-radius:12px;box-shadow:0 12px 28px -20px rgba(16,32,60,.55);background:#fff}
+.help-shot.phone img {max-width:360px}
+.help-shot.narrow img {max-width:300px}
+.help-shot.dialog img {max-width:240px}
+.help-shot figcaption {margin-top:8px;font-size:.84rem;line-height:1.6;color:var(--muted)}
+.help-two {display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:18px;align-items:start}
+.help-two .help-shot {margin-top:8px}
+.help-url {margin:12px 0 0}
+.help-url label {display:block;font-size:.86rem;color:var(--muted);margin-bottom:4px}
+.help-url-row {display:flex;gap:8px}
+.help-url-row .input {flex:1;min-width:0;padding:9px 12px;font-family:var(--mono);font-size:.85rem}
+.help-url-row .btn {flex:none}
+.help-copy-status {min-height:1.4em;margin:6px 0 0}
+.help-desktop-only {font-size:.9rem;color:var(--muted)}
+.help-faq details {border-bottom:1px solid var(--line);padding:4px 0}
+.help-faq details:last-child {border-bottom:0}
+.help-faq summary {font-weight:600}
+.help-faq details p {margin:4px 0 10px;color:var(--ink);font-size:.93rem}
+.help-prevent {margin:16px 0 0;font-size:.93rem}
+@media (max-width:620px) {
+  .help-overview ol {grid-template-columns:repeat(2,minmax(0,1fr))}
+  .help-needs, .help-step, .help-faq, .help-share {padding:18px 16px}
+  .help-two {grid-template-columns:minmax(0,1fr)}
+  .help-url-row {flex-direction:column}
+  .help-page h2 {font-size:1.15rem}
+}
+@media print {.help-url, .help-share {display:none}.help-step, .help-overview {break-inside:avoid}}

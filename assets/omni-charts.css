@@ -235,6 +235,8 @@
   .vz-module .vz-tick.small { font-size: 11px; }
   .vz-quality .vz-tick, .vz-quality .vz-cap { font-size: 13.5px; }
 }
+/* Chart colours carry data: print them even when the print dialog's “background graphics” option is off. */
+.vz-figure, .vz-figure *, .vz-track, .vz-track *, .vz-claims, .vz-claims * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 /* 下载文字报告时只保留文字与数据表 */
 body.vz-text-export .vz-graphic, body.vz-text-export .vz-controls, body.vz-text-export .vz-legend { display: none !important; }
 @media print {

@@ -8,7 +8,8 @@
     "test:browser": "node tests/browser.test.cjs",
     "test:profiles": "node tests/profile-browser.test.cjs",
     "test:images": "node tests/image-export-browser.test.cjs",
-    "test:backup": "node tests/backup-browser.test.cjs"
+    "test:backup": "node tests/backup-browser.test.cjs",
+    "test:help": "node tests/help-browser.test.cjs"
   },
   "devDependencies": {
     "playwright": "1.62.1"

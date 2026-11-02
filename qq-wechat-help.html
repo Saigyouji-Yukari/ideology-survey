@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'none'; form-action 'none'; base-uri 'none'; object-src 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="description" content="在 QQ、微信里答完意识形态测试调查后无法下载或打印报告时，如何把答卷代码转到电脑浏览器，还原完整报告并保存为 PDF。">
+<title>QQ和微信内置浏览器无法下载文件的解决办法 · 意识形态测试调查</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231f3864'/%3E%3Cpath d='M7 16h18' stroke='%23fff' stroke-width='2'/%3E%3Ccircle cx='20' cy='16' r='4' fill='%23fff'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/omni.css?r=11">
+<link rel="stylesheet" href="assets/help.css?r=11">
+</head>
+<body>
+<header class="site-head"><div class="wrap head-row"><a class="brand" href="index.html">意识形态测试调查</a><a class="linkbtn" href="index.html">测评首页</a></div></header>
+<main class="wrap help-page">
+  <article>
+    <p class="kicker">使用帮助</p>
+    <h1>QQ和微信内置浏览器无法下载文件的解决办法</h1>
+    <p class="help-lede">在 QQ、微信里直接点开测试链接时，网页是在聊天软件自带的“内置浏览器”里运行的。它们通常会拦截文件下载和打印，所以报告页的<span class="ui">导出完整答卷</span><span class="ui">分批导出报告图片</span><span class="ui">打印 / 保存为 PDF</span><span class="ui">下载文字报告</span>点了可能没有反应。</p>
+    <p class="help-lede"><b>你的答案没有丢，也不用重新答题。</b>答案仍保存在你作答的那个内置浏览器里。按下面的步骤，把“答卷代码”转到电脑上，在 Edge 或 Chrome 里还原完整报告，再保存为 PDF。整个过程只在你自己的设备上进行，代码不会上传到任何服务器。</p>
+
+    <section class="help-overview" aria-labelledby="overview-title">
+      <h2 id="overview-title">四步完成</h2>
+      <ol>
+        <li><a href="#step-1"><b>复制答卷代码</b><span>在 QQ／微信的报告页点“复制／分段备份”</span></a></li>
+        <li><a href="#step-2"><b>发到电脑上</b><span>微信“文件传输助手”或 QQ“我的电脑”</span></a></li>
+        <li><a href="#step-3"><b>打开计分器并导入</b><span>电脑上的 Edge 或 Chrome，粘贴代码</span></a></li>
+        <li><a href="#step-5"><b>保存为 PDF</b><span>点“打印 / 保存为 PDF”，选“另存为 PDF”</span></a></li>
+      </ol>
+    </section>
+
+    <p class="help-callout"><b>不要只把测试网址复制到别的浏览器。</b>答案只存在当初作答的那个浏览器里，换一个浏览器打开同一网址，看到的是一份空白的新答卷。一定要先复制答卷代码。</p>
+
+    <section class="help-needs" aria-labelledby="needs-title">
+      <h2 id="needs-title">需要准备</h2>
+      <ul>
+        <li>一台装有 <b>Microsoft Edge</b> 或 <b>Google Chrome</b> 的电脑（Windows 自带 Edge）。</li>
+        <li>能把手机上的文字发到电脑上的方法：电脑上登录微信或 QQ 最方便，也可以用邮箱或其他聊天工具。</li>
+        <li>没有电脑也能完成，见后面的<a href="#no-computer">“没有电脑怎么办”</a>。</li>
+      </ul>
+    </section>
+
+    <section class="help-step" id="step-1" aria-labelledby="step-1-title">
+      <h2 id="step-1-title"><span class="help-num">1</span>在 QQ／微信里复制答卷代码</h2>
+      <ol class="help-list">
+        <li>在 QQ／微信里打开你作答时用的那个测试链接，进入<b>个人立场报告</b>页面。已经关掉也没关系：重新点开原来的链接，首页会显示<span class="ui">查看我的报告</span>。</li>
+        <li>点报告页上方的<span class="ui">复制／分段备份</span>（首页的同一按钮也可以），会弹出“复制与分段备份”窗口。</li>
+      </ol>
+      <figure class="help-shot phone"><img src="assets/help/step1-report-copy.png" width="700" height="704" alt="报告页顶部：红框标出“复制／分段备份”按钮。" loading="lazy"><figcaption>报告页顶部的“复制／分段备份”。在 QQ／微信里打开时，页面会提示你正在使用内置浏览器。</figcaption></figure>
+      <h3>推荐：分段复制，逐段发送</h3>
+      <p>代码很长，聊天软件转发长文字时可能把末尾截掉，所以窗口默认把代码切成若干段（每段不超过 1000 个字符），每段都带编号和校验。</p>
+      <ol class="help-list">
+        <li>窗口显示<b>“第 1 / N 段”</b>。点<span class="ui primary">复制这一段</span>，切到聊天窗口粘贴并发送（第 2 步会说明发给谁）。</li>
+        <li>回到测试页面，点<span class="ui">下一段</span>，再复制、发送。重复到最后一段。</li>
+        <li>每一段都以 <code>OMNIP1.</code> 开头。顺序不要紧，但<b>一段都不能少</b>；漏了哪段，导入时会明确告诉你缺第几段。</li>
+      </ol>
+      <figure class="help-shot phone"><img src="assets/help/step1-backup-parts.png" width="620" height="1217" alt="“复制与分段备份”窗口：显示第 1 / 8 段的代码，红框标出“复制这一段”和“下一段”。" loading="lazy"><figcaption>分段窗口。此图中的答卷共 8 段，你的段数可能不同。</figcaption></figure>
+      <h3>也可以：复制整份代码</h3>
+      <p>展开窗口下方的<b>“整份代码与文件备份”</b>，点<span class="ui">复制整份代码</span>。整份代码以 <code>OMNI2.</code> 开头（较早的答卷是 <code>OMNI1.</code>），通常有几千个字符。发到电脑后如果提示读取失败，多半是被截断了，请改用分段。</p>
+      <figure class="help-shot phone narrow"><img src="assets/help/step1-backup-full.png" width="560" height="692" alt="展开“整份代码与文件备份”，红框标出“复制整份代码”。" loading="lazy"><figcaption>整份代码。旁边的两个下载按钮在内置浏览器里通常无效，可以忽略。</figcaption></figure>
+      <p class="help-tip"><b>提示“浏览器限制了自动复制”？</b>这时代码已经被选中，长按选中的文字，在菜单里点“复制”即可。</p>
+    </section>
+
+    <section class="help-step" id="step-2" aria-labelledby="step-2-title">
+      <h2 id="step-2-title"><span class="help-num">2</span>把代码发到电脑上</h2>
+      <ul class="help-list">
+        <li><b>微信：</b>在聊天列表里找到<b>“文件传输助手”</b>（找不到时，在微信顶部搜索“文件传输助手”），把复制的代码逐段粘贴发送。然后在电脑上登录微信，打开“文件传输助手”，就能看到这些消息。</li>
+        <li><b>QQ：</b>在手机 QQ 的“联系人 → 设备”里打开<b>“我的电脑”</b>，把代码逐段发送。电脑上登录 QQ 后，在对应的“我的手机”会话里查看。不同版本的名称可能略有差别。</li>
+        <li><b>其他方式：</b>发到自己的邮箱、网盘笔记或其他聊天工具都可以，只要电脑上能复制到完整的文字。</li>
+      </ul>
+      <p class="help-tip"><b>顺手把计分器网址也发过去</b>，第 3 步要用。</p>
+      <div class="help-url">
+        <label for="admin-url">计分器网址</label>
+        <div class="help-url-row"><input id="admin-url" class="input" type="text" readonly value="https://saigyouji-yukari.github.io/ideology-survey/omni-admin.html"><button type="button" class="btn primary" data-copy="admin-url">复制网址</button></div>
+        <p class="help-copy-status help" role="status" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <section class="help-step" id="step-3" aria-labelledby="step-3-title">
+      <h2 id="step-3-title"><span class="help-num">3</span>在电脑的独立浏览器中打开计分器</h2>
+      <ol class="help-list">
+        <li>在电脑上打开 <b>Microsoft Edge</b> 或 <b>Google Chrome</b>。</li>
+        <li>把计分器网址粘贴到浏览器顶部的地址栏，按回车：<br><code class="help-code-url">https://saigyouji-yukari.github.io/ideology-survey/omni-admin.html</code></li>
+        <li>页面标题是<b>“导入答卷，查看完整报告”</b>，说明打开对了。</li>
+      </ol>
+      <p class="help-callout"><b>不要在电脑版微信／QQ 里直接点这个链接。</b>那样打开的仍是它们的内置浏览器，同样无法保存。请复制网址，粘贴到 Edge 或 Chrome 的地址栏。</p>
+      <p class="help-desktop-only">正在电脑上的 Edge／Chrome 里阅读本页？可以直接<a href="omni-admin.html" target="_blank" rel="noopener">在新标签页打开计分器</a>。</p>
+    </section>
+
+    <section class="help-step" id="step-4" aria-labelledby="step-4-title">
+      <h2 id="step-4-title"><span class="help-num">4</span>粘贴代码，导入答卷</h2>
+      <p>先在电脑版微信／QQ 里复制收到的代码，再按你手上的代码类型操作。</p>
+      <h3 id="step-4a">如果是整份代码（以 <code>OMNI2.</code> 或 <code>OMNI1.</code> 开头）</h3>
+      <ol class="help-list">
+        <li>点一下计分器的<b>“粘贴答卷”</b>输入框，按 <kbd>Ctrl</kbd> + <kbd>V</kbd>（Mac 为 <kbd>⌘</kbd> + <kbd>V</kbd>）粘贴。</li>
+        <li>点<span class="ui primary">读取并分析</span>。</li>
+      </ol>
+      <figure class="help-shot"><img src="assets/help/step4-paste-code.png" width="1100" height="694" alt="计分器页面：代码已粘贴到“粘贴答卷”输入框，红框标出“读取并分析”按钮。" loading="lazy"><figcaption>整份代码粘贴到“粘贴答卷”输入框后，点“读取并分析”。</figcaption></figure>
+      <p class="help-tip">如果所有分段都已收齐，也可以把它们一起粘贴到这个输入框（每段一行），同样点“读取并分析”。</p>
+      <h3 id="step-4b">如果是分段代码（以 <code>OMNIP1.</code> 开头）</h3>
+      <ol class="help-list">
+        <li>点<span class="ui">逐段粘贴导入</span>，弹出“粘贴与分段导入”窗口。</li>
+        <li>把一段（或几段，每段一行）粘贴到窗口的输入框，点<span class="ui primary">加入片段／导入</span>。</li>
+        <li>窗口下方会显示<b>“已收到 2 / 8 段；还缺第 3、4……段”</b>。继续复制下一段、粘贴、点“加入片段／导入”。顺序不限，同一段重复加入也没关系。</li>
+        <li>收齐全部片段并通过校验后，会<b>自动导入</b>并关闭窗口。</li>
+      </ol>
+      <figure class="help-shot"><img src="assets/help/step4-parts-import.png" width="900" height="628" alt="“粘贴与分段导入”窗口：已收到 2 / 8 段，提示还缺第 3 到 8 段，红框标出“加入片段／导入”。" loading="lazy"><figcaption>逐段导入时，窗口会告诉你还缺哪几段。注意：关闭这个窗口会清空已暂存的片段。</figcaption></figure>
+      <p>导入成功后，导入按钮下方会显示“已导入 1 份答卷。”或“已收齐全部片段并通过校验，导入 1 份答卷。”，页面下方出现你的完整报告。</p>
+    </section>
+
+    <section class="help-step" id="step-5" aria-labelledby="step-5-title">
+      <h2 id="step-5-title"><span class="help-num">5</span>打印 / 保存为 PDF</h2>
+      <ol class="help-list">
+        <li>导入成功后，<b>“已导入答卷”</b>一栏会出现几个按钮。点<span class="ui">打印 / 保存为 PDF</span>。它会先展开报告里所有折叠的内容，再打开打印窗口。</li>
+      </ol>
+      <figure class="help-shot"><img src="assets/help/step5-print-button.png" width="1100" height="434" alt="“已导入答卷”一栏的按钮，红框标出“打印 / 保存为 PDF”。" loading="lazy"><figcaption>按钮在导入成功后才会出现。</figcaption></figure>
+      <div class="help-two">
+        <ol class="help-list" start="2">
+          <li>在打印窗口中选择打印机：
+            <ul>
+              <li><b>Edge：</b>“打印机”选<b>“另存为 PDF”</b>。</li>
+              <li><b>Chrome：</b>“目标打印机”选<b>“另存为 PDF”</b>。</li>
+            </ul>
+          </li>
+          <li>“布局”选“纵向”，“页面”选“全部”。</li>
+          <li>点<b>“保存”</b>，选择保存位置和文件名。</li>
+        </ol>
+        <figure class="help-shot dialog"><img src="assets/help/step5-print-dialog.png" width="369" height="800" alt="Edge 打印窗口：红框标出“打印机：另存为 PDF”和“保存”按钮。" loading="lazy"><figcaption>以 Edge 为例。</figcaption></figure>
+      </div>
+      <ul class="help-notes">
+        <li>完整报告包括逐题记录和全部图表，<b>几十页</b>（常见为 60～70 页）是正常的。</li>
+        <li>图表颜色会直接打印，不需要另外勾选“背景图形”。</li>
+        <li>得到的 PDF 可以发回手机保存，或发给你信任的人。</li>
+      </ul>
+    </section>
+
+    <section class="help-step alt" id="no-computer" aria-labelledby="no-computer-title">
+      <h2 id="no-computer-title">没有电脑怎么办</h2>
+      <p>可以用手机自带的浏览器代替电脑，步骤相同：</p>
+      <ol class="help-list">
+        <li>在 QQ／微信里按第 1 步复制代码（分段时，可先逐段发到“文件传输助手”或“我的电脑”暂存）。</li>
+        <li>点上面的<span class="ui">复制网址</span>，打开手机自带的浏览器（如 Safari、Chrome，或华为、小米等手机的系统浏览器），把网址粘贴到地址栏打开计分器。</li>
+        <li>按第 4 步粘贴代码导入，再点<span class="ui">打印 / 保存为 PDF</span>：
+          <ul>
+            <li><b>安卓手机：</b>打印预览里把打印机选为“另存为 PDF”或“保存为 PDF”，再点下载或保存图标。</li>
+            <li><b>iPhone：</b>打开打印选项后，用两根手指在预览页上张开放大，会进入 PDF 预览；再点“分享”，选“存储到‘文件’”。</li>
+          </ul>
+        </li>
+      </ol>
+      <p class="help-tip">在 QQ／微信右上角的“…”菜单里选“在浏览器打开”，只是用别的浏览器打开同一网址，答案不会跟过去，仍然需要按上面的方法导入代码。</p>
+    </section>
+
+    <section class="help-step alt" aria-labelledby="images-title">
+      <h2 id="images-title">只想保存图片版报告</h2>
+      <p>报告页的<span class="ui">分批导出报告图片</span>会在页面里直接生成报告图片，每批最多六张。在 QQ／微信里，图片下面的下载按钮可能无效，可以试着<b>长按图片，选择“保存图片”</b>（能否保存取决于手机和软件版本）。图片只能阅读，不能再导入计分器，所以仍建议保留一份答卷代码。</p>
+    </section>
+
+    <section class="help-faq" aria-labelledby="faq-title">
+      <h2 id="faq-title">常见问题</h2>
+      <details><summary>导入时提示“还缺第几段”</summary><p>说明有片段没发全或没粘贴。回到手机上的“复制与分段备份”窗口，在“选择片段”里选中缺少的段号，复制并发送，再在电脑上继续“加入片段／导入”。</p></details>
+      <details><summary>提示无法读取、格式不对</summary><p>多半是代码不完整或混入了别的文字。整份代码以 <code>OMNI2.</code> 或 <code>OMNI1.</code> 开头，片段以 <code>OMNIP1.</code> 开头；复制时不要漏掉开头或末尾。整份代码在聊天中容易被截断，改用分段最稳妥。</p></details>
+      <details><summary>电脑上找不到“打印 / 保存为 PDF”</summary><p>这个按钮在答卷导入成功后才会出现，位于“已导入答卷”一栏。请先完成第 4 步。</p></details>
+      <details><summary>点了打印没有反应</summary><p>请确认用的是 Edge 或 Chrome，而不是电脑版微信／QQ 里打开的窗口。请用页面上的“打印 / 保存为 PDF”按钮，它会先展开全部折叠内容，保存的 PDF 才完整。</p></details>
+      <details><summary>还没答完，能换到电脑上继续吗？</summary><p>可以。作答页和首页同样有“复制／分段备份”。在电脑浏览器打开<a href="index.html">测评首页</a>，展开“本机记录与答卷导入”，点“粘贴／分段导入”，把代码导入后即可接着作答。</p></details>
+      <details><summary>代码会泄露我的答案吗？</summary><p>代码里就是你的全部作答，导入只在你打开的浏览器里进行，不会上传。请只发给你自己或你信任的施测者。</p></details>
+      <details><summary>以后还想再看报告</summary><p>保留好答卷代码或保存的 PDF。以后随时可以在计分器里重新导入代码，得到同样的报告。</p></details>
+    </section>
+
+    <section class="help-share" aria-labelledby="share-title">
+      <h2 id="share-title">把本教程发到电脑上</h2>
+      <p>想在电脑上对照操作，可以复制本页网址一并发送。</p>
+      <div class="help-url">
+        <label for="help-url">本页网址</label>
+        <div class="help-url-row"><input id="help-url" class="input" type="text" readonly value="https://saigyouji-yukari.github.io/ideology-survey/qq-wechat-help.html"><button type="button" class="btn" data-copy="help-url">复制网址</button></div>
+        <p class="help-copy-status help" role="status" aria-live="polite"></p>
+      </div>
+      <p class="help-prevent"><b>以后作答：</b>最好直接用电脑或手机自带的浏览器打开测试，下载、打印都可以在报告页直接完成。</p>
+    </section>
+  </article>
+</main>
+<footer class="site-foot"><div class="wrap"><a href="index.html">测评首页</a> · <a href="omni-admin.html">施测者计分器</a> · <a href="https://github.com/Saigyouji-Yukari/ideology-survey">项目与计分说明</a></div></footer>
+<script src="assets/help.js?r=11"></script>
+</body>
+</html>
