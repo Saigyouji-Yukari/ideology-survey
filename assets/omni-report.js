@@ -57,10 +57,33 @@
     return head + charts.fullRadar(result) + charts.themes(result.facets).map(theme => '<div class="vz-theme-block"><h3>' + esc(theme.name) + '</h3>' + charts.themeBlock(theme) + '<div class="report-grid">' + theme.facets.map(facet => facetCard(facet, presented, charts)).join('') + '</div></div>').join('') + '</section>';
   }
 
-  function renderTendencyProfiles(result) {
+  // 综合报告分析：结构由 OMNI_SYNTHESIS 按公开规则生成，这里只负责转义和排版。
+  function synthesisText(text) {
+    const marks = root.OMNI_SYNTHESIS ? root.OMNI_SYNTHESIS.markers : { B0: '\u0001', B1: '\u0002' };
+    return esc(text).split(marks.B0).join('<strong>').split(marks.B1).join('</strong>');
+  }
+  function synthesisBlocks(blocks) {
+    return (blocks || []).map(block => block.type === 'list' ? '<ul class="syn-list">' + block.items.map(item => '<li>' + synthesisText(item) + '</li>').join('') + '</ul>' : block.type === 'quote' ? '<blockquote class="syn-quote">' + synthesisText(block.text) + '</blockquote>' : '<p>' + synthesisText(block.text) + '</p>').join('');
+  }
+  function renderSynthesis(result, session, groups) {
+    if (!root.OMNI_SYNTHESIS) return '';
+    let syn;
+    // 综合分析出错时只影响本节，报告其余部分照常显示。
+    try { syn = root.OMNI_SYNTHESIS.analyze(result, session, { profile: groups, people: root.OMNI_PEOPLE || {} }); }
+    catch (_) { return '<section class="report-section syn" aria-labelledby="report-synthesis" data-status="error"><h2 id="report-synthesis">综合报告分析</h2><p class="notice">本节暂时无法根据这份答卷生成，报告其余部分不受影响。</p></section>'; }
+    const overall = '<div class="syn-overall"><h3>总体定位</h3>' + syn.overall.paragraphs.map(text => '<p>' + synthesisText(text) + '</p>').join('') + (syn.overall.quote ? '<p class="syn-quote-label">简化成一句话：</p><blockquote class="syn-quote syn-thesis">' + synthesisText(syn.overall.quote) + '</blockquote>' : '') + '</div>';
+    const sections = syn.status === 'insufficient' ? '' : syn.sections.map(section => '<details class="syn-section" data-section="' + esc(section.id) + '" open><summary><span class="syn-num">' + esc(section.number) + '</span><span class="syn-title">' + esc(section.title) + '</span><span class="syn-headline">' + synthesisText(section.headline) + '</span></summary><div class="syn-body">' + synthesisBlocks(section.blocks) + '</div></details>').join('');
+    const references = syn.references.length ? '<div class="syn-block syn-refs"><h3>自我认同、思想卡与画像参照</h3>' + synthesisBlocks(syn.references) + '</div>' : '';
+    const tensions = syn.status === 'ok' ? '<div class="syn-block syn-tensions"><h3>最主要的内部张力</h3>' + (syn.tensions.length ? '<ol>' + syn.tensions.map(t => '<li>' + synthesisText(t.text) + '</li>').join('') + '</ol><p class="muted">按检测规则的重要程度排列；涉及对和平反对者、程序权利或竞争性选举的强制性保留排在前面。完整依据见上文各部分。</p>' : '<p>本次没有检测到需要特别说明的跨题冲突组合。</p>') + '</div>' : '';
+    const summary = syn.summary.length ? '<div class="syn-block syn-summary"><h3>综合概括</h3><ol>' + syn.summary.map(text => '<li>' + synthesisText(text) + '</li>').join('') + '</ol>' + (syn.summaryNote ? '<p>' + synthesisText(syn.summaryNote) + '</p>' : '') + '</div>' : '';
+    const caveats = syn.caveats.length ? '<div class="syn-caveats">' + syn.caveats.map(text => '<p>' + synthesisText(text) + '</p>').join('') + '</div>' : '';
+    return '<section class="report-section syn" aria-labelledby="report-synthesis" data-status="' + esc(syn.status) + '"><h2 id="report-synthesis">综合报告分析</h2><p class="syn-intro">' + synthesisText(syn.intro) + '</p>' + overall + sections + references + tensions + summary + caveats + '<p class="muted syn-rule">规则版本 ' + esc(syn.version) + '。<a href="https://github.com/Saigyouji-Yukari/ideology-survey/blob/main/SYNTHESIS_RULES.md" target="_blank" rel="noopener noreferrer">查看综合分析规则</a></p></section>';
+  }
+
+  function renderTendencyProfiles(result, groups) {
     if (!root.OMNI_PROFILE) return '';
     const people = root.OMNI_PEOPLE || {};
-    const groups = root.OMNI_PROFILE.analyze(result);
+    groups = groups || root.OMNI_PROFILE.analyze(result);
     const statuses = {insufficient:'信息不足',neutral:'中立或尚未形成',mixed:'交叉与混合倾向',unmatched:'暂未找到贴近的参照',tentative:'有条件的接近',closest:'较接近'};
     function sourceLink(source) {
       const url = safeUrl(source.url);
@@ -216,10 +239,11 @@
     const partial = result.cards.filter(card => card.statusCode === 'partial');
     const insufficient = result.cards.filter(card => card.statusCode === 'insufficient');
     const scoredFacets = result.facets.filter(facet => facet.value != null);
+    const groups = root.OMNI_PROFILE ? root.OMNI_PROFILE.analyze(result) : [];
     const directional = scoredFacets.filter(facet => facet.value !== 0).sort((a,b) => Math.abs(b.value) - Math.abs(a.value)).slice(0,4);
     const intro = directional.length ? '在有效作答较完整的分面中，本次表达得较突出的方向包括：' + directional.map(facet => facet.name + '偏向“' + (facet.value > 0 ? facet.positive : facet.negative) + '”').join('；') + '。' : scoredFacets.length ? '已可描述的分面均分位于中间位置，具体含义需结合单题中立与交叉立场理解。' : '目前完整作答不足以形成分面点值，报告保留已表达的主张和缺答范围。';
     const cardSummary = supported.length ? '在实际核验的卡片中，' + supported.map(card => card.name).join('、') + '的三项主张均获支持。' : '本次没有达到“三项主张均支持”的完整卡片；这不排除未检验的思想。';
-    return '<article class="omni-report"><header class="report-summary"><p class="eyebrow">个人立场报告</p><h1>你的政治立场与思想倾向</h1><p class="muted">答卷编号 ' + esc(result.id || '未命名') + ' · ' + (result.finished ? '已提交答卷' : '当前进度的阶段报告') + '</p><p>' + esc(intro) + '</p><p>' + esc(cardSummary) + (partial.length ? '另有 ' + partial.length + ' 张卡出现部分支持或分歧。' : '') + (insufficient.length ? '有 ' + insufficient.length + ' 张卡信息不足。' : '') + '</p><p>以下结论描述本次作答；名称认同、原有理解、具体保留意见和未检验范围分别列出。</p></header>' + renderTendencyProfiles(result) + (result.sourceVersion ? '<p class="notice">本答卷已完成格式兼容处理，已答内容与提交状态予以保留；当前题库中尚未作答的题目不会自动填答。</p>' : '') + renderAtlas(result) + renderCoverage(result, session) + renderFacets(result, presented) + renderCards(result, session, data, presented) + renderSupplements(result, presented) + renderScenarios(result, presented) + renderClosing(result, session) + renderQuality(result, session) + renderRawModules(result, session, data, presented) + '</article>';
+    return '<article class="omni-report"><header class="report-summary"><p class="eyebrow">个人立场报告</p><h1>你的政治立场与思想倾向</h1><p class="muted">答卷编号 ' + esc(result.id || '未命名') + ' · ' + (result.finished ? '已提交答卷' : '当前进度的阶段报告') + '</p><p>' + esc(intro) + '</p><p>' + esc(cardSummary) + (partial.length ? '另有 ' + partial.length + ' 张卡出现部分支持或分歧。' : '') + (insufficient.length ? '有 ' + insufficient.length + ' 张卡信息不足。' : '') + '</p><p>以下结论描述本次作答；名称认同、原有理解、具体保留意见和未检验范围分别列出。</p></header>' + renderSynthesis(result, session, groups) + renderTendencyProfiles(result, groups) + (result.sourceVersion ? '<p class="notice">本答卷已完成格式兼容处理，已答内容与提交状态予以保留；当前题库中尚未作答的题目不会自动填答。</p>' : '') + renderAtlas(result) + renderCoverage(result, session) + renderFacets(result, presented) + renderCards(result, session, data, presented) + renderSupplements(result, presented) + renderScenarios(result, presented) + renderClosing(result, session) + renderQuality(result, session) + renderRawModules(result, session, data, presented) + '</article>';
   }
 
   root.OMNI_REPORT = Object.freeze({render, escape:esc, answer});

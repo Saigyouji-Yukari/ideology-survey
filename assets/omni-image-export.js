@@ -23,6 +23,8 @@
   }
   function snapshot(report) {
     const copy = report.cloneNode(true);
+    // The copy is never scrolled into view, so lazily loaded thumbnails would wait forever.
+    copy.querySelectorAll('img[loading="lazy"]').forEach(img => { img.loading = 'eager'; });
     const originalSelects = report.querySelectorAll('select');
     copy.querySelectorAll('select').forEach((select, i) => {
       const source = originalSelects[i] || select;
