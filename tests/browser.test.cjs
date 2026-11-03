@@ -44,7 +44,7 @@ const server = http.createServer((req,res)=>{
     assert.equal((await state()).answers.Q002,4);
     console.log('PASS auto advance, previous edit, neutral/unknown, reload');
     // Every question and claim title fits on one line on a desktop-width card (long ones shrink slightly).
-    const titles=[...D.core.items,...D.core.scenarios,...D.core.context,...D.modules.flatMap(m=>m.items),...D.legacySupplement.items].map(q=>q.text).concat(D.cards.flatMap(c=>[c.a,c.b,c.contrast]));
+    const titles=[...D.core.items,...D.core.scenarios,...D.core.context,...D.modules.flatMap(m=>m.items),...D.legacySupplement.items].map(q=>q.text).concat(D.cards.flatMap(c=>[c.a,c.b,c.contrast]),['在本次介绍以前，你对这个思想有多熟悉？','总体而言，你是否认同这一思想本身？','用一两句话说明你的立场与保留意见']);
     const wrapped=await page.evaluate(list=>{const h1=document.getElementById('question-title'),keep=[h1.textContent,h1.style.getPropertyValue('--qlen')],bad=[];
       const em=t=>{let n=0;for(const ch of t)n+=ch.charCodeAt(0)<256?(ch===' '?0.3:0.56):1;return Math.ceil(n*1.02+0.6);};
       if(String(em(keep[0]))!==keep[1].trim())bad.push('page --qlen differs from the formula: '+keep[1]);
@@ -93,7 +93,16 @@ const server = http.createServer((req,res)=>{
     while(await page.locator('[data-question]').count()) {
       const q=await page.locator('[data-question]').getAttribute('data-question');
       if(q.endsWith('.explanation')){await page.locator('#free-answer').fill('支持所列安排；对邻近思想保留意见。');await page.locator('[data-action=text-next]').click();await page.waitForFunction(q=>document.querySelector('[data-question]')?.dataset.question!==q,q);}
-      else await choose(q.endsWith('.K')||q.endsWith('.I')?0:6);
+      else {
+        if(q.endsWith('.I')){
+          // The identity item asks about the ideology itself, not whether the name is apt.
+          const text=await page.locator('.q-card').innerText();
+          assert(text.includes('总体而言，你是否认同这一思想本身？')&&text.includes('不是评价这个名称起得是否恰当'),q);
+          assert(!/认同这个思想名称|不认同这个名称/.test(text),q);
+          assert.deepEqual(await page.locator('.answer-list .answer span').allInnerTexts(),['不认同这一思想','尚不确定','部分认同（只认同其中一部分，或有重要保留）','明确认同']);
+        }
+        await choose(q.endsWith('.K')||q.endsWith('.I')?0:6);
+      }
     }
     assert.equal((await state()).presented.length,250+supplementalCount);
     await page.locator('[data-jump="T001.a"]').click();await choose(5);

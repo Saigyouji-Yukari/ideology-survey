@@ -556,13 +556,13 @@
     if (stated && !['U', 'X', '×'].includes(stated)) {
       const names = D.cards.filter(c => [c.name, ...(c.aliases || [])].some(n => n && n.length > 1 && stated.includes(n)));
       const status = names.map(c => { const card = tested.find(x => x.id === c.id); return c.name + (card ? '（已核验：' + card.status + '）' : '（本次未核验）'); });
-      blocks.push(para('作答前主动列出的思想名称是“' + stated + '”' + (status.length ? '；对应的思想卡：' + [...new Set(status)].join('、') : '') + '。名称认同与政策主张分开报告，本节不依据名称推断立场。'));
+      blocks.push(para('作答前主动列出的思想名称是“' + stated + '”' + (status.length ? '；对应的思想卡：' + [...new Set(status)].join('、') : '') + '。自述的名称与政策主张分开报告，本节不依据名称推断立场。'));
     }
     if (certainty) blocks.push(para('本人对自己政治立场的确定程度：' + certainty + '。'));
     // 思想卡
     if (tested.length) {
       blocks.push(para('实际核验的思想卡（只表示与所选三项主张是否相符，不等于完整认同该流派）：'));
-      blocks.push(bullets(tested.map(c => c.name + '：' + c.status + ((c.conflicts || []).length ? '；不同意' + c.conflicts.map(q => '“' + plain(q.text).replace(/[。]$/, '') + '”').join('、') : '') + (c.identity != null ? '；名称认同：' + ['不认同', '尚不确定', '部分认同', '明确认同'][c.identity] : '') + '。')));
+      blocks.push(bullets(tested.map(c => c.name + '：' + c.status + ((c.conflicts || []).length ? '；不同意' + c.conflicts.map(q => '“' + plain(q.text).replace(/[。]$/, '') + '”').join('、') : '') + (c.identity != null ? '；本人认同：' + ['不认同', '尚不确定', '部分认同', '明确认同'][c.identity] : '') + '。')));
     }
     // 深入专题
     blocks.push(...moduleOverview(ctx, session));

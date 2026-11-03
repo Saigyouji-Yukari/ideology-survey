@@ -461,7 +461,7 @@
     }).join('');
     const steps = (value, labels) => '<span class="vz-steps">' + [0, 1, 2, 3].map(i => '<i class="vz-step' + (value != null && i <= value ? ' on' : '') + '"></i>').join('') + '</span><span>' + (value == null ? '未记录' : esc(labels[value])) + '</span>';
     return box('<div class="vz-claims vz-graphic"><div class="vz-claims-scale"><span>1 非常不同意</span><span>4 中立</span><span>7 非常同意</span></div>' + rows +
-      '<div class="vz-ki"><span class="vz-ki-name">此前熟悉度</span>' + steps(card.familiarity, FAMILIARITY) + '</div><div class="vz-ki"><span class="vz-ki-name">名称自我认同</span>' + steps(card.identity, IDENTITY) + '</div></div>');
+      '<div class="vz-ki"><span class="vz-ki-name">此前熟悉度</span>' + steps(card.familiarity, FAMILIARITY) + '</div><div class="vz-ki"><span class="vz-ki-name">本人认同</span>' + steps(card.identity, IDENTITY) + '</div></div>');
   }
 
   // ---------------------------------------------------------------- supplements: diverging stacked bars (HTML)

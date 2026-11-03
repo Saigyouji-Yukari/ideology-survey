@@ -14,7 +14,7 @@
     '理解问题且认为两边相当时选4；不了解或无法判断选U；不愿回答选×。漏答与这两项分开记录。背景题与核验卡的0～3有单独含义，0不是漏答。',
     '先按你本人希望或认可的安排作答。明确写有假设情境的题，只评价该情境，不表示赞成其前提；不能接受前提到无法判断时选U，并可在Z06说明。',
     '本测试不要求姓名、单位、账号等身份资料。答案仅保存在当前浏览器；导出的答卷包含作答内容，请自行决定是否向他人提供，并确认对方的保管方式。宗教、国籍和族裔身份不等于政治立场。',
-    '请按当前真实看法作答，不必追求一致。核验卡默认先回答三条主张，再显示思想名称，随后选择熟悉度和自我认同；如果主动按名称选卡，报告会注明。不要为获得某个标签反改答案。',
+    '请按当前真实看法作答，不必追求一致。核验卡默认先回答三条主张，再显示思想名称和介绍，随后回答此前熟悉度，以及是否认同这一思想本身；如果主动按名称选卡，报告会注明。不要为获得某个标签反改答案。',
     '未做的专题或卡片不能被解释为不接近。对历史路线和理论学派，问卷只能核对有限主张及自我认同；不能仅凭政策赞同证明学术或组织归属。',
     '本版尚待真实样本校准。它可生成有依据的个人描述，但不提供已验证的分类准确率、身份鉴定或全世界政治光谱中的精确坐标。'
   ];
@@ -63,7 +63,7 @@
   function questionOptions(q) {
     if (contexts[q.id]) return contexts[q.id].map((label, value) => ({value,label}));
     if (q.part === 'K') return ['从未听过','只知道名称','此前能解释核心主张','此前能解释与相邻思想的差别'].map((label,value) => ({value,label}));
-    if (q.part === 'I') return ['不认同这个名称','不确定','部分认同','明确认同'].map((label,value) => ({value,label}));
+    if (q.part === 'I') return ['不认同这一思想','尚不确定','部分认同（只认同其中一部分，或有重要保留）','明确认同'].map((label,value) => ({value,label}));
     return labels.map((label,i) => ({value:i+1,label}));
   }
   function isText(q) { return ['Z04','Z05','Z06'].includes(q.id) || q.part === 'explanation'; }
@@ -82,7 +82,7 @@
     if (card) {
       topic = `核验卡 ${card.id} · 第 ${['a','b','c','K','I','explanation'].indexOf(q.part)+1} / 6 项`;
       if (q.part === 'K') title = '在本次介绍以前，你对这个思想有多熟悉？';
-      if (q.part === 'I') title = '你是否认同这个思想名称？';
+      if (q.part === 'I') title = '总体而言，你是否认同这一思想本身？';
       if (q.part === 'explanation') title = '用一两句话说明你的立场与保留意见';
       if (revealed) intro = `<div class="notice"><b>${esc(card.name)}</b> <span class="pill">${esc(card.kind)}</span><p>${q.part === 'K' ? '现在揭示思想名称。请回忆此次测评之前的了解程度；详细解释将在下一项显示。' : esc(card.summary)}</p>${q.part === 'K' ? '' : `<p class="help">与相邻思想的区分：${esc(card.near)}。${esc(card.note)}</p>`}</div>`;
       else intro = '<p class="help">先只评价这项主张。三项回答完成后显示思想名称。</p>';
@@ -94,9 +94,9 @@
     const value = S.answers[q.id], answered = list.filter(q => Object.hasOwn(S.answers,q.id) && S.answers[q.id] !== '').length;
     let inputs;
     if (isText(q)) {
-      const hint = q.part === 'explanation' ? '可写：我支持什么安排、在哪些条件下保留意见，以及与相邻思想有什么不同。解释将保留供本人或施测者核对，不自动判定理解正确。' : q.options;
+      const hint = q.part === 'explanation' ? '可写：我支持什么安排、在哪些条件下保留意见、与相邻思想有什么不同，或对这个名称本身的看法。解释将保留供本人或施测者核对，不自动判定理解正确。' : q.options;
       inputs = `<p class="help">${esc(hint)}</p><label class="help" for="free-answer">你的说明</label><textarea id="free-answer" class="input" maxlength="2000" placeholder="可以留空；请勿填写姓名、单位等身份信息">${esc(value === 'X' || value === 'U' ? '' : value)}</textarea><div class="actions">${action('text-next','保存并继续','btn primary')}<button class="btn" data-value="X">不愿回答（×）</button></div>`;
-    } else inputs = `<div class="answer-list">${questionOptions(q).map(o => `<button class="answer" data-value="${o.value}" aria-pressed="${value === o.value}"><b>${o.value}</b><span>${esc(o.label)}</span></button>`).join('')}</div><div class="alt"><button class="btn" data-value="U" aria-pressed="${value === 'U'}">不了解或无法判断（U）</button><button class="btn" data-value="X" aria-pressed="${value === 'X'}">不愿回答（×）</button></div>`;
+    } else inputs = (q.part === 'I' ? '<p class="help identity-help">请依据上方介绍，就这一思想的主张与立场作答；不是评价这个名称起得是否恰当，也不要求你平时以这个名称自称。对名称本身的看法，可在下一项说明。</p>' : '') + `<div class="answer-list">${questionOptions(q).map(o => `<button class="answer" data-value="${o.value}" aria-pressed="${value === o.value}"><b>${o.value}</b><span>${esc(o.label)}</span></button>`).join('')}</div><div class="alt"><button class="btn" data-value="U" aria-pressed="${value === 'U'}">不了解或无法判断（U）</button><button class="btn" data-value="X" aria-pressed="${value === 'X'}">不愿回答（×）</button></div>`;
     app.innerHTML = `<div class="q-top">${timer()}<div class="q-meta"><span>${esc(topic)}</span><span>${esc(q.id)} · 本阶段 ${S.pos+1} / ${list.length}</span></div><div class="progress"><div class="bar" style="width:${100*answered/list.length}%"></div></div></div><article class="q-card" data-question="${q.id}" aria-labelledby="question-title">${intro}<h1 class="question-title" id="question-title" tabindex="-1" style="--qlen:${titleEm(title)}">${esc(title)}</h1>${inputs}</article><nav class="q-nav" aria-label="题目切换">${action('prev','← 上一题','btn ghost')}<span class="spacer"></span>${action('review','检查已答','btn ghost')}${action('next',value !== undefined && value !== '' ? '下一题 →' : '跳过 →','btn ghost')}</nav><p class="help">选择后自动前进。键盘数字键作答，U 不了解，X 不愿回答，← 返回。背景题的 0 是有效选项。</p><div class="actions">${action('copy','复制／分段备份','linkbtn')}${action('export','导出备份','linkbtn')}${action('finish-early','提前结束并分析','linkbtn')}</div>`;
     const prev = app.querySelector('[data-action=prev]'); if (prev) prev.disabled = S.pos === 0;
   }

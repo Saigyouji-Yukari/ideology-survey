@@ -73,10 +73,10 @@
     const explanation = typeof explanationAnswer === 'string' && !['U', 'X', '×'].includes(explanationAnswer) ? explanationAnswer : '';
     const evidence = referenceEvidence(c, answers);
     const crossQuestionConflicts = statusCode === 'supported' ? evidence.filter(q => q.oriented !== null && q.oriented <= 3) : [];
-    const identityLabels = ['本人不认同这一名称', '本人尚不确定是否认同这一名称', '本人部分自我认同这一名称', '本人明确自我认同这一名称'];
-    let identityNote = identity === null ? '名称认同尚未记录。' : identityLabels[identity] + '。';
-    if (['历史路线', '理论学派'].includes(c.kind)) identityNote += '政策或理论主张与名称认同分开报告；原有理解及近邻区别需人工核对，网页不自动确认历史或学术身份。';
-    else if (identity >= 2) identityNote += '这是本人报告的名称认同，不等于全套思想已核验。';
+    const identityLabels = ['本人表示不认同', '本人尚不确定是否认同', '本人表示部分认同', '本人表示明确认同'];
+    let identityNote = identity === null ? '本人认同尚未记录。' : identityLabels[identity] + '。';
+    if (['历史路线', '理论学派'].includes(c.kind)) identityNote += '政策或理论主张与本人认同分开报告；原有理解及近邻区别需人工核对，网页不自动确认历史或学术身份。';
+    else if (identity >= 2) identityNote += '这是本人报告的认同，不等于全套思想已核验。';
     if (crossQuestionConflicts.length) identityNote += '参考题存在不同取向，适用条件待澄清；不会机械否决或抹去原答。';
     return { ...c, status, statusCode, strongSupport, claims, support, conflicts, neutral, missing, familiarity, familiarityAnswer: familiarityAnswer === undefined ? null : familiarityAnswer, identity, identityAnswer: identityAnswer === undefined ? null : identityAnswer, explanation, identityNote, referenceEvidence: evidence, crossQuestionConflicts, nearCards: (D.nearCardMap[c.id] || []).map(id => ({ id, name: cardsById[id].name, statusCode: 'untested' })), sensitive: statusCode === 'supported' && claims.some(q => q.answer === 5), unblinded: false };
   }
